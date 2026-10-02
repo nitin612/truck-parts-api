@@ -126,6 +126,11 @@ If `STRIPE_SECRET_KEY` is unset, card orders are created as **Pending payment** 
 ### Admin
 `GET /admin/stats` (dashboard tiles) · `GET /admin/customers`.
 
+### Uploads (admin)
+`POST /uploads` (multipart/form-data, field `image`) → `{ url, path, filename }`. Images are stored
+on disk under `uploads/` and served at `/uploads/<file>`. Swap the storage engine in
+`src/middleware/upload.js` to move to S3 / Cloudinary later — nothing else changes.
+
 ---
 
 ## Key design decisions
@@ -140,10 +145,21 @@ If `STRIPE_SECRET_KEY` is unset, card orders are created as **Pending payment** 
   orders, promos, categories, enquiries, settings) so the React app can swap its localStorage
   stores for API calls with minimal change. Order statuses match `utils/orders.js`.
 
+## Run with Docker (no local Mongo / Atlas needed)
+A one-command local stack (MongoDB + API, auto-seeded) is included:
+```bash
+cp .env.example .env     # set the two JWT secrets; MONGO_URI is overridden to the mongo container
+docker compose up --build
+# API → http://localhost:5000  ·  MongoDB → localhost:27017  ·  images persist in a volume
+```
+`docker compose down` stops it; data persists in the `mongo-data` / `uploads-data` volumes.
+
 ## Deployment notes
-- Host on Render / Railway / Fly.io / a VPS. Use **MongoDB Atlas** for the database.
+- Host on Render / Railway / Fly.io / a VPS (the `Dockerfile` works on all of them), or use
+  **MongoDB Atlas** for the database with a Node host.
 - Set all env vars; `COOKIE_SECURE=true`; put the real storefront + admin URLs in `CLIENT_ORIGINS`.
 - Run `npm run seed` once against the production DB (or import your real catalogue).
+- Product images: mount a persistent volume at `/app/uploads`, or switch to S3/Cloudinary.
 
 ## Payments & email (built, feature-flagged)
 - **Stripe**: `POST /payments/create-intent` creates a PaymentIntent (card + Afterpay) for an order;
@@ -157,4 +173,3 @@ If `STRIPE_SECRET_KEY` is unset, card orders are created as **Pending payment** 
 - Image uploads for products (S3 / Cloudinary / GridFS).
 - Realtime order status to the storefront `/track` page (WebSocket / SSE).
 - Admin product/category create-edit forms in `truck-parts-admin`.
-# truck-parts-api
