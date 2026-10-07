@@ -1,175 +1,107 @@
-# Aurex Truck Parts — API
+# Aurex Truck Parts & Heavy Equipment — Enterprise REST API
 
-Backend REST API for the Aurex Truck Parts Australia storefront and admin console.
-**Stack:** Node.js · Express · MongoDB (Mongoose) · JWT auth · Zod validation.
+High-performance, enterprise-grade backend REST API & Realtime WebSockets for **Commercial Truck & Heavy Trailer Parts E-Commerce and B2B Fleet Trade**.
+
+Built on **Fastify v5**, **MongoDB (Mongoose)**, **JWT Authentication**, and **OpenAPI (Swagger)**.
 
 ---
 
-## Quick start
+## 🚀 Key Technologies & Stack
+- **Framework**: Fastify v5 (Ultra-fast, low-overhead HTTP & WebSocket server)
+- **Database**: MongoDB via Mongoose ORM (with schemas, indexes, hooks & auto-reconnect)
+- **Authentication**: JWT (Access Token in Authorization Header + HttpOnly Refresh Cookie) + Role-Based Access Control (`SUPER_ADMIN`, `ADMIN`, `SALES_REP`, `WAREHOUSE_MANAGER`, `TRADE_CUSTOMER`, `CUSTOMER`)
+- **API Documentation**: Interactive Swagger UI at `/api/docs`
+- **Realtime WebSockets**: Live order notifications, quote submissions, and stock alerts via `ws`
+- **Security**: Fastify Helmet, CORS origin filtering, and IP rate limiting
+- **File & Media Storage**: Cloudinary integration with local fallback for part photos, diagrams, and spec PDFs
+- **Validation**: Zod schema validation
+- **Zero Third-Party Vendor Locks**: Clean B2B Direct Wire (EFT), 30-Day Commercial Trade Invoicing, and Depot COD payment workflows (No Razorpay).
 
+---
+
+## 🛠️ Quick Start
+
+### 1. Install Dependencies
 ```bash
-# 1. Install
 npm install
+```
 
-# 2. Configure
+### 2. Configure Environment Variables
+Copy `.env.example` to `.env` and fill in your values (MongoDB URI, JWT secrets, etc.):
+```bash
 cp .env.example .env
-#   edit .env → set MONGO_URI (local Mongo or Atlas) and the two JWT secrets
-#   generate a secret:  node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
+```
 
-# 3. Seed the database (36 products, 3 categories, promos, settings, admin user)
+### 3. Seed Database
+Seeds default Super Admin (`admin@truckparts.com`), commercial truck brands (Kenworth, Mack, Volvo, Cummins, Meritor, Eaton, etc.), parts categories, realistic heavy truck parts with fitment specifications, promo codes, and settings:
+```bash
 npm run seed
-
-# 4. Run
-npm run dev        # http://localhost:5000  (nodemon, auto-reload)
-# or
-npm start          # production mode
 ```
 
-Health check: `GET http://localhost:5000/api/health`
-
-Run the end-to-end test against a throwaway DB:
+### 4. Run Development Server
 ```bash
-MONGO_URI="mongodb://127.0.0.1:27017/aurex_test" npm test
+npm run dev
+```
+Server will start on `http://localhost:5000`.
+- **Interactive Swagger Documentation**: `http://localhost:5000/api/docs`
+- **Health Check**: `GET http://localhost:5000/api/health`
+
+---
+
+## 📦 Project Architecture
+
+```
+truck-parts-api/
+├── .env.example              # Environment variables template
+├── .env                      # Local environment configuration
+├── index.js                  # Fastify server entry point & WebSocket setup
+├── package.json              # Project dependencies & scripts
+├── seedAdmin.js              # Initial Super Admin seed script
+├── vercel.json               # Serverless deployment configuration
+└── src/
+    ├── config/
+    │   ├── database.js       # MongoDB Mongoose connection
+    │   └── swagger.js        # OpenAPI / Swagger 3.0 configuration
+    ├── controllers/          # 23 domain controllers
+    ├── middleware/
+    │   ├── auth.js           # JWT authentication & role authorization
+    │   ├── errorHandler.js   # Centralized error handler
+    │   └── uploadMiddleware.js # Multipart upload handler
+    ├── models/               # 23 Mongoose models
+    │   ├── Product.js        # Truck parts, OEM cross-references, fitments, core deposits
+    │   ├── Brand.js          # Truck makes & component manufacturers
+    │   ├── Category.js       # Hierarchical component categories
+    │   ├── Order.js          # Orders with weight-based freight & B2B payment terms
+    │   ├── Enquiry.js        # Part RFQs, VIN lookups & Price on Application quotes
+    │   ├── User.js           # Customers & B2B Trade fleet accounts
+    │   ├── PaymentSettings.js # Bank EFT, 30-Day Trade Account, Depot COD
+    │   └── ...
+    ├── routes/               # Modular public & admin route handlers
+    ├── scripts/
+    │   ├── seedAll.js        # Master seeding runner
+    │   └── seedTruckData.js  # Heavy truck domain catalog seeder
+    ├── services/
+    │   ├── aiChatService.js  # AI-assisted part finder & VIN assistant
+    │   ├── auditLogger.js    # Automatic admin action audit logging
+    │   ├── cloudinaryService.js # Image & PDF upload service
+    │   ├── notificationService.js # Nodemailer transactional emails
+    │   ├── shippingService.js # Heavy freight & courier rate calculator
+    │   └── socketService.js  # WebSocket broadcasting
+    ├── utils/
+    │   ├── CustomError.js    # Standard error format
+    │   ├── pricing.js        # Server-side pricing, core deposits, freight & GST
+    │   └── token.js          # JWT signing and validation
+    └── validators/           # Zod schema validators
 ```
 
 ---
 
-## Project structure
+## 🚛 Truck Parts Domain Highlights
 
-```
-src/
-  config/      env + mongoose connection
-  models/      User, Product, Category, Order, Promo, Enquiry, Setting
-  controllers/ request handlers per domain
-  routes/      Express routers (public vs admin)
-  middleware/  auth (JWT + roles), validation, errors, rate limiting
-  utils/       JWT, pricing (server-side recompute), ApiError, asyncHandler
-  validators/  Zod schemas
-  seed/        catalogue data + seed runner
-test/          end-to-end smoke test
-```
-
----
-
-## Environment variables
-
-| Var | Purpose |
-|---|---|
-| `PORT` | API port (default 5000) |
-| `MONGO_URI` | MongoDB connection string (local or Atlas) |
-| `JWT_ACCESS_SECRET` / `JWT_REFRESH_SECRET` | token signing secrets (required) |
-| `JWT_ACCESS_EXPIRES` / `JWT_REFRESH_EXPIRES` | token lifetimes (default 15m / 30d) |
-| `CLIENT_ORIGINS` | comma-separated allowed CORS origins (storefront + admin) |
-| `ADMIN_EMAIL` / `ADMIN_PASSWORD` / `ADMIN_NAME` | seed admin account |
-| `COOKIE_SECURE` | `true` in production (HTTPS) for the refresh cookie |
-| `APP_URL` | storefront URL, used in email tracking + reset links |
-| `RESEND_API_KEY` / `EMAIL_FROM` / `STORE_INBOX_EMAIL` | transactional email (optional — blank = email disabled) |
-| `STRIPE_SECRET_KEY` / `STRIPE_WEBHOOK_SECRET` | payments (optional — blank = card payments disabled) |
-
----
-
-## API reference
-
-Base path: `/api`. All responses are JSON `{ ok, ... }`; errors are `{ ok:false, error, details? }`.
-Auth uses a **Bearer access token** (`Authorization: Bearer <token>`) plus an httpOnly refresh cookie.
-
-### Auth
-| Method | Path | Access | Notes |
-|---|---|---|---|
-| POST | `/auth/register` | public | `{ name, email, password, phone?, company? }` → token |
-| POST | `/auth/login` | public | `{ email, password }` → token |
-| POST | `/auth/refresh` | cookie | rotates the access token |
-| POST | `/auth/logout` | public | clears refresh cookie |
-| POST | `/auth/forgot-password` | public | `{ email }` → always 200; emails a reset link if the account exists |
-| POST | `/auth/reset-password` | public | `{ email, token, password }` → sets new password |
-| GET | `/auth/me` | auth | current user |
-
-### Payments (Stripe — feature-flagged)
-| Method | Path | Access | Notes |
-|---|---|---|---|
-| POST | `/payments/create-intent` | guest/auth | `{ ref }` → `{ clientSecret }` for the storefront to confirm card/Afterpay |
-| POST | `/payments/webhook` | Stripe | raw-body signature-verified; marks the order `paid` on `payment_intent.succeeded` |
-
-If `STRIPE_SECRET_KEY` is unset, card orders are created as **Pending payment** and these endpoints no-op cleanly.
-
-### Products
-| Method | Path | Access | Notes |
-|---|---|---|---|
-| GET | `/products` | public | filters: `category, q, brand, status, minPrice, maxPrice, buyable, sort, page, limit` |
-| GET | `/products/:sku` | public | single product |
-| POST | `/products` | admin | create |
-| PUT | `/products/:sku` | admin | update |
-| DELETE | `/products/:sku` | admin | delete |
-
-### Categories
-`GET /categories` (public, with live counts) · `POST/PUT/DELETE` (admin).
-
-### Promos
-`POST /promos/validate` (public — checkout) · `GET/POST/PUT/DELETE` (admin).
-
-### Orders
-| Method | Path | Access | Notes |
-|---|---|---|---|
-| POST | `/orders` | guest/auth | client sends `{ items:[{sku,qty}], promoCode?, shipping, payment, address }`; **server recomputes all totals** from DB prices |
-| GET | `/orders/mine` | auth | customer's own orders |
-| GET | `/orders/track/:ref` | public | tracking by order ref (limited public view) |
-| GET | `/orders` | admin | all orders (filter `status`, `q`) |
-| GET | `/orders/:ref` | admin | full order |
-| PATCH | `/orders/:ref/status` | admin | `{ status, note? }` |
-
-### Enquiries
-`POST /enquiries` (public — contact / POA product) · `GET` + `PATCH /:ref/status` (admin).
-
-### Settings
-`GET /settings` (public store config) · `PUT /settings` (admin).
-
-### Admin
-`GET /admin/stats` (dashboard tiles) · `GET /admin/customers`.
-
-### Uploads (admin)
-`POST /uploads` (multipart/form-data, field `image`) → `{ url, path, filename }`. Images are stored
-on disk under `uploads/` and served at `/uploads/<file>`. Swap the storage engine in
-`src/middleware/upload.js` to move to S3 / Cloudinary later — nothing else changes.
-
----
-
-## Key design decisions
-
-- **Server-trusted pricing.** The storefront never dictates totals. On order creation the
-  server looks up each SKU's price in the DB, rejects POA/enquiry-only lines, validates the
-  promo, and recomputes subtotal, discount, freight, GST and grand total (`src/utils/pricing.js`).
-- **Real auth.** Passwords are bcrypt-hashed; access tokens are short-lived JWTs; refresh is an
-  httpOnly cookie. Admin is a real DB role (`role: "admin"`), enforced by middleware — not a
-  client flag.
-- **Data parity with the storefront.** Models mirror the existing frontend shapes (products,
-  orders, promos, categories, enquiries, settings) so the React app can swap its localStorage
-  stores for API calls with minimal change. Order statuses match `utils/orders.js`.
-
-## Run with Docker (no local Mongo / Atlas needed)
-A one-command local stack (MongoDB + API, auto-seeded) is included:
-```bash
-cp .env.example .env     # set the two JWT secrets; MONGO_URI is overridden to the mongo container
-docker compose up --build
-# API → http://localhost:5000  ·  MongoDB → localhost:27017  ·  images persist in a volume
-```
-`docker compose down` stops it; data persists in the `mongo-data` / `uploads-data` volumes.
-
-## Deployment notes
-- Host on Render / Railway / Fly.io / a VPS (the `Dockerfile` works on all of them), or use
-  **MongoDB Atlas** for the database with a Node host.
-- Set all env vars; `COOKIE_SECURE=true`; put the real storefront + admin URLs in `CLIENT_ORIGINS`.
-- Run `npm run seed` once against the production DB (or import your real catalogue).
-- Product images: mount a persistent volume at `/app/uploads`, or switch to S3/Cloudinary.
-
-## Payments & email (built, feature-flagged)
-- **Stripe**: `POST /payments/create-intent` creates a PaymentIntent (card + Afterpay) for an order;
-  `POST /payments/webhook` verifies the signature and marks the order `paid`. Enable by setting
-  `STRIPE_SECRET_KEY` + `STRIPE_WEBHOOK_SECRET`.
-- **Email (Resend)**: order confirmation, status-change, enquiry alert and password-reset emails are
-  sent automatically. Enable by setting `RESEND_API_KEY` (+ verified domain). Without a key, sends are
-  logged and skipped so nothing breaks.
-
-## Roadmap (next)
-- Image uploads for products (S3 / Cloudinary / GridFS).
-- Realtime order status to the storefront `/track` page (WebSocket / SSE).
-- Admin product/category create-edit forms in `truck-parts-admin`.
+1. **Vehicle Fitment Filtering**: Filter parts by Truck Make (Kenworth, Mack, Volvo, Scania, Freightliner, Isuzu), Model, and Year Range.
+2. **OEM & Cross-Reference Part Search**: Fast lookup across OEM numbers (e.g. `4309437`) and aftermarket cross-reference codes (`4309437RX`, `2881997`).
+3. **Core Deposit Surcharge Management**: Surcharge calculation and refund tracking for remanufactured exchange units (turbos, injectors, engines).
+4. **Heavy Road Freight Calculator**: Dynamic shipping calculations based on total order weight in KG, bulky dimensions, pallet criteria, and tail-lift requirements.
+5. **Part Inquiries / RFQ (Request for Quote)**: Emergency "Truck Off Road" (VOR) and POA quote request workflows with VIN/chassis details and diagram attachments.
+6. **B2B Trade & Fleet Accounts**: Trade discount rates, 30-day invoice billing, credit limits, and purchase order tracking.
+7. **Automated Admin Audit Trail**: Every mutating admin action (product updates, price changes, order status overrides) is automatically recorded with user, IP, and timestamp.

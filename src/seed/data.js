@@ -1,5 +1,5 @@
 // Seed data synchronized with storefront catalogue (149 products).
-export const CATEGORIES = [
+const CATEGORIES = [
   {
     "slug": "tail-lifts",
     "name": "Tail Lifts",
@@ -26,7 +26,7 @@ export const CATEGORIES = [
 // Catalogue: 149 products.
 // Tail lifts (6) are enquiry-only (price: null).
 // All trailer parts (107) and accessories (36) have transparent Australian market pricing (5-10% below competitors).
-export const PRODUCTS = [
+const PRODUCTS = [
   {
     "sku": "ATP-TL-01",
     "name": "Hydraulic Tail Lift 2T Aluminium W2450xH2400 24V",
@@ -3272,7 +3272,7 @@ export const PROMOS = [
   { code: "FREESHIP", type: "fixed", value: 45, minSpend: 1000, label: "Free standard depot freight over $1,000" },
 ];
 
-export const SETTINGS = {
+const SETTINGS = {
   storeName: "Aurex Truck Parts",
   tradingName: "Aurex Logistics & Fleet Supplies Pty Ltd",
   abn: "47 618 902 431",
@@ -3288,4 +3288,10 @@ export const SETTINGS = {
   taxInclusive: true,
   announcement: "Campbellfield VIC Warehouse Open - Trade Counters Mon-Fri 7am-5pm | Same-day dispatch Australia-wide",
   currency: "AUD",
+};
+
+module.exports = {
+  CATEGORIES,
+  PRODUCTS,
+  SETTINGS,
 };

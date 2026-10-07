@@ -1,17 +1,83 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
-const enquirySchema = new mongoose.Schema(
-  {
-    ref: { type: String, required: true, unique: true, uppercase: true, index: true }, // "ENQ-1234"
-    name: { type: String, required: true, trim: true },
-    phone: { type: String, default: "" },
-    email: { type: String, required: true, lowercase: true, trim: true },
-    topic: { type: String, default: "General" },
-    message: { type: String, required: true, maxlength: 2000 },
-    sku: { type: String, default: null }, // set when raised from a POA product
-    status: { type: String, enum: ["New", "Replied", "Closed"], default: "New", index: true },
+const enquirySchema = new mongoose.Schema({
+  enquiryNumber: {
+    type: String,
+    required: true,
+    unique: true
   },
-  { timestamps: true }
-);
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  customerName: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  companyName: {
+    type: String,
+    trim: true
+  },
+  email: {
+    type: String,
+    required: true,
+    trim: true,
+    lowercase: true
+  },
+  phone: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  // Truck Vehicle Identification for precise part matching
+  truckDetails: {
+    vinOrChassis: { type: String, trim: true, uppercase: true },
+    make: { type: String, trim: true },
+    model: { type: String, trim: true },
+    year: Number,
+    engineSeries: String,
+    transmissionType: String,
+    differentialRatio: String
+  },
+  partDetails: {
+    product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
+    partName: String,
+    oemPartNumber: String,
+    quantity: { type: Number, default: 1 },
+    urgency: {
+      type: String,
+      enum: ['TRUCK_OFF_ROAD_URGENT', 'STANDARD', 'STOCK_QUOTE'],
+      default: 'STANDARD'
+    }
+  },
+  message: {
+    type: String,
+    required: true
+  },
+  attachments: [{
+    url: String,
+    publicId: String,
+    title: String
+  }],
+  status: {
+    type: String,
+    enum: ['NEW', 'IN_REVIEW', 'QUOTE_SENT', 'RESOLVED', 'REJECTED'],
+    default: 'NEW'
+  },
+  adminNotes: String,
+  quotedPrice: Number,
+  quotedAvailability: String,
+  respondedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Admin'
+  },
+  respondedAt: Date
+}, {
+  timestamps: true
+});
 
-export default mongoose.model("Enquiry", enquirySchema);
+enquirySchema.index({ email: 1 });
+enquirySchema.index({ status: 1 });
+
+module.exports = mongoose.model('Enquiry', enquirySchema);

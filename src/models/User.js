@@ -1,46 +1,91 @@
-import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
-const userSchema = new mongoose.Schema(
-  {
-    name: { type: String, required: true, trim: true, maxlength: 80 },
-    email: { type: String, required: true, unique: true, lowercase: true, trim: true, index: true },
-    password: { type: String, required: true, minlength: 60 /* bcrypt hash */ , select: false },
-    phone: { type: String, default: "", trim: true },
-    company: { type: String, default: "", trim: true },
-    role: { type: String, enum: ["customer", "admin"], default: "customer", index: true },
-    tokenVersion: { type: Number, default: 0 }, // bump to invalidate refresh tokens
-    resetTokenHash: { type: String, default: null, select: false }, // sha256 of reset token
-    resetTokenExpiry: { type: Date, default: null, select: false },
+const userSchema = new mongoose.Schema({
+  firstName: {
+    type: String,
+    required: true,
+    trim: true
   },
-  { timestamps: true }
-);
-
-/** Hash password on create/update when it is a plaintext (not already a hash). */
-userSchema.pre("save", async function hash(next) {
-  if (!this.isModified("password")) return next();
-  // Skip if it already looks like a bcrypt hash (seeding may pass a hash)
-  if (/^\$2[aby]\$/.test(this.password)) return next();
-  this.password = await bcrypt.hash(this.password, 12);
-  next();
+  lastName: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+    lowercase: true
+  },
+  phone: {
+    type: String,
+    trim: true
+  },
+  password: {
+    type: String,
+    required: true,
+    select: false
+  },
+  role: {
+    type: String,
+    enum: ['CUSTOMER', 'TRADE_CUSTOMER', 'FLEET_MANAGER'],
+    default: 'CUSTOMER'
+  },
+  // B2B Trade & Fleet Fields
+  companyName: {
+    type: String,
+    trim: true
+  },
+  abnOrTaxId: {
+    type: String,
+    trim: true
+  },
+  isTradeApproved: {
+    type: Boolean,
+    default: false
+  },
+  tradeDiscountPercent: {
+    type: Number,
+    default: 0,
+    min: 0,
+    max: 100
+  },
+  creditLimit: {
+    type: Number,
+    default: 0
+  },
+  creditBalance: {
+    type: Number,
+    default: 0
+  },
+  fleetTruckModels: [{
+    make: String,
+    model: String,
+    year: Number,
+    vin: String,
+    engine: String
+  }],
+  isVerified: {
+    type: Boolean,
+    default: false
+  },
+  isActive: {
+    type: Boolean,
+    default: true
+  }
+}, {
+  timestamps: true
 });
 
-userSchema.methods.comparePassword = function compare(plain) {
-  return bcrypt.compare(plain, this.password);
+userSchema.pre('save', async function() {
+  if (!this.isModified('password')) return;
+  this.password = await bcrypt.hash(this.password, 12);
+});
+
+userSchema.methods.comparePassword = async function(candidatePassword) {
+  return await bcrypt.compare(candidatePassword, this.password);
 };
 
-/** Shape returned to clients — never leaks the hash. */
-userSchema.methods.toSafeJSON = function safe() {
-  return {
-    id: String(this._id),
-    name: this.name,
-    email: this.email,
-    phone: this.phone,
-    company: this.company,
-    role: this.role,
-    isAdmin: this.role === "admin",
-    createdAt: this.createdAt,
-  };
-};
-
-export default mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema);

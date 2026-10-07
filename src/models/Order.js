@@ -1,63 +1,109 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
-const orderItemSchema = new mongoose.Schema(
-  {
-    sku: { type: String, required: true },
-    name: { type: String, required: true },
-    price: { type: Number, required: true, min: 0 }, // trusted DB price at time of order
-    qty: { type: Number, required: true, min: 1 },
-  },
-  { _id: false }
-);
+const orderItemSchema = new mongoose.Schema({
+  product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+  name: { type: String, required: true },
+  sku: { type: String, required: true },
+  oemPartNumber: String,
+  brandName: String,
+  image: String,
+  quantity: { type: Number, required: true, min: 1 },
+  unitPrice: { type: Number, required: true },
+  coreDeposit: { type: Number, default: 0 },
+  weightKg: { type: Number, default: 1.0 },
+  total: { type: Number, required: true }
+});
 
-const addressSchema = new mongoose.Schema(
-  {
-    name: String,
+const orderSchema = new mongoose.Schema({
+  orderNumber: { type: String, required: true, unique: true },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  
+  items: [orderItemSchema],
+  
+  shippingAddress: {
+    companyName: String,
+    fullName: String,
     phone: String,
     email: String,
-    address: String,
-    suburb: String,
-    state: { type: String, enum: ["VIC", "NSW", "QLD", "SA", "WA", "TAS", "NT", "ACT"], default: "VIC" },
-    postcode: String,
-    notes: String,
+    addressLine1: String,
+    addressLine2: String,
+    suburbOrCity: String,
+    state: String,
+    postalCode: String,
+    country: String,
+    deliveryInstructions: String,
+    hasForkliftOnSite: Boolean
   },
-  { _id: false }
-);
-
-// Must stay in sync with the storefront's ORDER_STATUSES (utils/orders.js)
-export const ORDER_STATUSES = [
-  "Pending payment",
-  "Packed in Campbellfield VIC",
-  "Courier booked",
-  "In transit",
-  "Delivered",
-  "Cancelled",
-];
-
-const orderSchema = new mongoose.Schema(
-  {
-    ref: { type: String, required: true, unique: true, uppercase: true, index: true }, // "AUX-1234"
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", default: null, index: true },
-    email: { type: String, required: true, lowercase: true, index: true },
-    items: { type: [orderItemSchema], required: true, validate: (v) => v.length > 0 },
-    subtotal: { type: Number, required: true, min: 0 },
-    discount: { type: Number, default: 0, min: 0 },
-    promoCode: { type: String, default: null },
-    shipping: { type: String, required: true },
-    shippingFee: { type: Number, required: true, min: 0 },
-    payment: { type: String, required: true },
-    gst: { type: Number, default: 0, min: 0 },
-    total: { type: Number, required: true, min: 0 },
-    address: { type: addressSchema, required: true },
-    status: { type: String, enum: ORDER_STATUSES, default: "Packed in Campbellfield VIC", index: true },
-    paymentStatus: { type: String, enum: ["unpaid", "paid", "refunded"], default: "unpaid", index: true },
-    statusHistory: {
-      type: [{ status: String, at: { type: Date, default: Date.now }, note: String }],
-      default: [],
+  
+  pricing: {
+    subtotal: { type: Number, required: true },
+    tradeDiscountAmount: { type: Number, default: 0 },
+    couponDiscountAmount: { type: Number, default: 0 },
+    totalDiscount: { type: Number, default: 0 },
+    shippingFee: { type: Number, default: 0 },
+    totalCoreDeposit: { type: Number, default: 0 },
+    tax: { type: Number, default: 0 },
+    grandTotal: { type: Number, required: true },
+    totalWeightKg: { type: Number, default: 0 }
+  },
+  
+  coupon: { type: mongoose.Schema.Types.ObjectId, ref: 'Coupon' },
+  
+  payment: {
+    method: {
+      type: String,
+      enum: ['DIRECT_BANK_TRANSFER', 'TRADE_ACCOUNT_30_DAYS', 'COD_DEPOT_PICKUP', 'CREDIT_CARD_DIRECT', 'PURCHASE_ORDER'],
+      default: 'DIRECT_BANK_TRANSFER'
     },
-    placedAt: { type: Date, default: Date.now },
+    status: {
+      type: String,
+      enum: ['PENDING', 'AUTHORIZED', 'PAID', 'OVERDUE', 'CANCELLED', 'REFUNDED'],
+      default: 'PENDING'
+    },
+    purchaseOrderNumber: String,
+    bankTransferReference: String,
+    paidAt: Date,
+    paidAmount: { type: Number, default: 0 },
+    paymentNotes: String
   },
-  { timestamps: true }
-);
+  
+  shipping: {
+    carrier: { type: String, default: 'TOLL_EXPRESS_TNT' }, // e.g., Toll, TNT, Northline, Direct Freight
+    trackingNumber: String,
+    consignmentId: String,
+    trackingUrl: String,
+    shippingMethod: {
+      type: String,
+      enum: ['STANDARD', 'EXPRESS_COURIER', 'HEAVY_FREIGHT_PALLET', 'DEPOT_PICKUP'],
+      default: 'STANDARD'
+    },
+    status: {
+      type: String,
+      enum: ['PROCESSING', 'BOOKED', 'DISPATCHED', 'IN_TRANSIT', 'OUT_FOR_DELIVERY', 'DELIVERED', 'COLLECTED'],
+      default: 'PROCESSING'
+    },
+    dispatchedAt: Date,
+    estimatedDeliveryDate: Date,
+    deliveredAt: Date
+  },
+  
+  orderStatus: {
+    type: String,
+    enum: [
+      'PENDING_PAYMENT', 'PAYMENT_CONFIRMED', 'PROCESSING', 'PARTS_ALLOCATED',
+      'READY_FOR_DISPATCH', 'DISPATCHED', 'DELIVERED', 'CANCELLED', 'CORE_RETURN_PENDING', 'COMPLETED'
+    ],
+    default: 'PENDING_PAYMENT'
+  },
+  
+  customerNotes: String,
+  internalNotes: String
+}, {
+  timestamps: true
+});
 
-export default mongoose.model("Order", orderSchema);
+orderSchema.index({ user: 1 });
+orderSchema.index({ orderStatus: 1 });
+orderSchema.index({ 'payment.status': 1 });
+
+module.exports = mongoose.model('Order', orderSchema);

@@ -1,38 +1,44 @@
 {
   "name": "truck-parts-api",
   "version": "1.0.0",
-  "description": "Backend API for Aurex Truck Parts Australia — Node, Express, MongoDB",
-  "type": "module",
-  "main": "src/server.js",
-  "engines": {
-    "node": ">=18.18.0"
-  },
+  "description": "Enterprise REST API for Heavy Truck Parts E-Commerce & B2B Trade",
+  "main": "index.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "seed": "node src/seed/seed.js",
-    "seed:destroy": "node src/seed/seed.js --destroy",
-    "test": "node test/smoke.mjs",
-    "lint": "echo \"(add eslint if desired)\" && exit 0"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "seed": "node src/scripts/seedAll.js",
+    "seed:admin": "node seedAdmin.js"
   },
+  "keywords": [
+    "truck-parts",
+    "heavy-vehicles",
+    "fastify",
+    "mongodb",
+    "ecommerce-api",
+    "b2b-trade"
+  ],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "compression": "^1.7.4",
-    "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "express-rate-limit": "^7.4.0",
-    "helmet": "^7.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.6.0",
-    "morgan": "^1.10.0",
-    "multer": "^2.4.0",
-    "stripe": "^16.12.0",
-    "zod": "^3.23.8"
+    "@fastify/cookie": "^11.1.2",
+    "@fastify/cors": "^11.3.0",
+    "@fastify/helmet": "^13.1.1",
+    "@fastify/rate-limit": "^11.2.0",
+    "@fastify/swagger": "^9.8.1",
+    "@fastify/swagger-ui": "^6.1.1",
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.10.1",
+    "dotenv": "^17.4.2",
+    "fastify": "^5.12.1",
+    "fastify-multer": "^2.0.3",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.9.4",
+    "nodemailer": "^9.0.5",
+    "slugify": "^1.6.9",
+    "ws": "^8.21.3",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "mongodb-memory-server": "^10.0.0",
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.14"
   }
 }

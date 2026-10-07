@@ -1,46 +1,84 @@
-import { verifyAccessToken } from "../utils/token.js";
-import ApiError from "../utils/ApiError.js";
-import User from "../models/User.js";
+const jwt = require('jsonwebtoken');
+const CustomError = require('../utils/CustomError');
+const Admin = require('../models/Admin');
+const User = require('../models/User');
 
-/** Pull a bearer token from the Authorization header. */
-function bearer(req) {
-  const h = req.headers.authorization || "";
-  return h.startsWith("Bearer ") ? h.slice(7).trim() : null;
-}
-
-/** Populates req.user if a valid token is present; otherwise continues
- *  as a guest. Used on routes that work for both (e.g. order create). */
-export const optionalAuth = async (req, _res, next) => {
-  const token = bearer(req);
-  if (!token) return next();
+const authenticate = async (request, reply) => {
   try {
-    const payload = verifyAccessToken(token);
-    const user = await User.findById(payload.sub).lean();
-    if (user) req.user = { ...user, id: String(user._id) };
-  } catch {
-    /* ignore invalid token for optional auth */
+    let token;
+
+    if (request.headers.authorization && request.headers.authorization.startsWith('Bearer')) {
+      token = request.headers.authorization.split(' ')[1];
+    } else if (request.cookies && request.cookies.accessToken) {
+      token = request.cookies.accessToken;
+    }
+
+    if (!token) {
+      throw new CustomError('Not authorized to access this route. Token missing.', 401, 'UNAUTHORIZED');
+    }
+
+    const secret = process.env.JWT_ACCESS_SECRET || 'default_jwt_access_secret_truck_parts_2026';
+    const decoded = jwt.verify(token, secret);
+
+    // Depending on the role, fetch the admin or customer
+    if (['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'].includes(decoded.role)) {
+      request.user = await Admin.findById(decoded.id);
+    } else {
+      request.user = await User.findById(decoded.id);
+    }
+
+    if (!request.user) {
+      throw new CustomError('The user belonging to this token no longer exists.', 401, 'UNAUTHORIZED');
+    }
+
+    if (!request.user.isActive) {
+      throw new CustomError('User account is deactivated. Please contact support.', 401, 'UNAUTHORIZED');
+    }
+  } catch (error) {
+    if (error instanceof CustomError) {
+      throw error;
+    }
+    if (error.name === 'JsonWebTokenError' || error.name === 'TokenExpiredError') {
+      throw new CustomError('Invalid or expired authentication token', 401, 'UNAUTHORIZED');
+    }
+    throw new CustomError('Authentication processing error', 500, 'INTERNAL_SERVER_ERROR');
   }
-  next();
 };
 
-/** Hard gate: a valid access token is required. */
-export const requireAuth = async (req, _res, next) => {
-  const token = bearer(req);
-  if (!token) return next(ApiError.unauthorized("Authentication required."));
+const optionalAuth = async (request, reply) => {
   try {
-    const payload = verifyAccessToken(token);
-    const user = await User.findById(payload.sub).lean();
-    if (!user) return next(ApiError.unauthorized("Account no longer exists."));
-    req.user = { ...user, id: String(user._id) };
-    next();
-  } catch {
-    next(ApiError.unauthorized("Session expired. Please log in again."));
+    let token;
+    if (request.headers.authorization && request.headers.authorization.startsWith('Bearer')) {
+      token = request.headers.authorization.split(' ')[1];
+    } else if (request.cookies && request.cookies.accessToken) {
+      token = request.cookies.accessToken;
+    }
+
+    if (token) {
+      const secret = process.env.JWT_ACCESS_SECRET || 'default_jwt_access_secret_truck_parts_2026';
+      const decoded = jwt.verify(token, secret);
+      if (['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'].includes(decoded.role)) {
+        request.user = await Admin.findById(decoded.id);
+      } else {
+        request.user = await User.findById(decoded.id);
+      }
+    }
+  } catch (err) {
+    // If optional auth fails, request.user remains undefined
+    request.user = undefined;
   }
 };
 
-/** Must be authenticated AND an admin. Stack after requireAuth or alone. */
-export const requireAdmin = (req, _res, next) => {
-  if (!req.user) return next(ApiError.unauthorized("Authentication required."));
-  if (req.user.role !== "admin") return next(ApiError.forbidden("Staff access only."));
-  next();
+const authorize = (...roles) => {
+  return async (request, reply) => {
+    if (!request.user || !roles.includes(request.user.role)) {
+      throw new CustomError('You do not have permission to perform this action', 403, 'FORBIDDEN');
+    }
+  };
+};
+
+module.exports = {
+  authenticate,
+  optionalAuth,
+  authorize
 };

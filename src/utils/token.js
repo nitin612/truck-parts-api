@@ -1,26 +1,29 @@
-import jwt from "jsonwebtoken";
-import env from "../config/env.js";
+const jwt = require('jsonwebtoken');
 
-export function signAccessToken(user) {
-  return jwt.sign(
-    { sub: String(user._id), email: user.email, role: user.role },
-    env.jwt.accessSecret,
-    { expiresIn: env.jwt.accessExpires }
+const generateTokens = (id, role = 'CUSTOMER') => {
+  const accessToken = jwt.sign(
+    { id, role },
+    process.env.JWT_ACCESS_SECRET || 'default_jwt_access_secret_truck_parts_2026',
+    { expiresIn: '7d' }
   );
-}
 
-export function signRefreshToken(user) {
-  return jwt.sign(
-    { sub: String(user._id), tv: user.tokenVersion || 0 },
-    env.jwt.refreshSecret,
-    { expiresIn: env.jwt.refreshExpires }
+  const refreshToken = jwt.sign(
+    { id, role },
+    process.env.JWT_REFRESH_SECRET || 'default_jwt_refresh_secret_truck_parts_2026',
+    { expiresIn: '30d' }
   );
-}
 
-export function verifyAccessToken(token) {
-  return jwt.verify(token, env.jwt.accessSecret);
-}
+  return { accessToken, refreshToken };
+};
 
-export function verifyRefreshToken(token) {
-  return jwt.verify(token, env.jwt.refreshSecret);
-}
+const verifyToken = (token, isRefresh = false) => {
+  const secret = isRefresh
+    ? (process.env.JWT_REFRESH_SECRET || 'default_jwt_refresh_secret_truck_parts_2026')
+    : (process.env.JWT_ACCESS_SECRET || 'default_jwt_access_secret_truck_parts_2026');
+  return jwt.verify(token, secret);
+};
+
+module.exports = {
+  generateTokens,
+  verifyToken
+};
