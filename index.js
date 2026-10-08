@@ -77,10 +77,16 @@ fastify.register(require('@fastify/rate-limit'), {
   timeWindow: '1 minute'
 });
 
-// 3. Register Swagger API Documentation
-const { swaggerConfig, swaggerUiConfig } = require('./src/config/swagger');
-fastify.register(require('@fastify/swagger'), swaggerConfig);
-fastify.register(require('@fastify/swagger-ui'), swaggerUiConfig);
+// 3. Register Swagger API Documentation (Safely handled on serverless)
+try {
+  const { swaggerConfig, swaggerUiConfig } = require('./src/config/swagger');
+  fastify.register(require('@fastify/swagger'), swaggerConfig);
+  if (!process.env.VERCEL) {
+    fastify.register(require('@fastify/swagger-ui'), swaggerUiConfig);
+  }
+} catch (swaggerErr) {
+  console.warn('Swagger UI skipped on serverless:', swaggerErr.message);
+}
 
 // 4. Multipart FormData parser for file uploads
 const multer = require('fastify-multer');

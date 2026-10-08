@@ -26,6 +26,7 @@
     "@fastify/swagger-ui": "^6.1.1",
     "bcryptjs": "^3.0.3",
     "cloudinary": "^2.10.1",
+    "content-disposition": "0.5.4",
     "dotenv": "^17.4.2",
     "fastify": "^5.12.1",
     "fastify-multer": "^2.0.3",
