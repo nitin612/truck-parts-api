@@ -33,6 +33,13 @@ const register = async (request, reply) => {
 
   const { accessToken, refreshToken } = generateTokens(user._id, user.role);
 
+  reply.setCookie('accessToken', accessToken, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/'
+  });
+
   reply.setCookie('refreshToken', refreshToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
@@ -73,6 +80,13 @@ const login = async (request, reply) => {
   }
 
   const { accessToken, refreshToken } = generateTokens(user._id, user.role);
+
+  reply.setCookie('accessToken', accessToken, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/'
+  });
 
   reply.setCookie('refreshToken', refreshToken, {
     httpOnly: true,
@@ -133,6 +147,7 @@ const updateProfile = async (request, reply) => {
 };
 
 const logout = async (request, reply) => {
+  reply.clearCookie('accessToken', { path: '/' });
   reply.clearCookie('refreshToken', { path: '/' });
   reply.send({
     success: true,

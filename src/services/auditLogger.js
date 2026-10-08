@@ -15,10 +15,30 @@ const logAdminAction = async ({
   try {
     if (!admin) return;
 
-    // Redact sensitive keys from details if present
-    const cleanDetails = details ? { ...details } : {};
-    delete cleanDetails.password;
-    delete cleanDetails.newPassword;
+    // Recursively redact passwords, tokens, secrets, and financial details
+    const SENSITIVE_KEYS = new Set([
+      'password', 'newpassword', 'oldpassword', 'confirmpassword',
+      'token', 'accesstoken', 'refreshtoken', 'authorization', 'cookie',
+      'creditcard', 'cardnumber', 'cvv', 'cvc', 'secret', 'twofactorsecret', 'twofactorcode'
+    ]);
+
+    const redactObject = (obj) => {
+      if (!obj || typeof obj !== 'object') return obj;
+      if (Array.isArray(obj)) return obj.map(redactObject);
+      const cleaned = {};
+      for (const [key, val] of Object.entries(obj)) {
+        if (SENSITIVE_KEYS.has(key.toLowerCase())) {
+          cleaned[key] = '[REDACTED]';
+        } else if (typeof val === 'object' && val !== null) {
+          cleaned[key] = redactObject(val);
+        } else {
+          cleaned[key] = val;
+        }
+      }
+      return cleaned;
+    };
+
+    const cleanDetails = redactObject(details);
 
     await AuditLog.create({
       admin: admin._id || admin.id,

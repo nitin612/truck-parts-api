@@ -4,9 +4,15 @@ const upload = require('../middleware/uploadMiddleware');
 
 async function enquiryRoutes(fastify, options) {
   // Public or guest/auth submit quote request
-  fastify.post('/', { preHandler: [optionalAuth, upload.array('attachments', 4)] }, enquiryController.createEnquiry);
+  fastify.post('/', {
+    config: { rateLimit: { max: 10, timeWindow: '1 minute' } },
+    preHandler: [optionalAuth, upload.array('attachments', 4)]
+  }, enquiryController.createEnquiry);
   fastify.get('/mine', { preHandler: authenticate }, enquiryController.getCustomerEnquiries);
-  fastify.get('/lookup/:enquiryNumber', enquiryController.getEnquiryByNumber);
+  fastify.get('/lookup/:enquiryNumber', {
+    config: { rateLimit: { max: 20, timeWindow: '1 minute' } },
+    preHandler: optionalAuth
+  }, enquiryController.getEnquiryByNumber);
 }
 
 async function adminEnquiryRoutes(fastify, options) {
