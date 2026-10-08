@@ -3,9 +3,14 @@ const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
 
-const uploadDir = path.join(process.cwd(), 'uploads');
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+const os = require('os');
+const uploadDir = path.join(os.tmpdir(), 'truck-parts-uploads');
+try {
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+  }
+} catch (e) {
+  // Ignore filesystem race conditions
 }
 
 // Allowed MIME types mapped to safe extensions (SVGs excluded to prevent stored XSS attacks)

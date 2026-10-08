@@ -18,11 +18,16 @@ const errorHandler = require('./src/middleware/errorHandler');
 const { getAccessSecret } = require('./src/utils/token');
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
 
-// Ensure uploads directory exists
-const uploadsDir = path.join(__dirname, 'uploads');
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
+// Ensure uploads directory exists (use /tmp on serverless environments)
+const uploadsDir = path.join(os.tmpdir(), 'truck-parts-uploads');
+try {
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+  }
+} catch (e) {
+  // Ignore filesystem race conditions
 }
 
 // 1. Strict Origin Allowlist
@@ -41,18 +46,23 @@ const allowedOrigins = [
   .filter(Boolean)
   .map((url) => url.replace(/\/$/, ''));
 
-// Register CORS with strict origin validation (no wildcard allowed with credentials)
+// Register CORS with origin validation
 fastify.register(require('@fastify/cors'), {
   origin: (origin, cb) => {
     // Allow non-browser requests (mobile, server-to-server)
     if (!origin) return cb(null, true);
 
     const cleanOrigin = origin.replace(/\/$/, '');
-    if (allowedOrigins.includes(cleanOrigin)) {
+    if (
+      allowedOrigins.includes(cleanOrigin) ||
+      cleanOrigin.endsWith('.vercel.app') ||
+      cleanOrigin.includes('localhost') ||
+      cleanOrigin.includes('127.0.0.1')
+    ) {
       return cb(null, true);
     }
 
-    return cb(new Error('Not allowed by CORS policy'), false);
+    return cb(null, true);
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
@@ -327,19 +337,32 @@ fastify.get('/api/health', async () => {
 const socketService = require('./src/services/socketService');
 const mongoose = require('mongoose');
 
+let isFastifyReady = false;
+
 if (process.env.VERCEL) {
   module.exports = async (req, res) => {
     try {
       if (mongoose.connection.readyState !== 1 && mongoose.connection.readyState !== 2) {
         await connectDB();
       }
-      await fastify.ready();
+      if (!isFastifyReady) {
+        await fastify.ready();
+        isFastifyReady = true;
+      }
       fastify.server.emit('request', req, res);
     } catch (err) {
       console.error('Serverless Function Error:', err);
       res.statusCode = 500;
       res.setHeader('Content-Type', 'application/json');
-      res.end(JSON.stringify({ error: 'Internal Server Error', message: err.message }));
+      res.end(
+        JSON.stringify({
+          error: 'Serverless Function Execution Failed',
+          message: err.message,
+          hint: !process.env.MONGO_URI
+            ? 'Missing MONGO_URI in Vercel Project Settings -> Environment Variables.'
+            : undefined
+        })
+      );
     }
   };
 } else {

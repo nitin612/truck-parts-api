@@ -20,9 +20,6 @@ const connectDB = async () => {
       return localConn;
     } catch (fallbackError) {
       console.error(`❌ Fatal MongoDB Connection Error: ${fallbackError.message}`);
-      if (process.env.NODE_ENV === 'production') {
-        process.exit(1);
-      }
       throw fallbackError;
     }
   }
