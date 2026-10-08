@@ -7,8 +7,10 @@ const carouselSlideSchema = new mongoose.Schema({
   eyebrow: { type: String, trim: true },
   cta: { type: String, default: 'Shop Now' },
   href: { type: String, default: '/shop' },
-  buttonText: { type: String, default: 'Shop Now' },
-  buttonLink: { type: String, default: '/products' },
+  buttonText: { type: String, default: 'Explore Products' },
+  buttonLink: { type: String, default: '/shop' },
+  enquiryHref: { type: String, default: '/tail-lift-enquiry' },
+  enquiryLink: { type: String, default: '/tail-lift-enquiry' },
   img: String,
   image: {
     url: { type: String, default: '' },

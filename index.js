@@ -188,10 +188,12 @@ fastify.register(adminBrandRoutes, { prefix: '/api/v1/admin/brands' });
 
 const { categoryRoutes, adminCategoryRoutes } = require('./src/routes/categoryRoutes');
 fastify.register(categoryRoutes, { prefix: '/api/v1/categories' });
+fastify.register(categoryRoutes, { prefix: '/api/categories' });
 fastify.register(adminCategoryRoutes, { prefix: '/api/v1/admin/categories' });
 
 const { productRoutes, adminProductRoutes } = require('./src/routes/productRoutes');
 fastify.register(productRoutes, { prefix: '/api/v1/products' });
+fastify.register(productRoutes, { prefix: '/api/products' });
 fastify.register(adminProductRoutes, { prefix: '/api/v1/admin/products' });
 
 // Quote Requests & VIN Lookups
@@ -230,6 +232,7 @@ fastify.register(adminWelcomeOfferRoutes, { prefix: '/api/v1/admin/welcome-offer
 // Storefront Content & Blogs
 const { carouselRoutes, adminCarouselRoutes } = require('./src/routes/carouselRoutes');
 fastify.register(carouselRoutes, { prefix: '/api/v1/carousel' });
+fastify.register(carouselRoutes, { prefix: '/api/carousel' });
 fastify.register(adminCarouselRoutes, { prefix: '/api/v1/admin/carousel' });
 
 const { cmsRoutes, adminCmsRoutes } = require('./src/routes/cmsRoutes');
