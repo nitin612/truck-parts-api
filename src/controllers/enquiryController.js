@@ -36,13 +36,15 @@ const createEnquiry = async (request, reply) => {
   const enquiry = await Enquiry.create({
     enquiryNumber: generateEnquiryNumber(),
     user: userId || undefined,
-    customerName: data.customerName,
-    companyName: data.companyName,
+    customerName: data.customerName || data.name || 'Customer',
+    name: data.name || data.customerName || 'Customer',
+    topic: data.topic || 'General Enquiry',
+    companyName: data.companyName || '',
     email: data.email,
     phone: data.phone,
     truckDetails: data.truckDetails || {},
-    partDetails: data.partDetails || {},
-    message: data.message,
+    partDetails: data.partDetails || (data.topic ? { partName: data.topic } : {}),
+    message: data.message || '',
     attachments
   });
 

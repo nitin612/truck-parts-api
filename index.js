@@ -100,7 +100,7 @@ fastify.addHook('onRoute', (routeOptions) => {
     isPublic = true;
   } else if (method === 'GET' || (Array.isArray(method) && method.includes('GET'))) {
     if (
-      url.match(/^\/api\/v1\/(products|categories|brands|carousel|cms|blogs|welcome-offer|payments\/config|shipping)/)
+      url.match(/^\/api\/v1\/(products|categories|brands|carousel|cms|blogs|welcome-offer|payments\/config|shipping|settings)/)
     ) {
       if (!url.includes('/admin/')) isPublic = true;
     }
@@ -174,6 +174,11 @@ fastify.register(adminCmsRoutes, { prefix: '/api/v1/admin/cms' });
 const { blogRoutes, adminBlogRoutes } = require('./src/routes/blogRoutes');
 fastify.register(blogRoutes, { prefix: '/api/v1/blogs' });
 fastify.register(adminBlogRoutes, { prefix: '/api/v1/admin/blogs' });
+
+// Site Settings & Configuration
+const { settingRoutes, adminSettingRoutes } = require('./src/routes/settingRoutes');
+fastify.register(settingRoutes, { prefix: '/api/v1/settings' });
+fastify.register(adminSettingRoutes, { prefix: '/api/v1/admin/settings' });
 
 // Customer Feedback & Reviews
 const { reviewRoutes, adminReviewRoutes } = require('./src/routes/reviewRoutes');
@@ -273,7 +278,7 @@ if (process.env.VERCEL) {
   const start = async () => {
     try {
       await connectDB();
-      const port = parseInt(process.env.PORT || '5000', 10);
+      const port = parseInt(process.env.PORT || '5001', 10);
       await fastify.listen({ port, host: '0.0.0.0' });
       socketService.initSocket(fastify.server);
       fastify.log.info(`Aurex Truck Parts API & Realtime WebSockets running on port ${port}`);

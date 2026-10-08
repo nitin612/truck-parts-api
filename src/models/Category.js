@@ -33,6 +33,14 @@ const categorySchema = new mongoose.Schema({
     ref: 'Category',
     default: null
   },
+  tag: {
+    type: String,
+    trim: true
+  },
+  blurb: {
+    type: String,
+    trim: true
+  },
   sortOrder: {
     type: Number,
     default: 0

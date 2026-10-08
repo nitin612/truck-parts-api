@@ -15,6 +15,14 @@ const enquirySchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  name: {
+    type: String,
+    trim: true
+  },
+  topic: {
+    type: String,
+    trim: true
+  },
   companyName: {
     type: String,
     trim: true

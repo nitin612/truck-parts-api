@@ -3,9 +3,18 @@ const { generateTokens } = require('../utils/token');
 const CustomError = require('../utils/CustomError');
 
 const register = async (request, reply) => {
-  const { firstName, lastName, email, password, phone, companyName, abnOrTaxId, fleetTruckModels } = request.body;
+  let { firstName, lastName, name, email, password, phone, company, companyName, abnOrTaxId, fleetTruckModels } = request.body || {};
 
-  const existingUser = await User.findOne({ email: email.toLowerCase() });
+  if (name && (!firstName || !lastName)) {
+    const parts = name.trim().split(' ');
+    firstName = firstName || parts[0] || 'Customer';
+    lastName = lastName || (parts.length > 1 ? parts.slice(1).join(' ') : 'Customer');
+  }
+  firstName = firstName || 'Customer';
+  lastName = lastName || 'User';
+  companyName = companyName || company || '';
+
+  const existingUser = await User.findOne({ email: (email || '').toLowerCase() });
   if (existingUser) {
     throw new CustomError('An account with this email already exists', 400, 'EMAIL_EXISTS');
   }
@@ -15,7 +24,7 @@ const register = async (request, reply) => {
     lastName,
     email: email.toLowerCase(),
     password,
-    phone,
+    phone: phone || '',
     companyName,
     abnOrTaxId,
     role: companyName ? 'TRADE_CUSTOMER' : 'CUSTOMER',

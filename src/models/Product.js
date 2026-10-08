@@ -162,10 +162,34 @@ const productSchema = new mongoose.Schema({
     canonicalUrl: String
   },
   
+  // Aurex Direct Fields for seamless Frontend matching
+  sub: { type: String, trim: true },
+  fit: { type: String, trim: true },
+  oem: { type: String, trim: true },
+  lead: { type: String, trim: true },
+  stockStatus: { type: String, default: 'In stock VIC', trim: true },
+  badge: { type: String, trim: true },
+  desc: { type: String, trim: true },
+  specs: { type: mongoose.Schema.Types.Mixed, default: {} },
+  categorySlug: { type: String, trim: true },
+  
   rating: { type: Number, default: 0 },
   reviewCount: { type: Number, default: 0 }
 }, {
-  timestamps: true
+  timestamps: true,
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+});
+
+// Virtual for price matching frontend expectations
+productSchema.virtual('price').get(function() {
+  if (this.pricing?.isPOA) return null;
+  return this.pricing?.sellingPrice !== undefined ? this.pricing.sellingPrice : null;
+});
+
+// Virtual for reviews matching frontend reviews count alias
+productSchema.virtual('reviews').get(function() {
+  return this.reviewCount || 0;
 });
 
 productSchema.pre('validate', function() {
@@ -181,6 +205,22 @@ productSchema.pre('validate', function() {
 productSchema.pre('save', function() {
   if (this.isModified('name') && !this.slug) {
     this.slug = slugify(`${this.name}-${this.sku}`, { lower: true, strict: true });
+  }
+
+  if (this.desc && !this.description) {
+    this.description = this.desc;
+  } else if (this.description && !this.desc) {
+    this.desc = this.description;
+  }
+
+  if (this.oem && !this.oemPartNumber) {
+    this.oemPartNumber = this.oem;
+  } else if (this.oemPartNumber && !this.oem) {
+    this.oem = this.oemPartNumber;
+  }
+
+  if (this.specs && typeof this.specs === 'object' && (!this.specifications || this.specifications.length === 0)) {
+    this.specifications = Object.entries(this.specs).map(([label, value]) => ({ label, value: String(value) }));
   }
 
   // Calculate discount percentage if not explicitly set
