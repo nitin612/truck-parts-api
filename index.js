@@ -1,7 +1,21 @@
 require('dotenv').config();
-const fastify = require('fastify')({ logger: true });
+const fastify = require('fastify')({
+  logger: {
+    level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
+    redact: [
+      'req.headers.authorization',
+      'req.headers.cookie',
+      'req.body.password',
+      'req.body.newPassword',
+      'req.body.oldPassword',
+      'req.body.twoFactorSecret',
+      'req.body.twoFactorCode'
+    ]
+  }
+});
 const connectDB = require('./src/config/database');
 const errorHandler = require('./src/middleware/errorHandler');
+const { getAccessSecret } = require('./src/utils/token');
 const path = require('path');
 const fs = require('fs');
 
@@ -11,25 +25,30 @@ if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
-// 1. Register CORS
+// 1. Strict Origin Allowlist
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  process.env.ADMIN_URL,
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'http://127.0.0.1:3000',
+  'http://127.0.0.1:3001',
+  'http://127.0.0.1:5173',
+  'http://127.0.0.1:5174'
+]
+  .filter(Boolean)
+  .map((url) => url.replace(/\/$/, ''));
+
+// Register CORS with strict origin validation (no wildcard allowed with credentials)
 fastify.register(require('@fastify/cors'), {
   origin: (origin, cb) => {
-    // Allow non-browser requests (mobile, postman, server-to-server)
+    // Allow non-browser requests (mobile, server-to-server)
     if (!origin) return cb(null, true);
 
-    const allowedOrigins = [
-      process.env.CLIENT_URL,
-      process.env.ADMIN_URL,
-      'http://localhost:3000',
-      'http://localhost:3001',
-      'http://localhost:5173',
-      'http://localhost:5174'
-    ]
-      .filter(Boolean)
-      .map((url) => url.replace(/\/$/, ''));
-
     const cleanOrigin = origin.replace(/\/$/, '');
-    if (allowedOrigins.includes(cleanOrigin) || process.env.NODE_ENV !== 'production') {
+    if (allowedOrigins.includes(cleanOrigin)) {
       return cb(null, true);
     }
 
@@ -57,12 +76,58 @@ fastify.register(require('@fastify/swagger-ui'), swaggerUiConfig);
 const multer = require('fastify-multer');
 fastify.addContentTypeParser('multipart/form-data', (request, payload, done) => done(null));
 
-// 5. Cookie Support
+// 5. Cookie Support with validated secret
 fastify.register(require('@fastify/cookie'), {
-  secret: process.env.JWT_ACCESS_SECRET || 'default_jwt_access_secret_truck_parts_2026'
+  secret: getAccessSecret()
 });
 
-// 6. Custom Centralized Error Handler
+// 6. Global NoSQL Injection Sanitizer
+function sanitizeMongoInput(target) {
+  if (!target || typeof target !== 'object') return target;
+  if (Array.isArray(target)) {
+    for (let i = 0; i < target.length; i++) {
+      target[i] = sanitizeMongoInput(target[i]);
+    }
+    return target;
+  }
+  for (const key of Object.keys(target)) {
+    if (key.startsWith('$') || key.includes('.')) {
+      delete target[key];
+    } else {
+      target[key] = sanitizeMongoInput(target[key]);
+    }
+  }
+  return target;
+}
+
+fastify.addHook('preValidation', async (request) => {
+  if (request.body && typeof request.body === 'object') {
+    sanitizeMongoInput(request.body);
+  }
+  if (request.query && typeof request.query === 'object') {
+    sanitizeMongoInput(request.query);
+  }
+  if (request.params && typeof request.params === 'object') {
+    sanitizeMongoInput(request.params);
+  }
+});
+
+// 7. CSRF Origin Defense Hook for State-Changing Requests
+fastify.addHook('preHandler', async (request, reply) => {
+  const method = request.method;
+  if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(method)) {
+    const originHeader = request.headers.origin;
+    if (originHeader) {
+      const cleanOrigin = originHeader.replace(/\/$/, '');
+      if (!allowedOrigins.includes(cleanOrigin)) {
+        reply.code(403);
+        throw new Error('CSRF origin validation failed: untrusted origin');
+      }
+    }
+  }
+});
+
+// 8. Custom Centralized Error Handler
 fastify.setErrorHandler(errorHandler);
 
 // 7. Dynamic Swagger Tagging & Bearer Security Hook

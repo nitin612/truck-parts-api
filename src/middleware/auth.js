@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const CustomError = require('../utils/CustomError');
 const Admin = require('../models/Admin');
 const User = require('../models/User');
+const { getAccessSecret } = require('../utils/token');
 
 const authenticate = async (request, reply) => {
   try {
@@ -17,7 +18,7 @@ const authenticate = async (request, reply) => {
       throw new CustomError('Not authorized to access this route. Token missing.', 401, 'UNAUTHORIZED');
     }
 
-    const secret = process.env.JWT_ACCESS_SECRET || 'default_jwt_access_secret_truck_parts_2026';
+    const secret = getAccessSecret();
     const decoded = jwt.verify(token, secret);
 
     // Depending on the role, fetch the admin or customer
@@ -55,7 +56,7 @@ const optionalAuth = async (request, reply) => {
     }
 
     if (token) {
-      const secret = process.env.JWT_ACCESS_SECRET || 'default_jwt_access_secret_truck_parts_2026';
+      const secret = getAccessSecret();
       const decoded = jwt.verify(token, secret);
       if (['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'].includes(decoded.role)) {
         request.user = await Admin.findById(decoded.id);

@@ -33,7 +33,7 @@
     "fastify-multer": "^2.0.3",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.9.4",
-    "nodemailer": "^9.0.5",
+    "nodemailer": "^10.0.16",
     "slugify": "^1.6.9",
     "ws": "^8.21.3",
     "zod": "^4.4.3"

@@ -7,8 +7,17 @@ const seedAdmin = async () => {
   try {
     await connectDB();
 
+    const crypto = require('crypto');
     const adminEmail = process.env.ADMIN_EMAIL || 'admin@truckparts.com';
-    const adminPassword = process.env.ADMIN_PASSWORD || 'AdminPassword123!';
+    let adminPassword = process.env.ADMIN_PASSWORD;
+
+    if (!adminPassword) {
+      if (process.env.NODE_ENV === 'production') {
+        throw new Error('FATAL SECURITY ERROR: ADMIN_PASSWORD environment variable must be set in production before seeding!');
+      }
+      adminPassword = crypto.randomBytes(12).toString('base64').replace(/[^a-zA-Z0-9]/g, 'x') + '!A1';
+      console.warn('⚠️ WARNING: ADMIN_PASSWORD was unset. Generated secure random temporary admin password.');
+    }
     const adminName = process.env.ADMIN_NAME || 'Aurex Admin';
 
     let admin = await Admin.findOne({ email: adminEmail });

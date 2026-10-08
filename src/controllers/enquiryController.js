@@ -75,10 +75,45 @@ const getCustomerEnquiries = async (request, reply) => {
 };
 
 const getEnquiryByNumber = async (request, reply) => {
-  const enquiry = await Enquiry.findOne({ enquiryNumber: request.params.enquiryNumber })
+  const { enquiryNumber } = request.params;
+  const { email, phone } = request.query || {};
+
+  const enquiry = await Enquiry.findOne({ enquiryNumber })
     .populate('partDetails.product', 'name sku pricing images');
 
   if (!enquiry) throw new CustomError('Quote request not found', 404, 'ENQUIRY_NOT_FOUND');
+
+  // 1. Authorize admin/staff roles
+  const isAdmin = request.user && ['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'].includes(request.user.role);
+  if (isAdmin) {
+    return reply.send({ success: true, data: { enquiry } });
+  }
+
+  // 2. Authorize registered account owner
+  const isOwner = request.user && enquiry.user && enquiry.user.toString() === request.user._id.toString();
+  if (isOwner) {
+    return reply.send({ success: true, data: { enquiry } });
+  }
+
+  // 3. Registered user enquiry cannot be accessed by unauthenticated or unrelated users
+  if (enquiry.user) {
+    if (!request.user) {
+      throw new CustomError('Authentication required to access this quote request', 401, 'AUTH_REQUIRED');
+    }
+    throw new CustomError('Access denied to this quote request', 403, 'FORBIDDEN');
+  }
+
+  // 4. Guest enquiry lookup requires email or phone verification
+  const normalizedEmail = (email || '').trim().toLowerCase();
+  const normalizedPhone = (phone || '').trim().replace(/[\s\-\(\)]/g, '');
+  const enquiryPhone = (enquiry.phone || '').trim().replace(/[\s\-\(\)]/g, '');
+
+  const matchesEmail = normalizedEmail && enquiry.email && enquiry.email.toLowerCase() === normalizedEmail;
+  const matchesPhone = normalizedPhone && enquiryPhone && enquiryPhone === normalizedPhone;
+
+  if (!matchesEmail && !matchesPhone) {
+    throw new CustomError('Verification required to view quote details. Please provide the contact email or phone number used when submitting.', 403, 'VERIFICATION_REQUIRED');
+  }
 
   reply.send({
     success: true,
