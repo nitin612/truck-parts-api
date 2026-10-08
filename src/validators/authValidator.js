@@ -1,13 +1,17 @@
 const { z } = require('zod');
 
 const registerSchema = z.object({
-  firstName: z.string().min(2, 'First name must be at least 2 characters'),
-  lastName: z.string().min(2, 'Last name must be at least 2 characters'),
+  name: z.string().optional(),
+  fullName: z.string().optional(),
+  firstName: z.string().optional(),
+  lastName: z.string().optional(),
   email: z.string().email('Invalid email address'),
   password: z.string().min(6, 'Password must be at least 6 characters'),
   phone: z.string().optional(),
+  company: z.string().optional(),
   companyName: z.string().optional(),
-  abnOrTaxId: z.string().optional()
+  abnOrTaxId: z.string().optional(),
+  fleetTruckModels: z.array(z.string()).optional()
 });
 
 const loginSchema = z.object({

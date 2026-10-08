@@ -135,7 +135,12 @@ fastify.addHook('preHandler', async (request, reply) => {
     const originHeader = request.headers.origin;
     if (originHeader) {
       const cleanOrigin = originHeader.replace(/\/$/, '');
-      if (!allowedOrigins.includes(cleanOrigin)) {
+      const isAllowed =
+        allowedOrigins.includes(cleanOrigin) ||
+        cleanOrigin.endsWith('.vercel.app') ||
+        cleanOrigin.includes('localhost') ||
+        cleanOrigin.includes('127.0.0.1');
+      if (!isAllowed) {
         reply.code(403);
         throw new Error('CSRF origin validation failed: untrusted origin');
       }
