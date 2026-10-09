@@ -3,9 +3,9 @@ const { optionalAuth, authenticate, requireStaff } = require('../middleware/auth
 const upload = require('../middleware/uploadMiddleware');
 
 async function productRoutes(fastify, options) {
-  fastify.get('/', productController.getProducts);
-  fastify.get('/cross-reference', productController.crossReferenceLookup);
-  fastify.get('/:identifier', productController.getProductBySkuOrSlug);
+  fastify.get('/', { preHandler: optionalAuth }, productController.getProducts);
+  fastify.get('/cross-reference', { preHandler: optionalAuth }, productController.crossReferenceLookup);
+  fastify.get('/:identifier', { preHandler: optionalAuth }, productController.getProductBySkuOrSlug);
 
   // Protected staff mutations
   fastify.post('/', { preHandler: [authenticate, requireStaff] }, productController.adminCreateProduct);

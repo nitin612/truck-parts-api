@@ -19,13 +19,23 @@ const getPromos = async (request, reply) => {
 };
 
 const getActivePromos = async (request, reply) => {
-  const coupons = await Coupon.find({ isActive: true }).sort({ discountValue: -1 });
-  const items = coupons.map((c) => ({
-    code: c.code,
-    label: c.description || `${c.discountValue}% off`,
-    pct: c.discountValue,
-    active: true
-  }));
+  const now = new Date();
+  const coupons = await Coupon.find({ isActive: true, startDate: { $lte: now }, endDate: { $gte: now } })
+    .sort({ discountValue: -1 });
+
+  const items = coupons
+    .filter((c) => !c.usageLimit || c.usedCount < c.usageLimit)
+    .map((c) => ({
+      code: c.code,
+      label: c.description || (c.discountType === 'FIXED' ? `$${c.discountValue} off` : `${c.discountValue}% off`),
+      type: c.discountType,
+      value: c.discountValue,
+      // `pct` is what older storefront builds price with, so it is only set for true percentages.
+      pct: c.discountType === 'PERCENTAGE' ? c.discountValue : 0,
+      minOrder: c.minimumOrderValue || 0,
+      maxDiscount: c.maximumDiscount || null,
+      active: true
+    }));
 
   reply.send({
     success: true,

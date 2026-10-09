@@ -86,6 +86,13 @@ async function replace(Model, docs) {
     get('/payments/config').catch(() => null),
   ]);
 
+  // The public list now returns storefront-shaped cards (category as a slug, status as a label),
+  // not database documents. Writing those back would corrupt the local catalogue, so stop here.
+  const raw = products.every((p) => ['DRAFT', 'PUBLISHED', 'ARCHIVED'].includes(p.status) && typeof p.category !== 'string');
+  if (!raw) {
+    throw new Error('The source API returns display-shaped products, which cannot be mirrored into MongoDB. Restore from a database dump (mongodump/mongorestore) instead.');
+  }
+
   await mongoose.connect(MONGO_URI, { serverSelectionTimeoutMS: 5000 });
   await replace(Product, products);
   await replace(Category, categories);

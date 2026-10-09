@@ -1,9 +1,10 @@
 const dashboardController = require('../controllers/dashboardController');
-const { optionalAuth } = require('../middleware/auth');
+const { authenticate, requireStaff } = require('../middleware/auth');
 
 async function dashboardRoutes(fastify, options) {
-  fastify.get('/stats', { preHandler: optionalAuth }, dashboardController.getDashboardStats);
-  fastify.get('/', { preHandler: optionalAuth }, dashboardController.getDashboardStats);
+  const staffAuth = [authenticate, requireStaff];
+  fastify.get('/stats', { preHandler: staffAuth }, dashboardController.getDashboardStats);
+  fastify.get('/', { preHandler: staffAuth }, dashboardController.getDashboardStats);
 }
 
 module.exports = dashboardRoutes;

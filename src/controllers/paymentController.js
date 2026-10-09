@@ -43,29 +43,35 @@ const getPublicPaymentConfig = async (request, reply) => {
       directBankTransfer: settings.directBankTransfer,
       tradeAccount30Days: settings.tradeAccount30Days,
       codDepotPickup: settings.codDepotPickup,
-      purchaseOrders: settings.purchaseOrders
+      purchaseOrders: settings.purchaseOrders,
+      card: { enabled: Boolean(process.env.STRIPE_SECRET_KEY) }
     }
   });
 };
 
 const submitPaymentProof = async (request, reply) => {
-  const { orderId, bankTransferReference, notes } = request.body;
-  const userId = request.user._id;
+  const { orderId, bankTransferReference, notes } = request.body || {};
+  if (!request.user) {
+    throw new CustomError('Log in to add a payment reference to your order.', 401, 'UNAUTHORIZED');
+  }
+  if (!/^[0-9a-fA-F]{24}$/.test(String(orderId || '')) || !String(bankTransferReference || '').trim()) {
+    throw new CustomError('An order and a transfer reference are required.', 400, 'MISSING_FIELDS');
+  }
 
-  const order = await Order.findOne({ _id: orderId, user: userId });
+  const order = await Order.findOne({ _id: orderId, user: request.user._id });
   if (!order) throw new CustomError('Order not found', 404, 'ORDER_NOT_FOUND');
 
-  order.payment.bankTransferReference = bankTransferReference;
-  order.payment.paymentNotes = notes;
-  order.payment.status = 'AUTHORIZED';
-  order.orderStatus = 'PROCESSING';
+  // A reference is the customer telling us to look for the money, not proof it arrived:
+  // the order stays unpaid until staff reconcile it (mark-paid / status update).
+  order.payment.bankTransferReference = String(bankTransferReference).trim().slice(0, 80);
+  order.payment.paymentNotes = String(notes || '').trim().slice(0, 300);
 
   await order.save();
 
   await OrderStatusHistory.create({
     order: order._id,
-    status: 'PROCESSING',
-    comment: `Payment reference submitted: ${bankTransferReference}`
+    status: order.orderStatus,
+    comment: `Payment reference submitted: ${order.payment.bankTransferReference}`
   });
 
   socketService.broadcast('PAYMENT_REFERENCE_SUBMITTED', {
@@ -112,13 +118,16 @@ const adminMarkOrderPaid = async (request, reply) => {
   order.payment.paidAt = new Date();
   order.payment.paidAmount = Number(paidAmount) || order.pricing.grandTotal;
   if (notes) order.payment.paymentNotes = notes;
-  order.orderStatus = 'PARTS_ALLOCATED';
+  // Paid orders move to the first fulfilment step the storefront timeline knows.
+  if (['Pending payment', 'PENDING_PAYMENT'].includes(order.orderStatus)) {
+    order.orderStatus = 'Packed in Campbellfield VIC';
+  }
 
   await order.save();
 
   await OrderStatusHistory.create({
     order: order._id,
-    status: 'PAYMENT_CONFIRMED',
+    status: order.orderStatus,
     comment: `Payment of $${order.payment.paidAmount.toFixed(2)} verified by ${request.user.name}`,
     updatedBy: request.user._id
   });
@@ -207,7 +216,7 @@ const handleWebhook = async (request, reply) => {
         order.payment.status = 'PAID';
         order.payment.paidAt = new Date();
         order.payment.transactionId = session.payment_intent || session.id;
-        order.orderStatus = 'PARTS_ALLOCATED';
+        order.orderStatus = 'Packed in Campbellfield VIC';
         await order.save();
       }
     }

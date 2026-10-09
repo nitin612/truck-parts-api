@@ -9,6 +9,7 @@ const InventoryTransaction = require('../models/InventoryTransaction');
 const CustomError = require('../utils/CustomError');
 const socketService = require('../services/socketService');
 const { calculateOrderTotals } = require('../utils/pricing');
+const { stripSupplierCodes } = require('../utils/supplierCodes');
 const { sendOrderConfirmationEmail } = require('../services/notificationService');
 
 const generateOrderNumber = () => {
@@ -68,7 +69,7 @@ const normalizeOrder = (o) => {
     discount: disc,
     status: obj.orderStatus || 'Packed in Campbellfield VIC',
     orderStatus: obj.orderStatus || 'Packed in Campbellfield VIC',
-    payment: obj.payment?.method || 'Card',
+    payment: obj.payment?.method || 'Bank transfer',
     paymentStatus: obj.payment?.status || 'PENDING',
     shipping: obj.shipping?.shippingMethod || 'Standard road',
     items,
@@ -80,187 +81,191 @@ const normalizeOrder = (o) => {
   };
 };
 
+const EMAIL_RX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const OBJECT_ID_RX = /^[0-9a-fA-F]{24}$/;
+const MAX_LINES = 50;
+const MAX_QTY = 99;
+
+// The storefront sends its own labels, API clients send enums. Both resolve to one stored value.
+const SHIPPING_METHODS = {
+  'standard road': 'Standard road', standard: 'Standard road', 'standard road freight': 'Standard road', 'road freight': 'Standard road',
+  'express priority': 'Express priority', express: 'Express priority', express_courier: 'Express priority', 'express freight': 'Express priority',
+  'click and collect vic': 'Click and Collect VIC', 'click and collect': 'Click and Collect VIC', depot_pickup: 'Click and Collect VIC'
+};
+const PAYMENT_METHODS = {
+  card: 'Card', credit_card_direct: 'Card',
+  'bank transfer': 'Bank transfer', 'bank transfer (eft)': 'Bank transfer', direct_bank_transfer: 'Bank transfer',
+  '30 day fleet terms': '30 day fleet terms', trade_account_30_days: '30 day fleet terms',
+  'pay on pickup': 'Pay on pickup', cod_depot_pickup: 'Pay on pickup',
+  'purchase order': 'Purchase order', purchase_order: 'Purchase order'
+};
+const lookup = (table, value) => table[String(value || '').trim().toLowerCase()];
+const clean = (v, max = 200) => String(v ?? '').trim().slice(0, max);
+
 const createOrder = async (request, reply) => {
-  const userId = request.user?._id || null;
+  const user = request.user && !['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'].includes(request.user.role)
+    ? request.user
+    : null;
+  const userId = user?._id || null;
   const isGuest = !userId;
 
-  const {
-    addressId,
-    couponCode,
-    promoCode,
-    payment,
-    paymentMethod = payment || 'Card',
-    shipping,
-    shippingMethod = shipping || 'Standard road',
-    shippingFee: passedShippingFee,
-    purchaseOrderNumber,
-    customerNotes,
-    items: passedItems,
-    address: passedAddress,
-    shippingAddress: passedShippingAddress
-  } = request.body || {};
+  const body = request.body || {};
+  const shippingMethod = lookup(SHIPPING_METHODS, body.shippingMethod || body.shipping || 'Standard road');
+  if (!shippingMethod) {
+    throw new CustomError('That freight option is not available.', 400, 'SHIPPING_METHOD_UNAVAILABLE');
+  }
+  const isPickup = shippingMethod === 'Click and Collect VIC';
 
-  let rawItems = [];
-  if (passedItems && passedItems.length > 0) {
-    rawItems = passedItems;
-  } else if (userId) {
+  // 1. Lines: every one must be a real, published, priced part. Prices and names always come
+  //    from the catalogue; nothing the browser says about money is used.
+  let rawItems = Array.isArray(body.items) ? body.items : [];
+  if (rawItems.length === 0 && userId) {
     const cart = await Cart.findOne({ user: userId });
-    if (!cart || cart.items.length === 0) {
-      throw new CustomError('Your cart is empty', 400, 'EMPTY_CART');
-    }
-    rawItems = cart.items.map((item) => ({
-      productId: item.product,
-      quantity: item.quantity
-    }));
-  } else {
-    throw new CustomError('Your cart is empty', 400, 'EMPTY_CART');
+    rawItems = (cart?.items || []).map((item) => ({ productId: item.product, quantity: item.quantity }));
   }
+  if (rawItems.length === 0) throw new CustomError('Your cart is empty', 400, 'EMPTY_CART');
+  if (rawItems.length > MAX_LINES) throw new CustomError(`An order can hold up to ${MAX_LINES} lines.`, 400, 'TOO_MANY_LINES');
 
-  // 1. Fetch Shipping Address
-  const rawAddr = passedAddress || passedShippingAddress || null;
-  let shippingAddress = null;
-
-  if (rawAddr) {
-    shippingAddress = {
-      companyName: rawAddr.company || rawAddr.companyName || (request.user?.companyName || ''),
-      fullName: rawAddr.name || rawAddr.fullName || (request.user ? `${request.user.firstName || ''} ${request.user.lastName || ''}`.trim() : 'Guest Customer'),
-      phone: rawAddr.phone || request.user?.phone || '0400000000',
-      email: rawAddr.email || request.user?.email || 'customer@example.com',
-      addressLine1: rawAddr.address || rawAddr.addressLine1 || 'Direct Dispatch',
-      addressLine2: rawAddr.addressLine2 || '',
-      suburbOrCity: rawAddr.suburb || rawAddr.suburbOrCity || 'Campbellfield',
-      state: rawAddr.state || 'VIC',
-      postalCode: rawAddr.postcode || rawAddr.postalCode || '3061',
-      country: rawAddr.country || 'Australia',
-      deliveryInstructions: rawAddr.notes || rawAddr.deliveryInstructions || '',
-      hasForkliftOnSite: !!rawAddr.hasForkliftOnSite
-    };
-  } else if (addressId && userId) {
-    const addressDoc = await Address.findOne({ _id: addressId, user: userId });
-    if (addressDoc) {
-      shippingAddress = {
-        companyName: addressDoc.companyName || request.user?.companyName || '',
-        fullName: addressDoc.fullName,
-        phone: addressDoc.phone,
-        email: addressDoc.email || request.user?.email || '',
-        addressLine1: addressDoc.addressLine1,
-        addressLine2: addressDoc.addressLine2,
-        suburbOrCity: addressDoc.suburbOrCity,
-        state: addressDoc.state,
-        postalCode: addressDoc.postalCode,
-        country: addressDoc.country,
-        deliveryInstructions: addressDoc.deliveryInstructions,
-        hasForkliftOnSite: addressDoc.hasForkliftOnSite
-      };
-    }
-  }
-
-  // Fallback shipping address
-  if (!shippingAddress) {
-    shippingAddress = {
-      companyName: request.user?.companyName || '',
-      fullName: request.user ? `${request.user.firstName || ''} ${request.user.lastName || ''}`.trim() : 'Customer',
-      phone: request.user?.phone || '0400000000',
-      email: request.user?.email || 'customer@example.com',
-      addressLine1: 'Warehouse Counter Collection',
-      suburbOrCity: 'Campbellfield',
-      state: 'VIC',
-      postalCode: '3061',
-      country: 'Australia',
-      hasForkliftOnSite: false
-    };
-  }
-
-  // 2. Validate stock and look up DB prices
-  const verifiedItems = [];
+  const lines = new Map();
   for (const raw of rawItems) {
-    const sku = (raw.sku || '').trim().toUpperCase();
+    const qty = Number(raw?.quantity ?? raw?.qty ?? 1);
+    if (!Number.isInteger(qty) || qty < 1 || qty > MAX_QTY) {
+      throw new CustomError(`Quantity must be a whole number between 1 and ${MAX_QTY}.`, 400, 'INVALID_QUANTITY');
+    }
+
+    const sku = clean(raw?.sku, 60).toUpperCase();
+    const productId = clean(raw?.productId, 24);
     let product = null;
+    if (OBJECT_ID_RX.test(productId)) product = await Product.findById(productId);
+    else if (sku) product = await Product.findOne({ sku });
 
-    if (raw.productId) {
-      product = await Product.findById(raw.productId);
-    } else if (sku) {
-      product = await Product.findOne({ sku });
+    if (!product) {
+      throw new CustomError(`Part ${sku || 'in your cart'} is no longer in the catalogue. Remove it and try again.`, 400, 'PRODUCT_NOT_FOUND');
+    }
+    if (product.status !== 'PUBLISHED' || product.isBuyable === false) {
+      throw new CustomError(`${product.name} is not available to order online right now.`, 400, 'PRODUCT_UNAVAILABLE');
+    }
+    const unitPrice = Number(product.pricing?.sellingPrice);
+    if (product.pricing?.isPOA || !(unitPrice > 0)) {
+      throw new CustomError(`${product.name} is priced on enquiry. Send an enquiry and we will quote it.`, 400, 'POA_PRODUCT');
     }
 
-    const qty = Number(raw.quantity || raw.qty || 1);
-
-    if (product) {
-      const unitPrice = (product.pricing && typeof product.pricing.sellingPrice === 'number')
-        ? product.pricing.sellingPrice
-        : (Number(raw.price) || 0);
-      const coreDeposit = product.coreDeposit?.required ? (product.coreDeposit.amount || 0) : 0;
-      const weightKg = product.dimensions?.weightKg || 1.0;
-
-      verifiedItems.push({
-        product: product._id,
-        name: product.name,
-        sku: product.sku,
-        oemPartNumber: product.oemPartNumber,
-        brandName: product.brandName,
-        image: product.images?.[0]?.url || (typeof product.images?.[0] === 'string' ? product.images[0] : ''),
-        quantity: qty,
-        unitPrice,
-        coreDeposit,
-        weightKg,
-        total: unitPrice * qty
-      });
-    } else {
-      // Storefront custom line item fallback
-      const unitPrice = Number(raw.price) || 0;
-      verifiedItems.push({
-        name: raw.name || sku || 'Truck Part',
-        sku: sku || 'ATP-PART',
-        quantity: qty,
-        unitPrice,
-        coreDeposit: 0,
-        weightKg: 1.0,
-        total: unitPrice * qty
-      });
+    const key = String(product._id);
+    const existing = lines.get(key);
+    const quantity = (existing?.quantity || 0) + qty;
+    if (quantity > MAX_QTY) {
+      throw new CustomError(`Quantity must be a whole number between 1 and ${MAX_QTY}.`, 400, 'INVALID_QUANTITY');
     }
+    if (product.inventory?.trackInventory && product.inventory.stock < quantity) {
+      throw new CustomError(`Only ${Math.max(0, product.inventory.stock)} of ${product.name} left in stock.`, 400, 'INSUFFICIENT_STOCK');
+    }
+
+    lines.set(key, {
+      product: product._id,
+      name: stripSupplierCodes(product.name, [product.oem, product.oemPartNumber, ...(product.alternatePartNumbers || [])]),
+      sku: product.sku,
+      brandName: product.brandName,
+      image: product.images?.[0]?.url || '',
+      quantity,
+      unitPrice,
+      coreDeposit: product.coreDeposit?.required ? (product.coreDeposit.amount || 0) : 0,
+      weightKg: product.dimensions?.weightKg || 1.0,
+      total: Math.round(unitPrice * quantity * 100) / 100
+    });
+  }
+  const verifiedItems = [...lines.values()];
+
+  // 2. Who it is for and where it goes
+  let rawAddr = body.address || body.shippingAddress || null;
+  if (!rawAddr && body.addressId && userId && OBJECT_ID_RX.test(String(body.addressId))) {
+    rawAddr = await Address.findOne({ _id: body.addressId, user: userId }).lean();
+  }
+  rawAddr = rawAddr && typeof rawAddr === 'object' ? rawAddr : {};
+
+  const shippingAddress = {
+    companyName: clean(rawAddr.company || rawAddr.companyName || user?.companyName, 120),
+    fullName: clean(rawAddr.name || rawAddr.fullName || (user ? `${user.firstName || ''} ${user.lastName || ''}` : ''), 80),
+    phone: clean(rawAddr.phone || user?.phone, 20),
+    email: clean(rawAddr.email || user?.email, 120).toLowerCase(),
+    addressLine1: clean(rawAddr.address || rawAddr.addressLine1, 120),
+    addressLine2: clean(rawAddr.addressLine2, 120),
+    suburbOrCity: clean(rawAddr.suburb || rawAddr.suburbOrCity, 60),
+    state: clean(rawAddr.state, 3).toUpperCase(),
+    postalCode: clean(rawAddr.postcode || rawAddr.postalCode, 4),
+    country: 'Australia',
+    deliveryInstructions: clean(rawAddr.notes || rawAddr.deliveryInstructions, 300),
+    hasForkliftOnSite: Boolean(rawAddr.hasForkliftOnSite)
+  };
+
+  const missing = [];
+  if (!shippingAddress.fullName) missing.push('name');
+  if (!EMAIL_RX.test(shippingAddress.email)) missing.push('email');
+  if (shippingAddress.phone.replace(/\D/g, '').length < 8) missing.push('phone');
+  if (isPickup) {
+    if (!shippingAddress.addressLine1) {
+      Object.assign(shippingAddress, { addressLine1: 'Click and Collect', suburbOrCity: 'Campbellfield', state: 'VIC', postalCode: '3061' });
+    }
+  } else {
+    if (!shippingAddress.addressLine1) missing.push('street address');
+    if (!shippingAddress.suburbOrCity) missing.push('suburb');
+    if (!shippingAddress.state) missing.push('state');
+    if (!/^\d{4}$/.test(shippingAddress.postalCode)) missing.push('postcode');
+  }
+  if (missing.length) {
+    throw new CustomError(`Please check your ${missing.join(', ')}.`, 400, 'INVALID_ADDRESS');
   }
 
-  // 3. Validate Coupon if provided
-  const targetCode = (promoCode || couponCode || '').trim().toUpperCase();
+  // 3. Promo code: must be live today, not just flagged active
+  const targetCode = clean(body.promoCode || body.couponCode, 32).toUpperCase();
   let coupon = null;
   if (targetCode) {
-    coupon = await Coupon.findOne({ code: targetCode, isActive: true });
+    const now = new Date();
+    coupon = await Coupon.findOne({ code: targetCode, isActive: true, startDate: { $lte: now }, endDate: { $gte: now } });
+    if (!coupon || (coupon.usageLimit && coupon.usedCount >= coupon.usageLimit)) {
+      throw new CustomError(`Promo code ${targetCode} is not valid any more.`, 400, 'INVALID_COUPON');
+    }
   }
 
-  // 4. Calculate Server-side Trusted Totals
+  // 4. Server-side totals. Freight comes from Site Settings, never from the request.
   const siteSettings = await SiteSetting.findOne();
-  const tradeDiscountPercent = (request.user && request.user.isTradeApproved) ? (request.user.tradeDiscountPercent || 0) : 0;
-  
+  const tradeDiscountPercent = user?.isTradeApproved ? (user.tradeDiscountPercent || 0) : 0;
   const pricingTotals = calculateOrderTotals({
     items: verifiedItems,
     coupon,
     shippingMethod,
     destinationState: shippingAddress.state,
     tradeDiscountPercent,
-    shippingFee: passedShippingFee,
     siteSettings
   });
+  if (coupon && coupon.minimumOrderValue && pricingTotals.couponDiscountAmount === 0) {
+    throw new CustomError(`Promo code ${targetCode} needs an order of $${coupon.minimumOrderValue} or more.`, 400, 'MIN_ORDER_UNMET');
+  }
 
-  // 5. Payment status & method mapping
-  const normalizedMethod = String(paymentMethod).trim();
+  // 5. Payment. Nothing is ever recorded as paid here: bank transfers and pickups are confirmed
+  //    by staff, cards by the gateway webhook.
+  const paymentMethod = lookup(PAYMENT_METHODS, body.paymentMethod || body.payment || 'Bank transfer');
+  if (!paymentMethod) {
+    throw new CustomError('That payment method is not available. Please choose another.', 400, 'PAYMENT_METHOD_UNAVAILABLE');
+  }
+  if (paymentMethod === 'Card' && !process.env.STRIPE_SECRET_KEY) {
+    throw new CustomError('Card payments are not switched on yet. Please choose bank transfer or pay on pickup.', 400, 'CARD_UNAVAILABLE');
+  }
+  if (paymentMethod === 'Pay on pickup' && !isPickup) {
+    throw new CustomError('Pay on pickup is only available with Click and Collect.', 400, 'PAYMENT_METHOD_UNAVAILABLE');
+  }
+
   let paymentStatus = 'PENDING';
   let initialOrderStatus = 'Pending payment';
-
-  const isCard = normalizedMethod.toLowerCase().includes('card');
-  if (isCard) {
-    // If Stripe is unconfigured, card is treated as demo instant confirmation
-    paymentStatus = process.env.STRIPE_SECRET_KEY ? 'PENDING' : 'PAID';
-    initialOrderStatus = paymentStatus === 'PAID' ? 'Packed in Campbellfield VIC' : 'Pending payment';
-  } else if (normalizedMethod === 'TRADE_ACCOUNT_30_DAYS' || normalizedMethod === '30 day fleet terms') {
-    if (request.user && !request.user.isTradeApproved) {
-      throw new CustomError('Your account has not been approved for 30-Day Commercial Trade Credit.', 403, 'TRADE_CREDIT_UNAPPROVED');
+  if (paymentMethod === '30 day fleet terms') {
+    if (!user?.isTradeApproved) {
+      throw new CustomError('30 day terms are for approved trade accounts. Log in to your trade account or choose another payment method.', 403, 'TRADE_CREDIT_UNAPPROVED');
+    }
+    const newBalance = (user.creditBalance || 0) + pricingTotals.grandTotal;
+    if (user.creditLimit > 0 && newBalance > user.creditLimit) {
+      throw new CustomError('This order is over your available trade credit. Call us to arrange payment.', 400, 'CREDIT_LIMIT_EXCEEDED');
     }
     paymentStatus = 'AUTHORIZED';
     initialOrderStatus = 'Packed in Campbellfield VIC';
-    if (request.user) {
-      request.user.creditBalance = (request.user.creditBalance || 0) + pricingTotals.grandTotal;
-      await request.user.save();
-    }
   }
 
   // 6. Create Order in Database
@@ -275,39 +280,46 @@ const createOrder = async (request, reply) => {
     pricing: pricingTotals,
     coupon: coupon ? coupon._id : undefined,
     payment: {
-      method: normalizedMethod,
+      method: paymentMethod,
       status: paymentStatus,
-      purchaseOrderNumber
+      purchaseOrderNumber: clean(body.purchaseOrderNumber, 60) || undefined
     },
     shipping: {
       shippingMethod,
       status: 'PROCESSING'
     },
     orderStatus: initialOrderStatus,
-    customerNotes: customerNotes || rawAddr?.notes || ''
+    customerNotes: clean(body.customerNotes, 500) || shippingAddress.deliveryInstructions
   });
+
+  // The order exists: only now touch credit, coupon usage and stock.
+  if (paymentMethod === '30 day fleet terms') {
+    user.creditBalance = (user.creditBalance || 0) + pricingTotals.grandTotal;
+    await user.save();
+  }
+  if (coupon) {
+    await Coupon.updateOne({ _id: coupon._id }, { $inc: { usedCount: 1 } });
+  }
 
   // 7. Decrement stock & record inventory transactions
   for (const item of verifiedItems) {
-    if (item.product) {
-      const prod = await Product.findById(item.product);
-      if (prod && prod.inventory?.trackInventory) {
-        const prevStock = prod.inventory.stock;
-        const newStock = Math.max(0, prevStock - item.quantity);
-        prod.inventory.stock = newStock;
-        await prod.save();
+    const prod = await Product.findById(item.product);
+    if (prod && prod.inventory?.trackInventory) {
+      const prevStock = prod.inventory.stock;
+      const newStock = Math.max(0, prevStock - item.quantity);
+      prod.inventory.stock = newStock;
+      await prod.save();
 
-        await InventoryTransaction.create({
-          product: prod._id,
-          type: 'SALE',
-          quantity: item.quantity,
-          previousStock: prevStock,
-          newStock: newStock,
-          referenceType: 'Order',
-          referenceId: order._id,
-          notes: `Order #${order.orderNumber}`
-        });
-      }
+      await InventoryTransaction.create({
+        product: prod._id,
+        type: 'SALE',
+        quantity: item.quantity,
+        previousStock: prevStock,
+        newStock: newStock,
+        referenceType: 'Order',
+        referenceId: order._id,
+        notes: `Order #${order.orderNumber}`
+      });
     }
   }
 
@@ -315,7 +327,7 @@ const createOrder = async (request, reply) => {
   await OrderStatusHistory.create({
     order: order._id,
     status: order.orderStatus,
-    comment: `Order placed with payment method ${normalizedMethod}`
+    comment: `Order placed with payment method ${paymentMethod}`
   });
 
   // 9. Clear user's cart if authenticated
@@ -348,6 +360,10 @@ const createOrder = async (request, reply) => {
 const getMyOrders = async (request, reply) => {
   const userId = request.user?._id;
   const userEmail = request.user?.email?.toLowerCase();
+
+  if (!userId) {
+    return reply.send({ success: true, count: 0, items: [], data: { orders: [], items: [] } });
+  }
 
   const orders = await Order.find({
     $or: [
@@ -524,6 +540,8 @@ const adminGetOrderDetail = async (request, reply) => {
   });
 };
 
+const FULFILMENT_STATUSES = ['Packed in Campbellfield VIC', 'Courier booked', 'In transit', 'Delivered'];
+
 const updateOrderStatusByRef = async (request, reply) => {
   const isStaff = request.user && ['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'].includes(request.user.role);
   if (!isStaff) {
@@ -545,6 +563,13 @@ const updateOrderStatusByRef = async (request, reply) => {
   const { status, note, trackingNumber, carrier, consignmentId } = request.body || {};
 
   if (status) order.orderStatus = status;
+  // We only pack once money has landed (or is collected at the counter), so moving an order
+  // into fulfilment is also what records an outstanding payment as received.
+  if (FULFILMENT_STATUSES.includes(status) && order.payment?.status === 'PENDING') {
+    order.payment.status = 'PAID';
+    order.payment.paidAt = new Date();
+    order.payment.paidAmount = order.pricing?.grandTotal || 0;
+  }
   if (trackingNumber) order.shipping.trackingNumber = trackingNumber;
   if (carrier) order.shipping.carrier = carrier;
   if (consignmentId) order.shipping.consignmentId = consignmentId;

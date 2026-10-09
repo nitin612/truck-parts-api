@@ -2,6 +2,7 @@ const User = require('../models/User');
 const Admin = require('../models/Admin');
 const { generateTokens, verifyToken } = require('../utils/token');
 const CustomError = require('../utils/CustomError');
+const { sendEmail } = require('../services/notificationService');
 const crypto = require('crypto');
 
 const formatUser = (user) => {
@@ -305,7 +306,15 @@ const forgotPassword = async (request, reply) => {
   const appUrl = (process.env.APP_URL || 'http://localhost:5173').replace(/\/$/, '');
   const resetUrl = `${appUrl}/reset-password?token=${resetToken}&email=${encodeURIComponent(cleanEmail)}`;
 
-  console.log(`🔑 Password reset link for ${cleanEmail}: ${resetUrl}`);
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`Password reset link for ${cleanEmail}: ${resetUrl}`);
+  }
+  sendEmail({
+    to: cleanEmail,
+    subject: 'Reset your Aurex Truck Parts password',
+    text: `Use this link to choose a new password (valid for 1 hour): ${resetUrl}\n\nIf you did not ask for this, you can ignore this email.`,
+    html: `<p>Use the link below to choose a new password. It is valid for 1 hour.</p><p><a href="${resetUrl}">Reset my password</a></p><p>If you did not ask for this, you can ignore this email.</p>`
+  }).catch((err) => console.error('Reset email error:', err.message));
 
   reply.send({
     success: true,

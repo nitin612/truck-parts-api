@@ -9,7 +9,6 @@ const calculateOrderTotals = ({
   shippingMethod = 'STANDARD',
   destinationState = '',
   tradeDiscountPercent = 0,
-  shippingFee: passedShippingFee = null,
   siteSettings = null
 }) => {
   let subtotal = 0;
@@ -54,24 +53,20 @@ const calculateOrderTotals = ({
   const totalDiscount = Math.round((tradeDiscountAmount + couponDiscountAmount) * 100) / 100;
   const discountedSubtotal = Math.max(0, subtotal - totalDiscount);
 
-  // 4. Calculate Freight Fee (honour passed fee or compute from SiteSetting)
-  let shippingFee = 0;
-  if (passedShippingFee !== null && passedShippingFee !== undefined) {
-    shippingFee = Number(passedShippingFee) || 0;
-  } else {
-    const freeFreightOver = Number(siteSettings?.freeFreightOver) || 500;
-    const standardFee = Number(siteSettings?.standardFee) || 24;
-    const expressFee = Number(siteSettings?.expressFee) || 39;
+  // 4. Freight fee, from Site Settings (callers cannot supply their own figure)
+  const freeFreightOver = Number(siteSettings?.freeFreightOver) || 500;
+  const standardFee = Number(siteSettings?.standardFee) || 24;
+  const expressFee = Number(siteSettings?.expressFee) || 39;
 
-    const normMethod = String(shippingMethod || '').toLowerCase();
-    if (normMethod.includes('click') || normMethod.includes('collect') || normMethod.includes('pickup')) {
-      shippingFee = 0;
-    } else if (normMethod.includes('express')) {
-      shippingFee = expressFee;
-    } else {
-      // Standard road
-      shippingFee = discountedSubtotal >= freeFreightOver ? 0 : standardFee;
-    }
+  let shippingFee = 0;
+  const normMethod = String(shippingMethod || '').toLowerCase();
+  if (normMethod.includes('click') || normMethod.includes('collect') || normMethod.includes('pickup')) {
+    shippingFee = 0;
+  } else if (normMethod.includes('express')) {
+    shippingFee = expressFee;
+  } else {
+    // Standard road
+    shippingFee = discountedSubtotal >= freeFreightOver ? 0 : standardFee;
   }
 
   shippingFee = Math.round(shippingFee * 100) / 100;

@@ -1,5 +1,7 @@
 require('dotenv').config();
 const fastify = require('fastify')({
+  // Vercel terminates the connection: without this every visitor shares one rate-limit bucket.
+  trustProxy: true,
   logger: {
     level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
     redact: [
@@ -170,6 +172,23 @@ fastify.addHook('preHandler', async (request, reply) => {
 
 // 8. Custom Centralized Error Handler
 fastify.setErrorHandler(errorHandler);
+
+// Public catalogue responses are the same for every visitor, so let the CDN answer them.
+// Anything carrying credentials (staff see drafts and full documents) is never cached.
+const CACHEABLE_GET = /^\/api(\/v1)?\/(products|categories|brands|carousel|blogs|settings|promos\/active|payments\/config|welcome-offer|cms)(\/|\?|$)/;
+fastify.addHook('onSend', async (request, reply, payload) => {
+  const hasCredentials = request.headers.authorization || /(?:^|;\s*)accessToken=/.test(request.headers.cookie || '');
+  if (
+    request.method === 'GET' &&
+    reply.statusCode === 200 &&
+    !hasCredentials &&
+    !reply.getHeader('cache-control') &&
+    CACHEABLE_GET.test(request.url)
+  ) {
+    reply.header('Cache-Control', 'public, max-age=0, s-maxage=60, stale-while-revalidate=600');
+  }
+  return payload;
+});
 
 // 7. Dynamic Swagger Tagging & Bearer Security Hook
 fastify.addHook('onRoute', (routeOptions) => {
