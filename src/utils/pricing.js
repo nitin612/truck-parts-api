@@ -8,7 +8,9 @@ const calculateOrderTotals = ({
   coupon = null,
   shippingMethod = 'STANDARD',
   destinationState = '',
-  tradeDiscountPercent = 0
+  tradeDiscountPercent = 0,
+  shippingFee: passedShippingFee = null,
+  siteSettings = null
 }) => {
   let subtotal = 0;
   let totalWeightKg = 0;
@@ -52,34 +54,33 @@ const calculateOrderTotals = ({
   const totalDiscount = Math.round((tradeDiscountAmount + couponDiscountAmount) * 100) / 100;
   const discountedSubtotal = Math.max(0, subtotal - totalDiscount);
 
-  // 4. Calculate Heavy Freight Shipping Fee based on total weight (KG) and method
+  // 4. Calculate Freight Fee (honour passed fee or compute from SiteSetting)
   let shippingFee = 0;
-  if (shippingMethod === 'DEPOT_PICKUP' || shippingMethod === 'LOCAL_PICKUP') {
-    shippingFee = 0;
-  } else if (shippingMethod === 'EXPRESS_COURIER') {
-    // Base $35 + $3.50 per kg over 5kg
-    shippingFee = 35 + (totalWeightKg > 5 ? (totalWeightKg - 5) * 3.5 : 0);
-  } else if (shippingMethod === 'HEAVY_FREIGHT_PALLET') {
-    // Pallet / Tail-lift delivery for heavy truck engines/transmissions/axles
-    shippingFee = 150 + (totalWeightKg > 100 ? (totalWeightKg - 100) * 0.85 : 0);
+  if (passedShippingFee !== null && passedShippingFee !== undefined) {
+    shippingFee = Number(passedShippingFee) || 0;
   } else {
-    // Standard Commercial Freight: Free if order > $500 and weight < 25kg
-    if (discountedSubtotal >= 500 && totalWeightKg <= 25) {
+    const freeFreightOver = Number(siteSettings?.freeFreightOver) || 500;
+    const standardFee = Number(siteSettings?.standardFee) || 24;
+    const expressFee = Number(siteSettings?.expressFee) || 39;
+
+    const normMethod = String(shippingMethod || '').toLowerCase();
+    if (normMethod.includes('click') || normMethod.includes('collect') || normMethod.includes('pickup')) {
       shippingFee = 0;
+    } else if (normMethod.includes('express')) {
+      shippingFee = expressFee;
     } else {
-      // Base $20 + $1.80 per kg over 5kg
-      shippingFee = 20 + (totalWeightKg > 5 ? (totalWeightKg - 5) * 1.8 : 0);
+      // Standard road
+      shippingFee = discountedSubtotal >= freeFreightOver ? 0 : standardFee;
     }
   }
 
   shippingFee = Math.round(shippingFee * 100) / 100;
 
-  // 5. Tax (10% GST included or added based on config)
-  const taxableAmount = discountedSubtotal + shippingFee + totalCoreDeposit;
-  const tax = Math.round((taxableAmount * 0.10) * 100) / 100;
+  // 5. Grand Total (Australian retail pricing is GST inclusive)
+  const grandTotal = Math.round((discountedSubtotal + shippingFee + totalCoreDeposit) * 100) / 100;
 
-  // 6. Grand Total
-  const grandTotal = Math.round((discountedSubtotal + shippingFee + totalCoreDeposit + tax) * 100) / 100;
+  // GST portion (inclusive 10% = 1/11th of total taxable amount for Tax Invoice reporting)
+  const tax = Math.round(((discountedSubtotal + shippingFee) / 11) * 100) / 100;
 
   return {
     subtotal: Math.round(subtotal * 100) / 100,

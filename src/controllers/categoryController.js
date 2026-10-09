@@ -2,7 +2,22 @@ const Category = require('../models/Category');
 const Product = require('../models/Product');
 const CustomError = require('../utils/CustomError');
 const { uploadImage, deleteImage } = require('../services/cloudinaryService');
+const slugify = require('slugify');
 const fs = require('fs');
+
+const normalizeCategory = (cat, count = 0) => {
+  const obj = cat.toObject ? cat.toObject() : cat;
+  return {
+    ...obj,
+    id: obj.slug || String(obj._id),
+    _id: obj._id,
+    slug: obj.slug,
+    name: obj.name,
+    tag: obj.tag || '',
+    blurb: obj.blurb || obj.description || '',
+    count: count || obj.productCount || 0
+  };
+};
 
 const getCategories = async (request, reply) => {
   const categories = await Category.find({ isActive: true })
@@ -17,14 +32,19 @@ const getCategories = async (request, reply) => {
   ]);
 
   const countMap = {};
-  counts.forEach(c => { countMap[c._id.toString()] = c.count; });
+  counts.forEach((c) => { countMap[c._id.toString()] = c.count; });
 
-  const categoriesWithCounts = categories.map(cat => ({
-    ...cat.toObject(),
-    productCount: countMap[cat._id.toString()] || 0
-  }));
+  const items = categories.map((cat) => normalizeCategory(cat, countMap[cat._id.toString()] || 0));
 
-  reply.send({ success: true, count: categoriesWithCounts.length, data: { categories: categoriesWithCounts } });
+  reply.send({
+    success: true,
+    count: items.length,
+    items,
+    data: {
+      categories: items,
+      items
+    }
+  });
 };
 
 const getCategoryBySlug = async (request, reply) => {
@@ -36,15 +56,23 @@ const getCategoryBySlug = async (request, reply) => {
   reply.send({ success: true, data: { category, subCategories } });
 };
 
-const adminGetCategories = async (request, reply) => {
-  const categories = await Category.find()
-    .populate('parentCategory', 'name slug')
-    .sort({ sortOrder: 1, createdAt: -1 });
-  reply.send({ success: true, count: categories.length, data: { categories } });
-};
+const adminGetCategories = getCategories;
 
 const adminCreateCategory = async (request, reply) => {
-  const categoryData = request.body || {};
+  const categoryData = { ...(request.body || {}) };
+  if (!categoryData.name) {
+    throw new CustomError('Category name is required', 400, 'NAME_REQUIRED');
+  }
+
+  if (!categoryData.slug) {
+    categoryData.slug = slugify(categoryData.name, { lower: true, strict: true });
+  } else {
+    categoryData.slug = slugify(categoryData.slug, { lower: true, strict: true });
+  }
+
+  if (categoryData.blurb && !categoryData.description) {
+    categoryData.description = categoryData.blurb;
+  }
 
   if (request.file) {
     const uploaded = await uploadImage(request.file.path, 'truck-parts/categories');
@@ -53,14 +81,31 @@ const adminCreateCategory = async (request, reply) => {
   }
 
   const category = await Category.create(categoryData);
-  reply.status(201).send({ success: true, message: 'Category created successfully', data: { category } });
+  const normalized = normalizeCategory(category, 0);
+
+  reply.status(201).send({
+    success: true,
+    message: 'Category created successfully',
+    category: normalized,
+    data: { category: normalized }
+  });
 };
 
 const adminUpdateCategory = async (request, reply) => {
-  const category = await Category.findById(request.params.id);
+  const param = request.params.id || request.params.slug;
+  const isObjectId = /^[0-9a-fA-F]{24}$/.test(param);
+
+  const category = await Category.findOne({
+    $or: [
+      { slug: param },
+      ...(isObjectId ? [{ _id: param }] : [])
+    ]
+  });
+
   if (!category) throw new CustomError('Category not found', 404, 'CATEGORY_NOT_FOUND');
 
-  const updateData = request.body || {};
+  const updateData = { ...(request.body || {}) };
+  if (updateData.blurb) updateData.description = updateData.blurb;
 
   if (request.file) {
     if (category.image?.publicId) await deleteImage(category.image.publicId);
@@ -72,11 +117,27 @@ const adminUpdateCategory = async (request, reply) => {
   Object.assign(category, updateData);
   await category.save();
 
-  reply.send({ success: true, message: 'Category updated successfully', data: { category } });
+  const normalized = normalizeCategory(category, 0);
+
+  reply.send({
+    success: true,
+    message: 'Category updated successfully',
+    category: normalized,
+    data: { category: normalized }
+  });
 };
 
 const adminDeleteCategory = async (request, reply) => {
-  const category = await Category.findById(request.params.id);
+  const param = request.params.id || request.params.slug;
+  const isObjectId = /^[0-9a-fA-F]{24}$/.test(param);
+
+  const category = await Category.findOne({
+    $or: [
+      { slug: param },
+      ...(isObjectId ? [{ _id: param }] : [])
+    ]
+  });
+
   if (!category) throw new CustomError('Category not found', 404, 'CATEGORY_NOT_FOUND');
 
   if (category.image?.publicId) await deleteImage(category.image.publicId);

@@ -25,10 +25,26 @@ const adminGetCustomers = async (request, reply) => {
     .skip(skip)
     .limit(Number(limit));
 
+  const items = customers.map((c) => ({
+    id: String(c._id),
+    _id: c._id,
+    name: `${c.firstName || ''} ${c.lastName || ''}`.trim() || c.companyName || c.email,
+    email: c.email,
+    phone: c.phone || '',
+    company: c.companyName || '',
+    companyName: c.companyName || '',
+    role: c.role,
+    isTradeApproved: !!c.isTradeApproved,
+    createdAt: c.createdAt || new Date().toISOString()
+  }));
+
   reply.send({
     success: true,
+    count: items.length,
+    items,
     data: {
-      customers,
+      customers: items,
+      items,
       pagination: {
         total,
         page: Number(page),

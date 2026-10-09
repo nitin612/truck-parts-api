@@ -43,6 +43,21 @@ const errorHandler = (error, request, reply) => {
     details = error.validation;
   }
 
+  // Handle Zod Validation Error
+  if (error.name === 'ZodError' || error.issues) {
+    statusCode = 400;
+    errorCode = 'VALIDATION_ERROR';
+    message = 'Validation failed';
+    details = error.issues || error.errors;
+  }
+
+  // Handle CORS & CSRF Origin Denials
+  if (error.message && (error.message.includes('CORS blocked') || error.message.includes('CSRF'))) {
+    statusCode = 403;
+    errorCode = 'FORBIDDEN_ORIGIN';
+    message = error.message;
+  }
+
   reply.status(statusCode).send({
     success: false,
     error: {

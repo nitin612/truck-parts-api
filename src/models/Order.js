@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const orderItemSchema = new mongoose.Schema({
-  product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+  product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: false },
   name: { type: String, required: true },
   sku: { type: String, required: true },
   oemPartNumber: String,
@@ -16,7 +16,9 @@ const orderItemSchema = new mongoose.Schema({
 
 const orderSchema = new mongoose.Schema({
   orderNumber: { type: String, required: true, unique: true },
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false, default: null },
+  isGuest: { type: Boolean, default: false },
+  guestEmail: { type: String, trim: true, lowercase: true },
   
   items: [orderItemSchema],
   
@@ -52,8 +54,7 @@ const orderSchema = new mongoose.Schema({
   payment: {
     method: {
       type: String,
-      enum: ['DIRECT_BANK_TRANSFER', 'TRADE_ACCOUNT_30_DAYS', 'COD_DEPOT_PICKUP', 'CREDIT_CARD_DIRECT', 'PURCHASE_ORDER'],
-      default: 'DIRECT_BANK_TRANSFER'
+      default: 'CARD'
     },
     status: {
       type: String,
@@ -74,12 +75,10 @@ const orderSchema = new mongoose.Schema({
     trackingUrl: String,
     shippingMethod: {
       type: String,
-      enum: ['STANDARD', 'EXPRESS_COURIER', 'HEAVY_FREIGHT_PALLET', 'DEPOT_PICKUP'],
-      default: 'STANDARD'
+      default: 'Standard road'
     },
     status: {
       type: String,
-      enum: ['PROCESSING', 'BOOKED', 'DISPATCHED', 'IN_TRANSIT', 'OUT_FOR_DELIVERY', 'DELIVERED', 'COLLECTED'],
       default: 'PROCESSING'
     },
     dispatchedAt: Date,
@@ -89,11 +88,7 @@ const orderSchema = new mongoose.Schema({
   
   orderStatus: {
     type: String,
-    enum: [
-      'PENDING_PAYMENT', 'PAYMENT_CONFIRMED', 'PROCESSING', 'PARTS_ALLOCATED',
-      'READY_FOR_DISPATCH', 'DISPATCHED', 'DELIVERED', 'CANCELLED', 'CORE_RETURN_PENDING', 'COMPLETED'
-    ],
-    default: 'PENDING_PAYMENT'
+    default: 'Packed in Campbellfield VIC'
   },
   
   customerNotes: String,

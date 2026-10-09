@@ -135,10 +135,93 @@ const adminMarkOrderPaid = async (request, reply) => {
   });
 };
 
+const createCheckoutSession = async (request, reply) => {
+  const { ref } = request.body || {};
+  if (!process.env.STRIPE_SECRET_KEY) {
+    return reply.status(400).send({
+      success: false,
+      error: 'Stripe gateway unconfigured. Demo card confirmation active.'
+    });
+  }
+
+  try {
+    const order = await Order.findOne({ orderNumber: ref });
+    if (!order) throw new CustomError('Order not found', 404, 'ORDER_NOT_FOUND');
+
+    const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+    const appUrl = (process.env.APP_URL || 'http://localhost:5173').replace(/\/$/, '');
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [{
+        price_data: {
+          currency: 'aud',
+          product_data: {
+            name: `Aurex Order #${order.orderNumber}`
+          },
+          unit_amount: Math.round(order.pricing.grandTotal * 100)
+        },
+        quantity: 1
+      }],
+      mode: 'payment',
+      success_url: `${appUrl}/order-success/${order.orderNumber}`,
+      cancel_url: `${appUrl}/checkout`,
+      client_reference_id: order.orderNumber
+    });
+
+    reply.send({
+      success: true,
+      url: session.url
+    });
+  } catch (err) {
+    reply.status(400).send({
+      success: false,
+      error: err.message
+    });
+  }
+};
+
+const { verifyWebhookSignature } = require('../utils/webhookVerifier');
+
+const handleWebhook = async (request, reply) => {
+  const sig = request.headers['stripe-signature'] || request.headers['x-webhook-signature'];
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+  if (!webhookSecret || !sig) {
+    return reply.status(400).send({ success: false, error: 'Webhook secret or signature missing' });
+  }
+
+  // Timing-safe verification
+  const isValid = verifyWebhookSignature(request.body, sig, webhookSecret);
+  if (!isValid) {
+    return reply.status(400).send({ success: false, error: 'Invalid webhook signature' });
+  }
+
+  const event = request.body || {};
+  if (event.type === 'checkout.session.completed') {
+    const session = event.data?.object;
+    const orderNumber = session?.client_reference_id;
+    if (orderNumber) {
+      const order = await Order.findOne({ orderNumber });
+      if (order) {
+        order.payment.status = 'PAID';
+        order.payment.paidAt = new Date();
+        order.payment.transactionId = session.payment_intent || session.id;
+        order.orderStatus = 'PARTS_ALLOCATED';
+        await order.save();
+      }
+    }
+  }
+
+  reply.send({ success: true, received: true });
+};
+
 module.exports = {
   getPublicPaymentConfig,
   submitPaymentProof,
   adminGetPaymentSettings,
   adminUpdatePaymentSettings,
-  adminMarkOrderPaid
+  adminMarkOrderPaid,
+  createCheckoutSession,
+  handleWebhook
 };

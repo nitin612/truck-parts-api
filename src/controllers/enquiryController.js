@@ -123,8 +123,34 @@ const getEnquiryByNumber = async (request, reply) => {
   });
 };
 
+const normalizeEnquiry = (e) => {
+  if (!e) return e;
+  const obj = e.toObject ? e.toObject() : e;
+  const num = obj.enquiryNumber || (obj._id ? String(obj._id) : 'ENQ-UNKNOWN');
+  return {
+    ...obj,
+    id: num,
+    ref: num,
+    enquiryNumber: num,
+    name: obj.name || obj.customerName || 'Customer',
+    customerName: obj.customerName || obj.name || 'Customer',
+    email: obj.email || '',
+    phone: obj.phone || '',
+    topic: obj.topic || obj.partDetails?.partName || 'General Enquiry',
+    sku: obj.sku || obj.partDetails?.oemPartNumber || obj.partDetails?.product?.sku || '',
+    message: obj.message || '',
+    status: obj.status || 'New',
+    createdAt: obj.createdAt || new Date().toISOString()
+  };
+};
+
 const adminGetEnquiries = async (request, reply) => {
-  const { status, urgency, page = 1, limit = 50 } = request.query;
+  const isStaff = request.user && ['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'].includes(request.user.role);
+  if (!isStaff) {
+    throw new CustomError('Staff authorization required to view quote requests', 403, 'FORBIDDEN');
+  }
+
+  const { status, urgency, page = 1, limit = 100 } = request.query || {};
   const filter = {};
 
   if (status) filter.status = status;
@@ -139,10 +165,15 @@ const adminGetEnquiries = async (request, reply) => {
     .skip(skip)
     .limit(Number(limit));
 
+  const items = enquiries.map(normalizeEnquiry);
+
   reply.send({
     success: true,
+    count: items.length,
+    items,
     data: {
-      enquiries,
+      enquiries: items,
+      items,
       pagination: {
         total,
         page: Number(page),
@@ -153,38 +184,58 @@ const adminGetEnquiries = async (request, reply) => {
   });
 };
 
-const adminRespondEnquiry = async (request, reply) => {
-  const enquiry = await Enquiry.findById(request.params.id);
+const updateEnquiryStatusByRef = async (request, reply) => {
+  const isStaff = request.user && ['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'].includes(request.user.role);
+  if (!isStaff) {
+    throw new CustomError('Staff authorization required to modify quote requests', 403, 'FORBIDDEN');
+  }
+
+  const ref = request.params.enquiryNumber || request.params.id || request.params.ref;
+  const isObjectId = /^[0-9a-fA-F]{24}$/.test(ref);
+
+  const enquiry = await Enquiry.findOne({
+    $or: [
+      { enquiryNumber: ref },
+      ...(isObjectId ? [{ _id: ref }] : [])
+    ]
+  });
+
   if (!enquiry) throw new CustomError('Quote request not found', 404, 'ENQUIRY_NOT_FOUND');
 
-  const { status, adminNotes, quotedPrice, quotedAvailability } = request.body;
+  const { status, adminNotes, quotedPrice, quotedAvailability } = request.body || {};
 
   if (status) enquiry.status = status;
   if (adminNotes !== undefined) enquiry.adminNotes = adminNotes;
   if (quotedPrice !== undefined) enquiry.quotedPrice = Number(quotedPrice);
   if (quotedAvailability !== undefined) enquiry.quotedAvailability = quotedAvailability;
 
-  enquiry.respondedBy = request.user._id;
+  if (request.user?._id) enquiry.respondedBy = request.user._id;
   enquiry.respondedAt = new Date();
 
   await enquiry.save();
 
-  // Send email to customer if quote is provided
   if (status === 'QUOTE_SENT' || quotedPrice > 0) {
-    sendQuoteResponseEmail(enquiry).catch(err => console.error('Quote email error:', err));
+    sendQuoteResponseEmail(enquiry).catch((err) => console.error('Quote email error:', err));
   }
+
+  const normalized = normalizeEnquiry(enquiry);
 
   reply.send({
     success: true,
-    message: 'Quote response updated and sent to customer',
-    data: { enquiry }
+    message: 'Enquiry updated successfully',
+    enquiry: normalized,
+    data: { enquiry: normalized }
   });
 };
+
+const adminRespondEnquiry = updateEnquiryStatusByRef;
 
 module.exports = {
   createEnquiry,
   getCustomerEnquiries,
   getEnquiryByNumber,
   adminGetEnquiries,
-  adminRespondEnquiry
+  adminRespondEnquiry,
+  updateEnquiryStatusByRef,
+  normalizeEnquiry
 };

@@ -8,8 +8,14 @@ const fastify = require('fastify')({
       'req.body.password',
       'req.body.newPassword',
       'req.body.oldPassword',
+      'req.body.confirmPassword',
       'req.body.twoFactorSecret',
-      'req.body.twoFactorCode'
+      'req.body.twoFactorCode',
+      'req.body.cardNumber',
+      'req.body.cvv',
+      'req.body.expiry',
+      'req.body.token',
+      'req.body.refreshToken'
     ]
   }
 });
@@ -31,7 +37,8 @@ try {
 }
 
 // 1. Strict Origin Allowlist
-const allowedOrigins = [
+const rawOrigins = [
+  process.env.CLIENT_ORIGINS,
   process.env.CLIENT_URL,
   process.env.ADMIN_URL,
   'http://localhost:3000',
@@ -44,25 +51,36 @@ const allowedOrigins = [
   'http://127.0.0.1:5174'
 ]
   .filter(Boolean)
-  .map((url) => url.replace(/\/$/, ''));
+  .flatMap((v) => (typeof v === 'string' ? v.split(',') : []))
+  .map((url) => url.trim().replace(/\/$/, ''))
+  .filter(Boolean);
 
-// Register CORS with origin validation
+const allowedOrigins = Array.from(new Set(rawOrigins));
+
+const isDev = process.env.NODE_ENV !== 'production';
+const LOCAL_ORIGIN_REGEX = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/;
+
+function isOriginAllowed(origin) {
+  if (!origin) return true;
+  const clean = origin.trim().replace(/\/$/, '');
+  if (allowedOrigins.includes(clean)) return true;
+  if (isDev && LOCAL_ORIGIN_REGEX.test(clean)) return true;
+  if (/^https:\/\/([a-zA-Z0-9-]+\.)?aurextruckparts\.com\.au$/.test(clean)) return true;
+  if (/^https:\/\/truck-parts-[a-zA-Z0-9-]+\.vercel\.app$/.test(clean)) return true;
+  return false;
+}
+
+// Register CORS with strict origin validation
 fastify.register(require('@fastify/cors'), {
   origin: (origin, cb) => {
-    // Allow non-browser requests (mobile, server-to-server)
+    // Non-browser or server-to-server requests have no origin header
     if (!origin) return cb(null, true);
 
-    const cleanOrigin = origin.replace(/\/$/, '');
-    if (
-      allowedOrigins.includes(cleanOrigin) ||
-      cleanOrigin.endsWith('.vercel.app') ||
-      cleanOrigin.includes('localhost') ||
-      cleanOrigin.includes('127.0.0.1')
-    ) {
+    if (isOriginAllowed(origin)) {
       return cb(null, true);
     }
 
-    return cb(null, true);
+    return cb(new Error(`CORS blocked for untrusted origin: ${origin}`), false);
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
@@ -132,17 +150,19 @@ fastify.addHook('preValidation', async (request) => {
 fastify.addHook('preHandler', async (request, reply) => {
   const method = request.method;
   if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(method)) {
-    const originHeader = request.headers.origin;
+    const originHeader = request.headers.origin || request.headers.referer;
     if (originHeader) {
-      const cleanOrigin = originHeader.replace(/\/$/, '');
-      const isAllowed =
-        allowedOrigins.includes(cleanOrigin) ||
-        cleanOrigin.endsWith('.vercel.app') ||
-        cleanOrigin.includes('localhost') ||
-        cleanOrigin.includes('127.0.0.1');
-      if (!isAllowed) {
-        reply.code(403);
-        throw new Error('CSRF origin validation failed: untrusted origin');
+      let originToCheck = originHeader;
+      try {
+        const u = new URL(originHeader);
+        originToCheck = u.origin;
+      } catch (e) {}
+
+      if (!isOriginAllowed(originToCheck)) {
+        return reply.code(403).send({
+          success: false,
+          error: 'CSRF validation blocked: untrusted origin'
+        });
       }
     }
   }
@@ -242,6 +262,14 @@ const { couponRoutes, adminCouponRoutes } = require('./src/routes/couponRoutes')
 fastify.register(couponRoutes, { prefix: '/api/v1/coupons' });
 fastify.register(adminCouponRoutes, { prefix: '/api/v1/admin/coupons' });
 
+// Storefront & Admin Promos
+fastify.register(require('./src/routes/promoRoutes'), { prefix: '/api/v1/promos' });
+fastify.register(require('./src/routes/promoRoutes'), { prefix: '/api/promos' });
+
+// File Uploads
+fastify.register(require('./src/routes/uploadRoutes'), { prefix: '/api/v1/uploads' });
+fastify.register(require('./src/routes/uploadRoutes'), { prefix: '/uploads' });
+
 const { campaignRoutes, adminCampaignRoutes } = require('./src/routes/campaignRoutes');
 fastify.register(campaignRoutes, { prefix: '/api/v1/campaigns' });
 fastify.register(adminCampaignRoutes, { prefix: '/api/v1/admin/campaigns' });
@@ -282,6 +310,7 @@ fastify.register(adminActivityRoutes, { prefix: '/api/v1/admin/logs' });
 fastify.register(require('./src/routes/adminLogRoutes'), { prefix: '/api/v1/admin/audit-trail' });
 fastify.register(require('./src/routes/customerRoutes'), { prefix: '/api/v1/admin/customers' });
 fastify.register(require('./src/routes/dashboardRoutes'), { prefix: '/api/v1/admin/dashboard' });
+fastify.register(require('./src/routes/dashboardRoutes'), { prefix: '/api/v1/admin/stats' });
 
 // AI Assistant
 fastify.register(require('./src/routes/chatRoutes'), { prefix: '/api/v1/chat' });
@@ -350,11 +379,114 @@ const mongoose = require('mongoose');
 
 let isFastifyReady = false;
 
+// Static serving for local uploads directory with traversal defense
+fastify.get('/uploads/:filename', async (request, reply) => {
+  const rawParam = request.params.filename || '';
+  const safeFilename = path.basename(rawParam);
+
+  if (!safeFilename || safeFilename.startsWith('.') || safeFilename.includes('\0')) {
+    return reply.code(400).send({ error: 'Invalid filename' });
+  }
+
+  const filePath = path.resolve(uploadsDir, safeFilename);
+  if (!filePath.startsWith(path.resolve(uploadsDir))) {
+    return reply.code(403).send({ error: 'Access denied: path traversal detected' });
+  }
+
+  if (fs.existsSync(filePath)) {
+    const ext = path.extname(safeFilename).toLowerCase();
+    const MIME_MAP = {
+      '.jpg': 'image/jpeg',
+      '.jpeg': 'image/jpeg',
+      '.png': 'image/png',
+      '.webp': 'image/webp',
+      '.avif': 'image/avif',
+      '.pdf': 'application/pdf'
+    };
+    const mimeType = MIME_MAP[ext] || 'application/octet-stream';
+
+    reply.header('X-Content-Type-Options', 'nosniff');
+    reply.header('Content-Security-Policy', "default-src 'none'; sandbox");
+    reply.header('Cache-Control', 'public, max-age=86400');
+    return reply.type(mimeType).send(fs.createReadStream(filePath));
+  }
+  return reply.code(404).send({ error: 'Image not found' });
+});
+
+async function ensureSeedData() {
+  try {
+    const Coupon = require('./src/models/Coupon');
+    const SiteSetting = require('./src/models/SiteSetting');
+    const Admin = require('./src/models/Admin');
+
+    const welcome10 = await Coupon.findOne({ code: 'WELCOME10' });
+    if (!welcome10) {
+      await Coupon.create({
+        code: 'WELCOME10',
+        description: 'First order 10% off',
+        discountType: 'PERCENTAGE',
+        discountValue: 10,
+        startDate: new Date(Date.now() - 864e5),
+        endDate: new Date(Date.now() + 365 * 864e5 * 5),
+        isActive: true
+      });
+      console.log('✅ Seeded promo code WELCOME10 (10% off)');
+    }
+
+    const welcome5 = await Coupon.findOne({ code: 'WELCOME5' });
+    if (!welcome5) {
+      await Coupon.create({
+        code: 'WELCOME5',
+        description: '5% off order',
+        discountType: 'PERCENTAGE',
+        discountValue: 5,
+        startDate: new Date(Date.now() - 864e5),
+        endDate: new Date(Date.now() + 365 * 864e5 * 5),
+        isActive: true
+      });
+    }
+
+    const settings = await SiteSetting.findOne();
+    if (!settings) {
+      await SiteSetting.create({
+        storeName: 'Aurex Truck Parts Australia',
+        phone: '03 9000 0000',
+        email: 'sales@aurextruckparts.com.au',
+        address: '41 Halley Court, Campbellfield VIC 3061',
+        hours: 'Mon to Fri 9am to 5pm. Sat 9am to 12pm.',
+        freeFreightOver: 500,
+        standardFee: 24,
+        expressFee: 39,
+        abn: 'ABN 12 345 678 901',
+        announcement: 'Free road freight over $500. Order by 2pm for same day dispatch.'
+      });
+      console.log('✅ Initialized default SiteSettings');
+    }
+
+    const adminEmail = (process.env.ADMIN_EMAIL || 'admin@aurex.com.au').toLowerCase();
+    const adminPass = process.env.ADMIN_PASSWORD || 'Admin123!';
+    const adminUser = await Admin.findOne({ email: adminEmail });
+    if (!adminUser) {
+      await Admin.create({
+        name: process.env.ADMIN_NAME || 'Store Admin',
+        email: adminEmail,
+        password: adminPass,
+        role: 'SUPER_ADMIN',
+        isActive: true
+      });
+      console.log(`✅ Seeded admin account: ${adminEmail}`);
+    }
+  } catch (err) {
+    console.warn('Seed verification warning:', err.message);
+  }
+}
+
 if (process.env.VERCEL) {
   module.exports = async (req, res) => {
     try {
       if (mongoose.connection.readyState !== 1 && mongoose.connection.readyState !== 2) {
         await connectDB();
+        await ensureSeedData();
       }
       if (!isFastifyReady) {
         await fastify.ready();
@@ -380,6 +512,7 @@ if (process.env.VERCEL) {
   const start = async () => {
     try {
       await connectDB();
+      await ensureSeedData();
       const port = parseInt(process.env.PORT || '5001', 10);
       await fastify.listen({ port, host: '0.0.0.0' });
       socketService.initSocket(fastify.server);

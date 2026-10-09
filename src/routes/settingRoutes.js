@@ -1,14 +1,14 @@
 const { getSettings, updateSettings } = require('../controllers/settingController');
-const { authenticate, authorize } = require('../middleware/auth');
+const { optionalAuth, authenticate, requireStaff } = require('../middleware/auth');
 
 async function settingRoutes(fastify, options) {
   fastify.get('/', getSettings);
+  fastify.put('/', { preHandler: [authenticate, requireStaff] }, updateSettings);
 }
 
 async function adminSettingRoutes(fastify, options) {
-  const adminAuth = [authenticate, authorize('SUPER_ADMIN', 'ADMIN')];
-  fastify.get('/', { preHandler: adminAuth }, getSettings);
-  fastify.put('/', { preHandler: adminAuth }, updateSettings);
+  fastify.get('/', { preHandler: [authenticate, requireStaff] }, getSettings);
+  fastify.put('/', { preHandler: [authenticate, requireStaff] }, updateSettings);
 }
 
 module.exports = {

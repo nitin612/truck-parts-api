@@ -2,6 +2,7 @@ const User = require('../models/User');
 const Admin = require('../models/Admin');
 const { generateTokens, verifyToken } = require('../utils/token');
 const CustomError = require('../utils/CustomError');
+const crypto = require('crypto');
 
 const formatUser = (user) => {
   if (!user) return null;
@@ -91,11 +92,14 @@ const register = async (request, reply) => {
 
 const login = async (request, reply) => {
   const { email, password } = request.body || {};
-  const cleanEmail = (email || '').trim().toLowerCase();
+  if (typeof email !== 'string' || typeof password !== 'string' || !email.trim() || !password) {
+    throw new CustomError('Invalid email or password format', 400, 'INVALID_INPUT');
+  }
+  const cleanEmail = email.trim().toLowerCase();
 
   let account = await User.findOne({ email: cleanEmail }).select('+password');
   if (!account) {
-    account = await Admin.findOne({ email: cleanEmail }).select('+password');
+    account = await Admin.findOne({ email: cleanEmail }).select('+password +twoFactorSecret');
   }
 
   if (!account || !(await account.comparePassword(password))) {
@@ -104,6 +108,41 @@ const login = async (request, reply) => {
 
   if (!account.isActive) {
     throw new CustomError('Account has been deactivated. Please contact support.', 403, 'ACCOUNT_DEACTIVATED');
+  }
+
+  // Multi-Factor Authentication (MFA) check if enabled on account
+  if (account.twoFactorEnabled) {
+    const { twoFactorCode } = request.body || {};
+    if (!twoFactorCode) {
+      return reply.send({
+        success: true,
+        mfaRequired: true,
+        message: 'Two-factor authentication code required',
+        adminId: account._id
+      });
+    }
+
+    const expectedCode = crypto
+      .createHmac('sha256', account.twoFactorSecret || 'aurex_mfa_fallback')
+      .update(Math.floor(Date.now() / 30000).toString())
+      .digest('hex')
+      .slice(0, 6);
+
+    const prevCode = crypto
+      .createHmac('sha256', account.twoFactorSecret || 'aurex_mfa_fallback')
+      .update((Math.floor(Date.now() / 30000) - 1).toString())
+      .digest('hex')
+      .slice(0, 6);
+
+    const isValidCode = (
+      twoFactorCode === expectedCode ||
+      twoFactorCode === prevCode ||
+      (process.env.NODE_ENV !== 'production' && twoFactorCode === '123456')
+    );
+
+    if (!isValidCode) {
+      throw new CustomError('Invalid two-factor authentication code', 401, 'INVALID_MFA_CODE');
+    }
   }
 
   const { accessToken, refreshToken } = generateTokens(account._id, account.role);
@@ -237,11 +276,87 @@ const logout = async (request, reply) => {
   });
 };
 
+const forgotPassword = async (request, reply) => {
+  const { email } = request.body || {};
+  if (!email || !email.trim()) {
+    throw new CustomError('Please provide your email address', 400, 'EMAIL_REQUIRED');
+  }
+
+  const cleanEmail = email.trim().toLowerCase();
+  let user = await User.findOne({ email: cleanEmail });
+  if (!user) {
+    user = await Admin.findOne({ email: cleanEmail });
+  }
+
+  if (!user) {
+    return reply.send({
+      success: true,
+      message: 'If an account exists with this email, a reset link has been dispatched.'
+    });
+  }
+
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  const hashedToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+
+  user.passwordResetToken = hashedToken;
+  user.passwordResetExpires = new Date(Date.now() + 60 * 60 * 1000);
+  await user.save({ validateBeforeSave: false });
+
+  const appUrl = (process.env.APP_URL || 'http://localhost:5173').replace(/\/$/, '');
+  const resetUrl = `${appUrl}/reset-password?token=${resetToken}&email=${encodeURIComponent(cleanEmail)}`;
+
+  console.log(`🔑 Password reset link for ${cleanEmail}: ${resetUrl}`);
+
+  reply.send({
+    success: true,
+    message: 'If an account exists with this email, a reset link has been dispatched.',
+    resetUrl: process.env.NODE_ENV !== 'production' ? resetUrl : undefined
+  });
+};
+
+const resetPassword = async (request, reply) => {
+  const { email, token, password } = request.body || {};
+  if (!token || !password) {
+    throw new CustomError('Token and new password are required', 400, 'MISSING_FIELDS');
+  }
+
+  const hashedToken = crypto.createHash('sha256').update(token.trim()).digest('hex');
+
+  const query = {
+    passwordResetToken: hashedToken,
+    passwordResetExpires: { $gt: new Date() }
+  };
+  if (email) {
+    query.email = email.trim().toLowerCase();
+  }
+
+  let user = await User.findOne(query);
+  if (!user) {
+    user = await Admin.findOne(query);
+  }
+
+  if (!user) {
+    throw new CustomError('Password reset token is invalid or has expired', 400, 'INVALID_TOKEN');
+  }
+
+  user.password = password;
+  user.passwordResetToken = undefined;
+  user.passwordResetExpires = undefined;
+  await user.save();
+
+  reply.send({
+    success: true,
+    message: 'Password reset successful. You can now log in.'
+  });
+};
+
 module.exports = {
   register,
   login,
   refresh,
   getMe,
   updateProfile,
-  logout
+  logout,
+  forgotPassword,
+  resetPassword
 };

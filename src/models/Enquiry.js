@@ -12,10 +12,14 @@ const enquirySchema = new mongoose.Schema({
   },
   customerName: {
     type: String,
-    required: true,
+    default: 'Customer',
     trim: true
   },
   name: {
+    type: String,
+    trim: true
+  },
+  sku: {
     type: String,
     trim: true
   },
@@ -35,7 +39,7 @@ const enquirySchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    required: true,
+    default: '',
     trim: true
   },
   // Truck Vehicle Identification for precise part matching
@@ -55,13 +59,12 @@ const enquirySchema = new mongoose.Schema({
     quantity: { type: Number, default: 1 },
     urgency: {
       type: String,
-      enum: ['TRUCK_OFF_ROAD_URGENT', 'STANDARD', 'STOCK_QUOTE'],
       default: 'STANDARD'
     }
   },
   message: {
     type: String,
-    required: true
+    default: ''
   },
   attachments: [{
     url: String,
@@ -70,8 +73,7 @@ const enquirySchema = new mongoose.Schema({
   }],
   status: {
     type: String,
-    enum: ['NEW', 'IN_REVIEW', 'QUOTE_SENT', 'RESOLVED', 'REJECTED'],
-    default: 'NEW'
+    default: 'New'
   },
   adminNotes: String,
   quotedPrice: Number,

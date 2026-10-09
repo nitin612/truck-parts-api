@@ -1,18 +1,31 @@
 const orderController = require('../controllers/orderController');
-const { authenticate, authorize } = require('../middleware/auth');
+const { optionalAuth, authenticate, requireStaff } = require('../middleware/auth');
 
 async function orderRoutes(fastify, options) {
-  fastify.post('/', { preHandler: authenticate }, orderController.createOrder);
-  fastify.get('/mine', { preHandler: authenticate }, orderController.getMyOrders);
+  // Allow guest or authenticated checkout
+  fastify.post('/', { preHandler: optionalAuth }, orderController.createOrder);
+  
+  // My orders (auth or session)
+  fastify.get('/mine', { preHandler: optionalAuth }, orderController.getMyOrders);
+  
+  // Public parcel tracking by order reference (PII-stripped safe tracking view)
   fastify.get('/track/:orderNumber', orderController.trackOrderByRef);
-  fastify.get('/:orderNumber', { preHandler: authenticate }, orderController.getOrderByNumber);
+  
+  // Orders list (staff only)
+  fastify.get('/', { preHandler: [authenticate, requireStaff] }, orderController.adminGetOrders);
+  
+  // Status update by reference (staff only)
+  fastify.patch('/:orderNumber/status', { preHandler: [authenticate, requireStaff] }, orderController.updateOrderStatusByRef);
+
+  // Single order lookup by orderNumber or ID (strictly verified: owner or matching guest email)
+  fastify.get('/:orderNumber', { preHandler: optionalAuth }, orderController.getOrderByNumber);
 }
 
 async function adminOrderRoutes(fastify, options) {
-  const adminAuth = [authenticate, authorize('SUPER_ADMIN', 'ADMIN', 'WAREHOUSE_MANAGER', 'SALES_REP')];
-  fastify.get('/', { preHandler: adminAuth }, orderController.adminGetOrders);
-  fastify.get('/:id', { preHandler: adminAuth }, orderController.adminGetOrderDetail);
-  fastify.patch('/:id/status', { preHandler: adminAuth }, orderController.adminUpdateOrderStatus);
+  const staffAuth = [authenticate, requireStaff];
+  fastify.get('/', { preHandler: staffAuth }, orderController.adminGetOrders);
+  fastify.get('/:id', { preHandler: staffAuth }, orderController.adminGetOrderDetail);
+  fastify.patch('/:id/status', { preHandler: staffAuth }, orderController.updateOrderStatusByRef);
 }
 
 module.exports = {

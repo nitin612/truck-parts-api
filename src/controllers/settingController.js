@@ -7,6 +7,7 @@ const getSettings = async (request, reply) => {
   }
   reply.send({
     success: true,
+    settings,
     data: { settings }
   });
 };
@@ -22,6 +23,7 @@ const updateSettings = async (request, reply) => {
   reply.send({
     success: true,
     message: 'Settings updated successfully',
+    settings,
     data: { settings }
   });
 };

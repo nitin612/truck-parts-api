@@ -78,8 +78,19 @@ const authorize = (...roles) => {
   };
 };
 
+const requireStaff = async (request, reply) => {
+  if (!request.user) {
+    throw new CustomError('Authentication required to access this staff resource', 401, 'UNAUTHORIZED');
+  }
+  const staffRoles = ['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'];
+  if (!staffRoles.includes(request.user.role)) {
+    throw new CustomError('Staff authorization required to perform this action', 403, 'FORBIDDEN');
+  }
+};
+
 module.exports = {
   authenticate,
   optionalAuth,
-  authorize
+  authorize,
+  requireStaff
 };

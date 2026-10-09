@@ -1,12 +1,11 @@
 const customerController = require('../controllers/customerController');
-const { authenticate, authorize } = require('../middleware/auth');
+const { authenticate, requireStaff } = require('../middleware/auth');
 
 async function customerRoutes(fastify, options) {
-  const adminAuth = [authenticate, authorize('SUPER_ADMIN', 'ADMIN', 'SALES_REP')];
-  fastify.get('/', { preHandler: adminAuth }, customerController.adminGetCustomers);
-  fastify.get('/:id', { preHandler: adminAuth }, customerController.adminGetCustomerDetail);
-  fastify.patch('/:id/trade-status', { preHandler: [authenticate, authorize('SUPER_ADMIN', 'ADMIN')] }, customerController.adminUpdateTradeStatus);
-  fastify.patch('/:id/toggle-active', { preHandler: [authenticate, authorize('SUPER_ADMIN', 'ADMIN')] }, customerController.adminToggleCustomerActive);
+  fastify.get('/', { preHandler: [authenticate, requireStaff] }, customerController.adminGetCustomers);
+  fastify.get('/:id', { preHandler: [authenticate, requireStaff] }, customerController.adminGetCustomerDetail);
+  fastify.patch('/:id/trade-status', { preHandler: [authenticate, requireStaff] }, customerController.adminUpdateTradeStatus);
+  fastify.patch('/:id/toggle-active', { preHandler: [authenticate, requireStaff] }, customerController.adminToggleCustomerActive);
 }
 
 module.exports = customerRoutes;
