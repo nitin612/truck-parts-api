@@ -24,9 +24,8 @@ const cartItemSchema = new mongoose.Schema({
     default: 1.0
   },
   selectedFitment: {
-    make: String,
-    model: String,
-    year: Number
+    type: mongoose.Schema.Types.Mixed,
+    default: null
   }
 });
 
@@ -34,8 +33,14 @@ const cartSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
-    unique: true
+    required: false,
+    sparse: true,
+    index: true
+  },
+  sessionId: {
+    type: String,
+    sparse: true,
+    index: true
   },
   items: [cartItemSchema],
   subtotal: {

@@ -1,8 +1,8 @@
 const cartController = require('../controllers/cartController');
-const { authenticate } = require('../middleware/auth');
+const { optionalAuth } = require('../middleware/auth');
 
 async function cartRoutes(fastify, options) {
-  fastify.addHook('preHandler', authenticate);
+  fastify.addHook('preHandler', optionalAuth);
 
   fastify.get('/', cartController.getCart);
   fastify.post('/items', cartController.addToCart);

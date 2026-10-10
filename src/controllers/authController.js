@@ -22,6 +22,8 @@ const formatUser = (user) => {
     phone: user.phone || '',
     companyName: user.companyName || user.company || '',
     company: user.companyName || user.company || '',
+    shippingAddress: user.shippingAddress || null,
+    address: user.shippingAddress || null,
     role: user.role || (isAdm ? 'ADMIN' : 'CUSTOMER'),
     isAdmin: isAdm,
     isTradeApproved: !!user.isTradeApproved,
@@ -248,7 +250,7 @@ const updateProfile = async (request, reply) => {
   if (!user) {
     throw new CustomError('User not found', 404, 'NOT_FOUND');
   }
-  const { firstName, lastName, phone, companyName, abnOrTaxId, fleetTruckModels } = request.body || {};
+  const { firstName, lastName, phone, companyName, abnOrTaxId, fleetTruckModels, address, shippingAddress } = request.body || {};
 
   if (firstName) user.firstName = firstName;
   if (lastName) user.lastName = lastName;
@@ -256,6 +258,52 @@ const updateProfile = async (request, reply) => {
   if (companyName) user.companyName = companyName;
   if (abnOrTaxId) user.abnOrTaxId = abnOrTaxId;
   if (Array.isArray(fleetTruckModels)) user.fleetTruckModels = fleetTruckModels;
+
+  const addr = shippingAddress || address;
+  if (addr && typeof addr === 'object') {
+    const rawStreet = addr.address || addr.addressLine1 || addr.streetAddress || '';
+    const rawSuburb = addr.suburb || addr.suburbOrCity || '';
+    const rawPostcode = addr.postcode || addr.postalCode || '';
+    const rawState = addr.state || 'VIC';
+    const rawName = addr.name || addr.fullName || `${user.firstName} ${user.lastName}`.trim();
+    const rawPhone = addr.phone || user.phone || '';
+
+    user.shippingAddress = {
+      fullName: rawName,
+      name: rawName,
+      phone: rawPhone,
+      email: addr.email || user.email,
+      companyName: addr.companyName || user.companyName || '',
+      addressLine1: rawStreet,
+      address: rawStreet,
+      suburbOrCity: rawSuburb,
+      suburb: rawSuburb,
+      state: rawState,
+      postalCode: rawPostcode,
+      postcode: rawPostcode,
+      country: addr.country || 'Australia',
+      deliveryInstructions: addr.notes || addr.deliveryInstructions || ''
+    };
+
+    try {
+      const Address = require('../models/Address');
+      await Address.updateMany({ user: user._id }, { isDefault: false });
+      await Address.create({
+        user: user._id,
+        companyName: user.shippingAddress.companyName,
+        fullName: rawName,
+        phone: rawPhone,
+        email: user.email,
+        addressLine1: rawStreet,
+        suburbOrCity: rawSuburb,
+        state: rawState,
+        postalCode: rawPostcode,
+        country: 'Australia',
+        deliveryInstructions: user.shippingAddress.deliveryInstructions,
+        isDefault: true
+      });
+    } catch { /* noop */ }
+  }
 
   await user.save();
 

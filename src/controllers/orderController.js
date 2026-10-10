@@ -292,6 +292,50 @@ const createOrder = async (request, reply) => {
     customerNotes: clean(body.customerNotes, 500) || shippingAddress.deliveryInstructions
   });
 
+  // Automatically save address to user's profile and default addresses
+  if (userId && shippingAddress && shippingAddress.addressLine1 && shippingAddress.addressLine1 !== 'Click and Collect') {
+    try {
+      const Address = require('../models/Address');
+      const existingAddress = await Address.findOne({
+        user: userId,
+        addressLine1: shippingAddress.addressLine1,
+        postalCode: shippingAddress.postalCode
+      });
+      if (!existingAddress) {
+        await Address.updateMany({ user: userId }, { isDefault: false });
+        await Address.create({
+          user: userId,
+          companyName: shippingAddress.companyName || user?.companyName,
+          fullName: shippingAddress.fullName,
+          phone: shippingAddress.phone,
+          email: shippingAddress.email,
+          addressLine1: shippingAddress.addressLine1,
+          addressLine2: shippingAddress.addressLine2,
+          suburbOrCity: shippingAddress.suburbOrCity,
+          state: shippingAddress.state,
+          postalCode: shippingAddress.postalCode,
+          country: shippingAddress.country || 'Australia',
+          deliveryInstructions: shippingAddress.deliveryInstructions,
+          isDefault: true
+        });
+      } else {
+        existingAddress.isDefault = true;
+        existingAddress.fullName = shippingAddress.fullName || existingAddress.fullName;
+        existingAddress.phone = shippingAddress.phone || existingAddress.phone;
+        existingAddress.email = shippingAddress.email || existingAddress.email;
+        existingAddress.suburbOrCity = shippingAddress.suburbOrCity || existingAddress.suburbOrCity;
+        existingAddress.state = shippingAddress.state || existingAddress.state;
+        await Address.updateMany({ user: userId, _id: { $ne: existingAddress._id } }, { isDefault: false });
+        await existingAddress.save();
+      }
+
+      if (user) {
+        user.shippingAddress = shippingAddress;
+        await user.save().catch(() => {});
+      }
+    } catch { /* noop */ }
+  }
+
   // The order exists: only now touch credit, coupon usage and stock.
   if (paymentMethod === '30 day fleet terms') {
     user.creditBalance = (user.creditBalance || 0) + pricingTotals.grandTotal;

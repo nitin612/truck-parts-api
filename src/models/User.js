@@ -46,6 +46,24 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  shippingAddress: {
+    fullName: String,
+    name: String,
+    phone: String,
+    email: String,
+    companyName: String,
+    addressLine1: String,
+    addressLine2: String,
+    streetAddress: String,
+    address: String,
+    suburbOrCity: String,
+    suburb: String,
+    state: String,
+    postalCode: String,
+    postcode: String,
+    country: { type: String, default: 'Australia' },
+    deliveryInstructions: String
+  },
   tradeDiscountPercent: {
     type: Number,
     default: 0,

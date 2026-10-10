@@ -86,7 +86,17 @@ fastify.register(require('@fastify/cors'), {
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin']
+  allowedHeaders: [
+    'Content-Type',
+    'Authorization',
+    'X-Requested-With',
+    'Accept',
+    'Origin',
+    'x-session-id',
+    'X-Session-Id',
+    'x-cart-session',
+    'X-Cart-Session'
+  ]
 });
 
 // 2. Register Security & Rate Limit Headers
