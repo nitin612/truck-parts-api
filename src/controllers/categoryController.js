@@ -7,6 +7,7 @@ const fs = require('fs');
 
 const normalizeCategory = (cat, count = 0) => {
   const obj = cat.toObject ? cat.toObject() : cat;
+  const imgUrl = typeof obj.image === 'string' ? obj.image : (obj.image?.url || '');
   return {
     ...obj,
     id: obj.slug || String(obj._id),
@@ -15,6 +16,8 @@ const normalizeCategory = (cat, count = 0) => {
     name: obj.name,
     tag: obj.tag || '',
     blurb: obj.blurb || obj.description || '',
+    image: obj.image || (imgUrl ? { url: imgUrl } : null),
+    imageUrl: imgUrl,
     count: count || obj.productCount || 0
   };
 };
@@ -74,6 +77,13 @@ const adminCreateCategory = async (request, reply) => {
     categoryData.description = categoryData.blurb;
   }
 
+  if (categoryData.imageUrl && !categoryData.image) {
+    categoryData.image = { url: categoryData.imageUrl };
+    delete categoryData.imageUrl;
+  } else if (typeof categoryData.image === 'string') {
+    categoryData.image = { url: categoryData.image };
+  }
+
   if (request.file) {
     const uploaded = await uploadImage(request.file.path, 'truck-parts/categories');
     categoryData.image = uploaded;
@@ -106,6 +116,13 @@ const adminUpdateCategory = async (request, reply) => {
 
   const updateData = { ...(request.body || {}) };
   if (updateData.blurb) updateData.description = updateData.blurb;
+
+  if (updateData.imageUrl) {
+    updateData.image = { url: updateData.imageUrl, publicId: category.image?.publicId || '' };
+    delete updateData.imageUrl;
+  } else if (typeof updateData.image === 'string') {
+    updateData.image = { url: updateData.image, publicId: category.image?.publicId || '' };
+  }
 
   if (request.file) {
     if (category.image?.publicId) await deleteImage(category.image.publicId);

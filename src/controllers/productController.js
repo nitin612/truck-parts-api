@@ -18,6 +18,7 @@ const normalizeProduct = (p) => {
     : [];
 
   const priceVal = obj.pricing?.isPOA ? null : (obj.pricing?.sellingPrice ?? obj.price ?? 0);
+  const stockLabel = obj.pricing?.isPOA ? 'Enquiry' : (obj.stockStatus || (obj.status === 'PUBLISHED' ? 'In stock VIC' : (obj.status || 'In stock VIC')));
 
   return {
     ...obj,
@@ -25,19 +26,30 @@ const normalizeProduct = (p) => {
     sku: obj.sku || '',
     name: obj.name || '',
     price: priceVal,
+    pricing: obj.pricing || {
+      sellingPrice: priceVal,
+      tradePrice: 0,
+      mrp: priceVal,
+      isPOA: obj.pricing?.isPOA || false,
+    },
     category: catSlug || 'accessories',
     sub: obj.subCategory || obj.sub || '',
     brand: obj.brandName || (obj.brand?.name) || obj.brand || '',
     fit: obj.fitmentSummary || obj.fit || '',
     oem: obj.oemPartNumber || obj.oem || '',
-    status: obj.pricing?.isPOA ? 'Enquiry' : (obj.status === 'PUBLISHED' ? 'In stock VIC' : (obj.status || 'In stock VIC')),
-    lead: obj.leadTimeDays ? `${obj.leadTimeDays} days` : (obj.lead || ''),
+    status: stockLabel,
+    stockStatus: stockLabel,
+    publicationStatus: obj.status || 'PUBLISHED',
+    isPublished: obj.status !== 'DRAFT' && obj.status !== 'ARCHIVED',
+    isVisible: obj.status !== 'DRAFT' && obj.status !== 'ARCHIVED',
+    lead: obj.leadTimeDays ? `${obj.leadTimeDays} days` : (obj.lead || 'Ships in 24 hrs'),
     rating: obj.rating ?? 4.8,
     reviews: obj.reviewCount ?? obj.reviews ?? 12,
-    badge: obj.isFeatured ? 'Popular' : (obj.badge || ''),
+    badge: obj.badge || (obj.isFeatured ? 'Popular' : ''),
     desc: obj.description || obj.desc || '',
-    specs: obj.technicalSpecifications || obj.specs || {},
-    images: imgs.length ? imgs : (obj.image ? [obj.image] : [])
+    specs: (obj.specs && Object.keys(obj.specs).length > 0) ? obj.specs : (obj.technicalSpecifications || {}),
+    images: imgs.length ? imgs : (obj.image ? [obj.image] : []),
+    imageUrl: imgs[0] || obj.image || ''
   };
 };
 
@@ -243,7 +255,7 @@ const getProductBySkuOrSlug = async (request, reply) => {
     status: 'PUBLISHED'
   }).limit(4).select('name sku oem oemPartNumber alternatePartNumbers pricing images condition status');
 
-  if (product.status !== 'PUBLISHED') {
+  if (product.status !== 'PUBLISHED' && !isStaffRequest(request)) {
     throw new CustomError('Truck part not found', 404, 'PRODUCT_NOT_FOUND');
   }
   const present = (doc) => toPublic(normalizeProduct(doc), doc);
@@ -296,30 +308,46 @@ const prepareProductPayload = async (body, existing = null) => {
   if (p.name) p.name = String(p.name).trim();
 
   // "In stock VIC" / "Built to order" / "Enquiry" are stock labels, not publication status.
-  const label = typeof p.status === 'string' && !DB_STATUSES.includes(p.status) ? p.status : null;
+  const label = typeof p.status === 'string' && !DB_STATUSES.includes(p.status) ? p.status : (p.stockStatus || null);
   if (label) {
     if (label !== 'Enquiry') p.stockStatus = label;
     delete p.status;
   }
+
+  // Visibility & Publication on Client Storefront
+  if (p.isVisible !== undefined) {
+    p.status = p.isVisible ? 'PUBLISHED' : 'DRAFT';
+    p.isBuyable = Boolean(p.isVisible);
+    delete p.isVisible;
+  } else if (p.isPublished !== undefined) {
+    p.status = p.isPublished ? 'PUBLISHED' : 'DRAFT';
+    p.isBuyable = Boolean(p.isPublished);
+    delete p.isPublished;
+  }
   if (!existing && !p.status) p.status = 'PUBLISHED';
 
   // Price & Pricing
-  if ('price' in p || label === 'Enquiry') {
-    const isPOA = p.price === null || p.price === '' || label === 'Enquiry';
+  if ('price' in p || label === 'Enquiry' || 'tradePrice' in p || 'mrp' in p || 'isPOA' in p || 'pricing' in p) {
+    const isPOA = p.isPOA === true || p.price === null || p.price === '' || label === 'Enquiry';
     const priceNum = isPOA ? 0 : Number(p.price);
     if (!isPOA && !(priceNum >= 0)) {
       throw new CustomError('Price must be a number.', 400, 'INVALID_PRICE');
     }
-    const current = existing?.pricing?.toObject ? existing.pricing.toObject() : {};
+    const current = existing?.pricing?.toObject ? existing.pricing.toObject() : (existing?.pricing || {});
+    const tradePrice = p.tradePrice !== undefined && p.tradePrice !== '' ? Number(p.tradePrice) : (current.tradePrice || 0);
+    const mrp = p.mrp !== undefined && p.mrp !== '' ? Number(p.mrp) : (current.mrp > priceNum ? current.mrp : priceNum);
     p.pricing = {
       ...current,
       sellingPrice: priceNum,
-      isPOA,
-      // A higher RRP that was already set is kept; otherwise it follows the selling price.
-      mrp: current.mrp > priceNum ? current.mrp : priceNum
+      tradePrice: tradePrice || 0,
+      mrp: mrp || priceNum,
+      isPOA
     };
   }
   delete p.price;
+  delete p.tradePrice;
+  delete p.mrp;
+  delete p.isPOA;
 
   // Category
   if (p.category !== undefined) {
@@ -353,15 +381,42 @@ const prepareProductPayload = async (body, existing = null) => {
   }
 
   // Images
-  if (Array.isArray(p.images)) {
+  if (Array.isArray(p.images) && p.images.length > 0) {
     p.images = p.images.map((img, i) => {
       if (typeof img === 'string') {
         return { url: img, publicId: `img_${Date.now()}_${i}`, isPrimary: i === 0 };
       }
       return img;
     });
+  } else if (p.imageUrl || p.image) {
+    const url = p.imageUrl || p.image;
+    p.images = [{ url, publicId: `img_${Date.now()}_0`, isPrimary: true }];
   }
 
+  // Stock & Inventory
+  if (p.stock !== undefined) {
+    const stockNum = Number(p.stock) || 0;
+    p.inventory = {
+      ...(existing?.inventory?.toObject ? existing.inventory.toObject() : {}),
+      stock: stockNum
+    };
+  }
+
+  // Specs & Fitment
+  if (p.specs !== undefined) {
+    try {
+      p.specs = typeof p.specs === 'string' ? JSON.parse(p.specs) : p.specs;
+    } catch {
+      p.specs = p.specs || {};
+    }
+  }
+
+  if (p.fit !== undefined) p.fit = p.fit;
+  if (p.sub !== undefined) p.sub = p.sub;
+  if (p.lead !== undefined) p.lead = p.lead;
+  if (p.badge !== undefined) p.badge = p.badge;
+  if (p.isFeatured !== undefined) p.isFeatured = Boolean(p.isFeatured);
+  if (p.isBestSeller !== undefined) p.isBestSeller = Boolean(p.isBestSeller);
   if (p.desc) p.description = p.desc;
   if (p.oem) p.oemPartNumber = p.oem;
 

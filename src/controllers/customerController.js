@@ -101,9 +101,24 @@ const adminToggleCustomerActive = async (request, reply) => {
   });
 };
 
+const adminDeleteCustomer = async (request, reply) => {
+  const { id } = request.params;
+  const isObjectId = /^[0-9a-fA-F]{24}$/.test(id);
+  const customer = isObjectId ? await User.findById(id) : await User.findOne({ email: id });
+  if (!customer) throw new CustomError('Customer not found', 404, 'CUSTOMER_NOT_FOUND');
+
+  await customer.deleteOne();
+
+  reply.send({
+    success: true,
+    message: 'Customer account deleted successfully'
+  });
+};
+
 module.exports = {
   adminGetCustomers,
   adminGetCustomerDetail,
   adminUpdateTradeStatus,
-  adminToggleCustomerActive
+  adminToggleCustomerActive,
+  adminDeleteCustomer
 };
