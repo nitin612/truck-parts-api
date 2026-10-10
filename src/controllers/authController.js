@@ -86,10 +86,12 @@ const register = async (request, reply) => {
     message: 'Account registered successfully',
     data: {
       user: formatted,
-      accessToken
+      accessToken,
+      refreshToken
     },
     user: formatted,
-    accessToken
+    accessToken,
+    refreshToken
   });
 };
 
@@ -170,10 +172,12 @@ const login = async (request, reply) => {
     message: 'Logged in successfully',
     data: {
       user: formatted,
-      accessToken
+      accessToken,
+      refreshToken
     },
     user: formatted,
-    accessToken
+    accessToken,
+    refreshToken
   });
 };
 
@@ -227,10 +231,12 @@ const refresh = async (request, reply) => {
     message: 'Token refreshed successfully',
     data: {
       user: formatted,
-      accessToken: tokens.accessToken
+      accessToken: tokens.accessToken,
+      refreshToken: tokens.refreshToken
     },
     user: formatted,
-    accessToken: tokens.accessToken
+    accessToken: tokens.accessToken,
+    refreshToken: tokens.refreshToken
   });
 };
 

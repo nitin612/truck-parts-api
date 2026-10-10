@@ -7,6 +7,8 @@ async function paymentRoutes(fastify, options) {
 
   // Stripe hosted checkout session creation
   fastify.post('/create-checkout-session', { preHandler: optionalAuth }, paymentController.createCheckoutSession);
+  fastify.get('/verify-session', { preHandler: optionalAuth }, paymentController.verifySession);
+  fastify.post('/cancel-order', { preHandler: optionalAuth }, paymentController.cancelOrderPayment);
 
   // Authenticated customer submit bank EFT reference / receipt proof
   fastify.post('/submit-proof', { preHandler: optionalAuth }, paymentController.submitPaymentProof);

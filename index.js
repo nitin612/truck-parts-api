@@ -103,7 +103,7 @@ fastify.register(require('@fastify/cors'), {
 fastify.register(require('@fastify/helmet'), { global: true });
 
 fastify.register(require('@fastify/rate-limit'), {
-  max: 150,
+  max: isDev ? 5000 : 150,
   timeWindow: '1 minute'
 });
 

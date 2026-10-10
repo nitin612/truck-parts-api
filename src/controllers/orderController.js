@@ -374,8 +374,8 @@ const createOrder = async (request, reply) => {
     comment: `Order placed with payment method ${paymentMethod}`
   });
 
-  // 9. Clear user's cart if authenticated
-  if (userId) {
+  // 9. Clear user's cart if authenticated (only for non-card methods; for Card, cart is cleared upon verified payment)
+  if (userId && paymentMethod !== 'Card') {
     await Cart.findOneAndUpdate({ user: userId }, { items: [], subtotal: 0, totalCoreDeposit: 0, totalWeightKg: 0 });
   }
 
