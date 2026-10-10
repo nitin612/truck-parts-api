@@ -88,7 +88,7 @@ const orderSchema = new mongoose.Schema({
   
   orderStatus: {
     type: String,
-    default: 'Packed in Campbellfield VIC'
+    default: 'Confirmed'
   },
   
   customerNotes: String,

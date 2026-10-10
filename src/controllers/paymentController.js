@@ -120,7 +120,7 @@ const adminMarkOrderPaid = async (request, reply) => {
   if (notes) order.payment.paymentNotes = notes;
   // Paid orders move to the first fulfilment step the storefront timeline knows.
   if (['Pending payment', 'PENDING_PAYMENT'].includes(order.orderStatus)) {
-    order.orderStatus = 'Packed in Campbellfield VIC';
+    order.orderStatus = 'Confirmed';
   }
 
   await order.save();
@@ -226,8 +226,9 @@ const verifySession = async (request, reply) => {
           order.payment.status = 'PAID';
           order.payment.method = 'Card';
           order.payment.paidAt = new Date();
-          order.payment.transactionId = session.payment_intent || session.id;
-          order.orderStatus = 'Packed in Campbellfield VIC';
+          if (!['Packed', 'Packed in Campbellfield VIC', 'Dispatched', 'Courier booked', 'In transit', 'Delivered'].includes(order.orderStatus)) {
+            order.orderStatus = 'Confirmed';
+          }
           await order.save();
 
           // Clear backend cart upon verified payment
@@ -337,7 +338,7 @@ const handleWebhook = async (request, reply) => {
         order.payment.method = 'Card';
         order.payment.paidAt = new Date();
         order.payment.transactionId = session.payment_intent || session.id;
-        order.orderStatus = 'Packed in Campbellfield VIC';
+        order.orderStatus = 'Confirmed';
         await order.save();
       }
     }

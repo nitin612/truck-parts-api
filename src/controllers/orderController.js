@@ -67,8 +67,8 @@ const normalizeOrder = (o) => {
     subtotal: sub,
     shippingFee: shipFee,
     discount: disc,
-    status: obj.orderStatus || 'Packed in Campbellfield VIC',
-    orderStatus: obj.orderStatus || 'Packed in Campbellfield VIC',
+    status: obj.orderStatus || 'Confirmed',
+    orderStatus: obj.orderStatus || 'Confirmed',
     payment: obj.payment?.method || 'Bank transfer',
     paymentStatus: obj.payment?.status || 'PENDING',
     shipping: obj.shipping?.shippingMethod || 'Standard road',
@@ -265,7 +265,7 @@ const createOrder = async (request, reply) => {
       throw new CustomError('This order is over your available trade credit. Call us to arrange payment.', 400, 'CREDIT_LIMIT_EXCEEDED');
     }
     paymentStatus = 'AUTHORIZED';
-    initialOrderStatus = 'Packed in Campbellfield VIC';
+    initialOrderStatus = 'Confirmed';
   }
 
   // 6. Create Order in Database
@@ -584,7 +584,7 @@ const adminGetOrderDetail = async (request, reply) => {
   });
 };
 
-const FULFILMENT_STATUSES = ['Packed in Campbellfield VIC', 'Courier booked', 'In transit', 'Delivered'];
+const FULFILMENT_STATUSES = ['Confirmed', 'Packed', 'Packed in Campbellfield VIC', 'Courier booked', 'In transit', 'Dispatched', 'Delivered'];
 
 const updateOrderStatusByRef = async (request, reply) => {
   const isStaff = request.user && ['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'].includes(request.user.role);
