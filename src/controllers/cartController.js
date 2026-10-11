@@ -146,6 +146,12 @@ const addToCart = async (request, reply) => {
   });
 
   if (!product) throw new CustomError('Truck part not found or inactive', 404, 'PRODUCT_NOT_FOUND');
+
+  const isTailLift = product.categorySlug === 'tail-lifts' || (product.sku && /^ATP-TL/i.test(product.sku));
+  if (isTailLift || product.isBuyable === false) {
+    throw new CustomError('Tail lift products cannot be purchased directly online. Please submit a quotation enquiry first.', 400, 'TAIL_LIFT_ENQUIRY_REQUIRED');
+  }
+
   if (product.pricing?.isPOA) {
     throw new CustomError('This part is Price on Application (POA). Please submit a Quote Request instead.', 400, 'POA_PRODUCT');
   }

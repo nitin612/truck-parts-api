@@ -46,8 +46,26 @@ const enquiryCreateSchema = z.object({
   message: z.string().min(5, 'Please provide details of your truck or part request')
 });
 
+const tailLiftEnquirySchema = z.object({
+  name: z.string().min(2, 'Full customer name is required'),
+  email: z.string().email('Valid email is required'),
+  phone: z.string().min(6, 'Valid phone number is required'),
+  companyName: z.string().optional(),
+  state: z.string().optional(),
+  preferredContact: z.string().optional(),
+  sku: z.string().optional(),
+  vehicleMakeModel: z.string().optional(),
+  bodyType: z.string().optional(),
+  voltage: z.string().optional(),
+  liftCapacity: z.string().optional(),
+  platformMaterial: z.string().optional(),
+  platformHeight: z.string().optional(),
+  serviceType: z.string().optional()
+});
+
 module.exports = {
   productCreateSchema,
   orderCreateSchema,
-  enquiryCreateSchema
+  enquiryCreateSchema,
+  tailLiftEnquirySchema
 };

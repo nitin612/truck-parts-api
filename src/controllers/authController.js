@@ -7,7 +7,7 @@ const crypto = require('crypto');
 
 const formatUser = (user) => {
   if (!user) return null;
-  const isAdm = user.role === 'SUPER_ADMIN' || user.role === 'ADMIN' || user.email === 'admin@aurex.com.au';
+  const isAdm = user.role === 'SUPER_ADMIN' || user.role === 'ADMIN' || user.email === 'aurexparts@yopmail.com' || user.email === 'admin@aurex.com.au';
   const firstName = user.firstName || (user.name ? user.name.split(' ')[0] : 'Trade');
   const lastName = user.lastName || (user.name ? user.name.split(' ').slice(1).join(' ') : 'Member');
   const name = user.name || `${firstName} ${lastName}`.trim() || 'Trade Member';

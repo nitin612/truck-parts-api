@@ -142,6 +142,10 @@ const createOrder = async (request, reply) => {
     if (!product) {
       throw new CustomError(`Part ${sku || 'in your cart'} is no longer in the catalogue. Remove it and try again.`, 400, 'PRODUCT_NOT_FOUND');
     }
+    const isTailLift = product.categorySlug === 'tail-lifts' || (product.sku && /^ATP-TL/i.test(product.sku));
+    if (isTailLift) {
+      throw new CustomError(`${product.name} is a tail lift product and cannot be ordered directly. Please submit a quotation enquiry first.`, 400, 'TAIL_LIFT_ENQUIRY_REQUIRED');
+    }
     if (product.status !== 'PUBLISHED' || product.isBuyable === false) {
       throw new CustomError(`${product.name} is not available to order online right now.`, 400, 'PRODUCT_UNAVAILABLE');
     }

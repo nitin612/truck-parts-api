@@ -269,7 +269,9 @@ fastify.register(adminProductRoutes, { prefix: '/api/v1/admin/products' });
 // Quote Requests & VIN Lookups
 const { enquiryRoutes, adminEnquiryRoutes } = require('./src/routes/enquiryRoutes');
 fastify.register(enquiryRoutes, { prefix: '/api/v1/enquiries' });
+fastify.register(enquiryRoutes, { prefix: '/api/enquiries' });
 fastify.register(adminEnquiryRoutes, { prefix: '/api/v1/admin/enquiries' });
+fastify.register(adminEnquiryRoutes, { prefix: '/api/admin/enquiries' });
 
 // Cart, Addresses & Saved Parts
 fastify.register(require('./src/routes/cartRoutes'), { prefix: '/api/v1/cart' });
@@ -492,12 +494,12 @@ async function ensureSeedData() {
       console.log('✅ Initialized default SiteSettings');
     }
 
-    const adminEmail = (process.env.ADMIN_EMAIL || 'admin@aurex.com.au').toLowerCase();
-    const adminPass = process.env.ADMIN_PASSWORD || 'Admin123!';
+    const adminEmail = (process.env.ADMIN_EMAIL || 'aurexparts@yopmail.com').toLowerCase();
+    const adminPass = process.env.ADMIN_PASSWORD || 'aurex@123';
     const adminUser = await Admin.findOne({ email: adminEmail });
     if (!adminUser) {
       await Admin.create({
-        name: process.env.ADMIN_NAME || 'Store Admin',
+        name: process.env.ADMIN_NAME || 'Aurex Admin',
         email: adminEmail,
         password: adminPass,
         role: 'SUPER_ADMIN',

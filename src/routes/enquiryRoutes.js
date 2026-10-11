@@ -8,6 +8,12 @@ async function enquiryRoutes(fastify, options) {
     config: { rateLimit: { max: 30, timeWindow: '1 minute' } },
     preHandler: [optionalAuth, upload.array('attachments', 4)]
   }, enquiryController.createEnquiry);
+
+  // Dedicated Tail Lift engineering quotation enquiry route
+  fastify.post('/tail-lift', {
+    config: { rateLimit: { max: 30, timeWindow: '1 minute' } },
+    preHandler: [optionalAuth, upload.array('attachments', 4)]
+  }, enquiryController.createTailLiftEnquiry);
   
   fastify.get('/mine', { preHandler: optionalAuth }, enquiryController.getCustomerEnquiries);
   fastify.get('/lookup/:enquiryNumber', {

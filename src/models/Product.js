@@ -223,6 +223,15 @@ productSchema.pre('save', function() {
     this.specifications = Object.entries(this.specs).map(([label, value]) => ({ label, value: String(value) }));
   }
 
+  // Tail lift products cannot be bought directly online (Quote Enquiry only)
+  const isTailLift = this.categorySlug === 'tail-lifts' || (this.sku && /^ATP-TL/i.test(this.sku));
+  if (isTailLift) {
+    this.isBuyable = false;
+    if (this.pricing) {
+      this.pricing.isPOA = true;
+    }
+  }
+
   // Calculate discount percentage if not explicitly set
   if (this.pricing && (this.isModified('pricing.sellingPrice') || this.isModified('pricing.mrp'))) {
     if (this.pricing.mrp > this.pricing.sellingPrice && this.pricing.mrp > 0) {

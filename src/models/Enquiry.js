@@ -6,6 +6,12 @@ const enquirySchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  enquiryType: {
+    type: String,
+    enum: ['GENERAL', 'PART_QUOTE', 'TAIL_LIFT'],
+    default: 'GENERAL',
+    index: true
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
@@ -42,11 +48,39 @@ const enquirySchema = new mongoose.Schema({
     default: '',
     trim: true
   },
+  state: {
+    type: String,
+    trim: true
+  },
+  preferredContact: {
+    type: String,
+    trim: true
+  },
+  // Dedicated Tail Lift engineering specifications
+  tailLiftDetails: {
+    selectedModel: String,
+    vehicleMakeModel: String,
+    bodyType: String,
+    voltage: String,
+    bedHeight: String,
+    bodyWidth: String,
+    liftCapacity: String,
+    platformMaterial: String,
+    platformHeight: String,
+    options: mongoose.Schema.Types.Mixed,
+    serviceType: String,
+    vinOrNotes: String
+  },
   // Truck Vehicle Identification for precise part matching
   truckDetails: {
     vinOrChassis: { type: String, trim: true, uppercase: true },
     make: { type: String, trim: true },
     model: { type: String, trim: true },
+    makeModel: { type: String, trim: true },
+    bodyType: { type: String, trim: true },
+    voltage: { type: String, trim: true },
+    bedHeight: { type: String, trim: true },
+    bodyWidth: { type: String, trim: true },
     year: Number,
     engineSeries: String,
     transmissionType: String,
@@ -55,7 +89,12 @@ const enquirySchema = new mongoose.Schema({
   partDetails: {
     product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
     partName: String,
+    sku: String,
     oemPartNumber: String,
+    capacity: String,
+    material: String,
+    platformHeight: String,
+    serviceType: String,
     quantity: { type: Number, default: 1 },
     urgency: {
       type: String,
