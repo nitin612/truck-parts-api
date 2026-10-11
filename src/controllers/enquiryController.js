@@ -17,6 +17,9 @@ const generateTailLiftEnquiryNumber = () => {
 const createTailLiftEnquiry = async (request, reply) => {
   const data = request.body || {};
   const userId = request.user?._id;
+  if (!userId) {
+    throw new CustomError('Login is required to submit a tail lift enquiry. Please sign in or create an account.', 401, 'AUTH_REQUIRED');
+  }
 
   // Parse nested objects if sent as multipart strings or nested JSON
   ['truckDetails', 'partDetails', 'tailLiftDetails', 'options'].forEach((field) => {
@@ -217,6 +220,9 @@ const createEnquiry = async (request, reply) => {
   }
 
   const userId = request.user?._id;
+  if (!userId) {
+    throw new CustomError('Login is required to submit an enquiry. Please sign in or register.', 401, 'AUTH_REQUIRED');
+  }
 
   // Parse JSON if multipart
   ['truckDetails', 'partDetails', 'tailLiftDetails', 'options'].forEach(field => {
@@ -347,17 +353,22 @@ const normalizeEnquiry = (e) => {
   const obj = e.toObject ? e.toObject() : e;
   const num = obj.enquiryNumber || (obj._id ? String(obj._id) : 'ENQ-UNKNOWN');
   const isTailLift = obj.enquiryType === 'TAIL_LIFT' || (obj.sku && /^ATP-TL/i.test(obj.sku));
+  const userName = obj.user && (obj.user.firstName || obj.user.lastName)
+    ? [obj.user.firstName, obj.user.lastName].filter(Boolean).join(' ')
+    : '';
+
   return {
     ...obj,
     id: num,
     ref: num,
     enquiryNumber: num,
     enquiryType: obj.enquiryType || (isTailLift ? 'TAIL_LIFT' : 'GENERAL'),
-    name: obj.name || obj.customerName || 'Customer',
-    customerName: obj.customerName || obj.name || 'Customer',
-    companyName: obj.companyName || '',
-    email: obj.email || '',
-    phone: obj.phone || '',
+    user: obj.user || null,
+    name: obj.name || obj.customerName || userName || 'Customer',
+    customerName: obj.customerName || obj.name || userName || 'Customer',
+    companyName: obj.companyName || obj.user?.companyName || '',
+    email: obj.email || obj.user?.email || '',
+    phone: obj.phone || obj.user?.phone || '',
     state: obj.state || obj.tailLiftDetails?.state || '',
     preferredContact: obj.preferredContact || obj.tailLiftDetails?.preferredContact || '',
     topic: obj.topic || obj.partDetails?.partName || 'General Enquiry',
@@ -387,8 +398,8 @@ const adminGetEnquiries = async (request, reply) => {
   const skip = (Number(page) - 1) * Number(limit);
   const total = await Enquiry.countDocuments(filter);
   const enquiries = await Enquiry.find(filter)
-    .populate('user', 'firstName lastName email companyName isTradeApproved')
-    .populate('partDetails.product', 'name sku pricing')
+    .populate('user', 'firstName lastName email phone companyName abnOrTaxId isTradeApproved role createdAt')
+    .populate('partDetails.product', 'name sku pricing images')
     .sort({ createdAt: -1 })
     .skip(skip)
     .limit(Number(limit));
