@@ -10,10 +10,10 @@ const getOrCreatePaymentSettings = async () => {
     settings = await PaymentSettings.create({
       directBankTransfer: {
         enabled: true,
-        bankName: 'National Australia Bank (NAB)',
-        accountName: 'Aurex Truck Parts Pty Ltd',
-        bsbOrRouting: '083-004',
-        accountNumber: '123456789',
+        bankName: 'NAB Australia Ltd',
+        accountName: 'Aurex Panels Pty Limited',
+        bsbOrRouting: '083-419',
+        accountNumber: '90-287-1454',
         instructions: 'Please include your Order Number as payment reference. Stock will be dispatched upon EFT settlement.'
       },
       tradeAccount30Days: {
@@ -23,8 +23,8 @@ const getOrCreatePaymentSettings = async () => {
       },
       codDepotPickup: {
         enabled: true,
-        description: 'Pay on collection at Sydney Central Parts Warehouse (Card or Cash).',
-        warehouseAddress: '100 Industrial Drive, Transport Logistics Hub, Sydney NSW'
+        description: 'Pay on collection at Campbellfield Parts Warehouse (Card or Cash).',
+        warehouseAddress: '77 Capital Link Drive, Campbellfield VIC 3061'
       },
       purchaseOrders: {
         enabled: true,

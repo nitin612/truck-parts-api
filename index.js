@@ -448,6 +448,7 @@ async function ensureSeedData() {
   try {
     const Coupon = require('./src/models/Coupon');
     const SiteSetting = require('./src/models/SiteSetting');
+    const PaymentSettings = require('./src/models/PaymentSettings');
     const Admin = require('./src/models/Admin');
 
     const welcome10 = await Coupon.findOne({ code: 'WELCOME10' });
@@ -477,21 +478,102 @@ async function ensureSeedData() {
       });
     }
 
-    const settings = await SiteSetting.findOne();
+    let settings = await SiteSetting.findOne();
     if (!settings) {
       await SiteSetting.create({
         storeName: 'Aurex Truck Parts Australia',
-        phone: '03 9000 0000',
-        email: 'sales@aurextruckparts.com.au',
-        address: '41 Halley Court, Campbellfield VIC 3061',
+        shortName: 'Aurex',
+        legalName: 'Aurex Panels Pty Limited',
+        phone: '+61 414 730 467',
+        phoneHref: 'tel:+61414730467',
+        email: 'info@aurextruckparts.com.au',
+        address: '77 Capital Link Drive, Campbellfield VIC 3061',
         hours: 'Mon to Fri 9am to 5pm. Sat 9am to 12pm.',
         freeFreightOver: 500,
         standardFee: 24,
         expressFee: 39,
-        abn: 'ABN 12 345 678 901',
+        abn: 'ABN 47 670 781 254',
+        acn: '670 781 254',
         announcement: 'Free road freight over $500. Order by 2pm for same day dispatch.'
       });
       console.log('✅ Initialized default SiteSettings');
+    } else {
+      let changed = false;
+      if (settings.address !== '77 Capital Link Drive, Campbellfield VIC 3061') {
+        settings.address = '77 Capital Link Drive, Campbellfield VIC 3061';
+        changed = true;
+      }
+      if (settings.email !== 'info@aurextruckparts.com.au') {
+        settings.email = 'info@aurextruckparts.com.au';
+        changed = true;
+      }
+      if (settings.phone !== '+61 414 730 467') {
+        settings.phone = '+61 414 730 467';
+        settings.phoneHref = 'tel:+61414730467';
+        changed = true;
+      }
+      if (settings.abn !== 'ABN 47 670 781 254') {
+        settings.abn = 'ABN 47 670 781 254';
+        changed = true;
+      }
+      if (settings.legalName !== 'Aurex Panels Pty Limited') {
+        settings.legalName = 'Aurex Panels Pty Limited';
+        changed = true;
+      }
+      if (settings.acn !== '670 781 254') {
+        settings.acn = '670 781 254';
+        changed = true;
+      }
+      if (changed) {
+        await settings.save();
+        console.log('✅ Synchronized canonical registered business details into SiteSettings');
+      }
+    }
+
+    let paySettings = await PaymentSettings.findOne();
+    if (!paySettings) {
+      await PaymentSettings.create({
+        directBankTransfer: {
+          enabled: true,
+          bankName: 'NAB Australia Ltd',
+          accountName: 'Aurex Panels Pty Limited',
+          bsbOrRouting: '083-419',
+          accountNumber: '90-287-1454',
+          swiftBic: 'NATAAU3303M',
+          instructions: 'Please include your Order Number as payment reference. Stock is allocated once EFT remittance is received.'
+        },
+        codDepotPickup: {
+          enabled: true,
+          description: 'Pay on collection at Campbellfield Parts Warehouse (Card or Cash).',
+          warehouseAddress: '77 Capital Link Drive, Campbellfield VIC 3061'
+        }
+      });
+      console.log('✅ Initialized default PaymentSettings');
+    } else {
+      let payChanged = false;
+      if (
+        paySettings.directBankTransfer?.bsbOrRouting !== '083-419' ||
+        paySettings.directBankTransfer?.accountNumber !== '90-287-1454' ||
+        paySettings.directBankTransfer?.accountName !== 'Aurex Panels Pty Limited' ||
+        paySettings.directBankTransfer?.bankName !== 'NAB Australia Ltd'
+      ) {
+        if (!paySettings.directBankTransfer) paySettings.directBankTransfer = {};
+        paySettings.directBankTransfer.bankName = 'NAB Australia Ltd';
+        paySettings.directBankTransfer.accountName = 'Aurex Panels Pty Limited';
+        paySettings.directBankTransfer.bsbOrRouting = '083-419';
+        paySettings.directBankTransfer.accountNumber = '90-287-1454';
+        paySettings.directBankTransfer.swiftBic = 'NATAAU3303M';
+        payChanged = true;
+      }
+      if (paySettings.codDepotPickup?.warehouseAddress !== '77 Capital Link Drive, Campbellfield VIC 3061') {
+        if (!paySettings.codDepotPickup) paySettings.codDepotPickup = { enabled: true };
+        paySettings.codDepotPickup.warehouseAddress = '77 Capital Link Drive, Campbellfield VIC 3061';
+        payChanged = true;
+      }
+      if (payChanged) {
+        await paySettings.save();
+        console.log('✅ Synchronized canonical NAB account & warehouse details into PaymentSettings');
+      }
     }
 
     const adminEmail = (process.env.ADMIN_EMAIL || 'aurexparts@yopmail.com').toLowerCase();
