@@ -694,15 +694,21 @@ const CATALOGUE_UPDATES = {
   }
 };
 
-async function syncCatalogueSpecs(m = mongoose) {
-  const collection = m.connection.collection('products');
-  let updatedCount = 0;
+let _catalogueSpecsSynced = false;
 
+async function syncCatalogueSpecs(m = mongoose) {
+  if (_catalogueSpecsSynced) return 0;
+  const collection = m.connection.collection('products');
+  const skus = Object.keys(CATALOGUE_UPDATES);
+
+  // Single batch find instead of 113 sequential round-trips
+  const existingDocs = await collection.find({ sku: { $in: skus } }).toArray();
+  const existingMap = new Map(existingDocs.map((doc) => [doc.sku, doc]));
+
+  const bulkOps = [];
   for (const [sku, data] of Object.entries(CATALOGUE_UPDATES)) {
-    const existing = await collection.findOne({ sku });
-    if (!existing) {
-      continue;
-    }
+    const existing = existingMap.get(sku);
+    if (!existing) continue;
 
     const currentSpecs = existing.specs || {};
     const updatedSpecs = {
@@ -713,6 +719,11 @@ async function syncCatalogueSpecs(m = mongoose) {
       'Certification': data.certification,
       'Australian Standard': data.certification.split(';')[0].trim()
     };
+
+    // Eliminate contradictory height for wheel nut covers
+    if (sku === 'ATP-ACC-03' || sku === 'ATP-ACC-04') {
+      updatedSpecs['Overall Height'] = '50 mm (1-31/32 in)';
+    }
 
     // Keep specifications array in sync
     const specsMap = new Map();
@@ -726,16 +737,21 @@ async function syncCatalogueSpecs(m = mongoose) {
     }
     const updatedSpecificationsArray = Array.from(specsMap.entries()).map(([label, value]) => ({ label, value }));
 
-    await collection.updateOne(
-      { sku },
-      {
-        $set: {
-          specs: updatedSpecs,
-          specifications: updatedSpecificationsArray
+    bulkOps.push({
+      updateOne: {
+        filter: { sku },
+        update: {
+          $set: {
+            specs: updatedSpecs,
+            specifications: updatedSpecificationsArray
+          }
         }
       }
-    );
-    updatedCount++;
+    });
+  }
+
+  if (bulkOps.length > 0) {
+    await collection.bulkWrite(bulkOps, { ordered: false });
   }
 
   // Ensure tail lifts have Australian Standard certification
@@ -749,7 +765,8 @@ async function syncCatalogueSpecs(m = mongoose) {
     }
   );
 
-  return updatedCount;
+  _catalogueSpecsSynced = true;
+  return bulkOps.length;
 }
 
 if (require.main === module) {
