@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
-  const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/truck_parts_db';
+  let mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/truck_parts_db';
+  if (mongoUri.endsWith('.mongodb.net/')) {
+    mongoUri = mongoUri + 'test?retryWrites=true&w=majority';
+  }
   try {
     const conn = await mongoose.connect(mongoUri, {
       autoIndex: true,
