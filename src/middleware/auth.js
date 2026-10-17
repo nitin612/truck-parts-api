@@ -29,6 +29,9 @@ const authenticate = async (request, reply) => {
       }
     } else {
       request.user = await User.findById(decoded.id);
+      if (!request.user) {
+        request.user = await Admin.findById(decoded.id);
+      }
     }
 
     if (!request.user) {

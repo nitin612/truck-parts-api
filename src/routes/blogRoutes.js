@@ -1,5 +1,5 @@
 const blogController = require('../controllers/blogController');
-const { authenticate, authorize } = require('../middleware/auth');
+const { authenticate, requireStaff } = require('../middleware/auth');
 const upload = require('../middleware/uploadMiddleware');
 
 async function blogRoutes(fastify, options) {
@@ -8,8 +8,9 @@ async function blogRoutes(fastify, options) {
 }
 
 async function adminBlogRoutes(fastify, options) {
-  const adminAuth = [authenticate, authorize('SUPER_ADMIN', 'ADMIN')];
+  const adminAuth = [authenticate, requireStaff];
   fastify.get('/', { preHandler: adminAuth }, blogController.adminGetBlogs);
+  fastify.get('/:id', { preHandler: adminAuth }, blogController.adminGetBlogById);
   fastify.post('/', { preHandler: [...adminAuth, upload.single('coverImage')] }, blogController.adminCreateBlog);
   fastify.put('/:id', { preHandler: [...adminAuth, upload.single('coverImage')] }, blogController.adminUpdateBlog);
   fastify.delete('/:id', { preHandler: adminAuth }, blogController.adminDeleteBlog);
