@@ -612,6 +612,13 @@ async function ensureSeedData() {
       // Non-critical image seed warning
     }
 
+    try {
+      const { syncCatalogueSpecs } = require('./scripts/update-catalogue-specs');
+      await syncCatalogueSpecs(mongoose);
+    } catch (catErr) {
+      console.warn('Catalogue specs seed sync warning:', catErr.message);
+    }
+
     const adminEmail = (process.env.ADMIN_EMAIL || 'aurexparts@yopmail.com').toLowerCase();
     const adminPass = process.env.ADMIN_PASSWORD || 'aurex@123';
     const adminUser = await Admin.findOne({ email: adminEmail });
