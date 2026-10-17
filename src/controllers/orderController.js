@@ -10,7 +10,14 @@ const CustomError = require('../utils/CustomError');
 const socketService = require('../services/socketService');
 const { calculateOrderTotals } = require('../utils/pricing');
 const { stripSupplierCodes } = require('../utils/supplierCodes');
-const { sendOrderConfirmationEmail } = require('../services/notificationService');
+const {
+  sendOrderPlacedEmail,
+  sendOrderConfirmedEmail,
+  sendOrderPackedEmail,
+  sendOrderDispatchedEmail,
+  sendOrderDeliveredEmail,
+  notifyOrderStatusUpdate
+} = require('../services/notificationService');
 
 const generateOrderNumber = () => {
   return 'ATP-' + Date.now().toString().slice(-6) + '-' + Math.floor(Math.random() * 900 + 100);
@@ -393,7 +400,11 @@ const createOrder = async (request, reply) => {
     createdAt: order.createdAt
   });
 
-  sendOrderConfirmationEmail(order).catch((err) => console.error('Order email error:', err));
+  if (order.orderStatus === 'Confirmed' || order.payment?.status === 'PAID') {
+    sendOrderConfirmedEmail(order).catch((err) => console.error('[Order Email Error]:', err));
+  } else {
+    sendOrderPlacedEmail(order).catch((err) => console.error('[Order Email Error]:', err));
+  }
 
   const normalized = normalizeOrder(order);
 
@@ -645,6 +656,14 @@ const updateOrderStatusByRef = async (request, reply) => {
     status: order.orderStatus,
     trackingNumber: order.shipping.trackingNumber
   });
+
+  // Trigger customer lifecycle notification email (Confirmed, Packed, Dispatched, Delivered)
+  notifyOrderStatusUpdate(order, order.orderStatus, {
+    trackingNumber: order.shipping.trackingNumber,
+    carrier: order.shipping.carrier,
+    consignmentId: order.shipping.consignmentId,
+    note
+  }).catch((err) => console.error('[Order Lifecycle Notification Error]:', err));
 
   const normalized = normalizeOrder(order);
 

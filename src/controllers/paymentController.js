@@ -3,6 +3,7 @@ const OrderStatusHistory = require('../models/OrderStatusHistory');
 const PaymentSettings = require('../models/PaymentSettings');
 const CustomError = require('../utils/CustomError');
 const socketService = require('../services/socketService');
+const { sendOrderConfirmedEmail } = require('../services/notificationService');
 
 const getOrCreatePaymentSettings = async () => {
   let settings = await PaymentSettings.findOne();
@@ -137,6 +138,8 @@ const adminMarkOrderPaid = async (request, reply) => {
     paidAmount: order.payment.paidAmount
   });
 
+  sendOrderConfirmedEmail(order).catch((err) => console.error('[Order Confirmation Email Error]:', err));
+
   reply.send({
     success: true,
     message: 'Order marked as PAID',
@@ -230,6 +233,7 @@ const verifySession = async (request, reply) => {
             order.orderStatus = 'Confirmed';
           }
           await order.save();
+          sendOrderConfirmedEmail(order).catch((err) => console.error('[Order Confirmation Email Error]:', err));
 
           // Clear backend cart upon verified payment
           if (order.user) {
