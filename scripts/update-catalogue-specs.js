@@ -502,191 +502,191 @@ const CATALOGUE_UPDATES = {
     technicalSpec: 'Severe service 50mm 3-way tipper tailgate pivot and swing kit for road trains and mining tippers',
     certification: 'AS/NZS ISO 9001 Heavy Commercial Transport Standard Approved'
   },
-  'ATP-ACC-06': {
+  'ATP-TP-108': {
     dimensions: '350mm (W) x 350mm (H), Aluminium',
     parameters: 'Dimensions: 350 x 350mm | 1.6mm Marine Aluminium Base | 15 Stainless Steel Hinged Aluminium Leaves | Dual spring clasp',
     technicalSpec: 'Complete multi-placard flip sign containing all 15 Australian Dangerous Goods classes for fuel & chemical transport',
     certification: 'Australian Dangerous Goods Code (ADG 7.8) Approved; AS 1216 & AS 2187 Compliant'
   },
-  'ATP-ACC-07': {
+  'ATP-TP-109': {
     dimensions: '350mm (W) x 350mm (H), ABS',
     parameters: 'Dimensions: 350 x 350mm | Impact-modified UV-stabilized heavy ABS backing | 15 weather-resistant leaves',
     technicalSpec: 'Lightweight multi-class dangerous goods flip placard sign for transport fuel and chem tankers',
     certification: 'Australian Dangerous Goods Code (ADG 7.8) Approved; AS 1216 Compliant'
   },
-  'ATP-ACC-08': {
+  'ATP-TP-110': {
     dimensions: '300 x 400mm Left',
     parameters: 'Dimensions: 300 x 400mm | Orientation: Left Hand | 3M Class 1 (Class 400) High Intensity Prismatic (HIP) | Self-adhesive',
     technicalSpec: 'Heavy vehicle rear marker plate adhesive sticker for rigid trucks, semi-trailers and road trains',
     certification: 'AS 4001.1 (Motor Vehicles - Rear Marker Plates) Certified; VSB 12 & AS/NZS 1906.1 Class 1 Approved'
   },
-  'ATP-ACC-09': {
+  'ATP-TP-111': {
     dimensions: '300 x 400mm Right',
     parameters: 'Dimensions: 300 x 400mm | Orientation: Right Hand | 3M Class 1 HIP Reflective Film | Solvent acrylic permanent adhesive',
     technicalSpec: 'Heavy vehicle rear marker plate sticker, Right Hand slant',
     certification: 'AS 4001.1 (Motor Vehicles - Rear Marker Plates) Certified; VSB 12 & AS/NZS 1906.1 Class 1 Approved'
   },
-  'ATP-ACC-10': {
+  'ATP-TP-112': {
     dimensions: '300 x 300mm Left',
     parameters: 'Dimensions: 300 x 300mm | Orientation: Left Hand chevron | 3M Class 1 HIP prismatic film | Permanent outdoor adhesive',
     technicalSpec: 'Square rear marker plate sticker for trucks and trailers with restricted mounting space',
     certification: 'AS 4001.1 Certified; VSB 12 & AS/NZS 1906.1 Class 1 Approved'
   },
-  'ATP-ACC-11': {
+  'ATP-TP-113': {
     dimensions: '300 x 300mm Right',
     parameters: 'Dimensions: 300 x 300mm | Orientation: Right Hand chevron | 3M Class 1 HIP prismatic film | Weatherproof',
     technicalSpec: 'Square rear marker plate sticker, Right Hand slant',
     certification: 'AS 4001.1 Certified; VSB 12 & AS/NZS 1906.1 Class 1 Approved'
   },
-  'ATP-ACC-12': {
+  'ATP-TP-114': {
     dimensions: '400mm x 100mm 41A Left',
     parameters: 'Dimensions: 400 x 100mm | Configuration: 41A Left | 3M Class 1 Reflective film | Red/Yellow diagonal zebra stripes',
     technicalSpec: 'Strip rear marker plate sticker for narrow vehicle rear sills, tailgates and underrun bars',
     certification: 'AS 4001.1 Certified; VSB 12 Compliant'
   },
-  'ATP-ACC-13': {
+  'ATP-TP-115': {
     dimensions: '400mm x 100mm 41B Right',
     parameters: 'Dimensions: 400 x 100mm | Configuration: 41B Right | 3M Class 1 Reflective film | Red/Yellow diagonal stripes',
     technicalSpec: 'Strip rear marker plate sticker, 41B Right Hand configuration',
     certification: 'AS 4001.1 Certified; VSB 12 Compliant'
   },
-  'ATP-ACC-14': {
+  'ATP-TP-116': {
     dimensions: '600mm x 150mm (Left Side)',
     parameters: 'Dimensions: 600 x 150mm | Orientation: 615A Left Hand | 3M Class 1 Prismatic Reflective | Long-life outdoor durability',
     technicalSpec: 'Full-size 600x150mm rear marker plate sticker for commercial vehicles and prime movers',
     certification: 'AS 4001.1 Certified; VSB 12 & AS/NZS 1906.1 Class 1 Approved'
   },
-  'ATP-ACC-15': {
+  'ATP-TP-117': {
     dimensions: '600mm x 150mm (Right Side)',
     parameters: 'Dimensions: 600 x 150mm | Orientation: 615B Right Hand | 3M Class 1 Prismatic Reflective | UV adhesive',
     technicalSpec: 'Full-size 600x150mm rear marker plate sticker, Right Hand configuration',
     certification: 'AS 4001.1 Certified; VSB 12 & AS/NZS 1906.1 Class 1 Approved'
   },
-  'ATP-ACC-16': {
+  'ATP-TP-118': {
     dimensions: '300 x 100mm',
     parameters: 'Dimensions: 300 x 100mm | Material: 3M Class 1 HIP Yellow Reflective | Bold black text: "DO NOT OVERTAKE TURNING VEHICLE"',
     technicalSpec: 'Heavy vehicle turning safety warning sticker for mounting alongside rear marker plates',
     certification: 'VSB 12 & Australian Road Rules Regulation 315 Certified Approved'
   },
-  'ATP-ACC-17': {
+  'ATP-TP-119': {
     dimensions: '510 x 250mm',
     parameters: 'Dimensions: 510 x 250mm | 3M Class 1 Reflective on 1.6mm Marine Aluminium Plate | Pre-drilled holes | Text: "ROAD TRAIN"',
     technicalSpec: 'Rigid aluminium combination vehicle warning sign for designated road train routes',
     certification: 'NHVR Heavy Vehicle National Law & VSB 12 Approved Certified'
   },
   // Page 9
-  'ATP-ACC-18': {
+  'ATP-TP-120': {
     dimensions: '510 x 251mm',
     parameters: 'Dimensions: 510 x 251mm | 3M Class 1 Reflective on 1.6mm Aluminium Plate | Pre-drilled mounting holes | Text: "OVERSIZE"',
     technicalSpec: 'Over-dimension vehicle warning sign for wide/long haulage transport',
     certification: 'NHVR Oversize Overmass (OSOM) National Regulation & VSB 12 Approved'
   },
-  'ATP-ACC-19': {
+  'ATP-TP-121': {
     dimensions: '600 x 450mm',
     parameters: 'Dimensions: 600 x 450mm | 3M Class 1 Reflective on 1.6mm Aluminium Plate | Text: "LONG VEHICLE"',
     technicalSpec: 'Long vehicle rear marker aluminium plate for B-doubles and long single articulated combinations',
     certification: 'NHVR Heavy Vehicle National Law & VSB 12 Approved Certified'
   },
   // Multi-packs for stickers
-  'ATP-ACC-20': {
+  'ATP-TP-122': {
     dimensions: '300 x 400mm Left (Pack of 2)',
     parameters: 'Pack: 2 Plates | 300 x 400mm Left | 3M Class 1 HIP Reflective Film | Self-adhesive vinyl',
     technicalSpec: 'Heavy vehicle rear marker plate stickers pack of 2 (Left Hand)',
     certification: 'AS 4001.1 Certified; VSB 12 Approved'
   },
-  'ATP-ACC-21': {
+  'ATP-TP-123': {
     dimensions: '300 x 400mm Right (Pack of 2)',
     parameters: 'Pack: 2 Plates | 300 x 400mm Right | 3M Class 1 HIP Reflective Film | Self-adhesive vinyl',
     technicalSpec: 'Heavy vehicle rear marker plate stickers pack of 2 (Right Hand)',
     certification: 'AS 4001.1 Certified; VSB 12 Approved'
   },
-  'ATP-ACC-22': {
+  'ATP-TP-124': {
     dimensions: '300 x 300mm Left (Pack of 2)',
     parameters: 'Pack: 2 Plates | 300 x 300mm Left | 3M Class 1 HIP reflective film | Permanent adhesive',
     technicalSpec: 'Square rear marker plate stickers pack of 2 (Left Hand)',
     certification: 'AS 4001.1 Certified; VSB 12 Approved'
   },
-  'ATP-ACC-23': {
+  'ATP-TP-125': {
     dimensions: '300 x 300mm Right (Pack of 2)',
     parameters: 'Pack: 2 Plates | 300 x 300mm Right | 3M Class 1 HIP reflective film | Permanent adhesive',
     technicalSpec: 'Square rear marker plate stickers pack of 2 (Right Hand)',
     certification: 'AS 4001.1 Certified; VSB 12 Approved'
   },
-  'ATP-ACC-24': {
+  'ATP-TP-126': {
     dimensions: '400 x 100mm 41A Left (Pack of 2)',
     parameters: 'Pack: 2 Plates | 400 x 100mm 41A | 3M Class 1 Reflective | Strip configuration',
     technicalSpec: 'Zebra strip rear marker stickers pack of 2 (Left Hand)',
     certification: 'AS 4001.1 Certified; VSB 12 Approved'
   },
-  'ATP-ACC-25': {
+  'ATP-TP-127': {
     dimensions: '400 x 100mm 41B Right (Pack of 2)',
     parameters: 'Pack: 2 Plates | 400 x 100mm 41B | 3M Class 1 Reflective | Strip configuration',
     technicalSpec: 'Zebra strip rear marker stickers pack of 2 (Right Hand)',
     certification: 'AS 4001.1 Certified; VSB 12 Approved'
   },
-  'ATP-ACC-26': {
+  'ATP-TP-128': {
     dimensions: '600 x 150mm Left (Pack of 2)',
     parameters: 'Pack: 2 Plates | 600 x 150mm 615A | 3M Class 1 Reflective | Long life outdoor adhesive',
     technicalSpec: 'Full-size vehicle zebra rear marker stickers pack of 2 (Left Side)',
     certification: 'AS 4001.1 Certified; VSB 12 Approved'
   },
-  'ATP-ACC-27': {
+  'ATP-TP-129': {
     dimensions: '600 x 150mm Right (Pack of 2)',
     parameters: 'Pack: 2 Plates | 600 x 150mm 615B | 3M Class 1 Reflective | Long life outdoor adhesive',
     technicalSpec: 'Full-size vehicle zebra rear marker stickers pack of 2 (Right Side)',
     certification: 'AS 4001.1 Certified; VSB 12 Approved'
   },
   // Aluminium plate signs
-  'ATP-ACC-28': {
+  'ATP-TP-130': {
     dimensions: '300 x 400mm Left Hand on Aluminium Plate',
     parameters: 'Backing: 1.6mm Marine Grade 5052-H32 Aluminium Plate | Facing: 3M Class 1 HIP Reflective | Orientation: Left Hand',
     technicalSpec: 'Rigid aluminium rear marker plate for heavy transport vehicles, trailers and prime movers',
     certification: 'AS 4001.1 (Rear Marker Plates for Motor Vehicles and Trailers) Certified; VSB 12 Approved'
   },
-  'ATP-ACC-29': {
+  'ATP-TP-131': {
     dimensions: '300 x 300mm on Aluminium Plate',
     parameters: 'Backing: 1.6mm Marine Grade Aluminium Plate | Facing: 3M Class 1 Reflective | Orientation: Right Hand chevron',
     technicalSpec: 'Rigid square aluminium rear marker plate for heavy transport vehicles',
     certification: 'AS 4001.1 Certified; VSB 12 Approved'
   },
-  'ATP-ACC-30': {
+  'ATP-TP-132': {
     dimensions: '300 x 100mm on Aluminium Plate',
     parameters: 'Backing: 1.6mm Aluminium Plate | Text: "DO NOT OVERTAKE TURNING VEHICLE" | Facing: 3M Class 1 Yellow Reflective',
     technicalSpec: 'Rigid aluminium turning vehicle warning plate for rear mounting alongside marker plates',
     certification: 'VSB 12 & Australian Road Rules Regulation 315 Certified Approved'
   },
-  'ATP-ACC-31': {
+  'ATP-TP-133': {
     dimensions: '400 x 100mm Left Hand on Aluminium Plate',
     parameters: 'Backing: 1.6mm Aluminium Plate | Facing: 3M Class 1 Reflective Zebra (41A Left) | Pre-drilled mounting holes',
     technicalSpec: 'Rigid aluminium strip rear marker plate for truck and trailer rear crossmembers',
     certification: 'AS 4001.1 Certified; VSB 12 Approved'
   },
-  'ATP-ACC-32': {
+  'ATP-TP-134': {
     dimensions: '400 x 100mm Right Hand on Aluminium Plate',
     parameters: 'Backing: 1.6mm Aluminium Plate | Facing: 3M Class 1 Reflective Zebra (41B Right) | Pre-drilled mounting holes',
     technicalSpec: 'Rigid aluminium strip rear marker plate for truck and trailer rear crossmembers',
     certification: 'AS 4001.1 Certified; VSB 12 Approved'
   },
-  'ATP-ACC-33': {
+  'ATP-TP-135': {
     dimensions: '600 x 150mm Left Hand on Aluminium Plate',
     parameters: 'Backing: 1.6mm Heavy Marine Grade Aluminium Plate | Facing: 3M Class 1 Reflective Zebra (615A Left)',
     technicalSpec: 'Full-size rigid aluminium rear marker plate for commercial trucks, semi-trailers and B-doubles',
     certification: 'AS 4001.1 Certified; VSB 12 Approved'
   },
-  'ATP-ACC-34': {
+  'ATP-TP-136': {
     dimensions: '600 x 150mm Right Hand on Aluminium Plate',
     parameters: 'Backing: 1.6mm Heavy Marine Grade Aluminium Plate | Facing: 3M Class 1 Reflective Zebra (615B Right)',
     technicalSpec: 'Full-size rigid aluminium rear marker plate for commercial trucks, semi-trailers and B-doubles',
     certification: 'AS 4001.1 Certified; VSB 12 Approved'
   },
   // Page 10
-  'ATP-ACC-35': {
+  'ATP-TP-137': {
     dimensions: '600mm x 150mm on Aluminium Plate (Left)',
     parameters: 'Backing: 1.6mm Aluminium Plate | Facing: 3M Class 1 Reflective Chevron with integrated DNOTV sign (615A Left)',
     technicalSpec: 'Combination marker and turning vehicle warning sign on heavy aluminium plate',
     certification: 'AS 4001.1 & VSB 12 Certified Approved'
   },
-  'ATP-ACC-36': {
+  'ATP-TP-138': {
     dimensions: '600mm x 150mm on Aluminium Plate (Right)',
     parameters: 'Backing: 1.6mm Aluminium Plate | Facing: 3M Class 1 Reflective Chevron with integrated DNOTV sign (615B Right)',
     technicalSpec: 'Combination marker and turning vehicle warning sign on heavy aluminium plate',
@@ -699,6 +699,28 @@ let _catalogueSpecsSynced = false;
 async function syncCatalogueSpecs(m = mongoose) {
   if (_catalogueSpecsSynced) return 0;
   const collection = m.connection.collection('products');
+
+  // Migrate any legacy ATP-ACC-06..36 products to ATP-TP-108..138 under Trailer Parts
+  const trailerCat = await m.connection.collection('categories').findOne({ slug: 'trailer-parts' });
+  if (trailerCat) {
+    for (let i = 6; i <= 36; i++) {
+      const oldSku = 'ATP-ACC-' + String(i).padStart(2, '0');
+      const newSku = 'ATP-TP-' + String(107 + (i - 5));
+      await collection.updateOne(
+        { sku: oldSku },
+        {
+          $set: {
+            sku: newSku,
+            category: trailerCat._id,
+            categories: [trailerCat._id],
+            categorySlug: 'trailer-parts',
+            sub: 'Safety Signage & Marker Plates'
+          }
+        }
+      );
+    }
+  }
+
   const skus = Object.keys(CATALOGUE_UPDATES);
 
   // Single batch find instead of 113 sequential round-trips
