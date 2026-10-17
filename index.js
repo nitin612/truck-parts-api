@@ -576,6 +576,42 @@ async function ensureSeedData() {
       }
     }
 
+    try {
+      const Category = require('./src/models/Category');
+      const CarouselSlide = require('./src/models/CarouselSlide');
+
+      const trailerCat = await Category.findOne({ slug: 'trailer-parts' });
+      if (trailerCat && (!trailerCat.imageUrl || trailerCat.imageUrl.includes('TRAILER-PARTS-CAT') || trailerCat.imageUrl !== '/images/web/trailer-parts-category.webp')) {
+        trailerCat.image = { url: '/images/web/trailer-parts-category.webp', publicId: 'trailer-parts-category' };
+        trailerCat.imageUrl = '/images/web/trailer-parts-category.webp';
+        await trailerCat.save();
+        console.log('✅ Synchronized Trailer Parts category image to new trailer rear door asset');
+      }
+
+      const tailLiftSlide = await CarouselSlide.findOne({ buttonLink: '/shop/tail-lifts' });
+      if (tailLiftSlide && (!tailLiftSlide.img || tailLiftSlide.img.includes('cloudinary.com'))) {
+        tailLiftSlide.img = '/images/web/aurex-tail-lift.webp';
+        tailLiftSlide.image = { url: '/images/web/aurex-tail-lift.webp', publicId: 'aurex-tail-lift' };
+        await tailLiftSlide.save();
+      }
+
+      const trailerSlide = await CarouselSlide.findOne({ buttonLink: '/shop/trailer-parts' });
+      if (trailerSlide && trailerSlide.img !== '/images/web/hero-trailer-parts-yellow.webp') {
+        trailerSlide.img = '/images/web/hero-trailer-parts-yellow.webp';
+        trailerSlide.image = { url: '/images/web/hero-trailer-parts-yellow.webp', publicId: 'hero-trailer-parts-yellow' };
+        await trailerSlide.save();
+      }
+
+      const accSlide = await CarouselSlide.findOne({ buttonLink: '/shop/accessories' });
+      if (accSlide && (!accSlide.img || accSlide.img.includes('cloudinary.com'))) {
+        accSlide.img = '/images/web/aurex-fleet-accessories.webp';
+        accSlide.image = { url: '/images/web/aurex-fleet-accessories.webp', publicId: 'aurex-fleet-accessories' };
+        await accSlide.save();
+      }
+    } catch (e) {
+      // Non-critical image seed warning
+    }
+
     const adminEmail = (process.env.ADMIN_EMAIL || 'aurexparts@yopmail.com').toLowerCase();
     const adminPass = process.env.ADMIN_PASSWORD || 'aurex@123';
     const adminUser = await Admin.findOne({ email: adminEmail });
