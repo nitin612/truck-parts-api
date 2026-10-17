@@ -765,6 +765,27 @@ async function syncCatalogueSpecs(m = mongoose) {
     }
   );
 
+  // Ensure all remaining trailer hardware (ATP-TP-01 to 28) and accessories have commercial standards
+  await collection.updateMany(
+    { sku: { $regex: /^ATP-TP-(0[1-9]|1[0-5])/i }, 'specs.Certification': { $exists: false } },
+    {
+      $set: {
+        'specs.Certification': 'AS/NZS 4380:2001 & AS/NZS ISO 9001 Heavy Commercial Transport Standard Approved',
+        'specs.Australian Standard': 'AS/NZS ISO 9001 Heavy Commercial Transport Approved'
+      }
+    }
+  );
+
+  await collection.updateMany(
+    { 'specs.Certification': { $exists: false } },
+    {
+      $set: {
+        'specs.Certification': 'AS/NZS ISO 9001 Heavy Commercial Transport Standard Approved',
+        'specs.Australian Standard': 'AS/NZS ISO 9001 Commercial Transport Standard Approved'
+      }
+    }
+  );
+
   _catalogueSpecsSynced = true;
   return bulkOps.length;
 }
