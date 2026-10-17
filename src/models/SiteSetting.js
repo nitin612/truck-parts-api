@@ -15,6 +15,7 @@ const siteSettingSchema = new mongoose.Schema({
   abn: { type: String, default: 'ABN 47 670 781 254' },
   acn: { type: String, default: '670 781 254' },
   announcement: { type: String, default: 'Free road freight over $500. Order by 2pm for same day dispatch.' },
+  showAnnouncement: { type: Boolean, default: true },
   promise: { type: String, default: 'Order by 2pm for same day dispatch from Campbellfield.' },
   faqs: [{
     q: String,

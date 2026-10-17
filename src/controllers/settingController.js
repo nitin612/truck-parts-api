@@ -14,10 +14,16 @@ const getSettings = async (request, reply) => {
 
 const updateSettings = async (request, reply) => {
   let settings = await SiteSetting.findOne();
+  const updateData = { ...(request.body || {}) };
+  delete updateData._id;
+  delete updateData.createdAt;
+  delete updateData.updatedAt;
+  delete updateData.__v;
+
   if (!settings) {
-    settings = await SiteSetting.create(request.body || {});
+    settings = await SiteSetting.create(updateData);
   } else {
-    Object.assign(settings, request.body || {});
+    Object.assign(settings, updateData);
     await settings.save();
   }
   reply.send({
@@ -41,7 +47,8 @@ const resetSettings = async (request, reply) => {
     standardFee: 45,
     expressFee: 95,
     abn: 'ABN 47 670 781 254',
-    announcement: 'Campbellfield VIC Warehouse Open - Trade Counters Mon-Fri 7am-5pm | Same-day dispatch Australia-wide'
+    announcement: 'Campbellfield VIC Warehouse Open - Trade Counters Mon-Fri 7am-5pm | Same-day dispatch Australia-wide',
+    showAnnouncement: true
   });
   reply.send({
     success: true,
