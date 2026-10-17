@@ -700,27 +700,6 @@ async function syncCatalogueSpecs(m = mongoose) {
   if (_catalogueSpecsSynced) return 0;
   const collection = m.connection.collection('products');
 
-  // Migrate any legacy ATP-ACC-06..36 products to ATP-TP-108..138 under Trailer Parts
-  const trailerCat = await m.connection.collection('categories').findOne({ slug: 'trailer-parts' });
-  if (trailerCat) {
-    for (let i = 6; i <= 36; i++) {
-      const oldSku = 'ATP-ACC-' + String(i).padStart(2, '0');
-      const newSku = 'ATP-TP-' + String(107 + (i - 5));
-      await collection.updateOne(
-        { sku: oldSku },
-        {
-          $set: {
-            sku: newSku,
-            category: trailerCat._id,
-            categories: [trailerCat._id],
-            categorySlug: 'trailer-parts',
-            sub: 'Safety Signage & Marker Plates'
-          }
-        }
-      );
-    }
-  }
-
   const skus = Object.keys(CATALOGUE_UPDATES);
 
   // Single batch find instead of 113 sequential round-trips

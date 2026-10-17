@@ -396,13 +396,17 @@ fastify.get('/', async () => {
   };
 });
 
-fastify.get('/api/health', async () => {
+const healthCheckHandler = async () => {
   return {
     status: 'healthy',
     uptime: process.uptime(),
     dbState: require('mongoose').connection.readyState === 1 ? 'connected' : 'connecting'
   };
-});
+};
+
+fastify.get('/api/health', healthCheckHandler);
+fastify.get('/api/v1/health', healthCheckHandler);
+fastify.get('/health', healthCheckHandler);
 
 // Server Initialization
 const socketService = require('./src/services/socketService');

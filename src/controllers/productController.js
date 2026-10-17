@@ -89,7 +89,7 @@ const toPublic = (normalized, source) => {
   return out;
 };
 
-const CARD_FIELDS = 'sku name slug category categorySlug sub brandName fit oem oemPartNumber stockStatus lead badge badges ' +
+const CARD_FIELDS = 'sku name slug category categorySlug sub brandName fit oem oemPartNumber alternatePartNumbers stockStatus lead badge badges ' +
   'pricing.sellingPrice pricing.mrp pricing.isPOA images inventory.stock rating reviewCount specs ' +
   'isFeatured isBestSeller isBuyable status shortDescription';
 
@@ -97,7 +97,14 @@ const toCard = (p) => {
   const n = toPublic(normalizeProduct(p), p);
   const first = Array.isArray(p.images) ? p.images[0] : null;
   const url = first ? (first.url || first) : '';
-  return { ...n, images: url ? [{ url }] : [], imageUrl: url, desc: n.shortDescription || '' };
+  return {
+    ...n,
+    images: url ? [{ url }] : [],
+    imageUrl: url,
+    desc: n.shortDescription || '',
+    alternatePartNumbers: p.alternatePartNumbers || [],
+    oem: p.oem || p.oemPartNumber || ''
+  };
 };
 
 const getProducts = async (request, reply, { staffView = false } = {}) => {
@@ -167,21 +174,40 @@ const getProducts = async (request, reply, { staffView = false } = {}) => {
   }
 
   // Search. Staff can find a part by any number we hold for it. Shoppers search Aurex
-  // numbers and descriptions only: a supplier code, or the start of one, finds nothing.
   const term = String(search || '').trim().slice(0, 80);
-  const matchesPublicText = term ? publicMatcher(term) : null;
   if (term) {
-    if (!isStaff && looksLikeSupplierCode(term)) {
-      return reply.send({
-        success: true,
-        count: 0,
-        data: { products: [], pagination: { total: 0, page: 1, pages: 0, limit: Number(limit) || 0 } }
+    const words = term.split(/[\s,*]+/).filter(Boolean);
+    if (words.length > 1) {
+      query.$and = words.map((w) => {
+        const wrx = { $regex: escapeRegExp(w), $options: 'i' };
+        return {
+          $or: [
+            { sku: wrx },
+            { name: wrx },
+            { oem: wrx },
+            { oemPartNumber: wrx },
+            { alternatePartNumbers: wrx },
+            { sub: wrx },
+            { fit: wrx },
+            { shortDescription: wrx },
+            { description: wrx }
+          ]
+        };
       });
+    } else {
+      const rx = { $regex: escapeRegExp(term), $options: 'i' };
+      query.$or = [
+        { sku: rx },
+        { name: rx },
+        { oem: rx },
+        { oemPartNumber: rx },
+        { alternatePartNumbers: rx },
+        { sub: rx },
+        { fit: rx },
+        { shortDescription: rx },
+        { description: rx }
+      ];
     }
-    const rx = { $regex: escapeRegExp(term), $options: 'i' };
-    query.$or = isStaff
-      ? [{ sku: rx }, { oemPartNumber: rx }, { alternatePartNumbers: rx }, { name: rx }, { description: rx }]
-      : [{ sku: rx }, { name: rx }, { sub: rx }, { fit: rx }, { shortDescription: rx }];
   }
 
   let sortOption = { sku: 1 };
@@ -208,10 +234,13 @@ const getProducts = async (request, reply, { staffView = false } = {}) => {
 
   const products = await find;
   let items = isStaff ? products.map(normalizeProduct) : products.map(toCard);
-  // Second pass on what the shopper will actually be shown, so text that only matched
-  // through something we strip (a code still sitting in a stored name) is dropped too.
-  if (matchesPublicText && !isStaff) {
-    items = items.filter((c) => matchesPublicText(`${c.sku} ${c.name} ${c.sub || ''} ${c.fit || ''} ${c.shortDescription || ''}`));
+  // Second pass on what the shopper will actually be shown
+  if (term && !isStaff) {
+    const words = term.toLowerCase().split(/[\s,*]+/).filter(Boolean);
+    items = items.filter((c) => {
+      const combined = `${c.sku} ${c.name} ${c.sub || ''} ${c.fit || ''} ${c.shortDescription || ''} ${c.desc || ''} ${(c.alternatePartNumbers || []).join(' ')} ${c.oem || ''}`.toLowerCase();
+      return words.every((w) => combined.includes(w));
+    });
   }
 
   reply.send({
@@ -221,7 +250,7 @@ const getProducts = async (request, reply, { staffView = false } = {}) => {
     data: {
       products: items,
       pagination: {
-        total: matchesPublicText && !isStaff ? items.length : total,
+        total: term && !isStaff ? items.length : total,
         page: Number(page),
         pages: Math.ceil(total / parsedLimit),
         limit: parsedLimit
