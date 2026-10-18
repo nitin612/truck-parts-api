@@ -23,8 +23,8 @@
       }
     ],
     "pricing": {
-      "mrp": 12.5,
-      "sellingPrice": 12.5,
+      "mrp": 12,
+      "sellingPrice": 12,
       "tradePrice": 11,
       "isPOA": false,
       "discountType": "NONE",
@@ -110,7 +110,7 @@
     "updatedAt": "2026-10-08T16:37:02.584Z",
     "slug": "rubber-buffer-atp-acc-01",
     "__v": 0,
-    "price": 12.5,
+    "price": 12,
     "categoryName": "Accessories",
     "imageUrl": "/images/products/ATP-ACC-01.jpg",
     "isPublished": true,
@@ -140,8 +140,8 @@
       }
     ],
     "pricing": {
-      "mrp": 293,
-      "sellingPrice": 293,
+      "mrp": 284,
+      "sellingPrice": 284,
       "tradePrice": 264,
       "isPOA": false,
       "discountType": "NONE",
@@ -233,7 +233,7 @@
     "updatedAt": "2026-10-08T16:37:03.578Z",
     "slug": "steel-tool-box-1200x450x400-atp-acc-02",
     "__v": 0,
-    "price": 293,
+    "price": 284,
     "categoryName": "Accessories",
     "imageUrl": "/images/products/ATP-ACC-02.jpg",
     "isPublished": true,
@@ -263,8 +263,8 @@
       }
     ],
     "pricing": {
-      "mrp": 17,
-      "sellingPrice": 17,
+      "mrp": 16,
+      "sellingPrice": 16,
       "tradePrice": 15,
       "isPOA": false,
       "discountType": "NONE",
@@ -401,7 +401,7 @@
     "updatedAt": "2026-10-08T16:37:03.604Z",
     "slug": "chrome-plastic-wheel-nut-covers-32mm-push-on-pack-of-10-atp-acc-03",
     "__v": 0,
-    "price": 17,
+    "price": 16,
     "categoryName": "Accessories",
     "imageUrl": "/images/products/ATP-ACC-03.jpg",
     "isPublished": true,
@@ -431,8 +431,8 @@
       }
     ],
     "pricing": {
-      "mrp": 17,
-      "sellingPrice": 17,
+      "mrp": 16,
+      "sellingPrice": 16,
       "tradePrice": 15,
       "isPOA": false,
       "discountType": "NONE",
@@ -569,7 +569,7 @@
     "updatedAt": "2026-10-17T09:03:33.497Z",
     "slug": "chrome-plastic-wheel-nut-covers-33mm-push-on-pack-of-10-atp-acc-04",
     "__v": 0,
-    "price": 17,
+    "price": 16,
     "categoryName": "Accessories",
     "imageUrl": "/images/products/ATP-ACC-04.jpg",
     "isPublished": true,
@@ -599,8 +599,8 @@
       }
     ],
     "pricing": {
-      "mrp": 21.5,
-      "sellingPrice": 21.5,
+      "mrp": 21,
+      "sellingPrice": 21,
       "tradePrice": 19,
       "isPOA": false,
       "discountType": "NONE",
@@ -712,7 +712,7 @@
     "updatedAt": "2026-10-08T16:37:03.866Z",
     "slug": "heavy-duty-d-section-rubber-buffer-280mm-atp-acc-05",
     "__v": 0,
-    "price": 21.5,
+    "price": 21,
     "categoryName": "Accessories",
     "imageUrl": "/images/products/ATP-ACC-05.jpg",
     "isPublished": true,
@@ -2778,8 +2778,8 @@
       }
     ],
     "pricing": {
-      "mrp": 105,
-      "sellingPrice": 105,
+      "mrp": 102,
+      "sellingPrice": 102,
       "tradePrice": 95,
       "isPOA": false,
       "discountType": "NONE",
@@ -2908,7 +2908,7 @@
     "__v": 0,
     "imageUrl": "/images/products/ATP-TP-01.jpg",
     "wholesalerRemarks": "With Handle (200L+200R): Supplied complete with lever handle, keepers, and cams for Left-Hand and Right-Hand installations.",
-    "price": 105,
+    "price": 102,
     "categoryName": "Trailer Parts",
     "isPublished": true,
     "isVisible": true
@@ -2937,8 +2937,8 @@
       }
     ],
     "pricing": {
-      "mrp": 89,
-      "sellingPrice": 89,
+      "mrp": 86,
+      "sellingPrice": 86,
       "tradePrice": 80,
       "isPOA": false,
       "discountType": "NONE",
@@ -3052,7 +3052,7 @@
     "__v": 0,
     "wholesalerRemarks": "Without Latch: Cam and keeper gear sub-assembly without operating lever handle.",
     "imageUrl": "/images/products/ATP-TP-02.jpg",
-    "price": 89,
+    "price": 86,
     "categoryName": "Trailer Parts",
     "isPublished": true,
     "isVisible": true
@@ -3081,8 +3081,8 @@
       }
     ],
     "pricing": {
-      "mrp": 165,
-      "sellingPrice": 165,
+      "mrp": 160,
+      "sellingPrice": 160,
       "tradePrice": 149,
       "isPOA": false,
       "discountType": "NONE",
@@ -3175,7 +3175,7 @@
     "slug": "27mm-stainless-steel-truck-door-gear-50l50r-atp-tp-03",
     "__v": 0,
     "imageUrl": "/images/products/ATP-TP-03.jpg",
-    "price": 165,
+    "price": 160,
     "categoryName": "Trailer Parts",
     "isPublished": true,
     "isVisible": true
@@ -3204,8 +3204,8 @@
       }
     ],
     "pricing": {
-      "mrp": 25,
-      "sellingPrice": 25,
+      "mrp": 24,
+      "sellingPrice": 24,
       "tradePrice": 22.5,
       "isPOA": false,
       "discountType": "NONE",
@@ -3300,7 +3300,7 @@
     "updatedAt": "2026-10-08T16:36:42.625Z",
     "slug": "steel-hinges-atp-tp-04",
     "__v": 0,
-    "price": 25,
+    "price": 24,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-04.jpg",
     "isPublished": true,
@@ -3330,8 +3330,8 @@
       }
     ],
     "pricing": {
-      "mrp": 26,
-      "sellingPrice": 26,
+      "mrp": 25,
+      "sellingPrice": 25,
       "tradePrice": 23.4,
       "isPOA": false,
       "discountType": "NONE",
@@ -3425,7 +3425,7 @@
     "updatedAt": "2026-10-08T16:36:42.901Z",
     "slug": "steel-hinges-atp-tp-05",
     "__v": 0,
-    "price": 26,
+    "price": 25,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-05.jpg",
     "isPublished": true,
@@ -3455,8 +3455,8 @@
       }
     ],
     "pricing": {
-      "mrp": 24,
-      "sellingPrice": 24,
+      "mrp": 23,
+      "sellingPrice": 23,
       "tradePrice": 22,
       "isPOA": false,
       "discountType": "NONE",
@@ -3548,7 +3548,7 @@
     "updatedAt": "2026-10-08T16:36:43.634Z",
     "slug": "side-door-hinge-stainless-304-polished-atp-tp-06",
     "__v": 0,
-    "price": 24,
+    "price": 23,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-06.jpg",
     "isPublished": true,
@@ -3578,8 +3578,8 @@
       }
     ],
     "pricing": {
-      "mrp": 85,
-      "sellingPrice": 85,
+      "mrp": 82,
+      "sellingPrice": 82,
       "tradePrice": 77,
       "isPOA": false,
       "discountType": "NONE",
@@ -3671,7 +3671,7 @@
     "updatedAt": "2026-10-08T16:36:42.729Z",
     "slug": "steel-q-track-45m-atp-tp-07",
     "__v": 0,
-    "price": 85,
+    "price": 82,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-07.jpg",
     "isPublished": true,
@@ -3701,8 +3701,8 @@
       }
     ],
     "pricing": {
-      "mrp": 145,
-      "sellingPrice": 145,
+      "mrp": 141,
+      "sellingPrice": 141,
       "tradePrice": 131,
       "isPOA": false,
       "discountType": "NONE",
@@ -3794,7 +3794,7 @@
     "updatedAt": "2026-10-08T16:36:43.455Z",
     "slug": "304-stainless-steel-q-track-45m-atp-tp-08",
     "__v": 0,
-    "price": 145,
+    "price": 141,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-08.jpg",
     "isPublished": true,
@@ -3824,8 +3824,8 @@
       }
     ],
     "pricing": {
-      "mrp": 78,
-      "sellingPrice": 78,
+      "mrp": 76,
+      "sellingPrice": 76,
       "tradePrice": 70,
       "isPOA": false,
       "discountType": "NONE",
@@ -3917,7 +3917,7 @@
     "updatedAt": "2026-10-08T16:36:43.731Z",
     "slug": "steel-f-track-3050x132x2mm-atp-tp-09",
     "__v": 0,
-    "price": 78,
+    "price": 76,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-09.jpg",
     "isPublished": true,
@@ -3947,8 +3947,8 @@
       }
     ],
     "pricing": {
-      "mrp": 135,
-      "sellingPrice": 135,
+      "mrp": 131,
+      "sellingPrice": 131,
       "tradePrice": 122,
       "isPOA": false,
       "discountType": "NONE",
@@ -4040,7 +4040,7 @@
     "updatedAt": "2026-10-08T16:36:43.844Z",
     "slug": "iron-column-zinc-plated-atp-tp-10",
     "__v": 0,
-    "price": 135,
+    "price": 131,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-10.jpg",
     "isPublished": true,
@@ -4070,8 +4070,8 @@
       }
     ],
     "pricing": {
-      "mrp": 152,
-      "sellingPrice": 152,
+      "mrp": 147,
+      "sellingPrice": 147,
       "tradePrice": 137,
       "isPOA": false,
       "discountType": "NONE",
@@ -4183,7 +4183,7 @@
     "updatedAt": "2026-10-08T16:37:00.881Z",
     "slug": "heavy-duty-slide-out-step-ladder-2-step-zinc-plated-640x390mm-atp-tp-100",
     "__v": 0,
-    "price": 152,
+    "price": 147,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-100.jpg",
     "isPublished": true,
@@ -4213,8 +4213,8 @@
       }
     ],
     "pricing": {
-      "mrp": 61,
-      "sellingPrice": 61,
+      "mrp": 59,
+      "sellingPrice": 59,
       "tradePrice": 55,
       "isPOA": false,
       "discountType": "NONE",
@@ -4331,7 +4331,7 @@
     "updatedAt": "2026-10-08T16:37:01.455Z",
     "slug": "tipper-tail-gate-lock-bolt-25mm-dia-x-113mm-length-atp-tp-101",
     "__v": 0,
-    "price": 61,
+    "price": 59,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-101.jpg",
     "isPublished": true,
@@ -4361,8 +4361,8 @@
       }
     ],
     "pricing": {
-      "mrp": 71,
-      "sellingPrice": 71,
+      "mrp": 69,
+      "sellingPrice": 69,
       "tradePrice": 64,
       "isPOA": false,
       "discountType": "NONE",
@@ -4479,7 +4479,7 @@
     "updatedAt": "2026-10-08T16:37:01.356Z",
     "slug": "aluminium-tipper-tailgate-grain-lock-25mm-dia-x-88mm-length-atp-tp-102",
     "__v": 0,
-    "price": 71,
+    "price": 69,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-102.jpg",
     "isPublished": true,
@@ -4509,8 +4509,8 @@
       }
     ],
     "pricing": {
-      "mrp": 234,
-      "sellingPrice": 234,
+      "mrp": 227,
+      "sellingPrice": 227,
       "tradePrice": 211,
       "isPOA": false,
       "discountType": "NONE",
@@ -4627,7 +4627,7 @@
     "updatedAt": "2026-10-08T16:37:01.900Z",
     "slug": "spray-suppressant-brush-175mm-height-x-40-metres-length-atp-tp-103",
     "__v": 0,
-    "price": 234,
+    "price": 227,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-103.jpg",
     "isPublished": true,
@@ -4657,8 +4657,8 @@
       }
     ],
     "pricing": {
-      "mrp": 58,
-      "sellingPrice": 58,
+      "mrp": 56,
+      "sellingPrice": 56,
       "tradePrice": 52,
       "isPOA": false,
       "discountType": "NONE",
@@ -4770,7 +4770,7 @@
     "updatedAt": "2026-10-08T16:37:01.907Z",
     "slug": "hard-polypropylene-strip-brush-30m-with-f-clip-aluminium-holder-atp-tp-104",
     "__v": 0,
-    "price": 58,
+    "price": 56,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-104.jpg",
     "isPublished": true,
@@ -4800,8 +4800,8 @@
       }
     ],
     "pricing": {
-      "mrp": 130,
-      "sellingPrice": 130,
+      "mrp": 126,
+      "sellingPrice": 126,
       "tradePrice": 117,
       "isPOA": false,
       "discountType": "NONE",
@@ -4913,7 +4913,7 @@
     "updatedAt": "2026-10-08T16:37:01.904Z",
     "slug": "gl-25300-3-way-tailgate-hinge-side-swing-gate-tipper-kit-30mm-atp-tp-105",
     "__v": 0,
-    "price": 130,
+    "price": 126,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-105.jpg",
     "isPublished": true,
@@ -4943,8 +4943,8 @@
       }
     ],
     "pricing": {
-      "mrp": 139,
-      "sellingPrice": 139,
+      "mrp": 135,
+      "sellingPrice": 135,
       "tradePrice": 125,
       "isPOA": false,
       "discountType": "NONE",
@@ -5056,7 +5056,7 @@
     "updatedAt": "2026-10-10T09:20:08.926Z",
     "slug": "gl-25300-3-way-tailgate-hinge-side-swing-gate-tipper-kit-40mm-atp-tp-106",
     "__v": 0,
-    "price": 139,
+    "price": 135,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-106.jpg",
     "isPublished": true,
@@ -5086,8 +5086,8 @@
       }
     ],
     "pricing": {
-      "mrp": 148,
-      "sellingPrice": 148,
+      "mrp": 144,
+      "sellingPrice": 144,
       "tradePrice": 133,
       "isPOA": false,
       "discountType": "NONE",
@@ -5199,7 +5199,7 @@
     "updatedAt": "2026-10-08T16:37:02.587Z",
     "slug": "gl-25300-3-way-tailgate-hinge-side-swing-gate-tipper-kit-50mm-atp-tp-107",
     "__v": 0,
-    "price": 148,
+    "price": 144,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-107.jpg",
     "isPublished": true,
@@ -5229,8 +5229,8 @@
       }
     ],
     "pricing": {
-      "mrp": 129,
-      "sellingPrice": 129,
+      "mrp": 125,
+      "sellingPrice": 125,
       "tradePrice": 116,
       "isPOA": false,
       "discountType": "NONE",
@@ -5347,7 +5347,7 @@
     "updatedAt": "2026-10-08T16:37:03.671Z",
     "slug": "dangerous-goods-15-flip-multi-hazard-sign-350x350mm-aluminium-atp-acc-06",
     "__v": 0,
-    "price": 129,
+    "price": 125,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-108.jpg",
     "isPublished": true,
@@ -5377,8 +5377,8 @@
       }
     ],
     "pricing": {
-      "mrp": 102,
-      "sellingPrice": 102,
+      "mrp": 99,
+      "sellingPrice": 99,
       "tradePrice": 92,
       "isPOA": false,
       "discountType": "NONE",
@@ -5495,7 +5495,7 @@
     "updatedAt": "2026-10-08T16:37:03.680Z",
     "slug": "dangerous-goods-15-flip-multi-hazard-sign-350x350mm-abs-atp-acc-07",
     "__v": 0,
-    "price": 102,
+    "price": 99,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-109.jpg",
     "isPublished": true,
@@ -5525,8 +5525,8 @@
       }
     ],
     "pricing": {
-      "mrp": 175,
-      "sellingPrice": 175,
+      "mrp": 170,
+      "sellingPrice": 170,
       "tradePrice": 158,
       "isPOA": false,
       "discountType": "NONE",
@@ -5629,7 +5629,7 @@
     "slug": "canvas-stand-1995wx1600h-steel-powder-coated-atp-tp-11",
     "__v": 0,
     "wholesalerRemarks": "Guangzhou Winnie Quotation Item: Width 1995mm x Height 1600mm Canvas Stand",
-    "price": 175,
+    "price": 170,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-11.jpg",
     "isPublished": true,
@@ -5659,8 +5659,8 @@
       }
     ],
     "pricing": {
-      "mrp": 18.5,
-      "sellingPrice": 18.5,
+      "mrp": 18,
+      "sellingPrice": 18,
       "tradePrice": 17,
       "isPOA": false,
       "discountType": "NONE",
@@ -5772,7 +5772,7 @@
     "updatedAt": "2026-10-08T16:37:04.129Z",
     "slug": "3m-class-1-reflective-rear-marker-plate-sticker-300x400mm-left-hand-atp-acc-08",
     "__v": 0,
-    "price": 18.5,
+    "price": 18,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-110.jpg",
     "isPublished": true,
@@ -5802,8 +5802,8 @@
       }
     ],
     "pricing": {
-      "mrp": 18.5,
-      "sellingPrice": 18.5,
+      "mrp": 18,
+      "sellingPrice": 18,
       "tradePrice": 17,
       "isPOA": false,
       "discountType": "NONE",
@@ -5915,7 +5915,7 @@
     "updatedAt": "2026-10-08T16:37:04.724Z",
     "slug": "3m-class-1-reflective-rear-marker-plate-sticker-300x400mm-right-hand-atp-acc-09",
     "__v": 0,
-    "price": 18.5,
+    "price": 18,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-111.jpg",
     "isPublished": true,
@@ -5945,8 +5945,8 @@
       }
     ],
     "pricing": {
-      "mrp": 17,
-      "sellingPrice": 17,
+      "mrp": 16,
+      "sellingPrice": 16,
       "tradePrice": 15,
       "isPOA": false,
       "discountType": "NONE",
@@ -6058,7 +6058,7 @@
     "updatedAt": "2026-10-08T16:37:04.660Z",
     "slug": "3m-class-1-reflective-rear-marker-plate-sticker-300x300mm-left-hand-atp-acc-10",
     "__v": 0,
-    "price": 17,
+    "price": 16,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-112.jpg",
     "isPublished": true,
@@ -6088,8 +6088,8 @@
       }
     ],
     "pricing": {
-      "mrp": 17,
-      "sellingPrice": 17,
+      "mrp": 16,
+      "sellingPrice": 16,
       "tradePrice": 15,
       "isPOA": false,
       "discountType": "NONE",
@@ -6201,7 +6201,7 @@
     "updatedAt": "2026-10-08T16:37:04.665Z",
     "slug": "3m-class-1-reflective-rear-marker-plate-sticker-300x300mm-right-hand-atp-acc-11",
     "__v": 0,
-    "price": 17,
+    "price": 16,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-113.jpg",
     "isPublished": true,
@@ -6231,8 +6231,8 @@
       }
     ],
     "pricing": {
-      "mrp": 14,
-      "sellingPrice": 14,
+      "mrp": 13,
+      "sellingPrice": 13,
       "tradePrice": 13,
       "isPOA": false,
       "discountType": "NONE",
@@ -6344,7 +6344,7 @@
     "updatedAt": "2026-10-08T16:37:04.682Z",
     "slug": "3m-class-1-reflective-zebra-strip-sticker-400x100mm-41a-left-atp-acc-12",
     "__v": 0,
-    "price": 14,
+    "price": 13,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-114.jpg",
     "isPublished": true,
@@ -6374,8 +6374,8 @@
       }
     ],
     "pricing": {
-      "mrp": 14,
-      "sellingPrice": 14,
+      "mrp": 13,
+      "sellingPrice": 13,
       "tradePrice": 13,
       "isPOA": false,
       "discountType": "NONE",
@@ -6487,7 +6487,7 @@
     "updatedAt": "2026-10-12T06:07:01.193Z",
     "slug": "3m-class-1-reflective-zebra-strip-sticker-400x100mm-41b-right-atp-acc-13",
     "__v": 0,
-    "price": 14,
+    "price": 13,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-115.jpg",
     "isPublished": true,
@@ -6517,8 +6517,8 @@
       }
     ],
     "pricing": {
-      "mrp": 22.5,
-      "sellingPrice": 22.5,
+      "mrp": 22,
+      "sellingPrice": 22,
       "tradePrice": 20,
       "isPOA": false,
       "discountType": "NONE",
@@ -6630,7 +6630,7 @@
     "updatedAt": "2026-10-08T16:37:05.154Z",
     "slug": "3m-class-1-vehicle-zebra-rear-marker-sticker-600x150mm-left-side-atp-acc-14",
     "__v": 0,
-    "price": 22.5,
+    "price": 22,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-116.jpg",
     "isPublished": true,
@@ -6660,8 +6660,8 @@
       }
     ],
     "pricing": {
-      "mrp": 22.5,
-      "sellingPrice": 22.5,
+      "mrp": 22,
+      "sellingPrice": 22,
       "tradePrice": 20,
       "isPOA": false,
       "discountType": "NONE",
@@ -6773,7 +6773,7 @@
     "updatedAt": "2026-10-08T16:37:06.049Z",
     "slug": "3m-class-1-vehicle-zebra-rear-marker-sticker-600x150mm-right-side-atp-acc-15",
     "__v": 0,
-    "price": 22.5,
+    "price": 22,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-117.jpg",
     "isPublished": true,
@@ -6803,8 +6803,8 @@
       }
     ],
     "pricing": {
-      "mrp": 16,
-      "sellingPrice": 16,
+      "mrp": 15,
+      "sellingPrice": 15,
       "tradePrice": 14,
       "isPOA": false,
       "discountType": "NONE",
@@ -6916,7 +6916,7 @@
     "updatedAt": "2026-10-08T16:37:05.816Z",
     "slug": "3m-class-1-do-not-overtake-turning-vehicle-sticker-300x100mm-atp-acc-16",
     "__v": 0,
-    "price": 16,
+    "price": 15,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-118.jpg",
     "isPublished": true,
@@ -6946,8 +6946,8 @@
       }
     ],
     "pricing": {
-      "mrp": 49,
-      "sellingPrice": 49,
+      "mrp": 48,
+      "sellingPrice": 48,
       "tradePrice": 44,
       "isPOA": false,
       "discountType": "NONE",
@@ -7059,7 +7059,7 @@
     "updatedAt": "2026-10-08T16:37:05.821Z",
     "slug": "3m-class-1-aluminium-rear-marker-sign-road-train-510x250mm-atp-acc-17",
     "__v": 0,
-    "price": 49,
+    "price": 48,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-119.jpg",
     "isPublished": true,
@@ -7089,8 +7089,8 @@
       }
     ],
     "pricing": {
-      "mrp": 185,
-      "sellingPrice": 185,
+      "mrp": 179,
+      "sellingPrice": 179,
       "tradePrice": 167,
       "isPOA": false,
       "discountType": "NONE",
@@ -7193,7 +7193,7 @@
     "slug": "canvas-stand-2045wx1600h-steel-powder-coated-atp-tp-12",
     "__v": 0,
     "wholesalerRemarks": "Guangzhou Winnie Quotation Item: Width 2045mm x Height 1600mm Canvas Stand",
-    "price": 185,
+    "price": 179,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-12.jpg",
     "isPublished": true,
@@ -7223,8 +7223,8 @@
       }
     ],
     "pricing": {
-      "mrp": 49,
-      "sellingPrice": 49,
+      "mrp": 48,
+      "sellingPrice": 48,
       "tradePrice": 44,
       "isPOA": false,
       "discountType": "NONE",
@@ -7336,7 +7336,7 @@
     "updatedAt": "2026-10-08T16:37:05.861Z",
     "slug": "3m-class-1-aluminium-rear-marker-sign-oversize-510x250mm-atp-acc-18",
     "__v": 0,
-    "price": 49,
+    "price": 48,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-120.jpg",
     "isPublished": true,
@@ -7366,8 +7366,8 @@
       }
     ],
     "pricing": {
-      "mrp": 58,
-      "sellingPrice": 58,
+      "mrp": 56,
+      "sellingPrice": 56,
       "tradePrice": 52,
       "isPOA": false,
       "discountType": "NONE",
@@ -7479,7 +7479,7 @@
     "updatedAt": "2026-10-08T16:37:05.895Z",
     "slug": "3m-class-1-aluminium-rear-marker-sign-long-vehicle-600x450mm-atp-acc-19",
     "__v": 0,
-    "price": 58,
+    "price": 56,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-121.jpg",
     "isPublished": true,
@@ -7509,8 +7509,8 @@
       }
     ],
     "pricing": {
-      "mrp": 145,
-      "sellingPrice": 145,
+      "mrp": 141,
+      "sellingPrice": 141,
       "tradePrice": 131,
       "isPOA": false,
       "discountType": "NONE",
@@ -7613,7 +7613,7 @@
     "slug": "canvas-stand-1250wx1600h-steel-powder-coated-atp-tp-13",
     "__v": 0,
     "wholesalerRemarks": "Guangzhou Winnie Quotation Item: Width 1250mm x Height 1600mm Canvas Stand",
-    "price": 145,
+    "price": 141,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-13.jpg",
     "isPublished": true,
@@ -7643,8 +7643,8 @@
       }
     ],
     "pricing": {
-      "mrp": 35,
-      "sellingPrice": 35,
+      "mrp": 34,
+      "sellingPrice": 34,
       "tradePrice": 32,
       "isPOA": false,
       "discountType": "NONE",
@@ -7756,7 +7756,7 @@
     "updatedAt": "2026-10-08T16:37:07.834Z",
     "slug": "3m-class-1-aluminium-rear-marking-plate-300x400mm-left-hand-atp-acc-28",
     "__v": 0,
-    "price": 35,
+    "price": 34,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-130.jpg",
     "isPublished": true,
@@ -7786,8 +7786,8 @@
       }
     ],
     "pricing": {
-      "mrp": 32,
-      "sellingPrice": 32,
+      "mrp": 31,
+      "sellingPrice": 31,
       "tradePrice": 29,
       "isPOA": false,
       "discountType": "NONE",
@@ -7899,7 +7899,7 @@
     "updatedAt": "2026-10-08T16:37:07.866Z",
     "slug": "3m-class-1-aluminium-rear-marker-plate-300x300mm-right-hand-atp-acc-29",
     "__v": 0,
-    "price": 32,
+    "price": 31,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-131.jpg",
     "isPublished": true,
@@ -7929,8 +7929,8 @@
       }
     ],
     "pricing": {
-      "mrp": 30,
-      "sellingPrice": 30,
+      "mrp": 29,
+      "sellingPrice": 29,
       "tradePrice": 27,
       "isPOA": false,
       "discountType": "NONE",
@@ -8042,7 +8042,7 @@
     "updatedAt": "2026-10-08T16:37:07.907Z",
     "slug": "3m-class-1-aluminium-do-not-overtake-turning-vehicle-plate-300x100mm-atp-acc-30",
     "__v": 0,
-    "price": 30,
+    "price": 29,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-132.jpg",
     "isPublished": true,
@@ -8072,8 +8072,8 @@
       }
     ],
     "pricing": {
-      "mrp": 28.5,
-      "sellingPrice": 28.5,
+      "mrp": 28,
+      "sellingPrice": 28,
       "tradePrice": 25.7,
       "isPOA": false,
       "discountType": "NONE",
@@ -8183,7 +8183,7 @@
     "updatedAt": "2026-10-08T16:37:08.080Z",
     "slug": "3m-class-1-41a-zebra-rear-marker-aluminium-plate-400x100mm-left-atp-acc-31",
     "__v": 0,
-    "price": 28.5,
+    "price": 28,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-133.jpg",
     "isPublished": true,
@@ -8213,8 +8213,8 @@
       }
     ],
     "pricing": {
-      "mrp": 28.5,
-      "sellingPrice": 28.5,
+      "mrp": 28,
+      "sellingPrice": 28,
       "tradePrice": 25.7,
       "isPOA": false,
       "discountType": "NONE",
@@ -8324,7 +8324,7 @@
     "updatedAt": "2026-10-12T06:07:00.614Z",
     "slug": "3m-class-1-41b-zebra-rear-marker-aluminium-plate-400x100mm-right-atp-acc-32",
     "__v": 0,
-    "price": 28.5,
+    "price": 28,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-134.jpg",
     "isPublished": true,
@@ -8354,8 +8354,8 @@
       }
     ],
     "pricing": {
-      "mrp": 40,
-      "sellingPrice": 40,
+      "mrp": 39,
+      "sellingPrice": 39,
       "tradePrice": 36,
       "isPOA": false,
       "discountType": "NONE",
@@ -8467,7 +8467,7 @@
     "updatedAt": "2026-10-08T16:37:08.896Z",
     "slug": "3m-class-1-reflective-sign-with-aluminium-plate-615a-600x150mm-left-atp-acc-35",
     "__v": 0,
-    "price": 40,
+    "price": 39,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-137.jpg",
     "isPublished": true,
@@ -8497,8 +8497,8 @@
       }
     ],
     "pricing": {
-      "mrp": 40,
-      "sellingPrice": 40,
+      "mrp": 39,
+      "sellingPrice": 39,
       "tradePrice": 36,
       "isPOA": false,
       "discountType": "NONE",
@@ -8610,7 +8610,7 @@
     "updatedAt": "2026-10-10T19:25:48.453Z",
     "slug": "3m-class-1-reflective-sign-with-aluminium-plate-615b-600x150mm-right-atp-acc-36",
     "__v": 0,
-    "price": 40,
+    "price": 39,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-138.jpg",
     "isPublished": true,
@@ -8640,8 +8640,8 @@
       }
     ],
     "pricing": {
-      "mrp": 129,
-      "sellingPrice": 129,
+      "mrp": 125,
+      "sellingPrice": 125,
       "tradePrice": 116.1,
       "isPOA": false,
       "discountType": "NONE",
@@ -8770,7 +8770,7 @@
     "__v": 0,
     "imageUrl": "/images/products/ATP-TP-14.jpg",
     "wholesalerRemarks": "With Handle: Heavy-duty ratcheting lever handle mechanism factory assembled on telescoping tube for rapid tensioning.",
-    "price": 129,
+    "price": 125,
     "categoryName": "Trailer Parts",
     "isPublished": true,
     "isVisible": true
@@ -8799,8 +8799,8 @@
       }
     ],
     "pricing": {
-      "mrp": 14.5,
-      "sellingPrice": 14.5,
+      "mrp": 14,
+      "sellingPrice": 14,
       "tradePrice": 13,
       "isPOA": false,
       "discountType": "NONE",
@@ -8886,7 +8886,7 @@
     "updatedAt": "2026-10-08T16:36:45.952Z",
     "slug": "steel-spring-bolt-atp-tp-15",
     "__v": 0,
-    "price": 14.5,
+    "price": 14,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-15.jpg",
     "isPublished": true,
@@ -8916,8 +8916,8 @@
       }
     ],
     "pricing": {
-      "mrp": 26,
-      "sellingPrice": 26,
+      "mrp": 25,
+      "sellingPrice": 25,
       "tradePrice": 23,
       "isPOA": false,
       "discountType": "NONE",
@@ -9046,7 +9046,7 @@
     "__v": 0,
     "imageUrl": "/images/products/ATP-TP-16.jpg",
     "wholesalerRemarks": "With Strap: Pre-assembled with 50mm industrial polyester webbing strap loop.",
-    "price": 26,
+    "price": 25,
     "categoryName": "Trailer Parts",
     "isPublished": true,
     "isVisible": true
@@ -9075,8 +9075,8 @@
       }
     ],
     "pricing": {
-      "mrp": 24,
-      "sellingPrice": 24,
+      "mrp": 23,
+      "sellingPrice": 23,
       "tradePrice": 22,
       "isPOA": false,
       "discountType": "NONE",
@@ -9205,7 +9205,7 @@
     "__v": 0,
     "imageUrl": "/images/products/ATP-TP-17.jpg",
     "wholesalerRemarks": "With Strap & Hook: Supplied complete with reinforced webbing strap and forged safety latch hook.",
-    "price": 24,
+    "price": 23,
     "categoryName": "Trailer Parts",
     "isPublished": true,
     "isVisible": true
@@ -9234,8 +9234,8 @@
       }
     ],
     "pricing": {
-      "mrp": 19.5,
-      "sellingPrice": 19.5,
+      "mrp": 19,
+      "sellingPrice": 19,
       "tradePrice": 17.6,
       "isPOA": false,
       "discountType": "NONE",
@@ -9324,7 +9324,7 @@
     "updatedAt": "2026-10-08T16:36:45.148Z",
     "slug": "steel-door-retainer-atp-tp-18",
     "__v": 0,
-    "price": 19.5,
+    "price": 19,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-18.jpg",
     "isPublished": true,
@@ -9354,8 +9354,8 @@
       }
     ],
     "pricing": {
-      "mrp": 23,
-      "sellingPrice": 23,
+      "mrp": 22,
+      "sellingPrice": 22,
       "tradePrice": 21,
       "isPOA": false,
       "discountType": "NONE",
@@ -9441,7 +9441,7 @@
     "updatedAt": "2026-10-08T16:36:45.534Z",
     "slug": "dn16-paddle-handle-latch-304-stainless-polished-atp-tp-19",
     "__v": 0,
-    "price": 23,
+    "price": 22,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-19.jpg",
     "isPublished": true,
@@ -9471,8 +9471,8 @@
       }
     ],
     "pricing": {
-      "mrp": 34,
-      "sellingPrice": 34,
+      "mrp": 33,
+      "sellingPrice": 33,
       "tradePrice": 30.6,
       "isPOA": false,
       "discountType": "NONE",
@@ -9581,7 +9581,7 @@
     "slug": "zinc-alloy-lock-atp-tp-20",
     "__v": 0,
     "imageUrl": "/images/products/ATP-TP-20.jpg",
-    "price": 34,
+    "price": 33,
     "categoryName": "Trailer Parts",
     "isPublished": true,
     "isVisible": true
@@ -9610,8 +9610,8 @@
       }
     ],
     "pricing": {
-      "mrp": 11,
-      "sellingPrice": 11,
+      "mrp": 10,
+      "sellingPrice": 10,
       "tradePrice": 10,
       "isPOA": false,
       "discountType": "NONE",
@@ -9697,7 +9697,7 @@
     "updatedAt": "2026-10-08T16:36:46.121Z",
     "slug": "stainless-steel-handle-atp-tp-21",
     "__v": 0,
-    "price": 11,
+    "price": 10,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-21.jpg",
     "isPublished": true,
@@ -9727,8 +9727,8 @@
       }
     ],
     "pricing": {
-      "mrp": 11,
-      "sellingPrice": 11,
+      "mrp": 10,
+      "sellingPrice": 10,
       "tradePrice": 10,
       "isPOA": false,
       "discountType": "NONE",
@@ -9831,7 +9831,7 @@
     "slug": "steel-handle-l330-h50-without-mounting-base-atp-tp-22",
     "__v": 0,
     "wholesalerRemarks": "Without Mounting Base: Direct tubular ends without mounting base plates.",
-    "price": 11,
+    "price": 10,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-22.jpg",
     "isPublished": true,
@@ -9861,8 +9861,8 @@
       }
     ],
     "pricing": {
-      "mrp": 22,
-      "sellingPrice": 22,
+      "mrp": 21,
+      "sellingPrice": 21,
       "tradePrice": 19.8,
       "isPOA": false,
       "discountType": "NONE",
@@ -9950,7 +9950,7 @@
     "updatedAt": "2026-10-08T16:36:46.249Z",
     "slug": "228mm-steel-hinges-atp-tp-23",
     "__v": 0,
-    "price": 22,
+    "price": 21,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-23.jpg",
     "isPublished": true,
@@ -9980,8 +9980,8 @@
       }
     ],
     "pricing": {
-      "mrp": 38,
-      "sellingPrice": 38,
+      "mrp": 37,
+      "sellingPrice": 37,
       "tradePrice": 34.2,
       "isPOA": false,
       "discountType": "NONE",
@@ -10069,7 +10069,7 @@
     "updatedAt": "2026-10-08T16:36:46.465Z",
     "slug": "235mm-304-stainless-steel-hinges-atp-tp-24",
     "__v": 0,
-    "price": 38,
+    "price": 37,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-24.jpg",
     "isPublished": true,
@@ -10099,8 +10099,8 @@
       }
     ],
     "pricing": {
-      "mrp": 26,
-      "sellingPrice": 26,
+      "mrp": 25,
+      "sellingPrice": 25,
       "tradePrice": 23.4,
       "isPOA": false,
       "discountType": "NONE",
@@ -10189,7 +10189,7 @@
     "updatedAt": "2026-10-08T16:36:46.901Z",
     "slug": "stainless-steel-retainer-atp-tp-25",
     "__v": 0,
-    "price": 26,
+    "price": 25,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-25.jpg",
     "isPublished": true,
@@ -10219,8 +10219,8 @@
       }
     ],
     "pricing": {
-      "mrp": 3.9,
-      "sellingPrice": 3.9,
+      "mrp": 3.8,
+      "sellingPrice": 3.8,
       "tradePrice": 3.5,
       "isPOA": false,
       "discountType": "NONE",
@@ -10309,7 +10309,7 @@
     "updatedAt": "2026-10-08T16:36:46.987Z",
     "slug": "plastic-end-cap-atp-tp-26",
     "__v": 0,
-    "price": 3.9,
+    "price": 3.8,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-26.jpg",
     "isPublished": true,
@@ -10339,8 +10339,8 @@
       }
     ],
     "pricing": {
-      "mrp": 3.9,
-      "sellingPrice": 3.9,
+      "mrp": 3.8,
+      "sellingPrice": 3.8,
       "tradePrice": 3.5,
       "isPOA": false,
       "discountType": "NONE",
@@ -10429,7 +10429,7 @@
     "updatedAt": "2026-10-08T16:36:47.069Z",
     "slug": "plastic-end-cap-atp-tp-27",
     "__v": 0,
-    "price": 3.9,
+    "price": 3.8,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-27.jpg",
     "isPublished": true,
@@ -10459,8 +10459,8 @@
       }
     ],
     "pricing": {
-      "mrp": 32,
-      "sellingPrice": 32,
+      "mrp": 31,
+      "sellingPrice": 31,
       "tradePrice": 29,
       "isPOA": false,
       "discountType": "NONE",
@@ -10547,7 +10547,7 @@
     "slug": "roller-atp-tp-28",
     "__v": 0,
     "imageUrl": "/images/products/ATP-TP-28.jpg",
-    "price": 32,
+    "price": 31,
     "categoryName": "Trailer Parts",
     "isPublished": true,
     "isVisible": true
@@ -10576,8 +10576,8 @@
       }
     ],
     "pricing": {
-      "mrp": 47,
-      "sellingPrice": 47,
+      "mrp": 46,
+      "sellingPrice": 46,
       "tradePrice": 42,
       "isPOA": false,
       "discountType": "NONE",
@@ -10689,7 +10689,7 @@
     "updatedAt": "2026-10-08T16:36:47.201Z",
     "slug": "pvc-door-seal-20mm-x-5m-atp-tp-29",
     "__v": 0,
-    "price": 47,
+    "price": 46,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-29.jpg",
     "isPublished": true,
@@ -10719,8 +10719,8 @@
       }
     ],
     "pricing": {
-      "mrp": 49,
-      "sellingPrice": 49,
+      "mrp": 48,
+      "sellingPrice": 48,
       "tradePrice": 44,
       "isPOA": false,
       "discountType": "NONE",
@@ -10832,7 +10832,7 @@
     "updatedAt": "2026-10-08T16:36:47.574Z",
     "slug": "pvc-door-seal-25mm-x-5m-atp-tp-30",
     "__v": 0,
-    "price": 49,
+    "price": 48,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-30.jpg",
     "isPublished": true,
@@ -10862,8 +10862,8 @@
       }
     ],
     "pricing": {
-      "mrp": 47,
-      "sellingPrice": 47,
+      "mrp": 46,
+      "sellingPrice": 46,
       "tradePrice": 42,
       "isPOA": false,
       "discountType": "NONE",
@@ -10975,7 +10975,7 @@
     "updatedAt": "2026-10-08T16:36:48.261Z",
     "slug": "pvc-door-seal-30mm-x-4m-atp-tp-31",
     "__v": 0,
-    "price": 47,
+    "price": 46,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-31.jpg",
     "isPublished": true,
@@ -11005,8 +11005,8 @@
       }
     ],
     "pricing": {
-      "mrp": 62,
-      "sellingPrice": 62,
+      "mrp": 60,
+      "sellingPrice": 60,
       "tradePrice": 56,
       "isPOA": false,
       "discountType": "NONE",
@@ -11118,7 +11118,7 @@
     "updatedAt": "2026-10-08T16:36:48.249Z",
     "slug": "pvc-door-seal-55mm-x-42m-atp-tp-32",
     "__v": 0,
-    "price": 62,
+    "price": 60,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-32.jpg",
     "isPublished": true,
@@ -11148,8 +11148,8 @@
       }
     ],
     "pricing": {
-      "mrp": 72,
-      "sellingPrice": 72,
+      "mrp": 70,
+      "sellingPrice": 70,
       "tradePrice": 65,
       "isPOA": false,
       "discountType": "NONE",
@@ -11261,7 +11261,7 @@
     "updatedAt": "2026-10-08T16:36:48.032Z",
     "slug": "pvc-door-seal-85mm-x-5m-atp-tp-33",
     "__v": 0,
-    "price": 72,
+    "price": 70,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-33.jpg",
     "isPublished": true,
@@ -11291,8 +11291,8 @@
       }
     ],
     "pricing": {
-      "mrp": 52,
-      "sellingPrice": 52,
+      "mrp": 50,
+      "sellingPrice": 50,
       "tradePrice": 47,
       "isPOA": false,
       "discountType": "NONE",
@@ -11404,7 +11404,7 @@
     "updatedAt": "2026-10-10T14:20:39.246Z",
     "slug": "pvc-door-seal-j-profile-25x30mm-x-5m-atp-tp-34",
     "__v": 0,
-    "price": 52,
+    "price": 50,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-34.jpg",
     "isPublished": true,
@@ -11434,8 +11434,8 @@
       }
     ],
     "pricing": {
-      "mrp": 43,
-      "sellingPrice": 43,
+      "mrp": 42,
+      "sellingPrice": 42,
       "tradePrice": 39,
       "isPOA": false,
       "discountType": "NONE",
@@ -11547,7 +11547,7 @@
     "updatedAt": "2026-10-08T16:36:48.448Z",
     "slug": "rubber-door-seal-30x55mm-atp-tp-35",
     "__v": 0,
-    "price": 43,
+    "price": 42,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-35.jpg",
     "isPublished": true,
@@ -11577,8 +11577,8 @@
       }
     ],
     "pricing": {
-      "mrp": 3.4,
-      "sellingPrice": 3.4,
+      "mrp": 3.3,
+      "sellingPrice": 3.3,
       "tradePrice": 3,
       "isPOA": false,
       "discountType": "NONE",
@@ -11690,7 +11690,7 @@
     "updatedAt": "2026-10-08T16:36:48.540Z",
     "slug": "door-seal-grey-pvc-corner-tab-atp-tp-36",
     "__v": 0,
-    "price": 3.4,
+    "price": 3.3,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-36.jpg",
     "isPublished": true,
@@ -11720,8 +11720,8 @@
       }
     ],
     "pricing": {
-      "mrp": 3.4,
-      "sellingPrice": 3.4,
+      "mrp": 3.3,
+      "sellingPrice": 3.3,
       "tradePrice": 3,
       "isPOA": false,
       "discountType": "NONE",
@@ -11833,7 +11833,7 @@
     "updatedAt": "2026-10-08T16:36:49.232Z",
     "slug": "door-seal-black-rubber-corner-tab-atp-tp-37",
     "__v": 0,
-    "price": 3.4,
+    "price": 3.3,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-37.jpg",
     "isPublished": true,
@@ -11863,8 +11863,8 @@
       }
     ],
     "pricing": {
-      "mrp": 21.5,
-      "sellingPrice": 21.5,
+      "mrp": 21,
+      "sellingPrice": 21,
       "tradePrice": 19,
       "isPOA": false,
       "discountType": "NONE",
@@ -11971,7 +11971,7 @@
     "updatedAt": "2026-10-08T16:36:50.097Z",
     "slug": "side-door-steel-hinge-85x206mm-atp-tp-42",
     "__v": 0,
-    "price": 21.5,
+    "price": 21,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-42.jpg",
     "isPublished": true,
@@ -12001,8 +12001,8 @@
       }
     ],
     "pricing": {
-      "mrp": 44,
-      "sellingPrice": 44,
+      "mrp": 43,
+      "sellingPrice": 43,
       "tradePrice": 40,
       "isPOA": false,
       "discountType": "NONE",
@@ -12115,7 +12115,7 @@
     "slug": "rear-door-stainless-steel-hinge-260mm-with-bolt-lug-atp-tp-43",
     "__v": 0,
     "imageUrl": "/images/products/ATP-TP-43.jpg",
-    "price": 44,
+    "price": 43,
     "categoryName": "Trailer Parts",
     "isPublished": true,
     "isVisible": true
@@ -12144,8 +12144,8 @@
       }
     ],
     "pricing": {
-      "mrp": 80,
-      "sellingPrice": 80,
+      "mrp": 78,
+      "sellingPrice": 78,
       "tradePrice": 72,
       "isPOA": false,
       "discountType": "NONE",
@@ -12257,7 +12257,7 @@
     "updatedAt": "2026-10-08T16:36:50.847Z",
     "slug": "heavy-duty-door-cam-lock-kit-suits-34mm-pipe-atp-tp-45",
     "__v": 0,
-    "price": 80,
+    "price": 78,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-45.jpg",
     "isPublished": true,
@@ -12287,8 +12287,8 @@
       }
     ],
     "pricing": {
-      "mrp": 65,
-      "sellingPrice": 65,
+      "mrp": 63,
+      "sellingPrice": 63,
       "tradePrice": 59,
       "isPOA": false,
       "discountType": "NONE",
@@ -12400,7 +12400,7 @@
     "updatedAt": "2026-10-08T16:36:50.755Z",
     "slug": "door-cam-lock-kit-suits-22mm-pipe-with-10mm-handle-atp-tp-47",
     "__v": 0,
-    "price": 65,
+    "price": 63,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-47.jpg",
     "isPublished": true,
@@ -12430,8 +12430,8 @@
       }
     ],
     "pricing": {
-      "mrp": 104,
-      "sellingPrice": 104,
+      "mrp": 101,
+      "sellingPrice": 101,
       "tradePrice": 94,
       "isPOA": false,
       "discountType": "NONE",
@@ -12543,7 +12543,7 @@
     "updatedAt": "2026-10-08T16:36:51.129Z",
     "slug": "curtain-tensioner-ht-left-hand-atp-tp-48",
     "__v": 0,
-    "price": 104,
+    "price": 101,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-48.jpg",
     "isPublished": true,
@@ -12573,8 +12573,8 @@
       }
     ],
     "pricing": {
-      "mrp": 104,
-      "sellingPrice": 104,
+      "mrp": 101,
+      "sellingPrice": 101,
       "tradePrice": 94,
       "isPOA": false,
       "discountType": "NONE",
@@ -12686,7 +12686,7 @@
     "updatedAt": "2026-10-08T16:36:51.369Z",
     "slug": "curtain-tensioner-ht-right-hand-atp-tp-49",
     "__v": 0,
-    "price": 104,
+    "price": 101,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-49.jpg",
     "isPublished": true,
@@ -12716,8 +12716,8 @@
       }
     ],
     "pricing": {
-      "mrp": 58,
-      "sellingPrice": 58,
+      "mrp": 56,
+      "sellingPrice": 56,
       "tradePrice": 52,
       "isPOA": false,
       "discountType": "NONE",
@@ -12829,7 +12829,7 @@
     "updatedAt": "2026-10-08T16:36:51.832Z",
     "slug": "cargo-o-track-85mm-zinc-plated-30m-atp-tp-50",
     "__v": 0,
-    "price": 58,
+    "price": 56,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-50.jpg",
     "isPublished": true,
@@ -12859,8 +12859,8 @@
       }
     ],
     "pricing": {
-      "mrp": 65,
-      "sellingPrice": 65,
+      "mrp": 63,
+      "sellingPrice": 63,
       "tradePrice": 59,
       "isPOA": false,
       "discountType": "NONE",
@@ -12972,7 +12972,7 @@
     "updatedAt": "2026-10-08T16:36:52.028Z",
     "slug": "cargo-e-track-zinc-plated-132mm-30m-atp-tp-52",
     "__v": 0,
-    "price": 65,
+    "price": 63,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-52.jpg",
     "isPublished": true,
@@ -13002,8 +13002,8 @@
       }
     ],
     "pricing": {
-      "mrp": 65,
-      "sellingPrice": 65,
+      "mrp": 63,
+      "sellingPrice": 63,
       "tradePrice": 59,
       "isPOA": false,
       "discountType": "NONE",
@@ -13115,7 +13115,7 @@
     "updatedAt": "2026-10-08T16:36:52.192Z",
     "slug": "cargo-e-track-heavy-duty-zinc-plated-30m-x-132mm-atp-tp-54",
     "__v": 0,
-    "price": 65,
+    "price": 63,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-54.jpg",
     "isPublished": true,
@@ -13145,8 +13145,8 @@
       }
     ],
     "pricing": {
-      "mrp": 21.5,
-      "sellingPrice": 21.5,
+      "mrp": 21,
+      "sellingPrice": 21,
       "tradePrice": 19,
       "isPOA": false,
       "discountType": "NONE",
@@ -13258,7 +13258,7 @@
     "updatedAt": "2026-10-08T16:36:52.978Z",
     "slug": "heavy-duty-door-retainer-steel-atp-tp-58",
     "__v": 0,
-    "price": 21.5,
+    "price": 21,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-58.jpg",
     "isPublished": true,
@@ -13288,8 +13288,8 @@
       }
     ],
     "pricing": {
-      "mrp": 28.5,
-      "sellingPrice": 28.5,
+      "mrp": 28,
+      "sellingPrice": 28,
       "tradePrice": 26,
       "isPOA": false,
       "discountType": "NONE",
@@ -13401,7 +13401,7 @@
     "updatedAt": "2026-10-08T16:36:53.181Z",
     "slug": "heavy-duty-door-retainer-stainless-steel-atp-tp-59",
     "__v": 0,
-    "price": 28.5,
+    "price": 28,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-59.jpg",
     "isPublished": true,
@@ -13431,8 +13431,8 @@
       }
     ],
     "pricing": {
-      "mrp": 37.5,
-      "sellingPrice": 37.5,
+      "mrp": 36,
+      "sellingPrice": 36,
       "tradePrice": 34,
       "isPOA": false,
       "discountType": "NONE",
@@ -13544,7 +13544,7 @@
     "updatedAt": "2026-10-08T16:36:53.555Z",
     "slug": "universal-truck-door-retainer-zinc-plated-545mm-arm-432mm-atp-tp-60",
     "__v": 0,
-    "price": 37.5,
+    "price": 36,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-60.jpg",
     "isPublished": true,
@@ -13574,8 +13574,8 @@
       }
     ],
     "pricing": {
-      "mrp": 35,
-      "sellingPrice": 35,
+      "mrp": 34,
+      "sellingPrice": 34,
       "tradePrice": 32,
       "isPOA": false,
       "discountType": "NONE",
@@ -13687,7 +13687,7 @@
     "updatedAt": "2026-10-08T16:36:53.807Z",
     "slug": "universal-truck-door-retainer-zinc-plated-502mm-arm-274mm-atp-tp-61",
     "__v": 0,
-    "price": 35,
+    "price": 34,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-61.jpg",
     "isPublished": true,
@@ -13717,8 +13717,8 @@
       }
     ],
     "pricing": {
-      "mrp": 40,
-      "sellingPrice": 40,
+      "mrp": 39,
+      "sellingPrice": 39,
       "tradePrice": 36,
       "isPOA": false,
       "discountType": "NONE",
@@ -13830,7 +13830,7 @@
     "updatedAt": "2026-10-17T09:13:09.336Z",
     "slug": "universal-truck-door-retainer-aluminium-body-490mm-arm-280mm-atp-tp-62",
     "__v": 0,
-    "price": 40,
+    "price": 39,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-62.jpg",
     "isPublished": true,
@@ -13860,8 +13860,8 @@
       }
     ],
     "pricing": {
-      "mrp": 52,
-      "sellingPrice": 52,
+      "mrp": 50,
+      "sellingPrice": 50,
       "tradePrice": 47,
       "isPOA": false,
       "discountType": "NONE",
@@ -13968,7 +13968,7 @@
     "updatedAt": "2026-10-08T16:36:53.945Z",
     "slug": "stainless-steel-recessed-paddle-lock-kit-152x320mm-atp-tp-63",
     "__v": 0,
-    "price": 52,
+    "price": 50,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-63.jpg",
     "isPublished": true,
@@ -13998,8 +13998,8 @@
       }
     ],
     "pricing": {
-      "mrp": 28.5,
-      "sellingPrice": 28.5,
+      "mrp": 28,
+      "sellingPrice": 28,
       "tradePrice": 26,
       "isPOA": false,
       "discountType": "NONE",
@@ -14111,7 +14111,7 @@
     "updatedAt": "2026-10-08T16:36:55.403Z",
     "slug": "paddle-lock-kit-left-hand-105x25mm-atp-tp-64",
     "__v": 0,
-    "price": 28.5,
+    "price": 28,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-64.jpg",
     "isPublished": true,
@@ -14141,8 +14141,8 @@
       }
     ],
     "pricing": {
-      "mrp": 25,
-      "sellingPrice": 25,
+      "mrp": 24,
+      "sellingPrice": 24,
       "tradePrice": 23,
       "isPOA": false,
       "discountType": "NONE",
@@ -14254,7 +14254,7 @@
     "updatedAt": "2026-10-08T16:36:54.156Z",
     "slug": "flush-mount-paddle-lock-heavy-duty-black-powder-coated-atp-tp-65",
     "__v": 0,
-    "price": 25,
+    "price": 24,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-65.jpg",
     "isPublished": true,
@@ -14284,8 +14284,8 @@
       }
     ],
     "pricing": {
-      "mrp": 34,
-      "sellingPrice": 34,
+      "mrp": 33,
+      "sellingPrice": 33,
       "tradePrice": 31,
       "isPOA": false,
       "discountType": "NONE",
@@ -14397,7 +14397,7 @@
     "updatedAt": "2026-10-08T16:36:54.931Z",
     "slug": "flush-mount-paddle-lock-stainless-steel-with-blind-mount-atp-tp-67",
     "__v": 0,
-    "price": 34,
+    "price": 33,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-67.jpg",
     "isPublished": true,
@@ -14427,8 +14427,8 @@
       }
     ],
     "pricing": {
-      "mrp": 35,
-      "sellingPrice": 35,
+      "mrp": 34,
+      "sellingPrice": 34,
       "tradePrice": 32,
       "isPOA": false,
       "discountType": "NONE",
@@ -14540,7 +14540,7 @@
     "updatedAt": "2026-10-08T16:36:55.063Z",
     "slug": "stainless-steel-t-handle-paddle-lock-atp-tp-68",
     "__v": 0,
-    "price": 35,
+    "price": 34,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-68.jpg",
     "isPublished": true,
@@ -14570,8 +14570,8 @@
       }
     ],
     "pricing": {
-      "mrp": 43,
-      "sellingPrice": 43,
+      "mrp": 42,
+      "sellingPrice": 42,
       "tradePrice": 39,
       "isPOA": false,
       "discountType": "NONE",
@@ -14683,7 +14683,7 @@
     "updatedAt": "2026-10-08T16:36:54.919Z",
     "slug": "radius-guard-mounting-bracket-semi-trailer-atp-tp-69",
     "__v": 0,
-    "price": 43,
+    "price": 42,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-69.jpg",
     "isPublished": true,
@@ -14713,8 +14713,8 @@
       }
     ],
     "pricing": {
-      "mrp": 148,
-      "sellingPrice": 148,
+      "mrp": 144,
+      "sellingPrice": 144,
       "tradePrice": 133,
       "isPOA": false,
       "discountType": "NONE",
@@ -14826,7 +14826,7 @@
     "updatedAt": "2026-10-08T16:36:55.180Z",
     "slug": "sliding-post-base-locking-assembly-for-curtain-siders-atp-tp-70",
     "__v": 0,
-    "price": 148,
+    "price": 144,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-70.jpg",
     "isPublished": true,
@@ -14865,8 +14865,8 @@
       }
     ],
     "pricing": {
-      "mrp": 175,
-      "sellingPrice": 175,
+      "mrp": 170,
+      "sellingPrice": 170,
       "tradePrice": 158,
       "isPOA": false,
       "discountType": "NONE",
@@ -14983,7 +14983,7 @@
     "updatedAt": "2026-10-17T18:37:28.970Z",
     "slug": "steel-curtain-truck-gate-1220x1500mm-atp-tp-71",
     "__v": 0,
-    "price": 175,
+    "price": 170,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-71.jpg",
     "isPublished": true,
@@ -15013,8 +15013,8 @@
       }
     ],
     "pricing": {
-      "mrp": 16,
-      "sellingPrice": 16,
+      "mrp": 15,
+      "sellingPrice": 15,
       "tradePrice": 14,
       "isPOA": false,
       "discountType": "NONE",
@@ -15126,7 +15126,7 @@
     "updatedAt": "2026-10-08T16:36:55.964Z",
     "slug": "weld-on-gate-pocket-4-inch-for-truck-bodies-atp-tp-72",
     "__v": 0,
-    "price": 16,
+    "price": 15,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-72.jpg",
     "isPublished": true,
@@ -15156,8 +15156,8 @@
       }
     ],
     "pricing": {
-      "mrp": 39,
-      "sellingPrice": 39,
+      "mrp": 38,
+      "sellingPrice": 38,
       "tradePrice": 35,
       "isPOA": false,
       "discountType": "NONE",
@@ -15269,7 +15269,7 @@
     "updatedAt": "2026-10-08T16:36:55.891Z",
     "slug": "heavy-duty-tipper-hinge-with-gudgeon-with-hole-atp-tp-73",
     "__v": 0,
-    "price": 39,
+    "price": 38,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-73.jpg",
     "isPublished": true,
@@ -15299,8 +15299,8 @@
       }
     ],
     "pricing": {
-      "mrp": 37.5,
-      "sellingPrice": 37.5,
+      "mrp": 36,
+      "sellingPrice": 36,
       "tradePrice": 34,
       "isPOA": false,
       "discountType": "NONE",
@@ -15412,7 +15412,7 @@
     "updatedAt": "2026-10-08T16:36:56.139Z",
     "slug": "heavy-duty-tipper-hinge-with-gudgeon-without-hole-atp-tp-74",
     "__v": 0,
-    "price": 37.5,
+    "price": 36,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-74.jpg",
     "isPublished": true,
@@ -15442,8 +15442,8 @@
       }
     ],
     "pricing": {
-      "mrp": 28.5,
-      "sellingPrice": 28.5,
+      "mrp": 28,
+      "sellingPrice": 28,
       "tradePrice": 26,
       "isPOA": false,
       "discountType": "NONE",
@@ -15555,7 +15555,7 @@
     "updatedAt": "2026-10-08T16:36:56.240Z",
     "slug": "heavy-duty-over-centre-latch-fastener-f05-17c-01-atp-tp-75",
     "__v": 0,
-    "price": 28.5,
+    "price": 28,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-75.jpg",
     "isPublished": true,
@@ -15585,8 +15585,8 @@
       }
     ],
     "pricing": {
-      "mrp": 25,
-      "sellingPrice": 25,
+      "mrp": 24,
+      "sellingPrice": 24,
       "tradePrice": 23,
       "isPOA": false,
       "discountType": "NONE",
@@ -15698,7 +15698,7 @@
     "updatedAt": "2026-10-08T16:36:56.636Z",
     "slug": "locking-latch-spring-loaded-atp-tp-76",
     "__v": 0,
-    "price": 25,
+    "price": 24,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-76.jpg",
     "isPublished": true,
@@ -15728,8 +15728,8 @@
       }
     ],
     "pricing": {
-      "mrp": 12.5,
-      "sellingPrice": 12.5,
+      "mrp": 12,
+      "sellingPrice": 12,
       "tradePrice": 11,
       "isPOA": false,
       "discountType": "NONE",
@@ -15841,7 +15841,7 @@
     "updatedAt": "2026-10-08T16:36:57.131Z",
     "slug": "anti-luce-clip-12mm-bolt-on-heavy-duty-atp-tp-77",
     "__v": 0,
-    "price": 12.5,
+    "price": 12,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-77.jpg",
     "isPublished": true,
@@ -15871,8 +15871,8 @@
       }
     ],
     "pricing": {
-      "mrp": 17,
-      "sellingPrice": 17,
+      "mrp": 16,
+      "sellingPrice": 16,
       "tradePrice": 15,
       "isPOA": false,
       "discountType": "NONE",
@@ -15984,7 +15984,7 @@
     "updatedAt": "2026-10-08T16:36:57.013Z",
     "slug": "heavy-duty-spring-latch-12mm-pin-160mm-length-atp-tp-78",
     "__v": 0,
-    "price": 17,
+    "price": 16,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-78.jpg",
     "isPublished": true,
@@ -16014,8 +16014,8 @@
       }
     ],
     "pricing": {
-      "mrp": 14.5,
-      "sellingPrice": 14.5,
+      "mrp": 14,
+      "sellingPrice": 14,
       "tradePrice": 13,
       "isPOA": false,
       "discountType": "NONE",
@@ -16127,7 +16127,7 @@
     "updatedAt": "2026-10-08T16:36:57.483Z",
     "slug": "recessed-tie-down-lashing-ring-2000kg-2t-atp-tp-79",
     "__v": 0,
-    "price": 14.5,
+    "price": 14,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-79.jpg",
     "isPublished": true,
@@ -16157,8 +16157,8 @@
       }
     ],
     "pricing": {
-      "mrp": 305,
-      "sellingPrice": 305,
+      "mrp": 296,
+      "sellingPrice": 296,
       "tradePrice": 275,
       "isPOA": false,
       "discountType": "NONE",
@@ -16270,7 +16270,7 @@
     "updatedAt": "2026-10-08T16:36:57.377Z",
     "slug": "side-guard-lateral-protection-system-3500mm-pair-atp-tp-80",
     "__v": 0,
-    "price": 305,
+    "price": 296,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-80.jpg",
     "isPublished": true,
@@ -16300,8 +16300,8 @@
       }
     ],
     "pricing": {
-      "mrp": 520,
-      "sellingPrice": 520,
+      "mrp": 504,
+      "sellingPrice": 504,
       "tradePrice": 468,
       "isPOA": false,
       "discountType": "NONE",
@@ -16413,7 +16413,7 @@
     "updatedAt": "2026-10-12T06:07:01.760Z",
     "slug": "side-guard-lateral-protection-system-6500mm-pair-atp-tp-81",
     "__v": 0,
-    "price": 520,
+    "price": 504,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-81.jpg",
     "isPublished": true,
@@ -16443,8 +16443,8 @@
       }
     ],
     "pricing": {
-      "mrp": 67,
-      "sellingPrice": 67,
+      "mrp": 65,
+      "sellingPrice": 65,
       "tradePrice": 60,
       "isPOA": false,
       "discountType": "NONE",
@@ -16556,7 +16556,7 @@
     "updatedAt": "2026-10-08T16:36:57.769Z",
     "slug": "adjustable-side-guard-side-rail-bracket-735mm-length-atp-tp-82",
     "__v": 0,
-    "price": 67,
+    "price": 65,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-82.jpg",
     "isPublished": true,
@@ -16595,8 +16595,8 @@
       "/images/products/ATP-TP-83-bar.jpg"
     ],
     "pricing": {
-      "mrp": 85,
-      "sellingPrice": 85,
+      "mrp": 82,
+      "sellingPrice": 82,
       "tradePrice": 77,
       "isPOA": false,
       "discountType": "NONE",
@@ -16716,7 +16716,7 @@
     "updatedAt": "2026-10-17T18:47:51.609Z",
     "slug": "aluminium-side-guard-rail-profile-tube-65m-length-atp-tp-83",
     "__v": 0,
-    "price": 85,
+    "price": 82,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-83.jpg",
     "isPublished": true,
@@ -16756,8 +16756,8 @@
       "/images/products/ATP-TP-84-back.jpg"
     ],
     "pricing": {
-      "mrp": 13.5,
-      "sellingPrice": 13.5,
+      "mrp": 13,
+      "sellingPrice": 13,
       "tradePrice": 12,
       "isPOA": false,
       "discountType": "NONE",
@@ -16867,7 +16867,7 @@
     "updatedAt": "2026-10-17T18:47:51.708Z",
     "slug": "aluminium-side-guard-tube-end-cover-atp-tp-84",
     "__v": 0,
-    "price": 13.5,
+    "price": 13,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-84.jpg",
     "isPublished": true,
@@ -16906,8 +16906,8 @@
       "/images/products/ATP-TP-85-back.jpg"
     ],
     "pricing": {
-      "mrp": 25,
-      "sellingPrice": 25,
+      "mrp": 24,
+      "sellingPrice": 24,
       "tradePrice": 23,
       "isPOA": false,
       "discountType": "NONE",
@@ -17022,7 +17022,7 @@
     "updatedAt": "2026-10-17T18:47:51.762Z",
     "slug": "aluminium-guardrail-90-degree-corner-joint-atp-tp-85",
     "__v": 0,
-    "price": 25,
+    "price": 24,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-85.jpg",
     "isPublished": true,
@@ -17052,8 +17052,8 @@
       }
     ],
     "pricing": {
-      "mrp": 16,
-      "sellingPrice": 16,
+      "mrp": 15,
+      "sellingPrice": 15,
       "tradePrice": 14,
       "isPOA": false,
       "discountType": "NONE",
@@ -17165,7 +17165,7 @@
     "updatedAt": "2026-10-08T16:36:58.452Z",
     "slug": "aluminium-guardrail-corner-cover-cap-atp-tp-86",
     "__v": 0,
-    "price": 16,
+    "price": 15,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-86.jpg",
     "isPublished": true,
@@ -17195,8 +17195,8 @@
       }
     ],
     "pricing": {
-      "mrp": 43,
-      "sellingPrice": 43,
+      "mrp": 42,
+      "sellingPrice": 42,
       "tradePrice": 39,
       "isPOA": false,
       "discountType": "NONE",
@@ -17308,7 +17308,7 @@
     "updatedAt": "2026-10-08T16:36:58.703Z",
     "slug": "aluminium-roof-coil-08mm-x-2515mm-wide-per-kg-atp-tp-87",
     "__v": 0,
-    "price": 43,
+    "price": 42,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-87.jpg",
     "isPublished": true,
@@ -17338,8 +17338,8 @@
       }
     ],
     "pricing": {
-      "mrp": 120,
-      "sellingPrice": 120,
+      "mrp": 116,
+      "sellingPrice": 116,
       "tradePrice": 108,
       "isPOA": false,
       "discountType": "NONE",
@@ -17451,7 +17451,7 @@
     "updatedAt": "2026-10-08T16:36:58.807Z",
     "slug": "aluminium-top-rail-body-profile-01-50-metres-atp-tp-88",
     "__v": 0,
-    "price": 120,
+    "price": 116,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-88.jpg",
     "isPublished": true,
@@ -17481,8 +17481,8 @@
       }
     ],
     "pricing": {
-      "mrp": 110,
-      "sellingPrice": 110,
+      "mrp": 107,
+      "sellingPrice": 107,
       "tradePrice": 99,
       "isPOA": false,
       "discountType": "NONE",
@@ -17594,7 +17594,7 @@
     "updatedAt": "2026-10-08T16:36:59.336Z",
     "slug": "aluminium-intermediate-body-profile-02-43-metres-atp-tp-89",
     "__v": 0,
-    "price": 110,
+    "price": 107,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-89.jpg",
     "isPublished": true,
@@ -17624,8 +17624,8 @@
       }
     ],
     "pricing": {
-      "mrp": 130,
-      "sellingPrice": 130,
+      "mrp": 126,
+      "sellingPrice": 126,
       "tradePrice": 117,
       "isPOA": false,
       "discountType": "NONE",
@@ -17737,7 +17737,7 @@
     "updatedAt": "2026-10-08T16:36:59.299Z",
     "slug": "aluminium-transport-bottom-rail-side-coaming-43m-atp-tp-90",
     "__v": 0,
-    "price": 130,
+    "price": 126,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-90.jpg",
     "isPublished": true,
@@ -17767,8 +17767,8 @@
       }
     ],
     "pricing": {
-      "mrp": 102,
-      "sellingPrice": 102,
+      "mrp": 99,
+      "sellingPrice": 99,
       "tradePrice": 92,
       "isPOA": false,
       "discountType": "NONE",
@@ -17880,7 +17880,7 @@
     "updatedAt": "2026-10-08T16:36:59.877Z",
     "slug": "aluminium-roof-bow-support-top-hat-profile-50m-atp-tp-91",
     "__v": 0,
-    "price": 102,
+    "price": 99,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-91.jpg",
     "isPublished": true,
@@ -17910,8 +17910,8 @@
       }
     ],
     "pricing": {
-      "mrp": 30,
-      "sellingPrice": 30,
+      "mrp": 29,
+      "sellingPrice": 29,
       "tradePrice": 27,
       "isPOA": false,
       "discountType": "NONE",
@@ -18022,7 +18022,7 @@
     "updatedAt": "2026-10-08T16:36:59.585Z",
     "slug": "truck-aluminium-cast-corner-cap-ptb-atp-tp-92",
     "__v": 0,
-    "price": 30,
+    "price": 29,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-92.jpg",
     "isPublished": true,
@@ -18052,8 +18052,8 @@
       }
     ],
     "pricing": {
-      "mrp": 30,
-      "sellingPrice": 30,
+      "mrp": 29,
+      "sellingPrice": 29,
       "tradePrice": 27,
       "isPOA": false,
       "discountType": "NONE",
@@ -18164,7 +18164,7 @@
     "updatedAt": "2026-10-08T16:36:59.857Z",
     "slug": "truck-aluminium-cast-corner-cap-allt-atp-tp-94",
     "__v": 0,
-    "price": 30,
+    "price": 29,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-94.jpg",
     "isPublished": true,
@@ -18194,8 +18194,8 @@
       }
     ],
     "pricing": {
-      "mrp": 28.5,
-      "sellingPrice": 28.5,
+      "mrp": 28,
+      "sellingPrice": 28,
       "tradePrice": 26,
       "isPOA": false,
       "discountType": "NONE",
@@ -18307,7 +18307,7 @@
     "updatedAt": "2026-10-10T14:20:39.365Z",
     "slug": "truck-aluminium-corner-cap-3-way-atp-tp-96",
     "__v": 0,
-    "price": 28.5,
+    "price": 28,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-96.jpg",
     "isPublished": true,
@@ -18337,8 +18337,8 @@
       }
     ],
     "pricing": {
-      "mrp": 445,
-      "sellingPrice": 445,
+      "mrp": 432,
+      "sellingPrice": 432,
       "tradePrice": 401,
       "isPOA": false,
       "discountType": "NONE",
@@ -18455,7 +18455,7 @@
     "updatedAt": "2026-10-08T16:37:00.902Z",
     "slug": "heavy-duty-alloy-grain-door-400mm-wide-atp-tp-97",
     "__v": 0,
-    "price": 445,
+    "price": 432,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-97.jpg",
     "isPublished": true,
@@ -18485,8 +18485,8 @@
       }
     ],
     "pricing": {
-      "mrp": 265,
-      "sellingPrice": 265,
+      "mrp": 257,
+      "sellingPrice": 257,
       "tradePrice": 239,
       "isPOA": false,
       "discountType": "NONE",
@@ -18598,7 +18598,7 @@
     "updatedAt": "2026-10-17T09:44:32.600Z",
     "slug": "7-step-tipper-truck-ladder-aluminium-atp-tp-98",
     "__v": 0,
-    "price": 265,
+    "price": 257,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-98.jpg",
     "isPublished": true,
@@ -18628,8 +18628,8 @@
       }
     ],
     "pricing": {
-      "mrp": 195,
-      "sellingPrice": 195,
+      "mrp": 189,
+      "sellingPrice": 189,
       "tradePrice": 176,
       "isPOA": false,
       "discountType": "NONE",
@@ -18741,7 +18741,7 @@
     "updatedAt": "2026-10-17T09:42:11.645Z",
     "slug": "heavy-duty-slide-out-step-ladder-3-step-zinc-plated-745x345mm-atp-tp-99",
     "__v": 0,
-    "price": 195,
+    "price": 189,
     "categoryName": "Trailer Parts",
     "imageUrl": "/images/products/ATP-TP-99.jpg",
     "isPublished": true,
