@@ -63,9 +63,25 @@ async function seed() {
       });
     }
 
+    let catId = p.category;
+    if (typeof catId === 'string' && catId.length === 24) {
+      catId = new mongoose.Types.ObjectId(catId);
+    }
+    const catList = Array.isArray(p.categories) && p.categories.length > 0
+      ? p.categories.map(c => (typeof c === 'string' && c.length === 24 ? new mongoose.Types.ObjectId(c) : c))
+      : (catId ? [catId] : []);
+
+    const categorySlug = p.categorySlug || (
+      sku.startsWith('ATP-TL-') ? 'tail-lifts' :
+      sku.startsWith('ATP-ACC-') ? 'accessories' : 'trailer-parts'
+    );
+
     return {
       ...p,
       sku,
+      category: catId,
+      categories: catList,
+      categorySlug,
       images: normalizedImages,
       imageUrl: primaryUrl,
       isPublished: true,

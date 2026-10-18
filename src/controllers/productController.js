@@ -143,13 +143,37 @@ const getProducts = async (request, reply, { staffView = false } = {}) => {
   if (category && category !== 'All') {
     const isObjectId = /^[0-9a-fA-F]{24}$/.test(category);
     const cat = await Category.findOne({ $or: [{ _id: isObjectId ? category : null }, { slug: category }] });
-    if (cat) query.categories = cat._id;
+    const targetSlug = cat ? cat.slug : category;
+    const catId = cat ? cat._id : (isObjectId ? category : null);
+
+    const catConditions = [
+      { categorySlug: targetSlug },
+      ...(catId ? [
+        { category: catId },
+        { category: String(catId) },
+        { categories: catId },
+        { categories: String(catId) }
+      ] : [])
+    ];
+
+    if (!query.$and) query.$and = [];
+    query.$and.push({ $or: catConditions });
   }
 
   if (brand) {
     const isObjectId = /^[0-9a-fA-F]{24}$/.test(brand);
     const br = await Brand.findOne({ $or: [{ _id: isObjectId ? brand : null }, { slug: brand }] });
-    if (br) query.brand = br._id;
+    const brId = br ? br._id : (isObjectId ? brand : null);
+    if (brId) {
+      if (!query.$and) query.$and = [];
+      query.$and.push({
+        $or: [
+          { brand: brId },
+          { brand: String(brId) },
+          { brandName: br?.name || brand }
+        ]
+      });
+    }
   }
 
   if (make) query['fitments.make'] = { $regex: new RegExp(`^${make}$`, 'i') };
@@ -177,37 +201,24 @@ const getProducts = async (request, reply, { staffView = false } = {}) => {
   const term = String(search || '').trim().slice(0, 80);
   if (term) {
     const words = term.split(/[\s,*]+/).filter(Boolean);
-    if (words.length > 1) {
-      query.$and = words.map((w) => {
-        const wrx = { $regex: escapeRegExp(w), $options: 'i' };
-        return {
-          $or: [
-            { sku: wrx },
-            { name: wrx },
-            { oem: wrx },
-            { oemPartNumber: wrx },
-            { alternatePartNumbers: wrx },
-            { sub: wrx },
-            { fit: wrx },
-            { shortDescription: wrx },
-            { description: wrx }
-          ]
-        };
-      });
-    } else {
-      const rx = { $regex: escapeRegExp(term), $options: 'i' };
-      query.$or = [
-        { sku: rx },
-        { name: rx },
-        { oem: rx },
-        { oemPartNumber: rx },
-        { alternatePartNumbers: rx },
-        { sub: rx },
-        { fit: rx },
-        { shortDescription: rx },
-        { description: rx }
-      ];
-    }
+    const wordConditions = words.map((w) => {
+      const wrx = { $regex: escapeRegExp(w), $options: 'i' };
+      return {
+        $or: [
+          { sku: wrx },
+          { name: wrx },
+          { oem: wrx },
+          { oemPartNumber: wrx },
+          { alternatePartNumbers: wrx },
+          { sub: wrx },
+          { fit: wrx },
+          { shortDescription: wrx },
+          { description: wrx }
+        ]
+      };
+    });
+    if (!query.$and) query.$and = [];
+    query.$and.push(...wordConditions);
   }
 
   let sortOption = { sku: 1 };

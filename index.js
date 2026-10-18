@@ -99,6 +99,20 @@ fastify.register(require('@fastify/cors'), {
   ]
 });
 
+// Gracefully handle empty JSON payloads when Content-Type: application/json is set
+fastify.addContentTypeParser('application/json', { parseAs: 'string' }, (req, body, done) => {
+  if (!body || body.trim() === '') {
+    return done(null, {});
+  }
+  try {
+    const json = JSON.parse(body);
+    done(null, json);
+  } catch (err) {
+    err.statusCode = 400;
+    done(err, undefined);
+  }
+});
+
 // 2. Register Security & Rate Limit Headers
 fastify.register(require('@fastify/helmet'), { global: true });
 

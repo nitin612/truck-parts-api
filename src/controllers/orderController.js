@@ -96,17 +96,21 @@ const MAX_QTY = 99;
 // The storefront sends its own labels, API clients send enums. Both resolve to one stored value.
 const SHIPPING_METHODS = {
   'standard road': 'Standard road', standard: 'Standard road', 'standard road freight': 'Standard road', 'road freight': 'Standard road',
-  'express priority': 'Express priority', express: 'Express priority', express_courier: 'Express priority', 'express freight': 'Express priority',
-  'click and collect vic': 'Click and Collect VIC', 'click and collect': 'Click and Collect VIC', depot_pickup: 'Click and Collect VIC'
+  'express priority': 'Express priority', express: 'Express priority', express_courier: 'Express priority', 'express freight': 'Express priority', 'express road freight': 'Express priority',
+  'click and collect vic': 'Click and Collect VIC', 'click and collect': 'Click and Collect VIC', depot_pickup: 'Click and Collect VIC', pickup: 'Click and Collect VIC'
 };
 const PAYMENT_METHODS = {
-  card: 'Card', credit_card_direct: 'Card',
-  'bank transfer': 'Bank transfer', 'bank transfer (eft)': 'Bank transfer', direct_bank_transfer: 'Bank transfer',
-  '30 day fleet terms': '30 day fleet terms', trade_account_30_days: '30 day fleet terms',
+  card: 'Card', credit_card_direct: 'Card', stripe: 'Card',
+  'bank transfer': 'Bank transfer', 'bank transfer (eft)': 'Bank transfer', direct_bank_transfer: 'Bank transfer', eft: 'Bank transfer',
+  '30 day fleet terms': '30 day fleet terms', trade_account_30_days: '30 day fleet terms', invoice_30_days: '30 day fleet terms', terms: '30 day fleet terms',
   'pay on pickup': 'Pay on pickup', cod_depot_pickup: 'Pay on pickup',
-  'purchase order': 'Purchase order', purchase_order: 'Purchase order'
+  'purchase order': 'Purchase order', purchase_order: 'Purchase order', po: 'Purchase order'
 };
-const lookup = (table, value) => table[String(value || '').trim().toLowerCase()];
+const lookup = (table, value) => {
+  if (!value) return null;
+  const str = typeof value === 'object' ? (value.id || value.name || value.value || '') : String(value);
+  return table[str.trim().toLowerCase()] || null;
+};
 const clean = (v, max = 200) => String(v ?? '').trim().slice(0, max);
 
 const createOrder = async (request, reply) => {
@@ -117,10 +121,7 @@ const createOrder = async (request, reply) => {
   const isGuest = !userId;
 
   const body = request.body || {};
-  const shippingMethod = lookup(SHIPPING_METHODS, body.shippingMethod || body.shipping || 'Standard road');
-  if (!shippingMethod) {
-    throw new CustomError('That freight option is not available.', 400, 'SHIPPING_METHOD_UNAVAILABLE');
-  }
+  const shippingMethod = lookup(SHIPPING_METHODS, body.shippingMethod || body.shipping) || 'Standard road';
   const isPickup = shippingMethod === 'Click and Collect VIC';
 
   // 1. Lines: every one must be a real, published, priced part. Prices and names always come
@@ -195,14 +196,14 @@ const createOrder = async (request, reply) => {
 
   const shippingAddress = {
     companyName: clean(rawAddr.company || rawAddr.companyName || user?.companyName, 120),
-    fullName: clean(rawAddr.name || rawAddr.fullName || (user ? `${user.firstName || ''} ${user.lastName || ''}` : ''), 80),
+    fullName: clean(rawAddr.name || rawAddr.fullName || (user ? `${user.firstName || ''} ${user.lastName || ''}`.trim() : ''), 80),
     phone: clean(rawAddr.phone || user?.phone, 20),
     email: clean(rawAddr.email || user?.email, 120).toLowerCase(),
-    addressLine1: clean(rawAddr.address || rawAddr.addressLine1, 120),
-    addressLine2: clean(rawAddr.addressLine2, 120),
-    suburbOrCity: clean(rawAddr.suburb || rawAddr.suburbOrCity, 60),
+    addressLine1: clean(rawAddr.address || rawAddr.addressLine1 || rawAddr.street || rawAddr.line1, 120),
+    addressLine2: clean(rawAddr.addressLine2 || rawAddr.line2, 120),
+    suburbOrCity: clean(rawAddr.suburb || rawAddr.suburbOrCity || rawAddr.city, 60),
     state: clean(rawAddr.state, 3).toUpperCase(),
-    postalCode: clean(rawAddr.postcode || rawAddr.postalCode, 4),
+    postalCode: clean(rawAddr.postcode || rawAddr.postalCode || rawAddr.zip, 4),
     country: 'Australia',
     deliveryInstructions: clean(rawAddr.notes || rawAddr.deliveryInstructions, 300),
     hasForkliftOnSite: Boolean(rawAddr.hasForkliftOnSite)
