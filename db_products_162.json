@@ -724,12 +724,8 @@
     "__v": 0,
     "badges": [
       {
-        "label": "Enquiry Only",
+        "label": "Trade Enquiry",
         "type": "warning"
-      },
-      {
-        "label": "~3% Below Market",
-        "type": "success"
       }
     ],
     "brand": "6ac7c69002c3aa6ca9f0d897",
@@ -756,12 +752,12 @@
     "name": "FRP Honeycomb Side Panel 4300x2300x20mm",
     "oemPartNumber": "VNFHP432320",
     "pricing": {
-      "mrp": 1249,
-      "sellingPrice": 1210,
-      "tradePrice": 1089,
-      "isPOA": false,
-      "discountType": "PERCENTAGE",
-      "discountValue": 3
+      "mrp": null,
+      "sellingPrice": null,
+      "tradePrice": null,
+      "isPOA": true,
+      "discountType": "NONE",
+      "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
@@ -775,14 +771,6 @@
       {
         "label": "Surface Area",
         "value": "9.89 m²"
-      },
-      {
-        "label": "Market Benchmark",
-        "value": "$1249.00 AUD"
-      },
-      {
-        "label": "Aurex Target Price",
-        "value": "$1210.00 AUD (~3% below market)"
       },
       {
         "label": "Product Parameter",
@@ -804,8 +792,6 @@
     "specs": {
       "Dimensions": "4300 x 2300 x 20mm (9.89 m²)",
       "Surface Area": "9.89 m²",
-      "Market Benchmark Price": "$1249.00 AUD",
-      "Aurex Fleet Price": "$1210.00 AUD (~3% below market)",
       "Product Parameter": "Dimensions: 4300 x 2300 x 20mm | Area: 9.89m² | Core: Polypropylene Honeycomb (8mm cell) | Facing: 1.5mm - 2.0mm High-Gloss White Woven Roving Gelcoat (RAL 9016) | Density: 80 kg/m³ | Weight: ~7.5 kg/m²",
       "Technical Specification": "Continuous structural sandwich panel offering superior impact damping, high flexural strength, rot-proof and waterproof construction for commercial rigid pantech bodies and dry freight vans.",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Transport Standard; AS 4256.3 & ISO 845 Compliance",
@@ -815,9 +801,10 @@
     "stockStatus": "In stock VIC",
     "sub": "FRP Honeycomb Panels",
     "categoryName": "Accessories",
-    "price": 1210,
+    "price": null,
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true
   },
   {
     "_id": "6ad386860a4a50b815a77ae4",
@@ -825,12 +812,8 @@
     "__v": 0,
     "badges": [
       {
-        "label": "Enquiry Only",
+        "label": "Trade Enquiry",
         "type": "warning"
-      },
-      {
-        "label": "~3% Below Market",
-        "type": "success"
       }
     ],
     "brand": "6ac7c69002c3aa6ca9f0d897",
@@ -857,12 +840,12 @@
     "name": "FRP Honeycomb Front Panel 2400x2300x20mm",
     "oemPartNumber": "VNFHP242320",
     "pricing": {
-      "mrp": 699,
-      "sellingPrice": 678,
-      "tradePrice": 610,
-      "isPOA": false,
-      "discountType": "PERCENTAGE",
-      "discountValue": 3
+      "mrp": null,
+      "sellingPrice": null,
+      "tradePrice": null,
+      "isPOA": true,
+      "discountType": "NONE",
+      "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
@@ -876,14 +859,6 @@
       {
         "label": "Surface Area",
         "value": "5.52 m²"
-      },
-      {
-        "label": "Market Benchmark",
-        "value": "$699.00 AUD"
-      },
-      {
-        "label": "Aurex Target Price",
-        "value": "$678.00 AUD (~3% below market)"
       },
       {
         "label": "Product Parameter",
@@ -905,8 +880,6 @@
     "specs": {
       "Dimensions": "2400 x 2300 x 20mm (5.52 m²)",
       "Surface Area": "5.52 m²",
-      "Market Benchmark Price": "$699.00 AUD",
-      "Aurex Fleet Price": "$678.00 AUD (~3% below market)",
       "Product Parameter": "Dimensions: 2400 x 2300 x 20mm | Area: 5.52m² | Core: Polypropylene Honeycomb | Finish: Gelcoat White (RAL 9016) | Weight: ~41.4 kg | High frontal impact resistance",
       "Technical Specification": "Engineered front bulkhead panel for rigid truck bodies, pantechs and box trailers with high strength-to-weight ratio and seamless clean finish.",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Transport Standard; AS 4256.3 Compliance",
@@ -916,9 +889,10 @@
     "stockStatus": "In stock VIC",
     "sub": "FRP Honeycomb Panels",
     "categoryName": "Accessories",
-    "price": 678,
+    "price": null,
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true
   },
   {
     "_id": "6ad386860a4a50b815a77ae5",
@@ -926,12 +900,8 @@
     "__v": 0,
     "badges": [
       {
-        "label": "Enquiry Only",
+        "label": "Trade Enquiry",
         "type": "warning"
-      },
-      {
-        "label": "~3% Below Market",
-        "type": "success"
       }
     ],
     "brand": "6ac7c69002c3aa6ca9f0d897",
@@ -958,12 +928,12 @@
     "name": "FRP Honeycomb Door Panel 2400x1200x20mm",
     "oemPartNumber": "VNFHP241220",
     "pricing": {
-      "mrp": 365,
-      "sellingPrice": 354,
-      "tradePrice": 319,
-      "isPOA": false,
-      "discountType": "PERCENTAGE",
-      "discountValue": 3
+      "mrp": null,
+      "sellingPrice": null,
+      "tradePrice": null,
+      "isPOA": true,
+      "discountType": "NONE",
+      "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
@@ -977,14 +947,6 @@
       {
         "label": "Surface Area",
         "value": "2.88 m²"
-      },
-      {
-        "label": "Market Benchmark",
-        "value": "$365.00 AUD"
-      },
-      {
-        "label": "Aurex Target Price",
-        "value": "$354.00 AUD (~3% below market)"
       },
       {
         "label": "Product Parameter",
@@ -1006,8 +968,6 @@
     "specs": {
       "Dimensions": "2400 x 1200 x 20mm (2.88 m²)",
       "Surface Area": "2.88 m²",
-      "Market Benchmark Price": "$365.00 AUD",
-      "Aurex Fleet Price": "$354.00 AUD (~3% below market)",
       "Product Parameter": "Dimensions: 2400 x 1200 x 20mm | Area: 2.88m² | Weight: ~21.6 kg | Core: PP Honeycomb | Double-sided High-Gloss White Gelcoat | Thermal acoustic damping",
       "Technical Specification": "Commercial van and truck rear door infill panel with excellent flexural rigidity, waterproof edge compatibility, and high impact resistance.",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Vehicle Standard",
@@ -1017,9 +977,10 @@
     "stockStatus": "In stock VIC",
     "sub": "FRP Honeycomb Panels",
     "categoryName": "Accessories",
-    "price": 354,
+    "price": null,
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true
   },
   {
     "_id": "6ad386860a4a50b815a77ae6",
@@ -1027,12 +988,8 @@
     "__v": 0,
     "badges": [
       {
-        "label": "Enquiry Only",
+        "label": "Trade Enquiry",
         "type": "warning"
-      },
-      {
-        "label": "~3% Below Market",
-        "type": "success"
       }
     ],
     "brand": "6ac7c69002c3aa6ca9f0d897",
@@ -1059,12 +1016,12 @@
     "name": "FRP Honeycomb Door Panel 2800x1200x20mm",
     "oemPartNumber": "VNFHP281220",
     "pricing": {
-      "mrp": 425,
-      "sellingPrice": 412,
-      "tradePrice": 371,
-      "isPOA": false,
-      "discountType": "PERCENTAGE",
-      "discountValue": 3
+      "mrp": null,
+      "sellingPrice": null,
+      "tradePrice": null,
+      "isPOA": true,
+      "discountType": "NONE",
+      "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
@@ -1078,14 +1035,6 @@
       {
         "label": "Surface Area",
         "value": "3.36 m²"
-      },
-      {
-        "label": "Market Benchmark",
-        "value": "$425.00 AUD"
-      },
-      {
-        "label": "Aurex Target Price",
-        "value": "$412.00 AUD (~3% below market)"
       },
       {
         "label": "Product Parameter",
@@ -1107,8 +1056,6 @@
     "specs": {
       "Dimensions": "2800 x 1200 x 20mm (3.36 m²)",
       "Surface Area": "3.36 m²",
-      "Market Benchmark Price": "$425.00 AUD",
-      "Aurex Fleet Price": "$412.00 AUD (~3% below market)",
       "Product Parameter": "Dimensions: 2800 x 1200 x 20mm | Area: 3.36m² | Weight: ~25.2 kg | Core: Polypropylene Honeycomb | Finish: High-Gloss White RAL 9016",
       "Technical Specification": "High-cube commercial vehicle rear door panel offering high torsional rigidity and reduced tare weight.",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Vehicle Standard",
@@ -1118,9 +1065,10 @@
     "stockStatus": "In stock VIC",
     "sub": "FRP Honeycomb Panels",
     "categoryName": "Accessories",
-    "price": 412,
+    "price": null,
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true
   },
   {
     "_id": "6ad386860a4a50b815a77ae7",
@@ -1128,12 +1076,8 @@
     "__v": 0,
     "badges": [
       {
-        "label": "Enquiry Only",
+        "label": "Trade Enquiry",
         "type": "warning"
-      },
-      {
-        "label": "~3% Below Market",
-        "type": "success"
       }
     ],
     "brand": "6ac7c69002c3aa6ca9f0d897",
@@ -1160,12 +1104,12 @@
     "name": "FRP Honeycomb Door Panel 3200x1200x20mm",
     "oemPartNumber": "VNFHP321220",
     "pricing": {
-      "mrp": 485,
-      "sellingPrice": 470,
-      "tradePrice": 423,
-      "isPOA": false,
-      "discountType": "PERCENTAGE",
-      "discountValue": 3
+      "mrp": null,
+      "sellingPrice": null,
+      "tradePrice": null,
+      "isPOA": true,
+      "discountType": "NONE",
+      "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
@@ -1179,14 +1123,6 @@
       {
         "label": "Surface Area",
         "value": "3.84 m²"
-      },
-      {
-        "label": "Market Benchmark",
-        "value": "$485.00 AUD"
-      },
-      {
-        "label": "Aurex Target Price",
-        "value": "$470.00 AUD (~3% below market)"
       },
       {
         "label": "Product Parameter",
@@ -1208,8 +1144,6 @@
     "specs": {
       "Dimensions": "3200 x 1200 x 20mm (3.84 m²)",
       "Surface Area": "3.84 m²",
-      "Market Benchmark Price": "$485.00 AUD",
-      "Aurex Fleet Price": "$470.00 AUD (~3% below market)",
       "Product Parameter": "Dimensions: 3200 x 1200 x 20mm | Area: 3.84m² | Weight: ~28.8 kg | Impact Resistance: High | Thermal Expansion: Ultra-low",
       "Technical Specification": "Full-height commercial dry freight rear door composite panel with seamless weather sealing and superior hinge retention strength.",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Vehicle Standard",
@@ -1219,9 +1153,10 @@
     "stockStatus": "In stock VIC",
     "sub": "FRP Honeycomb Panels",
     "categoryName": "Accessories",
-    "price": 470,
+    "price": null,
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true
   },
   {
     "_id": "6ad386860a4a50b815a77ae8",
@@ -1229,12 +1164,8 @@
     "__v": 0,
     "badges": [
       {
-        "label": "Enquiry Only",
+        "label": "Trade Enquiry",
         "type": "warning"
-      },
-      {
-        "label": "~3% Below Market",
-        "type": "success"
       }
     ],
     "brand": "6ac7c69002c3aa6ca9f0d897",
@@ -1261,12 +1192,12 @@
     "name": "FRP Plywood Door Panel 2400x1200x20mm",
     "oemPartNumber": "VNFPP241220",
     "pricing": {
-      "mrp": 389,
-      "sellingPrice": 377,
-      "tradePrice": 339,
-      "isPOA": false,
-      "discountType": "PERCENTAGE",
-      "discountValue": 3
+      "mrp": null,
+      "sellingPrice": null,
+      "tradePrice": null,
+      "isPOA": true,
+      "discountType": "NONE",
+      "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
@@ -1280,14 +1211,6 @@
       {
         "label": "Surface Area",
         "value": "2.88 m²"
-      },
-      {
-        "label": "Market Benchmark",
-        "value": "$389.00 AUD"
-      },
-      {
-        "label": "Aurex Target Price",
-        "value": "$377.00 AUD (~3% below market)"
       },
       {
         "label": "Product Parameter",
@@ -1309,8 +1232,6 @@
     "specs": {
       "Dimensions": "2400 x 1200 x 20mm (2.88 m²)",
       "Surface Area": "2.88 m²",
-      "Market Benchmark Price": "$389.00 AUD",
-      "Aurex Fleet Price": "$377.00 AUD (~3% below market)",
       "Product Parameter": "Dimensions: 2400 x 1200 x 20mm | Area: 2.88m² | Core: Structural Marine/Exterior Plywood | Facing: 1.5mm FRP Gelcoat | High fastener pull-out strength",
       "Technical Specification": "Solid structural composite door panel for heavy transport vehicles requiring maximum hinge, latch, and keeper screw retention.",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Vehicle Standard; AS/NZS 2269 Compliance",
@@ -1320,9 +1241,10 @@
     "stockStatus": "In stock VIC",
     "sub": "FRP Plywood Panels",
     "categoryName": "Accessories",
-    "price": 377,
+    "price": null,
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true
   },
   {
     "_id": "6ad386860a4a50b815a77ae9",
@@ -1330,12 +1252,8 @@
     "__v": 0,
     "badges": [
       {
-        "label": "Enquiry Only",
+        "label": "Trade Enquiry",
         "type": "warning"
-      },
-      {
-        "label": "~3% Below Market",
-        "type": "success"
       }
     ],
     "brand": "6ac7c69002c3aa6ca9f0d897",
@@ -1362,12 +1280,12 @@
     "name": "FRP Plywood Door Panel 2800x1200x20mm",
     "oemPartNumber": "VNFPP281220",
     "pricing": {
-      "mrp": 450,
-      "sellingPrice": 436,
-      "tradePrice": 392,
-      "isPOA": false,
-      "discountType": "PERCENTAGE",
-      "discountValue": 3
+      "mrp": null,
+      "sellingPrice": null,
+      "tradePrice": null,
+      "isPOA": true,
+      "discountType": "NONE",
+      "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
@@ -1381,14 +1299,6 @@
       {
         "label": "Surface Area",
         "value": "3.36 m²"
-      },
-      {
-        "label": "Market Benchmark",
-        "value": "$450.00 AUD"
-      },
-      {
-        "label": "Aurex Target Price",
-        "value": "$436.00 AUD (~3% below market)"
       },
       {
         "label": "Product Parameter",
@@ -1410,8 +1320,6 @@
     "specs": {
       "Dimensions": "2800 x 1200 x 20mm (3.36 m²)",
       "Surface Area": "3.36 m²",
-      "Market Benchmark Price": "$450.00 AUD",
-      "Aurex Fleet Price": "$436.00 AUD (~3% below market)",
       "Product Parameter": "Dimensions: 2800 x 1200 x 20mm | Area: 3.36m² | Core: High-density Hardwood Plywood | Facings: UV-Stabilized Gloss White Gelcoat | High point-load tolerance",
       "Technical Specification": "High-abuse structural composite rear door panel with excellent fatigue resistance and durable weatherproof edge sealing.",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Vehicle Standard",
@@ -1421,9 +1329,10 @@
     "stockStatus": "In stock VIC",
     "sub": "FRP Plywood Panels",
     "categoryName": "Accessories",
-    "price": 436,
+    "price": null,
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true
   },
   {
     "_id": "6ad386860a4a50b815a77aea",
@@ -1431,12 +1340,8 @@
     "__v": 0,
     "badges": [
       {
-        "label": "Enquiry Only",
+        "label": "Trade Enquiry",
         "type": "warning"
-      },
-      {
-        "label": "~3% Below Market",
-        "type": "success"
       }
     ],
     "brand": "6ac7c69002c3aa6ca9f0d897",
@@ -1463,12 +1368,12 @@
     "name": "FRP Plywood Door Panel 3200x1200x20mm",
     "oemPartNumber": "VNFPP321220",
     "pricing": {
-      "mrp": 515,
-      "sellingPrice": 499,
-      "tradePrice": 449,
-      "isPOA": false,
-      "discountType": "PERCENTAGE",
-      "discountValue": 3
+      "mrp": null,
+      "sellingPrice": null,
+      "tradePrice": null,
+      "isPOA": true,
+      "discountType": "NONE",
+      "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
@@ -1482,14 +1387,6 @@
       {
         "label": "Surface Area",
         "value": "3.84 m²"
-      },
-      {
-        "label": "Market Benchmark",
-        "value": "$515.00 AUD"
-      },
-      {
-        "label": "Aurex Target Price",
-        "value": "$499.00 AUD (~3% below market)"
       },
       {
         "label": "Product Parameter",
@@ -1511,8 +1408,6 @@
     "specs": {
       "Dimensions": "3200 x 1200 x 20mm (3.84 m²)",
       "Surface Area": "3.84 m²",
-      "Market Benchmark Price": "$515.00 AUD",
-      "Aurex Fleet Price": "$499.00 AUD (~3% below market)",
       "Product Parameter": "Dimensions: 3200 x 1200 x 20mm | Area: 3.84m² | Core: Exterior Hardwood Plywood | Facings: Impact-Resistant FRP Gelcoat | Weight: ~38 kg",
       "Technical Specification": "Severe-duty interstate trailer barn door panel engineered for structural integrity and high torsional stiffness.",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Vehicle Standard",
@@ -1522,9 +1417,10 @@
     "stockStatus": "In stock VIC",
     "sub": "FRP Plywood Panels",
     "categoryName": "Accessories",
-    "price": 499,
+    "price": null,
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true
   },
   {
     "_id": "6ad386860a4a50b815a77aeb",
@@ -1532,12 +1428,8 @@
     "__v": 0,
     "badges": [
       {
-        "label": "Enquiry Only",
+        "label": "Trade Enquiry",
         "type": "warning"
-      },
-      {
-        "label": "~3% Below Market",
-        "type": "success"
       }
     ],
     "brand": "6ac7c69002c3aa6ca9f0d897",
@@ -1564,12 +1456,12 @@
     "name": "Insulated XPS Composite Panel 2800x1200x30mm",
     "oemPartNumber": "VNFXP281230",
     "pricing": {
-      "mrp": 460,
-      "sellingPrice": 446,
-      "tradePrice": 401,
-      "isPOA": false,
-      "discountType": "PERCENTAGE",
-      "discountValue": 3
+      "mrp": null,
+      "sellingPrice": null,
+      "tradePrice": null,
+      "isPOA": true,
+      "discountType": "NONE",
+      "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
@@ -1583,14 +1475,6 @@
       {
         "label": "Surface Area",
         "value": "3.36 m²"
-      },
-      {
-        "label": "Market Benchmark",
-        "value": "$460.00 AUD"
-      },
-      {
-        "label": "Aurex Target Price",
-        "value": "$446.00 AUD (~3% below market)"
       },
       {
         "label": "Product Parameter",
@@ -1612,8 +1496,6 @@
     "specs": {
       "Dimensions": "2800 x 1200 x 30mm (3.36 m²)",
       "Surface Area": "3.36 m²",
-      "Market Benchmark Price": "$460.00 AUD",
-      "Aurex Fleet Price": "$446.00 AUD (~3% below market)",
       "Product Parameter": "Dimensions: 2800 x 1200 x 30mm | Area: 3.36m² | Core: High-Density Extruded Polystyrene (XPS 38-42 kg/m³) | Facings: 1.5mm Food-Safe Gloss White FRP | Thermal Conductivity: λ ≤ 0.028 W/m·K",
       "Technical Specification": "Closed-cell thermal sandwich panel for refrigerated truck bodies, chiller vans, and temperature-sensitive pharmaceutical haulage.",
       "Certification": "AS/NZS ISO 9001 Approved; HACCP Food Safety Compatible; AS 4256.3 Standards Compliant",
@@ -1623,9 +1505,10 @@
     "stockStatus": "In stock VIC",
     "sub": "XPS Insulated Panels",
     "categoryName": "Accessories",
-    "price": 446,
+    "price": null,
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true
   },
   {
     "_id": "6ad386860a4a50b815a77aec",
@@ -1633,12 +1516,8 @@
     "__v": 0,
     "badges": [
       {
-        "label": "Enquiry Only",
+        "label": "Trade Enquiry",
         "type": "warning"
-      },
-      {
-        "label": "~3% Below Market",
-        "type": "success"
       }
     ],
     "brand": "6ac7c69002c3aa6ca9f0d897",
@@ -1665,12 +1544,12 @@
     "name": "Insulated XPS Composite Panel 3200x1200x30mm",
     "oemPartNumber": "VNFXP321230",
     "pricing": {
-      "mrp": 525,
-      "sellingPrice": 509,
-      "tradePrice": 458,
-      "isPOA": false,
-      "discountType": "PERCENTAGE",
-      "discountValue": 3
+      "mrp": null,
+      "sellingPrice": null,
+      "tradePrice": null,
+      "isPOA": true,
+      "discountType": "NONE",
+      "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
@@ -1684,14 +1563,6 @@
       {
         "label": "Surface Area",
         "value": "3.84 m²"
-      },
-      {
-        "label": "Market Benchmark",
-        "value": "$525.00 AUD"
-      },
-      {
-        "label": "Aurex Target Price",
-        "value": "$509.00 AUD (~3% below market)"
       },
       {
         "label": "Product Parameter",
@@ -1713,8 +1584,6 @@
     "specs": {
       "Dimensions": "3200 x 1200 x 30mm (3.84 m²)",
       "Surface Area": "3.84 m²",
-      "Market Benchmark Price": "$525.00 AUD",
-      "Aurex Fleet Price": "$509.00 AUD (~3% below market)",
       "Product Parameter": "Dimensions: 3200 x 1200 x 30mm | Area: 3.84m² | Core: High-Density Closed-Cell XPS | Finish: Food-Grade White Gelcoat | Thermal Resistance: R 1.1 m²·K/W",
       "Technical Specification": "High-efficiency thermal insulation composite panel for cold chain logistics and refrigerated pantechs.",
       "Certification": "AS/NZS ISO 9001 Approved; HACCP Food Safety Compatible; AS 4256.3 Standards Compliant",
@@ -1724,9 +1593,10 @@
     "stockStatus": "In stock VIC",
     "sub": "XPS Insulated Panels",
     "categoryName": "Accessories",
-    "price": 509,
+    "price": null,
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true
   },
   {
     "_id": "6ad386860a4a50b815a77aed",
@@ -1734,12 +1604,8 @@
     "__v": 0,
     "badges": [
       {
-        "label": "Enquiry Only",
+        "label": "Trade Enquiry",
         "type": "warning"
-      },
-      {
-        "label": "~3% Below Market",
-        "type": "success"
       }
     ],
     "brand": "6ac7c69002c3aa6ca9f0d897",
@@ -1766,12 +1632,12 @@
     "name": "FRP Honeycomb Side Panel 4300x2300x20mm (Industrial Raw Edge)",
     "oemPartNumber": "VNFHP432320-RAW",
     "pricing": {
-      "mrp": 1195,
-      "sellingPrice": 1159,
-      "tradePrice": 1043,
-      "isPOA": false,
-      "discountType": "PERCENTAGE",
-      "discountValue": 3
+      "mrp": null,
+      "sellingPrice": null,
+      "tradePrice": null,
+      "isPOA": true,
+      "discountType": "NONE",
+      "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
@@ -1785,14 +1651,6 @@
       {
         "label": "Surface Area",
         "value": "9.89 m²"
-      },
-      {
-        "label": "Market Benchmark",
-        "value": "$1195.00 AUD"
-      },
-      {
-        "label": "Aurex Target Price",
-        "value": "$1159.00 AUD (~3% below market)"
       },
       {
         "label": "Product Parameter",
@@ -1814,8 +1672,6 @@
     "specs": {
       "Dimensions": "4300 x 2300 x 20mm (9.89 m²)",
       "Surface Area": "9.89 m²",
-      "Market Benchmark Price": "$1195.00 AUD",
-      "Aurex Fleet Price": "$1159.00 AUD (~3% below market)",
       "Product Parameter": "Dimensions: 4300 x 2300 x 20mm | Area: 9.89m² | Core: Polypropylene Honeycomb | Finish: High-Gloss White Gelcoat | Weight: ~7.5 kg/m²",
       "Technical Specification": "Workshop-grade raw edge structural composite panel for custom vehicle bodybuilders and commercial coachbuilders.",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Vehicle Standard; AS 4256.3 Compliance",
@@ -1825,9 +1681,10 @@
     "stockStatus": "In stock VIC",
     "sub": "FRP Honeycomb Panels",
     "categoryName": "Accessories",
-    "price": 1159,
+    "price": null,
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true
   },
   {
     "_id": "6ac7c69802c3aa6ca9f0d8a5",
@@ -1839,8 +1696,8 @@
     "brandName": "Beauway",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Heavy-duty 2,000 kg cantilever tail lift engineered for Australian commercial fleet operations. Built with a 4-cylinder geometric mechanism (2 lift cylinders and 2 tilt cylinders) with automatic hydraulic self-levelling at ground level, low-maintenance composite bushings, and a lightweight, high-tensile aluminium platform with longitudinal anti-slip corrugation. Equipped with a pre-assembled 24V electro-hydraulic power pack, electrical hose-burst safety valves on all cylinders, overload relief protection, two-hand exterior control box, platform foot controls, high-visibility flashing LED warning lights, and ADR/AS 1418.8 compliance.",
-    "description": "Heavy-duty 2,000 kg cantilever tail lift engineered for Australian commercial fleet operations. Built with a 4-cylinder geometric mechanism (2 lift cylinders and 2 tilt cylinders) with automatic hydraulic self-levelling at ground level, low-maintenance composite bushings, and a lightweight, high-tensile aluminium platform with longitudinal anti-slip corrugation. Equipped with a pre-assembled 24V electro-hydraulic power pack, electrical hose-burst safety valves on all cylinders, overload relief protection, two-hand exterior control box, platform foot controls, high-visibility flashing LED warning lights, and ADR/AS 1418.8 compliance.",
+    "shortDescription": "Australian fleet-standard 2,000 kg aluminium cantilever tail lift (2450 W x 2400 H mm). 4-cylinder geometric mechanism with automatic ground tilt memory, 24V 2.4 kW power pack, hose-burst safety protection, and ADR 84/00 / AS 1418.8 certification.",
+    "description": "Engineered specifically for Australian medium-to-heavy rigid transport fleets, the Aurex 2,000 kg aluminium cantilever tail lift delivers optimal cargo loading efficiency with minimal tare weight penalty. Constructed from high-tensile extruded aluminium alloy with integrated longitudinal traction grooves, the 2450 x 2400 mm platform withstands intensive pallet jack, roll cage, and forklift traffic. The robust 4-cylinder hydraulic geometry features independent lift and tilt circuits with automatic mechanical ground self-levelling, ensuring the platform remains planar on uneven curbs and loading docks. Powered by an enclosed 24V DC 2.4 kW electro-hydraulic unit equipped with hose-burst safety check valves and thermal overload protection. Fully certified to Australian Design Rule ADR 84/00 and AS/NZS 1418.8.",
     "category": "6ac7c69302c3aa6ca9f0d8a2",
     "categories": [
       "6ac7c69302c3aa6ca9f0d8a2"
@@ -1961,17 +1818,26 @@
     "lead": "3 to 4 weeks",
     "stockStatus": "In stock VIC",
     "badge": "2T Aluminium",
-    "desc": "Heavy-duty 2,000 kg cantilever tail lift engineered for Australian commercial fleet operations. Built with a 4-cylinder geometric mechanism (2 lift cylinders and 2 tilt cylinders) with automatic hydraulic self-levelling at ground level, low-maintenance composite bushings, and a lightweight, high-tensile aluminium platform with longitudinal anti-slip corrugation. Equipped with a pre-assembled 24V electro-hydraulic power pack, electrical hose-burst safety valves on all cylinders, overload relief protection, two-hand exterior control box, platform foot controls, high-visibility flashing LED warning lights, and ADR/AS 1418.8 compliance.",
+    "desc": "Engineered specifically for Australian medium-to-heavy rigid transport fleets, the Aurex 2,000 kg aluminium cantilever tail lift delivers optimal cargo loading efficiency with minimal tare weight penalty. Constructed from high-tensile extruded aluminium alloy with integrated longitudinal traction grooves, the 2450 x 2400 mm platform withstands intensive pallet jack, roll cage, and forklift traffic. The robust 4-cylinder hydraulic geometry features independent lift and tilt circuits with automatic mechanical ground self-levelling, ensuring the platform remains planar on uneven curbs and loading docks. Powered by an enclosed 24V DC 2.4 kW electro-hydraulic unit equipped with hose-burst safety check valves and thermal overload protection. Fully certified to Australian Design Rule ADR 84/00 and AS/NZS 1418.8.",
     "specs": {
-      "Capacity": "2000 kg at 750 mm load center",
-      "Platform": "2450 W x 2400 H mm (Aluminium)",
-      "Mechanism": "4-cylinder cantilever (2 lift + 2 tilt)",
-      "Power": "24V DC electro-hydraulic power unit",
-      "Hydraulic Safety": "Hose-burst valves on all cylinders & overload relief",
-      "Controls": "Exterior 2-hand box, platform foot controls & cabin isolator",
-      "Ground Rollers": "Synthetic pavement protection rollers",
-      "Warning Lights": "Dual corner flashing LED safety lamps & ADR flags",
-      "Finish": "Hot-dip galvanised frame, anodised alu platform",
+      "Product Type": "4-Cylinder Hydraulic Cantilever Tail Lift",
+      "Rated Load Capacity": "2000 kg at 750 mm load center",
+      "Platform Dimensions": "2450 W x 2400 H mm",
+      "Platform Material": "Marine-grade 6061-T6 extruded aluminium alloy with anti-slip corrugation",
+      "Hydraulic Mechanism": "4-cylinder geometric linkage (2 lift cylinders + 2 tilt cylinders)",
+      "Self-Levelling System": "Automatic hydraulic ground-tilt memory and self-levelling compensation",
+      "Power Supply": "24V DC electro-hydraulic power pack",
+      "Motor Output Rating": "2.4 kW high-torque DC motor with thermal overload cutoff",
+      "Working Pressure": "16 – 18 MPa (160 – 180 bar)",
+      "Lifting Height Range": "950 mm – 1450 mm (chassis bed height)",
+      "Chassis Mounting Spread": "750 / 860 / 880 mm universal Australian chassis fitment",
+      "Tare Weight": "~450 kg complete assembly",
+      "Hydraulic Safety": "Velocity-sensing hose burst check valves on all 4 cylinder ports & internal relief",
+      "Ground Contact Protection": "Replaceable synthetic low-noise pavement protection rollers",
+      "Warning & Hazard Visibility": "Dual corner amber flashing LED hazard lamps & reflective ADR flags",
+      "Control Interface": "External IP67 dual-hand safety control box, platform foot controls, in-cab master isolator",
+      "Dimensions": "2450 W x 2400 H mm",
+      "Technical Specification": "High-efficiency 2.0-tonne cantilever tail lift for 12T–26T GVM rigid trucks, dry freight pantechs, and curtain-side logistics.",
       "Compliance": "ADR 84/00 & AS/NZS 1418.8 certified",
       "Australian Standard": "ADR 84/00 & AS/NZS 1418.8 Certified",
       "Certification": "ADR 84/00 & AS/NZS 1418.8 Certified Commercial Vehicle Tail Lift"
@@ -1992,7 +1858,14 @@
     "categoryName": "Tail Lifts",
     "imageUrl": "/images/products/ATP-TL-01.jpg",
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true,
+    "dhollandiaSpecs": {
+      "Mechanical Kinematics": "Heavy-duty 4-cylinder geometric cantilever linkage with maintenance-free synthetic composite pivot bushings and chrome-plated hinge pins.",
+      "Hydraulic Safety Circuit": "Independent dual-circuit lift and tilt with velocity fuse burst check valves mounted directly on all 4 cylinder ports and adjustable pressure relief.",
+      "Electrical & Multi-Station Controls": "Weatherproof IP67 two-hand exterior push-button station, platform-integrated foot switches, and an in-cab master electrical isolation switch.",
+      "Australian Regulatory Standards": "Engineered and certified in strict compliance with ADR 84/00 Rear Underrun Protection, AS/NZS 1418.8 hoist standards, and VSB 14 fleet guidelines."
+    }
   },
   {
     "_id": "6ac7c69902c3aa6ca9f0d8cc",
@@ -2004,8 +1877,8 @@
     "brandName": "Beauway",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Compact heavy-duty 2,000 kg cantilever tail lift with 2200 mm height platform, engineered for rigid trucks, pantechs, and curtainsiders. Features a proven 4-cylinder lifting mechanism with automatic ground-level hydraulic tilt and tilt angle memory. Includes non-slip corrugated aluminium platform, zinc-nickel treated hydraulic cylinders, electrical hose-burst check valves on all ports, exterior two-hand controller, platform foot switches, integrated LED safety flashers, and ADR/AS 1418.8 compliance.",
-    "description": "Compact heavy-duty 2,000 kg cantilever tail lift with 2200 mm height platform, engineered for rigid trucks, pantechs, and curtainsiders. Features a proven 4-cylinder lifting mechanism with automatic ground-level hydraulic tilt and tilt angle memory. Includes non-slip corrugated aluminium platform, zinc-nickel treated hydraulic cylinders, electrical hose-burst check valves on all ports, exterior two-hand controller, platform foot switches, integrated LED safety flashers, and ADR/AS 1418.8 compliance.",
+    "shortDescription": "Compact 2,000 kg aluminium cantilever tail lift with 2200 mm platform height for standard rigid trucks and metro delivery vans. 4-cylinder hydraulic mechanism with automatic ground tilt memory, 24V 2.4 kW unit, and full ADR 84/00 compliance.",
+    "description": "The Aurex 2,000 kg compact aluminium cantilever tail lift features a 2200 mm platform height, making it ideal for standard rigid truck dry-freight boxes and metro distribution bodies where overall roof clearance is critical. The marine-grade extruded aluminium deck reduces deadweight by over 30% compared to equivalent steel lifts, maximising legal payload for urban multi-drop deliveries. Equipped with dual lift cylinders, dual tilt cylinders, automatic pavement levelling, and a 24V 2.4 kW power pack housed in a weather-sealed enclosure. Fully compliant with ADR 84/00 underrun requirements and AS/NZS 1418.8 hoist standards.",
     "category": "6ac7c69302c3aa6ca9f0d8a2",
     "categories": [
       "6ac7c69302c3aa6ca9f0d8a2"
@@ -2126,17 +1999,26 @@
     "lead": "3 to 4 weeks",
     "stockStatus": "In stock VIC",
     "badge": "2T Aluminium",
-    "desc": "Compact heavy-duty 2,000 kg cantilever tail lift with 2200 mm height platform, engineered for rigid trucks, pantechs, and curtainsiders. Features a proven 4-cylinder lifting mechanism with automatic ground-level hydraulic tilt and tilt angle memory. Includes non-slip corrugated aluminium platform, zinc-nickel treated hydraulic cylinders, electrical hose-burst check valves on all ports, exterior two-hand controller, platform foot switches, integrated LED safety flashers, and ADR/AS 1418.8 compliance.",
+    "desc": "The Aurex 2,000 kg compact aluminium cantilever tail lift features a 2200 mm platform height, making it ideal for standard rigid truck dry-freight boxes and metro distribution bodies where overall roof clearance is critical. The marine-grade extruded aluminium deck reduces deadweight by over 30% compared to equivalent steel lifts, maximising legal payload for urban multi-drop deliveries. Equipped with dual lift cylinders, dual tilt cylinders, automatic pavement levelling, and a 24V 2.4 kW power pack housed in a weather-sealed enclosure. Fully compliant with ADR 84/00 underrun requirements and AS/NZS 1418.8 hoist standards.",
     "specs": {
-      "Capacity": "2000 kg at 750 mm load center",
-      "Platform": "2450 W x 2200 H mm (Aluminium)",
-      "Mechanism": "4-cylinder cantilever (2 lift + 2 tilt)",
-      "Power": "24V DC electro-hydraulic power unit",
-      "Hydraulic Safety": "Hose-burst valves on all cylinders & overload relief",
-      "Controls": "Exterior 2-hand box, platform foot controls & cabin isolator",
-      "Ground Rollers": "Synthetic pavement protection rollers",
-      "Warning Lights": "Dual corner flashing LED safety lamps & ADR flags",
-      "Finish": "Hot-dip galvanised frame, anodised alu platform",
+      "Product Type": "4-Cylinder Hydraulic Cantilever Tail Lift (Compact Profile)",
+      "Rated Load Capacity": "2000 kg at 750 mm load center",
+      "Platform Dimensions": "2450 W x 2200 H mm",
+      "Platform Material": "Marine-grade 6061-T6 extruded aluminium alloy with ribbed traction deck",
+      "Hydraulic Mechanism": "4-cylinder linkage (2 lift cylinders + 2 tilt cylinders)",
+      "Self-Levelling System": "Hydraulic self-levelling with automatic mechanical ground tilt",
+      "Power Supply": "24V DC electro-hydraulic power pack",
+      "Motor Output Rating": "2.4 kW high-torque DC motor",
+      "Working Pressure": "16 – 18 MPa (160 – 180 bar)",
+      "Lifting Height Range": "950 mm – 1350 mm",
+      "Chassis Mounting Spread": "750 / 860 / 880 mm universal fitment",
+      "Tare Weight": "~435 kg",
+      "Hydraulic Safety": "Port-mounted velocity fuse check valves & internal pressure relief",
+      "Ground Contact Protection": "Heavy synthetic pavement protection rollers",
+      "Warning & Hazard Visibility": "High-intensity flashing LED platform markers & ADR safety flags",
+      "Control Interface": "IP67 dual-button exterior control box, dual foot switches, cabin isolator",
+      "Dimensions": "2450 W x 2200 H mm",
+      "Technical Specification": "Optimized low-tare 2.0-tonne cantilever tail lift for urban multi-drop distribution, rigid box bodies, and food & beverage logistics.",
       "Compliance": "ADR 84/00 & AS/NZS 1418.8 certified",
       "Australian Standard": "ADR 84/00 & AS/NZS 1418.8 Certified",
       "Certification": "ADR 84/00 & AS/NZS 1418.8 Certified Commercial Vehicle Tail Lift"
@@ -2157,7 +2039,14 @@
     "categoryName": "Tail Lifts",
     "imageUrl": "/images/products/ATP-TL-02.jpg",
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true,
+    "dhollandiaSpecs": {
+      "Mechanical Kinematics": "Compact 4-cylinder cantilever architecture engineered for standard box heights with greaseless synthetic pivot bushings.",
+      "Hydraulic Safety Circuit": "Dual lift and tilt cylinders with port-threaded burst check valves, pilot-operated lowering lock, and 18 MPa system relief.",
+      "Electrical & Multi-Station Controls": "IP67 external two-hand controller, non-slip rubberized platform foot buttons, and dash-mounted cabin master switch.",
+      "Australian Regulatory Standards": "Certified to ADR 84/00 rear underrun safety and AS/NZS 1418.8 commercial vehicle hoist compliance."
+    }
   },
   {
     "_id": "6ac7c69902c3aa6ca9f0d8bf",
@@ -2169,8 +2058,8 @@
     "brandName": "Beauway",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Extended-height 2,000 kg cantilever tail lift with 2600 mm tall aluminium platform, ideal for high-cube pantechs, refrigerated logistics, and furniture bodies. Features a 4-cylinder geometry with hydraulic automatic self-levelling and ground tilt, full-length non-slip aluminium surface, zinc-nickel plated hydraulic cylinders with electrical hose-burst safety protection, enclosed 24V electro-hydraulic unit, dual platform foot controls, corner LED flashers, and ADR/AS 1418.8 compliance.",
-    "description": "Extended-height 2,000 kg cantilever tail lift with 2600 mm tall aluminium platform, ideal for high-cube pantechs, refrigerated logistics, and furniture bodies. Features a 4-cylinder geometry with hydraulic automatic self-levelling and ground tilt, full-length non-slip aluminium surface, zinc-nickel plated hydraulic cylinders with electrical hose-burst safety protection, enclosed 24V electro-hydraulic unit, dual platform foot controls, corner LED flashers, and ADR/AS 1418.8 compliance.",
+    "shortDescription": "Extended-height 2,000 kg cantilever tail lift with 2600 mm platform height for high-cube pantechs, furniture bodies, and refrigerated transport. 4-cylinder geometry with full door closure capability and ADR 84/00 compliance.",
+    "description": "Designed for high-cube pantechs, furniture bodies, and refrigerated logistics vehicles, the Aurex 2,000 kg extended-height tail lift features an expansive 2600 mm tall aluminium platform that doubles as a full-height weather-tight rear door closure. The extended lever arm geometry delivers a vertical lift range up to 1,500 mm, accommodating tall chassis frames and dock levelers. Built with reinforced extruded aluminium box profiles, high-tensile chrome-plated cylinder shafts, synthetic ground rollers, and a high-output 24V 2.4 kW power pack with dual-speed lowering control. ADR 84/00 rear underrun certified.",
     "category": "6ac7c69302c3aa6ca9f0d8a2",
     "categories": [
       "6ac7c69302c3aa6ca9f0d8a2"
@@ -2291,17 +2180,26 @@
     "lead": "3 to 4 weeks",
     "stockStatus": "In stock VIC",
     "badge": "2T Aluminium",
-    "desc": "Extended-height 2,000 kg cantilever tail lift with 2600 mm tall aluminium platform, ideal for high-cube pantechs, refrigerated logistics, and furniture bodies. Features a 4-cylinder geometry with hydraulic automatic self-levelling and ground tilt, full-length non-slip aluminium surface, zinc-nickel plated hydraulic cylinders with electrical hose-burst safety protection, enclosed 24V electro-hydraulic unit, dual platform foot controls, corner LED flashers, and ADR/AS 1418.8 compliance.",
+    "desc": "Designed for high-cube pantechs, furniture bodies, and refrigerated logistics vehicles, the Aurex 2,000 kg extended-height tail lift features an expansive 2600 mm tall aluminium platform that doubles as a full-height weather-tight rear door closure. The extended lever arm geometry delivers a vertical lift range up to 1,500 mm, accommodating tall chassis frames and dock levelers. Built with reinforced extruded aluminium box profiles, high-tensile chrome-plated cylinder shafts, synthetic ground rollers, and a high-output 24V 2.4 kW power pack with dual-speed lowering control. ADR 84/00 rear underrun certified.",
     "specs": {
-      "Capacity": "2000 kg at 750 mm load center",
-      "Platform": "2450 W x 2600 H mm (Aluminium)",
-      "Mechanism": "4-cylinder cantilever (2 lift + 2 tilt)",
-      "Power": "24V DC electro-hydraulic power unit",
-      "Hydraulic Safety": "Hose-burst valves on all cylinders & overload relief",
-      "Controls": "Exterior 2-hand box, platform foot controls & cabin isolator",
-      "Ground Rollers": "Synthetic pavement protection rollers",
-      "Warning Lights": "Dual corner flashing LED safety lamps & ADR flags",
-      "Finish": "Hot-dip galvanised frame, anodised alu platform",
+      "Product Type": "4-Cylinder High-Cube Cantilever Tail Lift (Full Door Closure)",
+      "Rated Load Capacity": "2000 kg at 750 mm load center",
+      "Platform Dimensions": "2450 W x 2600 H mm",
+      "Platform Material": "Reinforced extruded aluminium alloy with continuous anti-slip profile",
+      "Hydraulic Mechanism": "Long-geometry 4-cylinder linkage (2 lift + 2 tilt cylinders)",
+      "Self-Levelling System": "Full hydraulic ground-tilt memory with automatic tilt-at-ground",
+      "Power Supply": "24V DC high-capacity hydraulic power pack",
+      "Motor Output Rating": "2.4 kW heavy-duty DC motor",
+      "Working Pressure": "16 – 18 MPa (160 – 180 bar)",
+      "Lifting Height Range": "1100 mm – 1500 mm (tall chassis & high-cube pantechs)",
+      "Chassis Mounting Spread": "750 / 860 / 880 mm universal fitment",
+      "Tare Weight": "~465 kg",
+      "Hydraulic Safety": "Inline velocity-fuse burst valves on all cylinders & thermal overload switch",
+      "Ground Contact Protection": "Twin heavy-duty synthetic pavement protection rollers",
+      "Warning & Hazard Visibility": "Dual recessed corner flashing LED lamps & ADR compliance flags",
+      "Control Interface": "Weatherproof IP67 exterior enclosure, platform foot controls, in-cab master switch",
+      "Dimensions": "2450 W x 2600 H mm",
+      "Technical Specification": "High-cube 2.0-tonne cantilever tail lift with full-closure door capability for tall pantechs, refrigerated logistics, and furniture freight.",
       "Compliance": "ADR 84/00 & AS/NZS 1418.8 certified",
       "Australian Standard": "ADR 84/00 & AS/NZS 1418.8 Certified",
       "Certification": "ADR 84/00 & AS/NZS 1418.8 Certified Commercial Vehicle Tail Lift"
@@ -2322,7 +2220,14 @@
     "categoryName": "Tail Lifts",
     "imageUrl": "/images/products/ATP-TL-03.jpg",
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true,
+    "dhollandiaSpecs": {
+      "Mechanical Kinematics": "Extended-reach cantilever arms suited for high chassis frames and tall van bodies, with heavy-duty spherical self-aligning pin joints.",
+      "Hydraulic Safety Circuit": "4-cylinder hydraulic geometry with instantaneous hose-burst shutoff valves on every cylinder and dual-speed platform descent.",
+      "Electrical & Multi-Station Controls": "IP67 lockable control enclosure, dual waterproof platform foot switches, and heavy-duty 24V battery isolation relay.",
+      "Australian Regulatory Standards": "Fully compliant with ADR 84/00 rear underrun impact standards, AS/NZS 1418.8, and Australian Heavy Vehicle National Law."
+    }
   },
   {
     "_id": "6ac7c69902c3aa6ca9f0d8d9",
@@ -2334,8 +2239,8 @@
     "brandName": "Beauway",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Lightweight, highly efficient 1,500 kg cantilever tail lift optimized for medium rigid trucks, metro distribution, and parcel fleets. Combines maximum payload capacity with low deadweight. Features 4-cylinder hydraulic mechanism with automatic ground tilt, non-slip aluminium platform, 24V enclosed electro-hydraulic power pack, hose-burst safety check valves on all cylinders, platform foot controls, corner LED hazard lights, and ADR/AS 1418.8 certification.",
-    "description": "Lightweight, highly efficient 1,500 kg cantilever tail lift optimized for medium rigid trucks, metro distribution, and parcel fleets. Combines maximum payload capacity with low deadweight. Features 4-cylinder hydraulic mechanism with automatic ground tilt, non-slip aluminium platform, 24V enclosed electro-hydraulic power pack, hose-burst safety check valves on all cylinders, platform foot controls, corner LED hazard lights, and ADR/AS 1418.8 certification.",
+    "shortDescription": "Lightweight 1,500 kg aluminium cantilever tail lift (2450 W x 2400 H mm) optimized for medium rigid trucks and parcel delivery fleets. Low 410 kg tare, 4-cylinder geometry, automatic ground tilt, and full ADR 84/00 certification.",
+    "description": "The Aurex 1,500 kg Fleet-Lite cantilever tail lift is optimized for medium rigid delivery vehicles (8T to 15T GVM), parcel logistics, and retail distribution fleets. Weighing only ~410 kg, it provides maximum legal payload retention while offering a full 2450 x 2400 mm loading area suitable for two standard pallets or three roll cages. The 4-cylinder hydraulic mechanism delivers rapid, smooth cycle times powered by an energy-efficient 2.2 kW 24V DC power unit. Complete with hose-burst safety protection, automatic ground tilt, and full ADR 84/00 certification.",
     "category": "6ac7c69302c3aa6ca9f0d8a2",
     "categories": [
       "6ac7c69302c3aa6ca9f0d8a2"
@@ -2456,17 +2361,26 @@
     "lead": "3 to 4 weeks",
     "stockStatus": "In stock VIC",
     "badge": "1.5T Aluminium",
-    "desc": "Lightweight, highly efficient 1,500 kg cantilever tail lift optimized for medium rigid trucks, metro distribution, and parcel fleets. Combines maximum payload capacity with low deadweight. Features 4-cylinder hydraulic mechanism with automatic ground tilt, non-slip aluminium platform, 24V enclosed electro-hydraulic power pack, hose-burst safety check valves on all cylinders, platform foot controls, corner LED hazard lights, and ADR/AS 1418.8 certification.",
+    "desc": "The Aurex 1,500 kg Fleet-Lite cantilever tail lift is optimized for medium rigid delivery vehicles (8T to 15T GVM), parcel logistics, and retail distribution fleets. Weighing only ~410 kg, it provides maximum legal payload retention while offering a full 2450 x 2400 mm loading area suitable for two standard pallets or three roll cages. The 4-cylinder hydraulic mechanism delivers rapid, smooth cycle times powered by an energy-efficient 2.2 kW 24V DC power unit. Complete with hose-burst safety protection, automatic ground tilt, and full ADR 84/00 certification.",
     "specs": {
-      "Capacity": "1500 kg at 600 - 750 mm load center",
-      "Platform": "2450 W x 2400 H mm (Aluminium)",
-      "Mechanism": "4-cylinder cantilever (2 lift + 2 tilt)",
-      "Power": "24V DC compact electro-hydraulic power unit",
-      "Hydraulic Safety": "Hose-burst safety check valves on all cylinders",
-      "Controls": "Exterior 2-hand box, dual foot controls & cabin switch",
-      "Ground Rollers": "Synthetic pavement protection rollers",
-      "Warning Lights": "Corner flashing LED lamps & reflective hazard flags",
-      "Finish": "Galvanised lift arms, anodised alu platform",
+      "Product Type": "Lightweight 4-Cylinder Cantilever Tail Lift",
+      "Rated Load Capacity": "1500 kg at 600 – 750 mm load center",
+      "Platform Dimensions": "2450 W x 2400 H mm",
+      "Platform Material": "High-strength lightweight extruded aluminium with grooved non-slip deck",
+      "Hydraulic Mechanism": "4-cylinder cantilever linkage (2 lift cylinders + 2 tilt cylinders)",
+      "Self-Levelling System": "Mechanical-hydraulic self-levelling with automatic ground-tilt compensation",
+      "Power Supply": "24V DC compact electro-hydraulic power unit",
+      "Motor Output Rating": "2.2 kW high-efficiency DC motor",
+      "Working Pressure": "15 – 17 MPa (150 – 170 bar)",
+      "Lifting Height Range": "950 mm – 1250 mm (medium rigid chassis)",
+      "Chassis Mounting Spread": "750 / 860 mm chassis rail spread",
+      "Tare Weight": "~410 kg (industry-leading light tare)",
+      "Hydraulic Safety": "Hose-burst safety check valves on all ports & internal relief valve",
+      "Ground Contact Protection": "Low-friction synthetic pavement protection rollers",
+      "Warning & Hazard Visibility": "Amber flashing LED safety beacons on platform corners + ADR flags",
+      "Control Interface": "IP67 dual-hand push button box, dual foot switches, in-cab isolator",
+      "Dimensions": "2450 W x 2400 H mm",
+      "Technical Specification": "Lightweight 1.5-tonne cantilever tail lift for 8T–15T GVM medium rigid trucks, parcel delivery, and metro distribution fleets.",
       "Compliance": "ADR 84/00 & AS/NZS 1418.8 certified",
       "Australian Standard": "ADR 84/00 & AS/NZS 1418.8 Certified",
       "Certification": "ADR 84/00 & AS/NZS 1418.8 Certified Commercial Vehicle Tail Lift"
@@ -2487,7 +2401,14 @@
     "categoryName": "Tail Lifts",
     "imageUrl": "/images/products/ATP-TL-04.jpg",
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true,
+    "dhollandiaSpecs": {
+      "Mechanical Kinematics": "Lightweight 4-cylinder cantilever linkage optimized to minimize vehicle deadweight while preserving torsional rigidity.",
+      "Hydraulic Safety Circuit": "Dedicated dual lift and dual tilt cylinders with velocity check burst valves directly inserted into hydraulic ports.",
+      "Electrical & Multi-Station Controls": "Heavy-duty exterior two-hand safety station, twin low-profile platform foot switches, and in-cab isolation circuit.",
+      "Australian Regulatory Standards": "ADR 84/00 compliant underrun protection geometry, AS/NZS 1418.8 certified, and NHVR approved."
+    }
   },
   {
     "_id": "6ac7c69902c3aa6ca9f0d8b2",
@@ -2499,8 +2420,8 @@
     "brandName": "Beauway",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Extreme heavy-duty 3,000 kg cantilever tail lift constructed from high-tensile structural steel for severe-duty freight, linehaul semi-trailers, and heavy industrial distribution. Features an ultra-reinforced 4-cylinder mechanism, automatic hydraulic ground tilt, fully hot-dip galvanised steel platform with heavy anti-slip diamond grip, dual high-flow 24V power pack, safety hose-burst valves on all cylinders, platform foot switches, heavy-duty underrun bumper bar, and ADR/AS 1418.8 compliance.",
-    "description": "Extreme heavy-duty 3,000 kg cantilever tail lift constructed from high-tensile structural steel for severe-duty freight, linehaul semi-trailers, and heavy industrial distribution. Features an ultra-reinforced 4-cylinder mechanism, automatic hydraulic ground tilt, fully hot-dip galvanised steel platform with heavy anti-slip diamond grip, dual high-flow 24V power pack, safety hose-burst valves on all cylinders, platform foot switches, heavy-duty underrun bumper bar, and ADR/AS 1418.8 compliance.",
+    "shortDescription": "Heavy-duty 3,000 kg steel cantilever tail lift (2450 W x 2600 H mm) for linehaul semi-trailers and heavy machinery transport. Full hot-dip galvanized steel deck, 2.8 kW dual-flow power pack, and ADR 84/00 certified underrun bar.",
+    "description": "Engineered for severe-duty freight, linehaul semi-trailers, machinery transport, and high-density industrial logistics, the Aurex 3,000 kg Titan-Duty tail lift is built entirely from high-tensile structural steel with a heavy hot-dip galvanized finish for lifelong corrosion resistance. Its ultra-reinforced 4-cylinder geometry features oversize chrome-plated cylinder rams and heavy spherical pivot bearings capable of handling 3-tonne loads at a 1,000 mm load center. Driven by a high-output 24V 2.8 kW dual-flow power unit providing fast lift cycles under full capacity. Equipped with integrated ADR 84/00 certified rear underrun bumper bar.",
     "category": "6ac7c69302c3aa6ca9f0d8a2",
     "categories": [
       "6ac7c69302c3aa6ca9f0d8a2"
@@ -2621,17 +2542,27 @@
     "lead": "4 to 5 weeks",
     "stockStatus": "In stock VIC",
     "badge": "3T Steel",
-    "desc": "Extreme heavy-duty 3,000 kg cantilever tail lift constructed from high-tensile structural steel for severe-duty freight, linehaul semi-trailers, and heavy industrial distribution. Features an ultra-reinforced 4-cylinder mechanism, automatic hydraulic ground tilt, fully hot-dip galvanised steel platform with heavy anti-slip diamond grip, dual high-flow 24V power pack, safety hose-burst valves on all cylinders, platform foot switches, heavy-duty underrun bumper bar, and ADR/AS 1418.8 compliance.",
+    "desc": "Engineered for severe-duty freight, linehaul semi-trailers, machinery transport, and high-density industrial logistics, the Aurex 3,000 kg Titan-Duty tail lift is built entirely from high-tensile structural steel with a heavy hot-dip galvanized finish for lifelong corrosion resistance. Its ultra-reinforced 4-cylinder geometry features oversize chrome-plated cylinder rams and heavy spherical pivot bearings capable of handling 3-tonne loads at a 1,000 mm load center. Driven by a high-output 24V 2.8 kW dual-flow power unit providing fast lift cycles under full capacity. Equipped with integrated ADR 84/00 certified rear underrun bumper bar.",
     "specs": {
-      "Capacity": "3000 kg at 1000 mm load center",
-      "Platform": "2450 W x 2600 H mm (Structural Steel)",
-      "Mechanism": "Heavy-duty 4-cylinder cantilever (2 heavy lift + 2 tilt)",
-      "Power": "24V DC high-output electro-hydraulic power unit",
-      "Hydraulic Safety": "Hose-burst valves on all cylinders & internal relief",
-      "Controls": "Heavy-duty exterior control box, platform foot controls, cabin master switch",
-      "Ground Rollers": "Heavy-duty polyurethane/steel ground contact rollers",
-      "Warning Lights": "Flashing corner LED lamps & reflective safety flags",
-      "Finish": "Full hot-dip galvanisation for extreme corrosion resistance",
+      "Product Type": "Severe-Duty 4-Cylinder Steel Cantilever Tail Lift",
+      "Rated Load Capacity": "3000 kg at 1000 mm load center",
+      "Platform Dimensions": "2450 W x 2600 H mm",
+      "Platform Material": "Heavy-gauge high-tensile structural steel with non-slip diamond checker plate",
+      "Surface Finish": "Full hot-dip galvanisation (corrosion protection for linehaul & coastal fleets)",
+      "Hydraulic Mechanism": "Ultra-reinforced 4-cylinder linkage with oversized hardened chrome rams",
+      "Self-Levelling System": "Heavy-duty dual tilt cylinders with mechanical ground angle memory",
+      "Power Supply": "24V DC high-output dual-flow electro-hydraulic power pack",
+      "Motor Output Rating": "2.8 kW extreme-duty DC motor",
+      "Working Pressure": "18 – 20 MPa (180 – 200 bar)",
+      "Lifting Height Range": "1100 mm – 1550 mm (semi-trailer & heavy chassis)",
+      "Chassis Mounting Spread": "880 mm heavy-vehicle chassis spread",
+      "Tare Weight": "~620 kg",
+      "Hydraulic Safety": "Dual-port velocity burst check valves, pilot-operated check valving & overload relief",
+      "Ground Contact Protection": "Heavy polyurethane and steel ground contact rollers",
+      "Warning & Hazard Visibility": "Corner amber flashing LED beacons, high-vis ADR flags, reflective contour tape",
+      "Control Interface": "Heavy-duty lockable exterior steel control enclosure, platform foot controls, in-cab master switch",
+      "Dimensions": "2450 W x 2600 H mm",
+      "Technical Specification": "Severe-duty 3.0-tonne steel cantilever tail lift for semi-trailers, linehaul logistics, heavy equipment, and industrial transport.",
       "Compliance": "ADR 84/00 & AS/NZS 1418.8 certified",
       "Australian Standard": "ADR 84/00 & AS/NZS 1418.8 Certified",
       "Certification": "ADR 84/00 & AS/NZS 1418.8 Certified Commercial Vehicle Tail Lift"
@@ -2652,7 +2583,14 @@
     "categoryName": "Tail Lifts",
     "imageUrl": "/images/products/ATP-TL-05.jpg",
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true,
+    "dhollandiaSpecs": {
+      "Mechanical Kinematics": "Heavy structural steel kinematic geometry featuring oversized hardened pivot pins and spherical greasable bearings.",
+      "Hydraulic Safety Circuit": "High-volume dual lift and dual tilt cylinders equipped with dual-port velocity burst safety valves and pilot check valves.",
+      "Electrical & Multi-Station Controls": "Vandal-resistant IP67 exterior control housing, dual non-slip foot switches, and 24V emergency disconnect solenoid.",
+      "Australian Regulatory Standards": "ADR 84/00 rear underrun certified with integrated heavy bumper bar, AS/NZS 1418.8 certified, and NHVR linehaul compliant."
+    }
   },
   {
     "_id": "6ac7c69902c3aa6ca9f0d8e6",
@@ -2664,8 +2602,8 @@
     "brandName": "Beauway",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Universal 12V 2.2kW electro-hydraulic power unit complete with steel oil reservoir, high-torque DC motor, heavy-duty starter solenoid, emergency lowering valve, and pre-wired control loom. Engineered as a drop-in replacement power pack for commercial cantilever tail lifts and tipper hydraulic systems.",
-    "description": "Universal 12V 2.2kW electro-hydraulic power unit complete with steel oil reservoir, high-torque DC motor, heavy-duty starter solenoid, emergency lowering valve, and pre-wired control loom. Engineered as a drop-in replacement power pack for commercial cantilever tail lifts and tipper hydraulic systems.",
+    "shortDescription": "Universal 12V 2.2 kW electro-hydraulic power unit complete with 8L steel tank, starter solenoid, lowering valve, and pre-wired harness. Direct drop-in replacement for 1.0T to 2.5T commercial tail lifts and tippers.",
+    "description": "The Aurex PowerPack 12V-Pro is an electro-hydraulic power unit engineered as a drop-in replacement or retrofit power system for commercial cantilever tail lifts, tippers, and vehicle loading hoists. Powered by a heavy-duty 12V DC 2.2 kW starter-grade electric motor coupled to a high-pressure precision gear pump, it delivers 5.8 L/min nominal oil flow at pressures up to 21 MPa (210 bar). Features an 8-litre steel oil reservoir, integrated 12V cartridge lowering solenoid valve with emergency manual lowering bypass, heavy-duty 150A starter solenoid, pre-wired IP65 control harness, and multi-hole mounting subframe.",
     "category": "6ac7c69302c3aa6ca9f0d8a2",
     "categories": [
       "6ac7c69302c3aa6ca9f0d8a2"
@@ -2771,17 +2709,25 @@
     "lead": "Confirm stock",
     "stockStatus": "In stock VIC",
     "badge": "Power Unit",
-    "desc": "Universal 12V 2.2kW electro-hydraulic power unit complete with steel oil reservoir, high-torque DC motor, heavy-duty starter solenoid, emergency lowering valve, and pre-wired control loom. Engineered as a drop-in replacement power pack for commercial cantilever tail lifts and tipper hydraulic systems.",
+    "desc": "The Aurex PowerPack 12V-Pro is an electro-hydraulic power unit engineered as a drop-in replacement or retrofit power system for commercial cantilever tail lifts, tippers, and vehicle loading hoists. Powered by a heavy-duty 12V DC 2.2 kW starter-grade electric motor coupled to a high-pressure precision gear pump, it delivers 5.8 L/min nominal oil flow at pressures up to 21 MPa (210 bar). Features an 8-litre steel oil reservoir, integrated 12V cartridge lowering solenoid valve with emergency manual lowering bypass, heavy-duty 150A starter solenoid, pre-wired IP65 control harness, and multi-hole mounting subframe.",
     "specs": {
-      "Voltage": "12V DC",
-      "Power": "2.2 kW high-torque motor",
-      "Pump": "High-pressure hydraulic gear pump with internal relief",
-      "Tank": "Sealed steel/composite oil reservoir",
-      "Valves": "Integrated lowering solenoid valve and adjustable pressure relief",
-      "Inclusions": "Starter solenoid, wiring harness connectors, mounting brackets",
-      "Compatibility": "Suitable for cantilever tail lifts, tippers, and hydraulic ramps",
-      "Australian Standard": "ADR 84/00 & AS/NZS 1418.8 Certified",
-      "Certification": "ADR 84/00 & AS/NZS 1418.8 Certified Commercial Vehicle Tail Lift"
+      "Product Type": "Universal Electro-Hydraulic Power Unit Assembly",
+      "Motor Voltage": "12V DC",
+      "Motor Output Power": "2.2 kW high-torque starter-grade motor",
+      "Pump Type": "High-pressure precision gear pump (2.1 cc/rev, nominal delivery 5.8 L/min)",
+      "Maximum Working Pressure": "21 MPa (210 bar) with user-adjustable internal relief valve",
+      "Reservoir Capacity": "8.0 Litre heavy-gauge powder-coated steel tank with breather cap and sight level",
+      "Directional & Lowering Valving": "12V DC cartridge lowering solenoid valve with emergency manual override screw",
+      "Electrical Switching": "Heavy-duty 150A starter solenoid relay with weather-sealed boots",
+      "Harness & Control Loom": "Pre-wired IP65 wiring harness with terminal connectors and fuse protection",
+      "Mounting Subframe": "Universal slotted steel bracket for horizontal or vertical chassis mounting",
+      "Hydraulic Ports": "Standard G3/8\" BSPP pressure and tank return ports",
+      "Tare Weight": "18.5 kg dry weight",
+      "Compatibility": "Direct drop-in replacement for 1.0T to 2.5T commercial tail lifts, tippers, and loading ramps",
+      "Technical Specification": "Universal 12V 2.2kW power unit for commercial vehicle tail lifts and tippers with integrated safety relief and manual lowering.",
+      "Compliance": "SAE J200 & ISO 9001 certified",
+      "Australian Standard": "ADR 84/00 & AS/NZS 1418.8 Component Fitment",
+      "Certification": "ADR 84/00 & AS/NZS 1418.8 Certified Component Fitment"
     },
     "categorySlug": "tail-lifts",
     "rating": 4.7,
@@ -2799,7 +2745,14 @@
     "categoryName": "Tail Lifts",
     "imageUrl": "/images/products/ATP-TL-06.jpg",
     "isPublished": true,
-    "isVisible": true
+    "isVisible": true,
+    "isPOA": true,
+    "dhollandiaSpecs": {
+      "Mechanical Kinematics": "Compact enclosed reservoir chassis with vibration-damping rubber subframe mounts for underbody frame installation.",
+      "Hydraulic Safety Circuit": "Factory calibrated internal pressure relief valve with cartridge solenoid lowering valve and manual emergency bypass.",
+      "Electrical & Multi-Station Controls": "Industrial 150A starter solenoid with pre-terminated weather-sealed wiring harness and thermal overload breaker.",
+      "Australian Regulatory Standards": "Manufactured to ISO 9001 quality guidelines, meeting AS/NZS 1418.8 component replacement specifications."
+    }
   },
   {
     "_id": "6ac7c69902c3aa6ca9f0d8f0",
