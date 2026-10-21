@@ -28,8 +28,10 @@ const resolveCart = async (request, reply) => {
       const guestCart = await Cart.findOne({ sessionId: rawSessionId });
       if (guestCart && guestCart.items?.length > 0) {
         for (const gItem of guestCart.items) {
+          if (!gItem || !gItem.product) continue;
+          const gProdId = String(gItem.product?._id || gItem.product || '');
           const existingIdx = userCart.items.findIndex(
-            (i) => i.product.toString() === gItem.product.toString()
+            (i) => i && String(i.product?._id || i.product || '') === gProdId
           );
           const fitment = (gItem.selectedFitment && typeof gItem.selectedFitment === 'object')
             ? gItem.selectedFitment
@@ -160,7 +162,7 @@ const addToCart = async (request, reply) => {
   const { cart } = await resolveCart(request, reply);
 
   const existingItemIndex = cart.items.findIndex(
-    (i) => i.product.toString() === product._id.toString()
+    (i) => i && String(i.product?._id || i.product || '') === product._id.toString()
   );
   const newQty = existingItemIndex > -1 ? cart.items[existingItemIndex].quantity + parsedQty : parsedQty;
 
@@ -238,7 +240,7 @@ const updateCartItem = async (request, reply) => {
   if (!item) throw new CustomError('Item not found in cart', 404, 'ITEM_NOT_FOUND');
 
   if (isNaN(parsedQty) || parsedQty <= 0) {
-    cart.items = cart.items.filter((i) => i._id.toString() !== item._id.toString());
+    cart.items = cart.items.filter((i) => String(i?._id || '') !== String(item?._id || ''));
   } else {
     const product = await Product.findById(item.product);
     if (product && product.inventory?.trackInventory && product.inventory.stock < parsedQty) {
@@ -267,9 +269,10 @@ const removeFromCart = async (request, reply) => {
   });
 
   cart.items = cart.items.filter((i) => {
-    if (i._id.toString() === targetId) return false;
-    if (i.product?.toString() === targetId) return false;
-    if (prod && i.product?.toString() === prod._id.toString()) return false;
+    if (!i) return false;
+    if (String(i._id || '') === targetId) return false;
+    if (String(i.product?._id || i.product || '') === targetId) return false;
+    if (prod && String(i.product?._id || i.product || '') === prod._id.toString()) return false;
     return true;
   });
 
