@@ -54,7 +54,7 @@ const calculateOrderTotals = ({
   const discountedSubtotal = Math.max(0, subtotal - totalDiscount);
 
   // 4. Freight fee, from Site Settings (callers cannot supply their own figure)
-  const freeFreightOver = Number(siteSettings?.freeFreightOver) || 500;
+  const freeFreightOver = Number(siteSettings?.freeFreightOver) || 200;
   const standardFee = Number(siteSettings?.standardFee) || 24;
   const expressFee = Number(siteSettings?.expressFee) || 39;
 

@@ -19,12 +19,14 @@ async function orderRoutes(fastify, options) {
 
   // Single order lookup by orderNumber or ID (strictly verified: owner or matching guest email)
   fastify.get('/:orderNumber', { preHandler: optionalAuth }, orderController.getOrderByNumber);
+  fastify.get('/:orderNumber/invoice', { preHandler: optionalAuth }, orderController.getOrderInvoice);
 }
 
 async function adminOrderRoutes(fastify, options) {
   const staffAuth = [authenticate, requireStaff];
   fastify.get('/', { preHandler: staffAuth }, orderController.adminGetOrders);
   fastify.get('/:id', { preHandler: staffAuth }, orderController.adminGetOrderDetail);
+  fastify.get('/:id/invoice', { preHandler: staffAuth }, orderController.getOrderInvoice);
   fastify.patch('/:id/status', { preHandler: staffAuth }, orderController.updateOrderStatusByRef);
 }
 

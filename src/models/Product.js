@@ -245,6 +245,10 @@ productSchema.pre('save', function() {
 });
 
 // Indexes for high performance search and truck fitment queries
+productSchema.index({ status: 1, categorySlug: 1 });
+productSchema.index({ status: 1, sku: 1 });
+productSchema.index({ status: 1, slug: 1 });
+productSchema.index({ status: 1, createdAt: -1 });
 productSchema.index({ alternatePartNumbers: 1 });
 productSchema.index({ category: 1 });
 productSchema.index({ brand: 1 });

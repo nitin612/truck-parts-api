@@ -90,11 +90,14 @@ const toPublic = (normalized, source) => {
 };
 
 const CARD_FIELDS = 'sku name slug category categorySlug sub brandName fit oem oemPartNumber alternatePartNumbers stockStatus lead badge badges ' +
-  'pricing.sellingPrice pricing.mrp pricing.isPOA images inventory.stock rating reviewCount specs ' +
+  'pricing.sellingPrice pricing.mrp pricing.isPOA images inventory.stock rating reviewCount ' +
   'isFeatured isBestSeller isBuyable status shortDescription';
 
 const toCard = (p) => {
   const n = toPublic(normalizeProduct(p), p);
+  delete n.specs;
+  delete n.specifications;
+  delete n.technicalSpecifications;
   const first = Array.isArray(p.images) ? p.images[0] : null;
   const url = first ? (first.url || first) : '';
   return {

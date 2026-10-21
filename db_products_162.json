@@ -140,9 +140,9 @@
       }
     ],
     "pricing": {
-      "mrp": 284,
-      "sellingPrice": 284,
-      "tradePrice": 264,
+      "mrp": 350,
+      "sellingPrice": 350,
+      "tradePrice": 320,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -233,7 +233,7 @@
     "updatedAt": "2026-10-08T16:37:03.578Z",
     "slug": "steel-tool-box-1200x450x400-atp-acc-02",
     "__v": 0,
-    "price": 284,
+    "price": 350,
     "categoryName": "Accessories",
     "imageUrl": "/images/products/ATP-ACC-02.jpg",
     "isPublished": true,

@@ -200,7 +200,7 @@ fastify.setErrorHandler(errorHandler);
 // Public catalogue responses are the same for every visitor, so let the CDN answer them.
 // Anything carrying credentials (staff see drafts and full documents) is never cached.
 const CACHEABLE_GET = /^\/api(\/v1)?\/(products|categories|brands|carousel|blogs|settings|promos\/active|payments\/config|welcome-offer|cms)(\/|\?|$)/;
-fastify.addHook('onSend', async (request, reply, payload) => {
+fastify.addHook('onSend', (request, reply, payload, done) => {
   const hasCredentials = request.headers.authorization || /(?:^|;\s*)accessToken=/.test(request.headers.cookie || '');
   if (
     request.method === 'GET' &&
@@ -211,7 +211,7 @@ fastify.addHook('onSend', async (request, reply, payload) => {
   ) {
     reply.header('Cache-Control', 'public, max-age=0, s-maxage=60, stale-while-revalidate=600');
   }
-  return payload;
+  done(null, payload);
 });
 
 // 7. Dynamic Swagger Tagging & Bearer Security Hook
