@@ -325,13 +325,25 @@ const handleWebhook = async (request, reply) => {
     return reply.status(400).send({ success: false, error: 'Webhook secret or signature missing' });
   }
 
-  // Timing-safe verification
-  const isValid = verifyWebhookSignature(request.body, sig, webhookSecret);
-  if (!isValid) {
-    return reply.status(400).send({ success: false, error: 'Invalid webhook signature' });
+  let event;
+  if (request.headers['stripe-signature'] && process.env.STRIPE_SECRET_KEY) {
+    try {
+      const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+      const rawPayload = request.rawBody || (typeof request.body === 'string' ? request.body : JSON.stringify(request.body));
+      event = stripe.webhooks.constructEvent(rawPayload, sig, webhookSecret);
+    } catch (err) {
+      console.error('[Stripe Webhook Signature Verification Failed]:', err.message);
+      return reply.status(400).send({ success: false, error: `Webhook signature verification failed: ${err.message}` });
+    }
+  } else {
+    // Timing-safe verification fallback
+    const isValid = verifyWebhookSignature(request.rawBody || request.body, sig, webhookSecret);
+    if (!isValid) {
+      return reply.status(400).send({ success: false, error: 'Invalid webhook signature' });
+    }
+    event = request.body || {};
   }
 
-  const event = request.body || {};
   if (event.type === 'checkout.session.completed') {
     const session = event.data?.object;
     const orderNumber = session?.client_reference_id;

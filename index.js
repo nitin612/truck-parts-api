@@ -100,7 +100,9 @@ fastify.register(require('@fastify/cors'), {
 });
 
 // Gracefully handle empty JSON payloads when Content-Type: application/json is set
+// Store rawBody for Stripe webhook signature verification
 fastify.addContentTypeParser('application/json', { parseAs: 'string' }, (req, body, done) => {
+  req.rawBody = body;
   if (!body || body.trim() === '') {
     return done(null, {});
   }
