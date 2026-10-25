@@ -675,11 +675,52 @@ const updateOrderStatusByRef = async (request, reply) => {
     data: { order: normalized }
   });
 };
+const { generateInvoiceHtml } = require('../utils/invoice');
+
+const getOrderInvoice = async (request, reply) => {
+  const param = request.params.orderNumber || request.params.id;
+  const isObjectId = /^[0-9a-fA-F]{24}$/.test(param);
+
+  const order = await Order.findOne({
+    $or: [
+      { orderNumber: param },
+      ...(isObjectId ? [{ _id: param }] : [])
+    ]
+  });
+
+  if (!order) throw new CustomError('Order not found', 404, 'ORDER_NOT_FOUND');
+
+  const isStaff = request.user && ['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'].includes(request.user.role);
+  if (!isStaff) {
+    const isOwner = request.user && order.user && order.user.toString() === request.user._id.toString();
+    const guestEmailParam = (request.query?.email || '').trim().toLowerCase();
+    const matchesEmail = guestEmailParam && (
+      (order.guestEmail && order.guestEmail.toLowerCase() === guestEmailParam) ||
+      (order.shippingAddress?.email && order.shippingAddress.email.toLowerCase() === guestEmailParam)
+    );
+    if (!isOwner && !matchesEmail && order.user) {
+      throw new CustomError('Access denied: You must be logged in as the order owner to view the tax invoice.', 403, 'FORBIDDEN');
+    }
+  }
+
+  const normalized = normalizeOrder(order);
+
+  if (request.query?.format === 'json') {
+    return reply.send({
+      success: true,
+      order: normalized
+    });
+  }
+
+  const html = generateInvoiceHtml(normalized);
+  reply.type('text/html; charset=utf-8').send(html);
+};
 
 module.exports = {
   createOrder,
   getMyOrders,
   getOrderByNumber,
+  getOrderInvoice,
   trackOrderByRef,
   adminGetOrders,
   adminGetOrderDetail,

@@ -43,11 +43,11 @@ const resetSettings = async (request, reply) => {
     email: 'info@aurextruckparts.com.au',
     address: '77 Capital Link Drive, Campbellfield VIC 3061',
     hours: 'Mon-Fri 7:00 AM - 5:00 PM AEST',
-    freeFreightOver: 1500,
+    freeFreightOver: 200,
     standardFee: 45,
     expressFee: 95,
     abn: 'ABN 47 670 781 254',
-    announcement: 'Campbellfield VIC Warehouse Open - Trade Counters Mon-Fri 7am-5pm | Same-day dispatch Australia-wide',
+    announcement: 'Free road freight Australia wide on orders over $200 | Order by 2pm for same-day dispatch',
     showAnnouncement: true
   });
   reply.send({
