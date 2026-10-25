@@ -39,38 +39,8 @@ try {
 }
 
 // 1. Strict Origin Allowlist
-const rawOrigins = [
-  process.env.CLIENT_ORIGINS,
-  process.env.CLIENT_URL,
-  process.env.ADMIN_URL,
-  'http://localhost:3000',
-  'http://localhost:3001',
-  'http://localhost:5173',
-  'http://localhost:5174',
-  'http://127.0.0.1:3000',
-  'http://127.0.0.1:3001',
-  'http://127.0.0.1:5173',
-  'http://127.0.0.1:5174'
-]
-  .filter(Boolean)
-  .flatMap((v) => (typeof v === 'string' ? v.split(',') : []))
-  .map((url) => url.trim().replace(/\/$/, ''))
-  .filter(Boolean);
-
-const allowedOrigins = Array.from(new Set(rawOrigins));
-
 const isDev = process.env.NODE_ENV !== 'production';
-const LOCAL_ORIGIN_REGEX = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/;
-
-function isOriginAllowed(origin) {
-  if (!origin) return true;
-  const clean = origin.trim().replace(/\/$/, '');
-  if (allowedOrigins.includes(clean)) return true;
-  if (isDev && LOCAL_ORIGIN_REGEX.test(clean)) return true;
-  if (/^https:\/\/([a-zA-Z0-9-]+\.)?aurextruckparts\.com\.au$/.test(clean)) return true;
-  if (/^https:\/\/truck-parts-[a-zA-Z0-9-]+\.vercel\.app$/.test(clean)) return true;
-  return false;
-}
+const { isOriginAllowed, allowedOrigins } = require('./src/utils/origin');
 
 // Register CORS with strict origin validation
 fastify.register(require('@fastify/cors'), {
@@ -100,7 +70,9 @@ fastify.register(require('@fastify/cors'), {
 });
 
 // Gracefully handle empty JSON payloads when Content-Type: application/json is set
+// and capture rawBody string for Stripe cryptographic webhook signature verification
 fastify.addContentTypeParser('application/json', { parseAs: 'string' }, (req, body, done) => {
+  req.rawBody = body || '';
   if (!body || body.trim() === '') {
     return done(null, {});
   }
@@ -176,6 +148,12 @@ fastify.addHook('preValidation', async (request) => {
 fastify.addHook('preHandler', async (request, reply) => {
   const method = request.method;
   if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(method)) {
+    const url = request.raw?.url || request.url || '';
+    // Webhooks are authenticated via cryptographic Stripe-Signature, not browser CORS/Origin
+    if (url.includes('/payments/webhook')) {
+      return;
+    }
+
     const originHeader = request.headers.origin || request.headers.referer;
     if (originHeader) {
       let originToCheck = originHeader;
@@ -298,6 +276,7 @@ fastify.register(orderRoutes, { prefix: '/api/v1/orders' });
 fastify.register(adminOrderRoutes, { prefix: '/api/v1/admin/orders' });
 
 fastify.register(require('./src/routes/paymentRoutes'), { prefix: '/api/v1/payments' });
+fastify.register(require('./src/routes/paymentRoutes'), { prefix: '/api/payments' });
 
 // Freight & Logistics
 fastify.register(require('./src/routes/shippingRoutes'), { prefix: '/api/v1/shipping' });
@@ -656,7 +635,7 @@ async function ensureSeedData() {
 }
 
 if (process.env.VERCEL) {
-  module.exports = async (req, res) => {
+  const handler = async (req, res) => {
     try {
       if (mongoose.connection.readyState !== 1 && mongoose.connection.readyState !== 2) {
         await connectDB();
@@ -682,6 +661,8 @@ if (process.env.VERCEL) {
       );
     }
   };
+  handler.fastify = fastify;
+  module.exports = handler;
 } else {
   const start = async () => {
     try {

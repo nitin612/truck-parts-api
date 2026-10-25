@@ -65,7 +65,9 @@ const orderSchema = new mongoose.Schema({
     bankTransferReference: String,
     paidAt: Date,
     paidAmount: { type: Number, default: 0 },
-    paymentNotes: String
+    paymentNotes: String,
+    transactionId: { type: String, trim: true },
+    stripeSessionId: { type: String, trim: true }
   },
   
   shipping: {
@@ -100,5 +102,7 @@ const orderSchema = new mongoose.Schema({
 orderSchema.index({ user: 1 });
 orderSchema.index({ orderStatus: 1 });
 orderSchema.index({ 'payment.status': 1 });
+orderSchema.index({ 'payment.transactionId': 1 });
+orderSchema.index({ 'payment.stripeSessionId': 1 });
 
 module.exports = mongoose.model('Order', orderSchema);
