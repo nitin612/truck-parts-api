@@ -129,7 +129,8 @@ const verifyAndEnable2FA = async (request, reply) => {
     .digest('hex')
     .slice(0, 6);
 
-  if (code !== expectedCode && code !== prevCode && (process.env.NODE_ENV !== 'production' && code !== '123456')) {
+  const isValidCode = (code === expectedCode || code === prevCode || (process.env.NODE_ENV !== 'production' && code === '123456'));
+  if (!isValidCode) {
     throw new CustomError('Invalid MFA verification code', 400, 'INVALID_MFA_CODE');
   }
 

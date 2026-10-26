@@ -1,15 +1,17 @@
 const orderController = require('../controllers/orderController');
 const { optionalAuth, authenticate, requireStaff } = require('../middleware/auth');
 
+const perMinute = (max) => ({ rateLimit: { max, timeWindow: '1 minute' } });
+
 async function orderRoutes(fastify, options) {
   // Allow guest or authenticated checkout
-  fastify.post('/', { preHandler: optionalAuth }, orderController.createOrder);
+  fastify.post('/', { config: perMinute(10), preHandler: optionalAuth }, orderController.createOrder);
   
   // My orders (auth or session)
   fastify.get('/mine', { preHandler: optionalAuth }, orderController.getMyOrders);
   
   // Public parcel tracking by order reference (PII-stripped safe tracking view)
-  fastify.get('/track/:orderNumber', orderController.trackOrderByRef);
+  fastify.get('/track/:orderNumber', { config: perMinute(30) }, orderController.trackOrderByRef);
   
   // Orders list (staff only)
   fastify.get('/', { preHandler: [authenticate, requireStaff] }, orderController.adminGetOrders);
@@ -18,8 +20,8 @@ async function orderRoutes(fastify, options) {
   fastify.patch('/:orderNumber/status', { preHandler: [authenticate, requireStaff] }, orderController.updateOrderStatusByRef);
 
   // Single order lookup by orderNumber or ID (strictly verified: owner or matching guest email)
-  fastify.get('/:orderNumber', { preHandler: optionalAuth }, orderController.getOrderByNumber);
-  fastify.get('/:orderNumber/invoice', { preHandler: optionalAuth }, orderController.getOrderInvoice);
+  fastify.get('/:orderNumber', { config: perMinute(30), preHandler: optionalAuth }, orderController.getOrderByNumber);
+  fastify.get('/:orderNumber/invoice', { config: perMinute(30), preHandler: optionalAuth }, orderController.getOrderInvoice);
 }
 
 async function adminOrderRoutes(fastify, options) {

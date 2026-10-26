@@ -290,6 +290,10 @@ const createEnquiry = async (request, reply) => {
 };
 
 const getCustomerEnquiries = async (request, reply) => {
+  // The route uses optionalAuth, so guests reach here without a user: answer with an empty list, not a 500
+  if (!request.user?._id) {
+    return reply.send({ success: true, count: 0, data: { enquiries: [] } });
+  }
   const enquiries = await Enquiry.find({ user: request.user._id })
     .populate('partDetails.product', 'name sku pricing images')
     .sort({ createdAt: -1 });
@@ -384,7 +388,7 @@ const normalizeEnquiry = (e) => {
 
 const adminGetEnquiries = async (request, reply) => {
   const staffRoles = ['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'];
-  const isStaff = request.user && (staffRoles.includes(request.user.role) || request.user.isAdmin || request.user.email === 'aurexparts@yopmail.com' || request.user.email === 'admin@aurex.com.au');
+  const isStaff = request.user && (staffRoles.includes(request.user.role) || request.user.isAdmin === true);
   if (!isStaff) {
     throw new CustomError('Staff authorization required to view quote requests', 403, 'FORBIDDEN');
   }
@@ -426,7 +430,7 @@ const adminGetEnquiries = async (request, reply) => {
 
 const updateEnquiryStatusByRef = async (request, reply) => {
   const staffRoles = ['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'];
-  const isStaff = request.user && (staffRoles.includes(request.user.role) || request.user.isAdmin || request.user.email === 'aurexparts@yopmail.com' || request.user.email === 'admin@aurex.com.au');
+  const isStaff = request.user && (staffRoles.includes(request.user.role) || request.user.isAdmin === true);
   if (!isStaff) {
     throw new CustomError('Staff authorization required to modify quote requests', 403, 'FORBIDDEN');
   }

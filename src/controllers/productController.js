@@ -83,6 +83,12 @@ const toPublic = (normalized, source) => {
   delete out.oem;
   delete out.oemPartNumber;
   delete out.alternatePartNumbers;
+  // Trade pricing is applied at checkout for approved trade accounts; it isn't published to everyone
+  // (staff read products through /admin/products, which doesn't pass through here)
+  if (out.pricing && typeof out.pricing === 'object') {
+    out.pricing = { ...out.pricing };
+    delete out.pricing.tradePrice;
+  }
   // The manufacturer behind a part is supplier information too: shoppers see the house brand.
   out.brand = 'Aurex';
   out.brandName = 'Aurex';
@@ -179,8 +185,8 @@ const getProducts = async (request, reply, { staffView = false } = {}) => {
     }
   }
 
-  if (make) query['fitments.make'] = { $regex: new RegExp(`^${make}$`, 'i') };
-  if (model) query['fitments.model'] = { $regex: new RegExp(model, 'i') };
+  if (make) query['fitments.make'] = { $regex: new RegExp(`^${escapeRegExp(make)}$`, 'i') };
+  if (model) query['fitments.model'] = { $regex: new RegExp(escapeRegExp(model), 'i') };
   if (year) {
     const numYear = parseInt(year, 10);
     query['fitments.yearFrom'] = { $lte: numYear };

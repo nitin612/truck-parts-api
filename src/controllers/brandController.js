@@ -2,6 +2,7 @@ const Brand = require('../models/Brand');
 const CustomError = require('../utils/CustomError');
 const { uploadImage, deleteImage } = require('../services/cloudinaryService');
 const fs = require('fs');
+const escapeRegExp = require('../utils/escapeRegExp');
 
 const getBrands = async (request, reply) => {
   const { type, isFeatured, search } = request.query;
@@ -9,7 +10,7 @@ const getBrands = async (request, reply) => {
 
   if (type) filter.type = type;
   if (isFeatured !== undefined) filter.isFeatured = isFeatured === 'true';
-  if (search) filter.name = { $regex: search, $options: 'i' };
+  if (search) filter.name = { $regex: escapeRegExp(search), $options: 'i' };
 
   const brands = await Brand.find(filter).sort({ name: 1 });
   reply.send({ success: true, count: brands.length, data: { brands } });

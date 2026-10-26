@@ -29,7 +29,9 @@ const updateAddress = async (request, reply) => {
     await Address.updateMany({ user: request.user._id }, { isDefault: false });
   }
 
-  Object.assign(address, request.body);
+  // Never let the body move the address to another account or rewrite its identity
+  const { user, _id, id, createdAt, updatedAt, ...changes } = request.body || {};
+  Object.assign(address, changes);
   await address.save();
 
   reply.send({ success: true, message: 'Address updated successfully', data: { address } });

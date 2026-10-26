@@ -2,7 +2,7 @@ const couponController = require('../controllers/couponController');
 const { authenticate, authorize } = require('../middleware/auth');
 
 async function couponRoutes(fastify, options) {
-  fastify.post('/validate', couponController.validateCoupon);
+  fastify.post('/validate', { config: { rateLimit: { max: 20, timeWindow: '1 minute' } } }, couponController.validateCoupon);
 }
 
 async function adminCouponRoutes(fastify, options) {

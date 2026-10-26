@@ -18,4 +18,6 @@ const inventoryTransactionSchema = new mongoose.Schema({
   timestamps: true
 });
 
+inventoryTransactionSchema.index({ product: 1, createdAt: -1 });
+
 module.exports = mongoose.model('InventoryTransaction', inventoryTransactionSchema);

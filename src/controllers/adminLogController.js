@@ -1,4 +1,5 @@
 const AuditLog = require('../models/AuditLog');
+const escapeRegExp = require('../utils/escapeRegExp');
 
 const adminGetLogs = async (request, reply) => {
   const { module, action, search, page = 1, limit = 50 } = request.query;
@@ -8,9 +9,9 @@ const adminGetLogs = async (request, reply) => {
   if (action) filter.action = action;
   if (search) {
     filter.$or = [
-      { adminName: { $regex: search, $options: 'i' } },
-      { description: { $regex: search, $options: 'i' } },
-      { path: { $regex: search, $options: 'i' } }
+      { adminName: { $regex: escapeRegExp(search), $options: 'i' } },
+      { description: { $regex: escapeRegExp(search), $options: 'i' } },
+      { path: { $regex: escapeRegExp(search), $options: 'i' } }
     ];
   }
 

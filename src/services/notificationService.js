@@ -76,8 +76,15 @@ const getCustomerEmail = (order) => {
   );
 };
 
+// Customer-typed text (names, addresses, notes) must not turn into markup inside a store-branded email
+const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const escFields = (obj) => {
+  const plain = obj && typeof obj.toObject === 'function' ? obj.toObject() : (obj || {});
+  return Object.fromEntries(Object.entries(plain).map(([k, v]) => [k, typeof v === 'string' ? esc(v) : v]));
+};
+
 const getCustomerName = (order) => {
-  return (
+  return esc(
     order.shippingAddress?.fullName ||
     order.shippingAddress?.companyName ||
     (order.user && typeof order.user === 'object' ? order.user.name : 'Valued Customer')
@@ -103,9 +110,9 @@ const renderEmailTemplate = ({
   const trackUrl = `${appUrl}/track?order=${encodeURIComponent(orderNumber)}`;
   const reviewUrl = `${appUrl}/account?tab=orders&rate=${encodeURIComponent(orderNumber)}`;
 
-  const items = order.items || [];
+  const items = (order.items || []).map(escFields);
   const pricing = order.pricing || { subtotal: 0, shippingFee: 0, grandTotal: 0 };
-  const shipping = order.shippingAddress || {};
+  const shipping = escFields(order.shippingAddress);
 
   const itemsHtml = items.map((i) => `
     <tr>
@@ -423,8 +430,8 @@ const sendOrderDispatchedEmail = async (order, extra = {}) => {
   const email = getCustomerEmail(order);
   if (!email) return;
 
-  const carrier = extra.carrier || order.shipping?.carrier || 'Express Road Transport';
-  const trackingNumber = extra.trackingNumber || order.shipping?.trackingNumber || 'Available via link below';
+  const carrier = esc(extra.carrier || order.shipping?.carrier || 'Express Road Transport');
+  const trackingNumber = esc(extra.trackingNumber || order.shipping?.trackingNumber || 'Available via link below');
   const consignmentId = extra.consignmentId || order.shipping?.consignmentId || null;
 
   const statusMessage = `Your order <strong>#${order.orderNumber}</strong> has been dispatched from our Campbellfield depot! It has been collected by <strong>${carrier}</strong> and is currently in transit to your nominated address.`;
@@ -511,8 +518,16 @@ const notifyOrderStatusUpdate = async (order, newStatus, extra = {}) => {
 /**
  * Quote Response Email (Preserved from existing enquiry system)
  */
-const sendQuoteResponseEmail = async (enquiry) => {
-  if (!enquiry.email) return;
+const sendQuoteResponseEmail = async (rawEnquiry) => {
+  if (!rawEnquiry.email) return;
+  const plainEnquiry = typeof rawEnquiry.toObject === 'function' ? rawEnquiry.toObject() : rawEnquiry;
+  const enquiry = {
+    ...escFields(plainEnquiry),
+    email: rawEnquiry.email,
+    quotedPrice: plainEnquiry.quotedPrice,
+    truckDetails: escFields(plainEnquiry.truckDetails),
+    partDetails: escFields(plainEnquiry.partDetails)
+  };
 
   const html = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">

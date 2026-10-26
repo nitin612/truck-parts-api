@@ -2,6 +2,7 @@ const Blog = require('../models/Blog');
 const CustomError = require('../utils/CustomError');
 const { uploadImage, deleteImage } = require('../services/cloudinaryService');
 const fs = require('fs');
+const escapeRegExp = require('../utils/escapeRegExp');
 
 const getBlogs = async (request, reply) => {
   const { tag, category, search, page = 1, limit = 10 } = request.query;
@@ -11,8 +12,8 @@ const getBlogs = async (request, reply) => {
   if (category) filter.category = category;
   if (search) {
     filter.$or = [
-      { title: { $regex: search, $options: 'i' } },
-      { summary: { $regex: search, $options: 'i' } }
+      { title: { $regex: escapeRegExp(search), $options: 'i' } },
+      { summary: { $regex: escapeRegExp(search), $options: 'i' } }
     ];
   }
 

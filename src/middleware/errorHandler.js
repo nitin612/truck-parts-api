@@ -58,6 +58,11 @@ const errorHandler = (error, request, reply) => {
     message = error.message;
   }
 
+  // Unexpected failures can carry driver/stack internals; keep them in the logs only
+  if (statusCode >= 500 && !(error instanceof CustomError) && process.env.NODE_ENV !== 'development') {
+    message = 'An unexpected error occurred';
+  }
+
   reply.status(statusCode).send({
     success: false,
     error: {

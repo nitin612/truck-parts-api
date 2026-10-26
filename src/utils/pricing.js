@@ -54,9 +54,14 @@ const calculateOrderTotals = ({
   const discountedSubtotal = Math.max(0, subtotal - totalDiscount);
 
   // 4. Freight fee, from Site Settings (callers cannot supply their own figure)
-  const freeFreightOver = Number(siteSettings?.freeFreightOver) || 200;
-  const standardFee = Number(siteSettings?.standardFee) || 24;
-  const expressFee = Number(siteSettings?.expressFee) || 39;
+  // An explicit 0 set by staff means "free" and must be honoured; only missing/invalid values fall back
+  const settingNumber = (value, fallback) => {
+    const n = Number(value);
+    return value === null || value === undefined || value === '' || !Number.isFinite(n) || n < 0 ? fallback : n;
+  };
+  const freeFreightOver = settingNumber(siteSettings?.freeFreightOver, 200);
+  const standardFee = settingNumber(siteSettings?.standardFee, 24);
+  const expressFee = settingNumber(siteSettings?.expressFee, 39);
 
   let shippingFee = 0;
   const normMethod = String(shippingMethod || '').toLowerCase();

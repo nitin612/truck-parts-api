@@ -19,9 +19,15 @@ const getDashboardStats = async (request, reply) => {
     $expr: { $lte: ['$inventory.stock', '$inventory.lowStockThreshold'] }
   });
 
-  // Revenue aggregations across all non-cancelled orders
+  // Revenue = money received (PAID) or invoiced on approved trade terms (AUTHORIZED); unpaid,
+  // failed and cancelled orders are not revenue
   const revenueResult = await Order.aggregate([
-    { $match: { orderStatus: { $ne: 'Cancelled' } } },
+    {
+      $match: {
+        'payment.status': { $in: ['PAID', 'AUTHORIZED'] },
+        orderStatus: { $nin: ['Cancelled', 'Payment failed', 'Refunded'] }
+      }
+    },
     { $group: { _id: null, totalRevenue: { $sum: '$pricing.grandTotal' } } }
   ]);
   const totalRevenue = revenueResult[0]?.totalRevenue || 0;

@@ -1,5 +1,7 @@
 const promoController = require('../controllers/promoController');
-const { authenticate, requireStaff } = require('../middleware/auth');
+const { authenticate, authorize, requireStaff } = require('../middleware/auth');
+
+const adminOnly = [authenticate, authorize('SUPER_ADMIN', 'ADMIN')];
 
 async function promoRoutes(fastify, options) {
   // Public active promos endpoint (for storefront banner and discount calculation)
@@ -7,9 +9,9 @@ async function promoRoutes(fastify, options) {
 
   // All promos (admin and staff management)
   fastify.get('/', { preHandler: [authenticate, requireStaff] }, promoController.getPromos);
-  fastify.post('/', { preHandler: [authenticate, requireStaff] }, promoController.createPromo);
-  fastify.put('/:code', { preHandler: [authenticate, requireStaff] }, promoController.updatePromo);
-  fastify.delete('/:code', { preHandler: [authenticate, requireStaff] }, promoController.deletePromo);
+  fastify.post('/', { preHandler: adminOnly }, promoController.createPromo);
+  fastify.put('/:code', { preHandler: adminOnly }, promoController.updatePromo);
+  fastify.delete('/:code', { preHandler: adminOnly }, promoController.deletePromo);
 }
 
 module.exports = promoRoutes;

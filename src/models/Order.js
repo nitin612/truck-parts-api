@@ -99,7 +99,10 @@ const orderSchema = new mongoose.Schema({
   timestamps: true
 });
 
-orderSchema.index({ user: 1 });
+orderSchema.index({ user: 1, createdAt: -1 });
+orderSchema.index({ createdAt: -1 });
+orderSchema.index({ guestEmail: 1 });
+orderSchema.index({ 'shippingAddress.email': 1 });
 orderSchema.index({ orderStatus: 1 });
 orderSchema.index({ 'payment.status': 1 });
 orderSchema.index({ 'payment.transactionId': 1 });

@@ -1,8 +1,10 @@
 const Product = require('../models/Product');
 const Brand = require('../models/Brand');
+const escapeRegExp = require('../utils/escapeRegExp');
 
 const handleAssistantChat = async (userMessage, history = []) => {
-  const query = userMessage.toLowerCase();
+  const query = String(userMessage || '').toLowerCase().slice(0, 300);
+  const pattern = escapeRegExp(query);
   
   // Search products in MongoDB matching user query
   let matchedProducts = [];
@@ -10,12 +12,12 @@ const handleAssistantChat = async (userMessage, history = []) => {
     matchedProducts = await Product.find({
       status: 'PUBLISHED',
       $or: [
-        { name: { $regex: query, $options: 'i' } },
-        { sku: { $regex: query, $options: 'i' } },
-        { oemPartNumber: { $regex: query, $options: 'i' } },
-        { alternatePartNumbers: { $regex: query, $options: 'i' } },
-        { 'fitments.make': { $regex: query, $options: 'i' } },
-        { 'fitments.model': { $regex: query, $options: 'i' } }
+        { name: { $regex: pattern, $options: 'i' } },
+        { sku: { $regex: pattern, $options: 'i' } },
+        { oemPartNumber: { $regex: pattern, $options: 'i' } },
+        { alternatePartNumbers: { $regex: pattern, $options: 'i' } },
+        { 'fitments.make': { $regex: pattern, $options: 'i' } },
+        { 'fitments.model': { $regex: pattern, $options: 'i' } }
       ]
     }).limit(4).select('name sku oemPartNumber pricing images condition dimensions');
   } catch (err) {

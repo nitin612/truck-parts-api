@@ -92,7 +92,8 @@ const requireStaff = async (request, reply) => {
     throw new CustomError('Authentication required to access this staff resource', 401, 'UNAUTHORIZED');
   }
   const staffRoles = ['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'];
-  const isStaff = staffRoles.includes(request.user.role) || request.user.isAdmin || request.user.email === 'aurexparts@yopmail.com' || request.user.email === 'admin@aurex.com.au';
+  // Staff access is decided by role only; never by email address (customers pick their own email at sign-up)
+  const isStaff = staffRoles.includes(request.user.role) || request.user.isAdmin === true;
   if (!isStaff) {
     throw new CustomError('Staff authorization required to perform this action', 403, 'FORBIDDEN');
   }

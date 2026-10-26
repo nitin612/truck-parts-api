@@ -11,14 +11,14 @@ async function authRoutes(fastify, options) {
     config: { rateLimit: { max: 20, timeWindow: '1 minute' } },
     preValidation: validate(loginSchema)
   }, authController.login);
-  fastify.post('/refresh', authController.refresh);
+  fastify.post('/refresh', { config: { rateLimit: { max: 30, timeWindow: '1 minute' } } }, authController.refresh);
   fastify.get('/me', { preHandler: authenticate }, authController.getMe);
   fastify.put('/profile', { preHandler: authenticate }, authController.updateProfile);
   fastify.post('/logout', authController.logout);
 
   // Password Recovery Endpoints
-  fastify.post('/forgot-password', authController.forgotPassword);
-  fastify.post('/reset-password', authController.resetPassword);
+  fastify.post('/forgot-password', { config: { rateLimit: { max: 5, timeWindow: '1 minute' } } }, authController.forgotPassword);
+  fastify.post('/reset-password', { config: { rateLimit: { max: 10, timeWindow: '1 minute' } } }, authController.resetPassword);
 }
 
 module.exports = authRoutes;

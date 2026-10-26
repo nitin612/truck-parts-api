@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Order = require('../models/Order');
 const CustomError = require('../utils/CustomError');
+const escapeRegExp = require('../utils/escapeRegExp');
 
 const adminGetCustomers = async (request, reply) => {
   const { role, isTradeApproved, search, page = 1, limit = 50 } = request.query;
@@ -10,11 +11,11 @@ const adminGetCustomers = async (request, reply) => {
   if (isTradeApproved !== undefined) filter.isTradeApproved = isTradeApproved === 'true';
   if (search) {
     filter.$or = [
-      { firstName: { $regex: search, $options: 'i' } },
-      { lastName: { $regex: search, $options: 'i' } },
-      { email: { $regex: search, $options: 'i' } },
-      { companyName: { $regex: search, $options: 'i' } },
-      { phone: { $regex: search, $options: 'i' } }
+      { firstName: { $regex: escapeRegExp(search), $options: 'i' } },
+      { lastName: { $regex: escapeRegExp(search), $options: 'i' } },
+      { email: { $regex: escapeRegExp(search), $options: 'i' } },
+      { companyName: { $regex: escapeRegExp(search), $options: 'i' } },
+      { phone: { $regex: escapeRegExp(search), $options: 'i' } }
     ];
   }
 

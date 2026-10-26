@@ -10,6 +10,7 @@ const CustomError = require('../utils/CustomError');
 const socketService = require('../services/socketService');
 const { calculateOrderTotals } = require('../utils/pricing');
 const { stripSupplierCodes } = require('../utils/supplierCodes');
+const escapeRegExp = require('../utils/escapeRegExp');
 const {
   sendOrderPlacedEmail,
   sendOrderConfirmedEmail,
@@ -79,6 +80,10 @@ const normalizeOrder = (o) => {
     payment: obj.payment?.method || 'Bank transfer',
     paymentStatus: obj.payment?.status || 'PENDING',
     shipping: obj.shipping?.shippingMethod || 'Standard road',
+    // `shipping` is flattened to its method label above, so surface the courier details alongside it
+    trackingNumber: obj.shipping?.trackingNumber || '',
+    carrier: obj.shipping?.carrier || '',
+    trackingUrl: obj.shipping?.trackingUrl || '',
     items,
     lines: items,
     address: normalizedAddr,
@@ -280,29 +285,77 @@ const createOrder = async (request, reply) => {
     initialOrderStatus = 'Confirmed';
   }
 
+  // 5b. Reserve stock and coupon usage atomically before the order exists, so two shoppers can't both buy the
+  // last unit or push a coupon past its limit. Anything reserved is released if a later step fails.
+  const reservedStock = [];
+  let couponReserved = false;
+  const releaseReservations = async () => {
+    for (const r of reservedStock) {
+      await Product.updateOne({ _id: r.product }, { $inc: { 'inventory.stock': r.quantity } }).catch(() => {});
+    }
+    reservedStock.length = 0;
+    if (couponReserved) {
+      await Coupon.updateOne({ _id: coupon._id }, { $inc: { usedCount: -1 } }).catch(() => {});
+      couponReserved = false;
+    }
+  };
+  for (const item of verifiedItems) {
+    const reserved = await Product.findOneAndUpdate(
+      { _id: item.product, 'inventory.trackInventory': true, 'inventory.stock': { $gte: item.quantity } },
+      { $inc: { 'inventory.stock': -item.quantity } },
+      { returnDocument: 'after', projection: { 'inventory.stock': 1 } }
+    );
+    if (reserved) {
+      reservedStock.push({ product: item.product, quantity: item.quantity, newStock: reserved.inventory.stock });
+    } else if (await Product.exists({ _id: item.product, 'inventory.trackInventory': true })) {
+      await releaseReservations();
+      throw new CustomError(`${item.name || item.sku} just sold out. Please update your cart and try again.`, 400, 'INSUFFICIENT_STOCK');
+    }
+  }
+  if (coupon) {
+    const claimed = await Coupon.updateOne(
+      {
+        _id: coupon._id,
+        $or: [{ usageLimit: null }, { usageLimit: { $lte: 0 } }, { $expr: { $lt: ['$usedCount', '$usageLimit'] } }]
+      },
+      { $inc: { usedCount: 1 } }
+    );
+    if (!claimed.modifiedCount) {
+      await releaseReservations();
+      throw new CustomError(`Promo code ${targetCode} is not valid any more.`, 400, 'INVALID_COUPON');
+    }
+    couponReserved = true;
+  }
+
   // 6. Create Order in Database
   const orderNumber = generateOrderNumber();
-  const order = await Order.create({
-    orderNumber,
-    user: userId,
-    isGuest,
-    guestEmail: shippingAddress.email,
-    items: verifiedItems,
-    shippingAddress,
-    pricing: pricingTotals,
-    coupon: coupon ? coupon._id : undefined,
-    payment: {
-      method: paymentMethod,
-      status: paymentStatus,
-      purchaseOrderNumber: clean(body.purchaseOrderNumber, 60) || undefined
-    },
-    shipping: {
-      shippingMethod,
-      status: 'PROCESSING'
-    },
-    orderStatus: initialOrderStatus,
-    customerNotes: clean(body.customerNotes, 500) || shippingAddress.deliveryInstructions
-  });
+  let order;
+  try {
+    order = await Order.create({
+      orderNumber,
+      user: userId,
+      isGuest,
+      guestEmail: shippingAddress.email,
+      items: verifiedItems,
+      shippingAddress,
+      pricing: pricingTotals,
+      coupon: coupon ? coupon._id : undefined,
+      payment: {
+        method: paymentMethod,
+        status: paymentStatus,
+        purchaseOrderNumber: clean(body.purchaseOrderNumber, 60) || undefined
+      },
+      shipping: {
+        shippingMethod,
+        status: 'PROCESSING'
+      },
+      orderStatus: initialOrderStatus,
+      customerNotes: clean(body.customerNotes, 500) || shippingAddress.deliveryInstructions
+    });
+  } catch (createErr) {
+    await releaseReservations();
+    throw createErr;
+  }
 
   // Automatically save address to user's profile and default addresses
   if (userId && shippingAddress && shippingAddress.addressLine1 && shippingAddress.addressLine1 !== 'Click and Collect') {
@@ -348,35 +401,24 @@ const createOrder = async (request, reply) => {
     } catch { /* noop */ }
   }
 
-  // The order exists: only now touch credit, coupon usage and stock.
+  // The order exists: only now touch credit. Stock and coupon usage were reserved in step 5b.
   if (paymentMethod === '30 day fleet terms') {
-    user.creditBalance = (user.creditBalance || 0) + pricingTotals.grandTotal;
-    await user.save();
-  }
-  if (coupon) {
-    await Coupon.updateOne({ _id: coupon._id }, { $inc: { usedCount: 1 } });
+    // $inc so two orders placed at once can't overwrite each other's balance
+    await user.constructor.updateOne({ _id: user._id }, { $inc: { creditBalance: pricingTotals.grandTotal } });
   }
 
-  // 7. Decrement stock & record inventory transactions
-  for (const item of verifiedItems) {
-    const prod = await Product.findById(item.product);
-    if (prod && prod.inventory?.trackInventory) {
-      const prevStock = prod.inventory.stock;
-      const newStock = Math.max(0, prevStock - item.quantity);
-      prod.inventory.stock = newStock;
-      await prod.save();
-
-      await InventoryTransaction.create({
-        product: prod._id,
-        type: 'SALE',
-        quantity: item.quantity,
-        previousStock: prevStock,
-        newStock: newStock,
-        referenceType: 'Order',
-        referenceId: order._id,
-        notes: `Order #${order.orderNumber}`
-      });
-    }
+  // 7. Record inventory transactions for the stock reserved above
+  for (const r of reservedStock) {
+    await InventoryTransaction.create({
+      product: r.product,
+      type: 'SALE',
+      quantity: r.quantity,
+      previousStock: r.newStock + r.quantity,
+      newStock: r.newStock,
+      referenceType: 'Order',
+      referenceId: order._id,
+      notes: `Order #${order.orderNumber}`
+    }).catch((err) => console.error('[Inventory Log Error]:', err.message));
   }
 
   // 8. Log initial status history
@@ -419,18 +461,14 @@ const createOrder = async (request, reply) => {
 
 const getMyOrders = async (request, reply) => {
   const userId = request.user?._id;
-  const userEmail = request.user?.email?.toLowerCase();
 
   if (!userId) {
     return reply.send({ success: true, count: 0, items: [], data: { orders: [], items: [] } });
   }
 
-  const orders = await Order.find({
-    $or: [
-      ...(userId ? [{ user: userId }] : []),
-      ...(userEmail ? [{ guestEmail: userEmail }, { 'shippingAddress.email': userEmail }] : [])
-    ]
-  }).sort({ createdAt: -1 });
+  // Match on the account only: sign-up doesn't verify email ownership, so matching guest orders by
+  // email would show a stranger's orders to whoever registers with that address
+  const orders = await Order.find({ user: userId }).sort({ createdAt: -1 });
 
   const normalized = orders.map(normalizeOrder);
 
@@ -544,14 +582,14 @@ const adminGetOrders = async (request, reply) => {
   if (paymentStatus) filter['payment.status'] = paymentStatus;
   if (search) {
     filter.$or = [
-      { orderNumber: { $regex: search, $options: 'i' } },
-      { guestEmail: { $regex: search, $options: 'i' } },
-      { 'shippingAddress.fullName': { $regex: search, $options: 'i' } },
-      { 'shippingAddress.email': { $regex: search, $options: 'i' } },
-      { 'shippingAddress.companyName': { $regex: search, $options: 'i' } },
-      { 'shippingAddress.phone': { $regex: search, $options: 'i' } },
-      { 'items.name': { $regex: search, $options: 'i' } },
-      { 'items.sku': { $regex: search, $options: 'i' } }
+      { orderNumber: { $regex: escapeRegExp(search), $options: 'i' } },
+      { guestEmail: { $regex: escapeRegExp(search), $options: 'i' } },
+      { 'shippingAddress.fullName': { $regex: escapeRegExp(search), $options: 'i' } },
+      { 'shippingAddress.email': { $regex: escapeRegExp(search), $options: 'i' } },
+      { 'shippingAddress.companyName': { $regex: escapeRegExp(search), $options: 'i' } },
+      { 'shippingAddress.phone': { $regex: escapeRegExp(search), $options: 'i' } },
+      { 'items.name': { $regex: escapeRegExp(search), $options: 'i' } },
+      { 'items.sku': { $regex: escapeRegExp(search), $options: 'i' } }
     ];
   }
 
@@ -601,6 +639,9 @@ const adminGetOrderDetail = async (request, reply) => {
 };
 
 const FULFILMENT_STATUSES = ['Confirmed', 'Packed', 'Packed in Campbellfield VIC', 'Courier booked', 'In transit', 'Dispatched', 'Delivered'];
+const SHIPPED_STATUSES = ['Courier booked', 'In transit', 'Dispatched', 'Delivered'];
+const RELEASED_STATUSES = ['Cancelled', 'Payment failed'];
+const ORDER_STATUS_VALUES = [...FULFILMENT_STATUSES, 'Pending payment', ...RELEASED_STATUSES, 'Refunded'];
 
 const updateOrderStatusByRef = async (request, reply) => {
   const isStaff = request.user && ['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'].includes(request.user.role);
@@ -621,14 +662,55 @@ const updateOrderStatusByRef = async (request, reply) => {
   if (!order) throw new CustomError('Order not found', 404, 'ORDER_NOT_FOUND');
 
   const { status, note, trackingNumber, carrier, consignmentId } = request.body || {};
+  if (status && !ORDER_STATUS_VALUES.includes(status)) {
+    throw new CustomError(`Unknown order status "${String(status).slice(0, 40)}".`, 400, 'INVALID_STATUS');
+  }
+
+  const previousStatus = order.orderStatus;
+  const previousTracking = order.shipping?.trackingNumber;
+  const statusChanged = !!status && status !== previousStatus;
 
   if (status) order.orderStatus = status;
   // We only pack once money has landed (or is collected at the counter), so moving an order
   // into fulfilment is also what records an outstanding payment as received.
-  if (FULFILMENT_STATUSES.includes(status) && order.payment?.status === 'PENDING') {
+  // Card orders are the exception: only Stripe (webhook / verify-session) can mark those paid.
+  if (statusChanged && FULFILMENT_STATUSES.includes(status) && order.payment?.status === 'PENDING' && !/^card$/i.test(order.payment?.method || '')) {
     order.payment.status = 'PAID';
     order.payment.paidAt = new Date();
     order.payment.paidAmount = order.pricing?.grandTotal || 0;
+  }
+
+  // Stock was taken when the order was placed: give it back when staff cancel an order that hasn't shipped,
+  // and take it again if a cancelled order is reopened
+  const wasReleased = RELEASED_STATUSES.includes(previousStatus);
+  const isReleased = RELEASED_STATUSES.includes(order.orderStatus);
+  const stockDelta = statusChanged && !wasReleased && isReleased && !SHIPPED_STATUSES.includes(previousStatus) ? 1
+    : statusChanged && wasReleased && !isReleased ? -1
+    : 0;
+  if (stockDelta) {
+    for (const item of order.items || []) {
+      if (!item.product) continue;
+      const updated = await Product.findOneAndUpdate(
+        { _id: item.product, 'inventory.trackInventory': true },
+        { $inc: { 'inventory.stock': stockDelta * (item.quantity || 1) } },
+        { returnDocument: 'after', projection: { 'inventory.stock': 1 } }
+      );
+      if (updated) {
+        await InventoryTransaction.create({
+          product: item.product,
+          type: 'ADJUSTMENT',
+          quantity: item.quantity || 1,
+          previousStock: updated.inventory.stock - stockDelta * (item.quantity || 1),
+          newStock: updated.inventory.stock,
+          referenceType: 'Order',
+          referenceId: order._id,
+          notes: `${stockDelta > 0 ? 'Restocked' : 'Re-reserved'} for #${order.orderNumber} (${previousStatus} → ${order.orderStatus})`
+        }).catch(() => {});
+      }
+    }
+    if (stockDelta > 0 && order.payment?.status === 'PENDING') {
+      order.payment.status = 'CANCELLED';
+    }
   }
   if (trackingNumber) order.shipping.trackingNumber = trackingNumber;
   if (carrier) order.shipping.carrier = carrier;
@@ -658,13 +740,16 @@ const updateOrderStatusByRef = async (request, reply) => {
     trackingNumber: order.shipping.trackingNumber
   });
 
-  // Trigger customer lifecycle notification email (Confirmed, Packed, Dispatched, Delivered)
-  notifyOrderStatusUpdate(order, order.orderStatus, {
-    trackingNumber: order.shipping.trackingNumber,
-    carrier: order.shipping.carrier,
-    consignmentId: order.shipping.consignmentId,
-    note
-  }).catch((err) => console.error('[Order Lifecycle Notification Error]:', err));
+  // Trigger customer lifecycle notification email (Confirmed, Packed, Dispatched, Delivered),
+  // but only when something the customer cares about changed — re-saving must not re-email them
+  if (statusChanged || (trackingNumber && trackingNumber !== previousTracking)) {
+    notifyOrderStatusUpdate(order, order.orderStatus, {
+      trackingNumber: order.shipping.trackingNumber,
+      carrier: order.shipping.carrier,
+      consignmentId: order.shipping.consignmentId,
+      note
+    }).catch((err) => console.error('[Order Lifecycle Notification Error]:', err));
+  }
 
   const normalized = normalizeOrder(order);
 
@@ -698,7 +783,8 @@ const getOrderInvoice = async (request, reply) => {
       (order.guestEmail && order.guestEmail.toLowerCase() === guestEmailParam) ||
       (order.shippingAddress?.email && order.shippingAddress.email.toLowerCase() === guestEmailParam)
     );
-    if (!isOwner && !matchesEmail && order.user) {
+    // Guest orders have no owner, so they need the checkout email too; an order number alone is not proof
+    if (!isOwner && !matchesEmail) {
       throw new CustomError('Access denied: You must be logged in as the order owner to view the tax invoice.', 403, 'FORBIDDEN');
     }
   }

@@ -3,19 +3,24 @@
  * Used for CORS, CSRF origin verification, and Stripe payment redirects.
  */
 
+const isDev = process.env.NODE_ENV !== 'production';
+
 const rawOrigins = [
   process.env.CLIENT_ORIGINS,
   process.env.CLIENT_URL,
   process.env.ADMIN_URL,
   process.env.APP_URL,
-  'http://localhost:3000',
-  'http://localhost:3001',
-  'http://localhost:5173',
-  'http://localhost:5174',
-  'http://127.0.0.1:3000',
-  'http://127.0.0.1:3001',
-  'http://127.0.0.1:5173',
-  'http://127.0.0.1:5174'
+  // Any page on a visitor's own machine can claim to be localhost, so only trust it in development
+  ...(isDev ? [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:3001',
+    'http://127.0.0.1:5173',
+    'http://127.0.0.1:5174'
+  ] : [])
 ]
   .filter(Boolean)
   .flatMap((v) => (typeof v === 'string' ? v.split(',') : []))
@@ -24,8 +29,10 @@ const rawOrigins = [
 
 const allowedOrigins = Array.from(new Set(rawOrigins));
 
-const isDev = process.env.NODE_ENV !== 'production';
 const LOCAL_ORIGIN_REGEX = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/;
+// Anyone can create a `truck-parts-<anything>.vercel.app` project, so the production API doesn't trust
+// that pattern; preview/dev deployments of the API still accept preview front-ends.
+const trustVercelPreviews = process.env.VERCEL_ENV !== 'production' || process.env.ALLOW_PREVIEW_ORIGINS === 'true';
 
 function isOriginAllowed(origin) {
   if (!origin) return true;
@@ -33,7 +40,7 @@ function isOriginAllowed(origin) {
   if (allowedOrigins.includes(clean)) return true;
   if (isDev && LOCAL_ORIGIN_REGEX.test(clean)) return true;
   if (/^https:\/\/([a-zA-Z0-9-]+\.)?aurextruckparts\.com\.au$/.test(clean)) return true;
-  if (/^https:\/\/truck-parts-[a-zA-Z0-9-]+\.vercel\.app$/.test(clean)) return true;
+  if (trustVercelPreviews && /^https:\/\/truck-parts-[a-zA-Z0-9-]+\.vercel\.app$/.test(clean)) return true;
   return false;
 }
 

@@ -123,7 +123,7 @@ function sanitizeMongoInput(target) {
     return target;
   }
   for (const key of Object.keys(target)) {
-    if (key.startsWith('$') || key.includes('.')) {
+    if (key.startsWith('$') || key.includes('.') || key === '__proto__' || key === 'constructor' || key === 'prototype') {
       delete target[key];
     } else {
       target[key] = sanitizeMongoInput(target[key]);
@@ -148,13 +148,22 @@ fastify.addHook('preValidation', async (request) => {
 fastify.addHook('preHandler', async (request, reply) => {
   const method = request.method;
   if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(method)) {
-    const url = request.raw?.url || request.url || '';
-    // Webhooks are authenticated via cryptographic Stripe-Signature, not browser CORS/Origin
-    if (url.includes('/payments/webhook')) {
+    // Webhooks are authenticated via cryptographic Stripe-Signature, not browser CORS/Origin.
+    // Match the registered route, not the raw URL, so a query string can't borrow the exemption.
+    const routeUrl = request.routeOptions?.url || '';
+    if (routeUrl.endsWith('/payments/webhook')) {
       return;
     }
 
     const originHeader = request.headers.origin || request.headers.referer;
+    // Browsers always send Origin on cross-site writes; a cookie-authenticated write with neither header is suspect
+    const usesCookieAuth = !request.headers.authorization && /(?:^|;\s*)accessToken=/.test(request.headers.cookie || '');
+    if (!originHeader && usesCookieAuth) {
+      return reply.code(403).send({
+        success: false,
+        error: 'CSRF validation blocked: missing origin'
+      });
+    }
     if (originHeader) {
       let originToCheck = originHeader;
       try {
@@ -494,37 +503,6 @@ async function ensureSeedData() {
         announcement: 'Free road freight over $500. Order by 2pm for same day dispatch.'
       });
       console.log('✅ Initialized default SiteSettings');
-    } else {
-      let changed = false;
-      if (settings.address !== '77 Capital Link Drive, Campbellfield VIC 3061') {
-        settings.address = '77 Capital Link Drive, Campbellfield VIC 3061';
-        changed = true;
-      }
-      if (settings.email !== 'info@aurextruckparts.com.au') {
-        settings.email = 'info@aurextruckparts.com.au';
-        changed = true;
-      }
-      if (settings.phone !== '+61 414 730 467') {
-        settings.phone = '+61 414 730 467';
-        settings.phoneHref = 'tel:+61414730467';
-        changed = true;
-      }
-      if (settings.abn !== 'ABN 47 670 781 254') {
-        settings.abn = 'ABN 47 670 781 254';
-        changed = true;
-      }
-      if (settings.legalName !== 'Aurex Panels Pty Limited') {
-        settings.legalName = 'Aurex Panels Pty Limited';
-        changed = true;
-      }
-      if (settings.acn !== '670 781 254') {
-        settings.acn = '670 781 254';
-        changed = true;
-      }
-      if (changed) {
-        await settings.save();
-        console.log('✅ Synchronized canonical registered business details into SiteSettings');
-      }
     }
 
     let paySettings = await PaymentSettings.findOne();
@@ -546,88 +524,26 @@ async function ensureSeedData() {
         }
       });
       console.log('✅ Initialized default PaymentSettings');
-    } else {
-      let payChanged = false;
-      if (
-        paySettings.directBankTransfer?.bsbOrRouting !== '083-419' ||
-        paySettings.directBankTransfer?.accountNumber !== '90-287-1454' ||
-        paySettings.directBankTransfer?.accountName !== 'Aurex Panels Pty Limited' ||
-        paySettings.directBankTransfer?.bankName !== 'NAB Australia Ltd'
-      ) {
-        if (!paySettings.directBankTransfer) paySettings.directBankTransfer = {};
-        paySettings.directBankTransfer.bankName = 'NAB Australia Ltd';
-        paySettings.directBankTransfer.accountName = 'Aurex Panels Pty Limited';
-        paySettings.directBankTransfer.bsbOrRouting = '083-419';
-        paySettings.directBankTransfer.accountNumber = '90-287-1454';
-        paySettings.directBankTransfer.swiftBic = 'NATAAU3303M';
-        payChanged = true;
-      }
-      if (paySettings.codDepotPickup?.warehouseAddress !== '77 Capital Link Drive, Campbellfield VIC 3061') {
-        if (!paySettings.codDepotPickup) paySettings.codDepotPickup = { enabled: true };
-        paySettings.codDepotPickup.warehouseAddress = '77 Capital Link Drive, Campbellfield VIC 3061';
-        payChanged = true;
-      }
-      if (payChanged) {
-        await paySettings.save();
-        console.log('✅ Synchronized canonical NAB account & warehouse details into PaymentSettings');
-      }
     }
 
-    try {
-      const Category = require('./src/models/Category');
-      const CarouselSlide = require('./src/models/CarouselSlide');
+    // Category/carousel images and catalogue specs are no longer forced here: staff edits made in the
+    // admin console must stick. Re-apply catalogue specs on purpose with `node scripts/update-catalogue-specs.js`.
 
-      const trailerCat = await Category.findOne({ slug: 'trailer-parts' });
-      if (trailerCat && (!trailerCat.imageUrl || trailerCat.imageUrl.includes('TRAILER-PARTS-CAT') || trailerCat.imageUrl !== '/images/web/trailer-parts-category.webp')) {
-        trailerCat.image = { url: '/images/web/trailer-parts-category.webp', publicId: 'trailer-parts-category' };
-        trailerCat.imageUrl = '/images/web/trailer-parts-category.webp';
-        await trailerCat.save();
-        console.log('✅ Synchronized Trailer Parts category image to new trailer rear door asset');
+    // Only seed a staff account from explicit env vars — never from defaults that live in this public repo.
+    const adminEmail = (process.env.ADMIN_EMAIL || '').trim().toLowerCase();
+    const adminPass = process.env.ADMIN_PASSWORD || '';
+    if (adminEmail && adminPass.length >= 12) {
+      const adminUser = await Admin.findOne({ email: adminEmail });
+      if (!adminUser) {
+        await Admin.create({
+          name: process.env.ADMIN_NAME || 'Aurex Admin',
+          email: adminEmail,
+          password: adminPass,
+          role: 'SUPER_ADMIN',
+          isActive: true
+        });
+        console.log(`✅ Seeded admin account: ${adminEmail}`);
       }
-
-      const tailLiftSlide = await CarouselSlide.findOne({ buttonLink: '/shop/tail-lifts' });
-      if (tailLiftSlide && (!tailLiftSlide.img || tailLiftSlide.img.includes('cloudinary.com'))) {
-        tailLiftSlide.img = '/images/web/aurex-tail-lift.webp';
-        tailLiftSlide.image = { url: '/images/web/aurex-tail-lift.webp', publicId: 'aurex-tail-lift' };
-        await tailLiftSlide.save();
-      }
-
-      const trailerSlide = await CarouselSlide.findOne({ buttonLink: '/shop/trailer-parts' });
-      if (trailerSlide && trailerSlide.img !== '/images/web/hero-trailer-parts-yellow.webp') {
-        trailerSlide.img = '/images/web/hero-trailer-parts-yellow.webp';
-        trailerSlide.image = { url: '/images/web/hero-trailer-parts-yellow.webp', publicId: 'hero-trailer-parts-yellow' };
-        await trailerSlide.save();
-      }
-
-      const accSlide = await CarouselSlide.findOne({ buttonLink: '/shop/accessories' });
-      if (accSlide && (!accSlide.img || accSlide.img.includes('cloudinary.com'))) {
-        accSlide.img = '/images/web/aurex-fleet-accessories.webp';
-        accSlide.image = { url: '/images/web/aurex-fleet-accessories.webp', publicId: 'aurex-fleet-accessories' };
-        await accSlide.save();
-      }
-    } catch (e) {
-      // Non-critical image seed warning
-    }
-
-    try {
-      const { syncCatalogueSpecs } = require('./scripts/update-catalogue-specs');
-      await syncCatalogueSpecs(mongoose);
-    } catch (catErr) {
-      console.warn('Catalogue specs seed sync warning:', catErr.message);
-    }
-
-    const adminEmail = (process.env.ADMIN_EMAIL || 'aurexparts@yopmail.com').toLowerCase();
-    const adminPass = process.env.ADMIN_PASSWORD || 'aurex@123';
-    const adminUser = await Admin.findOne({ email: adminEmail });
-    if (!adminUser) {
-      await Admin.create({
-        name: process.env.ADMIN_NAME || 'Aurex Admin',
-        email: adminEmail,
-        password: adminPass,
-        role: 'SUPER_ADMIN',
-        isActive: true
-      });
-      console.log(`✅ Seeded admin account: ${adminEmail}`);
     }
   } catch (err) {
     console.warn('Seed verification warning:', err.message);
@@ -637,10 +553,8 @@ async function ensureSeedData() {
 if (process.env.VERCEL) {
   const handler = async (req, res) => {
     try {
-      if (mongoose.connection.readyState !== 1 && mongoose.connection.readyState !== 2) {
-        await connectDB();
-        await ensureSeedData();
-      }
+      // Seeding is a local/one-off job; running it here made every cold start do ~20 serial queries plus a bulk write
+      await connectDB();
       if (!isFastifyReady) {
         await fastify.ready();
         isFastifyReady = true;
@@ -650,13 +564,11 @@ if (process.env.VERCEL) {
       console.error('Serverless Function Error:', err);
       res.statusCode = 500;
       res.setHeader('Content-Type', 'application/json');
+      // Details stay in the function logs; clients get a generic message
       res.end(
         JSON.stringify({
-          error: 'Serverless Function Execution Failed',
-          message: err.message,
-          hint: !process.env.MONGO_URI
-            ? 'Missing MONGO_URI in Vercel Project Settings -> Environment Variables.'
-            : undefined
+          success: false,
+          error: 'Service temporarily unavailable. Please try again shortly.'
         })
       );
     }

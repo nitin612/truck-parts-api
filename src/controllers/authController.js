@@ -7,7 +7,7 @@ const crypto = require('crypto');
 
 const formatUser = (user) => {
   if (!user) return null;
-  const isAdm = user.role === 'SUPER_ADMIN' || user.role === 'ADMIN' || user.email === 'aurexparts@yopmail.com' || user.email === 'admin@aurex.com.au';
+  const isAdm = user.role === 'SUPER_ADMIN' || user.role === 'ADMIN';
   const firstName = user.firstName || (user.name ? user.name.split(' ')[0] : 'Trade');
   const lastName = user.lastName || (user.name ? user.name.split(' ').slice(1).join(' ') : 'Member');
   const name = user.name || `${firstName} ${lastName}`.trim() || 'Trade Member';
@@ -48,7 +48,9 @@ const register = async (request, reply) => {
 
   const cleanEmail = (email || '').trim().toLowerCase();
   const existingUser = await User.findOne({ email: cleanEmail });
-  if (existingUser) {
+  // Staff emails live in the Admin collection; a customer account must never shadow one
+  const existingStaff = existingUser ? null : await Admin.findOne({ email: cleanEmail }).select('_id').lean();
+  if (existingUser || existingStaff) {
     throw new CustomError('An account with this email already exists', 400, 'EMAIL_EXISTS');
   }
 

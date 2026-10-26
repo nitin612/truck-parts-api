@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const mongoose = require('mongoose');
 const Order = require('../models/Order');
 const OrderStatusHistory = require('../models/OrderStatusHistory');
@@ -9,7 +10,18 @@ const CustomError = require('../utils/CustomError');
 const socketService = require('../services/socketService');
 const { sendOrderConfirmedEmail } = require('../services/notificationService');
 const { resolveAppUrl } = require('../utils/origin');
+const { getAccessSecret } = require('../utils/token');
 const { normalizeOrder } = require('./orderController');
+
+// Signed per-order token carried in Stripe's cancel_url, so a guest can cancel only their own abandoned checkout
+const cancelTokenFor = (orderNumber) =>
+  crypto.createHmac('sha256', getAccessSecret()).update(`cancel:${orderNumber}`).digest('hex').slice(0, 32);
+
+const cancelSummary = (order) => ({
+  orderNumber: order.orderNumber,
+  orderStatus: order.orderStatus,
+  paymentStatus: order.payment?.status
+});
 
 /**
  * Returns a configured Stripe SDK instance or null if secret key is unconfigured.
@@ -241,7 +253,7 @@ const createCheckoutSession = async (request, reply) => {
       }],
       mode: 'payment',
       success_url: `${appUrl}/order-success/${order.orderNumber}?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${appUrl}/checkout?payment_canceled=true&orderNumber=${order.orderNumber}`,
+      cancel_url: `${appUrl}/checkout?payment_canceled=true&orderNumber=${order.orderNumber}&ct=${cancelTokenFor(order.orderNumber)}`,
       client_reference_id: order.orderNumber,
       metadata: {
         orderId: String(order._id),
@@ -374,8 +386,8 @@ const verifySession = async (request, reply) => {
  * Restocks inventory safely and only ONCE to prevent infinite stock inflation.
  */
 const cancelOrderPayment = async (request, reply) => {
-  const { orderNumber } = request.body || request.query || {};
-  if (!orderNumber) {
+  const { orderNumber, cancelToken } = request.body || request.query || {};
+  if (!orderNumber || typeof orderNumber !== 'string') {
     return reply.status(400).send({ success: false, error: 'Missing orderNumber' });
   }
 
@@ -387,18 +399,25 @@ const cancelOrderPayment = async (request, reply) => {
     return reply.status(404).send({ success: false, error: 'Order not found' });
   }
 
-  // IDOR Protection: verify user ownership if logged in
-  if (request.user) {
-    const isOwner = order.user && String(order.user) === String(request.user._id);
-    const isStaff = ['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'].includes(request.user.role);
-    if (order.user && !isOwner && !isStaff) {
-      throw new CustomError('You are not authorized to cancel this order.', 403, 'FORBIDDEN');
-    }
+  // Only the owner, staff, or whoever holds the signed cancel link from Stripe may cancel
+  const isStaff = !!request.user && ['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'].includes(request.user.role);
+  const isOwner = !!request.user && !!order.user && String(order.user) === String(request.user._id);
+  const expectedToken = cancelTokenFor(order.orderNumber);
+  const hasValidToken = typeof cancelToken === 'string' &&
+    cancelToken.length === expectedToken.length &&
+    crypto.timingSafeEqual(Buffer.from(cancelToken), Buffer.from(expectedToken));
+  if (!isStaff && !isOwner && !hasValidToken) {
+    throw new CustomError('You are not authorized to cancel this order.', 403, 'FORBIDDEN');
+  }
+
+  // This endpoint exists for abandoned Stripe checkouts; bank transfer / trade account / pickup orders are cancelled by staff
+  if (!/^card$/i.test(order.payment?.method || '')) {
+    return reply.status(400).send({ success: false, error: 'Only unpaid card checkouts can be cancelled here.' });
   }
 
   // If already paid, do not cancel
   if (order.payment?.status === 'PAID') {
-    return reply.send({ success: true, message: 'Order is already paid', data: { order } });
+    return reply.send({ success: true, message: 'Order is already paid', data: cancelSummary(order) });
   }
 
   // Prevent multiple restocks if already cancelled or failed
@@ -406,8 +425,25 @@ const cancelOrderPayment = async (request, reply) => {
     return reply.send({
       success: true,
       message: 'Order is already cancelled',
-      data: { order }
+      data: cancelSummary(order)
     });
+  }
+
+  // Don't cancel a checkout Stripe has already taken payment for (webhook may still be in flight),
+  // and close an open session so it can't be paid after the order is cancelled
+  const stripe = getStripeClient();
+  if (stripe && order.payment?.stripeSessionId?.startsWith('cs_')) {
+    try {
+      const session = await stripe.checkout.sessions.retrieve(order.payment.stripeSessionId);
+      if (session.payment_status === 'paid') {
+        return reply.send({ success: true, message: 'Order is already paid', data: cancelSummary(order) });
+      }
+      if (session.status === 'open') {
+        await stripe.checkout.sessions.expire(session.id);
+      }
+    } catch (stripeErr) {
+      console.warn('[Cancel Order] Could not check Stripe session:', stripeErr.message);
+    }
   }
 
   // Prevent cancellation of dispatched/delivered orders
@@ -460,7 +496,7 @@ const cancelOrderPayment = async (request, reply) => {
   reply.send({
     success: true,
     message: 'Order payment cancelled successfully',
-    data: { order }
+    data: cancelSummary(order)
   });
 };
 
