@@ -108,7 +108,10 @@ const renderEmailTemplate = ({
 }) => {
   const appUrl = process.env.APP_URL || 'http://localhost:5173';
   const trackUrl = `${appUrl}/track?order=${encodeURIComponent(orderNumber)}`;
-  const reviewUrl = `${appUrl}/account?tab=orders&rate=${encodeURIComponent(orderNumber)}`;
+  const reviewUrl = `${appUrl}/orders?rate=${encodeURIComponent(orderNumber)}`;
+  // Google Business Profile review link ("Ask for reviews" in the profile). Every delivered order gets the same
+  // neutral ask: Google's rules forbid asking only customers you expect to be happy.
+  const googleReviewUrl = (process.env.GOOGLE_REVIEW_URL || '').replace(/"/g, '%22');
 
   const items = (order.items || []).map(escFields);
   const pricing = order.pricing || { subtotal: 0, shippingFee: 0, grandTotal: 0 };
@@ -218,6 +221,10 @@ const renderEmailTemplate = ({
                       <a href="${reviewUrl}" style="background-color: #059669; color: #ffffff; padding: 10px 22px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 800; display: inline-block; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                         Give Product Rating & Feedback ★★★★★
                       </a>
+                      ${googleReviewUrl ? `
+                      <p style="margin: 14px 0 0 0; color: #047857; font-size: 13px;">
+                        You can also share your experience of Aurex on <a href="${googleReviewUrl}" style="color: #065f46; font-weight: 800;">Google</a>.
+                      </p>` : ''}
                     </div>
                   ` : ''}
 

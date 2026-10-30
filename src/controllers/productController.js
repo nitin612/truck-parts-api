@@ -4,6 +4,8 @@ const Brand = require('../models/Brand');
 const CustomError = require('../utils/CustomError');
 const { stripSupplierCodes, looksLikeSupplierCode } = require('../utils/supplierCodes');
 const { uploadImage, deleteImage } = require('../services/cloudinaryService');
+const { notifyProductChange, productChangePaths } = require('../services/indexNowService');
+const { requestStorefrontRebuild } = require('../services/storefrontRebuildService');
 const fs = require('fs');
 
 const normalizeProduct = (p) => {
@@ -235,7 +237,8 @@ const getProducts = async (request, reply, { staffView = false } = {}) => {
   else if (sort === 'price_desc') sortOption = { 'pricing.sellingPrice': -1 };
   else if (sort === 'name_asc') sortOption = { name: 1 };
   else if (sort === 'newest') sortOption = { createdAt: -1 };
-  else if (sort === 'popular') sortOption = { reviewCount: -1, rating: -1 };
+  // Parts ticked "Best Seller" in the admin lead, so the homepage list doesn't hinge on review counts.
+  else if (sort === 'popular') sortOption = { isBestSeller: -1, reviewCount: -1, rating: -1, sku: 1 };
 
   const parsedLimit = Math.min(2000, Number(limit) || 500);
   const skip = (Number(page) - 1) * parsedLimit;
@@ -472,6 +475,16 @@ const prepareProductPayload = async (body, existing = null) => {
   return p;
 };
 
+// The fields that decide which storefront URLs a product occupies (for IndexNow and storefront snapshots).
+const searchState = (product) => ({ sku: product.sku, status: product.status, categorySlug: product.categorySlug });
+
+// Changes to a part that is, or was, public: rebuild the storefront snapshots and ask Bing to re-crawl.
+const publishProductChange = async (before, after, log) => {
+  if (!productChangePaths(before, after).length) return;
+  await requestStorefrontRebuild(log);
+  await notifyProductChange(before, after, log);
+};
+
 const adminCreateProduct = async (request, reply) => {
   const rawData = request.body || {};
   const productData = await prepareProductPayload(rawData);
@@ -484,6 +497,7 @@ const adminCreateProduct = async (request, reply) => {
 
   const product = await Product.create(productData);
   const normalized = normalizeProduct(product);
+  await publishProductChange(null, searchState(product), request.log);
 
   reply.status(201).send({
     success: true,
@@ -507,11 +521,13 @@ const adminUpdateProduct = async (request, reply) => {
   if (!product) throw new CustomError('Product not found', 404, 'PRODUCT_NOT_FOUND');
 
   const updateData = await prepareProductPayload(request.body || {}, product);
+  const before = searchState(product);
 
   Object.assign(product, updateData);
   await product.save();
 
   const normalized = normalizeProduct(product);
+  await publishProductChange(before, searchState(product), request.log);
 
   reply.send({
     success: true,
@@ -535,6 +551,7 @@ const adminDeleteProduct = async (request, reply) => {
   if (!product) throw new CustomError('Product not found', 404, 'PRODUCT_NOT_FOUND');
 
   await product.deleteOne();
+  await publishProductChange(searchState(product), null, request.log);
   reply.send({ success: true, message: 'Truck part deleted successfully' });
 };
 
@@ -546,5 +563,6 @@ module.exports = {
   adminCreateProduct,
   adminUpdateProduct,
   adminDeleteProduct,
-  normalizeProduct
+  normalizeProduct,
+  toPublic
 };

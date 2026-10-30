@@ -8,7 +8,7 @@ const siteSettingSchema = new mongoose.Schema({
   phoneHref: { type: String, default: 'tel:+61414730467' },
   email: { type: String, default: 'info@aurextruckparts.com.au' },
   address: { type: String, default: '77 Capital Link Drive, Campbellfield VIC 3061' },
-  hours: { type: String, default: 'Mon to Fri 9am to 5pm. Sat 9am to 12pm.' },
+  hours: { type: String, default: 'Mon – Fri: 9:00 AM – 5:00 PM' },
   freeFreightOver: { type: Number, default: 200 },
   standardFee: { type: Number, default: 24 },
   expressFee: { type: Number, default: 39 },

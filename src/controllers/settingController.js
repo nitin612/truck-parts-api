@@ -42,7 +42,7 @@ const resetSettings = async (request, reply) => {
     phone: '+61 414 730 467',
     email: 'info@aurextruckparts.com.au',
     address: '77 Capital Link Drive, Campbellfield VIC 3061',
-    hours: 'Mon-Fri 7:00 AM - 5:00 PM AEST',
+    hours: 'Mon – Fri: 9:00 AM – 5:00 PM',
     freeFreightOver: 200,
     standardFee: 45,
     expressFee: 95,

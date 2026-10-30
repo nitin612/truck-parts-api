@@ -1,6 +1,8 @@
 const Category = require('../models/Category');
 const Product = require('../models/Product');
 const CustomError = require('../utils/CustomError');
+// Category pages have build-time HTML snapshots on the storefront, so edits trigger a rebuild.
+const { requestStorefrontRebuild } = require('../services/storefrontRebuildService');
 const { uploadImage, deleteImage } = require('../services/cloudinaryService');
 const slugify = require('slugify');
 const fs = require('fs');
@@ -92,6 +94,7 @@ const adminCreateCategory = async (request, reply) => {
 
   const category = await Category.create(categoryData);
   const normalized = normalizeCategory(category, 0);
+  await requestStorefrontRebuild(request.log);
 
   reply.status(201).send({
     success: true,
@@ -133,6 +136,7 @@ const adminUpdateCategory = async (request, reply) => {
 
   Object.assign(category, updateData);
   await category.save();
+  await requestStorefrontRebuild(request.log);
 
   const normalized = normalizeCategory(category, 0);
 
@@ -159,6 +163,7 @@ const adminDeleteCategory = async (request, reply) => {
 
   if (category.image?.publicId) await deleteImage(category.image.publicId);
   await category.deleteOne();
+  await requestStorefrontRebuild(request.log);
 
   reply.send({ success: true, message: 'Category deleted successfully' });
 };

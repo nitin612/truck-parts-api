@@ -236,7 +236,7 @@ fastify.addHook('onRoute', (routeOptions) => {
     isPublic = true;
   } else if (method === 'GET' || (Array.isArray(method) && method.includes('GET'))) {
     if (
-      url.match(/^\/api\/v1\/(products|categories|brands|carousel|cms|blogs|welcome-offer|payments\/config|shipping|settings)/)
+      url.match(/^\/api\/v1\/(products|categories|brands|carousel|cms|blogs|welcome-offer|payments\/config|shipping|settings|sitemap\.xml|feeds)/)
     ) {
       if (!url.includes('/admin/')) isPublic = true;
     }
@@ -347,6 +347,14 @@ fastify.register(require('./src/routes/dashboardRoutes'), { prefix: '/api/v1/adm
 
 // AI Assistant
 fastify.register(require('./src/routes/chatRoutes'), { prefix: '/api/v1/chat' });
+
+// SEO: the storefront rewrites /sitemap.xml to this route
+fastify.register(require('./src/routes/sitemapRoutes'), { prefix: '/api/v1' });
+// Google Merchant Center product feed (fetched by Merchant Center on a schedule)
+fastify.register(require('./src/routes/feedRoutes'), { prefix: '/api/v1/feeds' });
+
+// Scheduled jobs (Vercel Cron, see vercel.json)
+fastify.register(require('./src/routes/internalRoutes'), { prefix: '/api/v1/internal' });
 
 // 9. Automated Admin Audit Hook
 const { logAdminAction, inferActionAndDescription } = require('./src/services/auditLogger');
@@ -494,7 +502,7 @@ async function ensureSeedData() {
         phoneHref: 'tel:+61414730467',
         email: 'info@aurextruckparts.com.au',
         address: '77 Capital Link Drive, Campbellfield VIC 3061',
-        hours: 'Mon to Fri 9am to 5pm. Sat 9am to 12pm.',
+        hours: 'Mon – Fri: 9:00 AM – 5:00 PM',
         freeFreightOver: 500,
         standardFee: 24,
         expressFee: 39,

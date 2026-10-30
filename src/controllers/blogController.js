@@ -3,6 +3,8 @@ const CustomError = require('../utils/CustomError');
 const { uploadImage, deleteImage } = require('../services/cloudinaryService');
 const fs = require('fs');
 const escapeRegExp = require('../utils/escapeRegExp');
+// Articles have build-time HTML snapshots on the storefront, so edits trigger a rebuild.
+const { requestStorefrontRebuild } = require('../services/storefrontRebuildService');
 
 const getBlogs = async (request, reply) => {
   const { tag, category, search, page = 1, limit = 10 } = request.query;
@@ -109,6 +111,7 @@ const adminCreateBlog = async (request, reply) => {
   }
 
   const blog = await Blog.create(data);
+  await requestStorefrontRebuild(request.log);
   reply.status(201).send({ success: true, message: 'Article created successfully', data: { blog }, blog });
 };
 
@@ -153,6 +156,7 @@ const adminUpdateBlog = async (request, reply) => {
 
   Object.assign(blog, data);
   await blog.save();
+  await requestStorefrontRebuild(request.log);
 
   reply.send({ success: true, message: 'Article updated successfully', data: { blog }, blog });
 };
@@ -164,6 +168,7 @@ const adminDeleteBlog = async (request, reply) => {
 
   if (blog.coverImage?.publicId) await deleteImage(blog.coverImage.publicId);
   await blog.deleteOne();
+  await requestStorefrontRebuild(request.log);
 
   reply.send({ success: true, message: 'Article deleted successfully' });
 };
