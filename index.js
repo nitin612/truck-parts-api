@@ -113,18 +113,39 @@ fastify.register(require('@fastify/cookie'), {
   secret: getAccessSecret()
 });
 
-// 6. Global NoSQL Injection Sanitizer
+const { sanitizeString } = require('./src/utils/sanitizeXSS');
+
+const SENSITIVE_RAW_FIELDS = new Set([
+  'password',
+  'newPassword',
+  'oldPassword',
+  'confirmPassword',
+  'twoFactorCode',
+  'twoFactorSecret',
+  'token',
+  'refreshToken'
+]);
+
+// 6. Global NoSQL Injection & Stored XSS Sanitizer
 function sanitizeMongoInput(target) {
   if (!target || typeof target !== 'object') return target;
   if (Array.isArray(target)) {
     for (let i = 0; i < target.length; i++) {
-      target[i] = sanitizeMongoInput(target[i]);
+      if (typeof target[i] === 'string') {
+        target[i] = sanitizeString(target[i]);
+      } else {
+        target[i] = sanitizeMongoInput(target[i]);
+      }
     }
     return target;
   }
   for (const key of Object.keys(target)) {
     if (key.startsWith('$') || key.includes('.') || key === '__proto__' || key === 'constructor' || key === 'prototype') {
       delete target[key];
+    } else if (typeof target[key] === 'string') {
+      if (!SENSITIVE_RAW_FIELDS.has(key)) {
+        target[key] = sanitizeString(target[key]);
+      }
     } else {
       target[key] = sanitizeMongoInput(target[key]);
     }
