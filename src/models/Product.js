@@ -55,6 +55,7 @@ const fitmentSchema = new mongoose.Schema({
 const productSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
   slug: { type: String, unique: true },
+  legacySlugs: [{ type: String, index: true }],
   sku: { type: String, required: true, unique: true, uppercase: true, trim: true },
   
   // Truck Identification & Cross Reference
@@ -204,7 +205,7 @@ productSchema.pre('validate', function() {
 
 productSchema.pre('save', function() {
   if (this.isModified('name') && !this.slug) {
-    this.slug = slugify(`${this.name}-${this.sku}`, { lower: true, strict: true });
+    this.slug = slugify(this.name, { lower: true, strict: true });
   }
 
   if (this.desc && !this.description) {

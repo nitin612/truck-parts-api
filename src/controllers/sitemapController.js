@@ -28,7 +28,7 @@ const urlEntry = (path, lastmod) =>
  */
 const getSitemap = async (request, reply) => {
   const [products, categories, blogs] = await Promise.all([
-    Product.find({ status: 'PUBLISHED' }).select('sku categorySlug updatedAt').sort({ sku: 1 }).lean(),
+    Product.find({ status: 'PUBLISHED' }).select('sku slug categorySlug updatedAt').sort({ sku: 1 }).lean(),
     Category.find({ isActive: true }).select('slug updatedAt').sort({ sortOrder: 1 }).lean(),
     Blog.find({ isPublished: true }).select('slug updatedAt').sort({ updatedAt: -1 }).lean()
   ]);
@@ -46,7 +46,7 @@ const getSitemap = async (request, reply) => {
       .filter((c) => c.slug)
       .map((c) => urlEntry(`/shop/${encodeURIComponent(c.slug)}`, latest(c.updatedAt, categoryUpdated[c.slug]))),
     ...blogs.filter((b) => b.slug).map((b) => urlEntry(`/news/${encodeURIComponent(b.slug)}`, b.updatedAt)),
-    ...products.filter((p) => p.sku).map((p) => urlEntry(`/product/${encodeURIComponent(p.sku)}`, p.updatedAt))
+    ...products.filter((p) => p.sku).map((p) => urlEntry(`/product/${encodeURIComponent(p.slug || p.sku)}`, p.updatedAt))
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

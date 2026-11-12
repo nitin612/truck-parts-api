@@ -290,7 +290,9 @@ const getProductBySkuOrSlug = async (request, reply) => {
     $or: [
       ...(isObjectId ? [{ _id: identifier }] : []),
       { sku: identifier.toUpperCase() },
-      { slug: identifier }
+      { slug: identifier },
+      { legacySlugs: identifier.toLowerCase() },
+      { legacySlugs: identifier }
     ]
   })
     .populate('category', 'name slug')
