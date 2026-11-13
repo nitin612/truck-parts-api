@@ -5,7 +5,20 @@ const Blog = require('../models/Blog');
 const { SITE_URL } = require('../utils/siteUrl');
 
 // Indexable storefront pages that aren't backed by a catalogue document.
-const STATIC_PATHS = ['/', '/shop', '/tail-lift-enquiry', '/about', '/contact', '/policies', '/track'];
+const STATIC_PATHS = [
+  '/',
+  '/shop',
+  '/tail-lift-enquiry',
+  '/about',
+  '/contact',
+  '/policies',
+  '/track',
+  '/guides',
+  '/guides/rear-marking-plates-vsb12',
+  '/guides/truck-trailer-door-hardware',
+  '/guides/frp-honeycomb-vs-plywood-vs-xps-panels',
+  '/guides/choosing-a-tail-lift'
+];
 
 const escapeXml = (value) =>
   String(value)
@@ -28,7 +41,7 @@ const urlEntry = (path, lastmod) =>
  */
 const getSitemap = async (request, reply) => {
   const [products, categories, blogs] = await Promise.all([
-    Product.find({ status: 'PUBLISHED' }).select('sku slug categorySlug updatedAt').sort({ sku: 1 }).lean(),
+    Product.find({ status: 'PUBLISHED' }).select('sku slug name images imageUrl categorySlug updatedAt').sort({ sku: 1 }).lean(),
     Category.find({ isActive: true }).select('slug updatedAt').sort({ sortOrder: 1 }).lean(),
     Blog.find({ isPublished: true }).select('slug updatedAt').sort({ updatedAt: -1 }).lean()
   ]);
@@ -46,11 +59,16 @@ const getSitemap = async (request, reply) => {
       .filter((c) => c.slug)
       .map((c) => urlEntry(`/shop/${encodeURIComponent(c.slug)}`, latest(c.updatedAt, categoryUpdated[c.slug]))),
     ...blogs.filter((b) => b.slug).map((b) => urlEntry(`/news/${encodeURIComponent(b.slug)}`, b.updatedAt)),
-    ...products.filter((p) => p.sku).map((p) => urlEntry(`/product/${encodeURIComponent(p.slug || p.sku)}`, p.updatedAt))
+    ...products.filter((p) => p.sku).map((p) => {
+      const rawImg = (Array.isArray(p.images) && p.images[0]) || p.imageUrl || `/images/products/${p.sku}.jpg`;
+      const imgPath = typeof rawImg === 'string' ? rawImg : rawImg?.url || `/images/products/${p.sku}.jpg`;
+      const imgUrl = imgPath.startsWith('http') ? imgPath : `${SITE_URL}${imgPath.startsWith('/') ? '' : '/'}${imgPath}`;
+      return `  <url>\n    <loc>${escapeXml(SITE_URL + '/product/' + encodeURIComponent(p.slug || p.sku))}</loc>${p.updatedAt ? `\n    <lastmod>${isoDate(p.updatedAt)}</lastmod>` : ''}\n    <image:image>\n      <image:loc>${escapeXml(imgUrl)}</image:loc>\n      <image:title>${escapeXml(p.name || p.sku)}</image:title>\n    </image:image>\n  </url>`;
+    })
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${entries.join('\n')}
 </urlset>
 `;
