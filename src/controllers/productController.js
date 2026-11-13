@@ -285,14 +285,20 @@ const getProducts = async (request, reply, { staffView = false } = {}) => {
 const getProductBySkuOrSlug = async (request, reply) => {
   const { identifier } = request.params;
   const isObjectId = /^[0-9a-fA-F]{24}$/.test(identifier);
+  const cleanId = String(identifier || '').trim();
+  const lowerId = cleanId.toLowerCase();
+  const upperId = cleanId.toUpperCase();
 
   const product = await Product.findOne({
     $or: [
       ...(isObjectId ? [{ _id: identifier }] : []),
-      { sku: identifier.toUpperCase() },
-      { slug: identifier },
-      { legacySlugs: identifier.toLowerCase() },
-      { legacySlugs: identifier }
+      { sku: upperId },
+      { sku: cleanId },
+      { slug: lowerId },
+      { slug: cleanId },
+      { legacySlugs: lowerId },
+      { legacySlugs: cleanId },
+      { legacySlugs: upperId }
     ]
   })
     .populate('category', 'name slug')
