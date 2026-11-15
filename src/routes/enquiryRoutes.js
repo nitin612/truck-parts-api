@@ -3,16 +3,16 @@ const { optionalAuth, authenticate, requireStaff } = require('../middleware/auth
 const upload = require('../middleware/uploadMiddleware');
 
 async function enquiryRoutes(fastify, options) {
-  // Submit quote request (Login required)
+  // Submit quote & contact enquiry (Public / Guest & Registered Customers)
   fastify.post('/', {
     config: { rateLimit: { max: 30, timeWindow: '1 minute' } },
-    preHandler: [authenticate, upload.array('attachments', 4)]
+    preHandler: [optionalAuth, upload.array('attachments', 4)]
   }, enquiryController.createEnquiry);
 
-  // Dedicated Tail Lift engineering quotation enquiry route (Login required)
+  // Dedicated Tail Lift engineering quotation enquiry route (Public / Guest & Registered Customers)
   fastify.post('/tail-lift', {
     config: { rateLimit: { max: 30, timeWindow: '1 minute' } },
-    preHandler: [authenticate, upload.array('attachments', 4)]
+    preHandler: [optionalAuth, upload.array('attachments', 4)]
   }, enquiryController.createTailLiftEnquiry);
   
   fastify.get('/mine', { preHandler: optionalAuth }, enquiryController.getCustomerEnquiries);

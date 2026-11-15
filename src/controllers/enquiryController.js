@@ -17,9 +17,6 @@ const generateTailLiftEnquiryNumber = () => {
 const createTailLiftEnquiry = async (request, reply) => {
   const data = request.body || {};
   const userId = request.user?._id;
-  if (!userId) {
-    throw new CustomError('Login is required to submit a tail lift enquiry. Please sign in or create an account.', 401, 'AUTH_REQUIRED');
-  }
 
   // Parse nested objects if sent as multipart strings or nested JSON
   ['truckDetails', 'partDetails', 'tailLiftDetails', 'options'].forEach((field) => {
@@ -220,9 +217,6 @@ const createEnquiry = async (request, reply) => {
   }
 
   const userId = request.user?._id;
-  if (!userId) {
-    throw new CustomError('Login is required to submit an enquiry. Please sign in or register.', 401, 'AUTH_REQUIRED');
-  }
 
   // Parse JSON if multipart
   ['truckDetails', 'partDetails', 'tailLiftDetails', 'options'].forEach(field => {
