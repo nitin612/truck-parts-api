@@ -333,6 +333,36 @@ const logout = async (request, reply) => {
   });
 };
 
+const deleteAccount = async (request, reply) => {
+  if (!request.user) {
+    throw new CustomError('Authentication required', 401, 'UNAUTHORIZED');
+  }
+  const user = await User.findById(request.user._id);
+  if (!user) {
+    throw new CustomError('User account not found', 404, 'NOT_FOUND');
+  }
+
+  // Deactivate account and anonymize personal information in compliance with privacy guidelines
+  user.isActive = false;
+  user.email = `deleted_${user._id}_${Date.now()}@deleted.aurextruckparts.local`;
+  user.firstName = 'Deactivated';
+  user.lastName = 'Customer';
+  user.phone = '';
+  user.companyName = '';
+  user.abnOrTaxId = '';
+  user.shippingAddress = undefined;
+  user.fleetTruckModels = [];
+  await user.save();
+
+  reply.clearCookie('accessToken', { path: '/' });
+  reply.clearCookie('refreshToken', { path: '/' });
+
+  reply.send({
+    success: true,
+    message: 'Your account has been deleted and personal information removed.'
+  });
+};
+
 const forgotPassword = async (request, reply) => {
   const { email } = request.body || {};
   if (!email || !email.trim()) {
@@ -422,6 +452,7 @@ module.exports = {
   getMe,
   updateProfile,
   logout,
+  deleteAccount,
   forgotPassword,
   resetPassword
 };

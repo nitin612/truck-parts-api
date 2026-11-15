@@ -93,15 +93,15 @@ fastify.register(require('@fastify/rate-limit'), {
   timeWindow: '1 minute'
 });
 
-// 3. Register Swagger API Documentation (Safely handled on serverless)
+// 3. Register Swagger API Documentation (Disabled in production per OWASP 10.3)
 try {
   const { swaggerConfig, swaggerUiConfig } = require('./src/config/swagger');
   fastify.register(require('@fastify/swagger'), swaggerConfig);
-  if (!process.env.VERCEL) {
+  if (isDev && !process.env.VERCEL) {
     fastify.register(require('@fastify/swagger-ui'), swaggerUiConfig);
   }
 } catch (swaggerErr) {
-  console.warn('Swagger UI skipped on serverless:', swaggerErr.message);
+  console.warn('Swagger UI skipped:', swaggerErr.message);
 }
 
 // 4. Multipart FormData parser for file uploads
@@ -422,7 +422,7 @@ fastify.get('/', async () => {
     name: 'Aurex Truck Parts & Heavy Vehicle Equipment REST API',
     status: 'ONLINE',
     version: '1.0.0',
-    docs: '/api/docs',
+    ...(isDev ? { docs: '/api/docs' } : {}),
     timestamp: new Date().toISOString()
   };
 });

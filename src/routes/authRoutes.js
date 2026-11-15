@@ -8,12 +8,13 @@ async function authRoutes(fastify, options) {
     preValidation: validate(registerSchema)
   }, authController.register);
   fastify.post('/login', {
-    config: { rateLimit: { max: 20, timeWindow: '1 minute' } },
+    config: { rateLimit: { max: 8, timeWindow: '1 minute' } },
     preValidation: validate(loginSchema)
   }, authController.login);
   fastify.post('/refresh', { config: { rateLimit: { max: 30, timeWindow: '1 minute' } } }, authController.refresh);
   fastify.get('/me', { preHandler: authenticate }, authController.getMe);
   fastify.put('/profile', { preHandler: authenticate }, authController.updateProfile);
+  fastify.delete('/me', { preHandler: authenticate }, authController.deleteAccount);
   fastify.post('/logout', authController.logout);
 
   // Password Recovery Endpoints
