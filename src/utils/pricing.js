@@ -59,8 +59,7 @@ const calculateOrderTotals = ({
     const n = Number(value);
     return value === null || value === undefined || value === '' || !Number.isFinite(n) || n < 0 ? fallback : n;
   };
-  const freeFreightOver = settingNumber(siteSettings?.freeFreightOver, 200);
-  const standardFee = settingNumber(siteSettings?.standardFee, 24);
+  const standardFee = settingNumber(siteSettings?.standardFee, 18);
   const expressFee = settingNumber(siteSettings?.expressFee, 39);
 
   let shippingFee = 0;
@@ -71,7 +70,7 @@ const calculateOrderTotals = ({
     shippingFee = expressFee;
   } else {
     // Standard road
-    shippingFee = discountedSubtotal >= freeFreightOver ? 0 : standardFee;
+    shippingFee = standardFee;
   }
 
   shippingFee = Math.round(shippingFee * 100) / 100;

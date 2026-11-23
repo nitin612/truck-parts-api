@@ -524,12 +524,12 @@ async function ensureSeedData() {
         email: 'info@aurextruckparts.com.au',
         address: '77 Capital Link Drive, Campbellfield VIC 3061',
         hours: 'Mon – Fri: 9:00 AM – 5:00 PM',
-        freeFreightOver: 500,
-        standardFee: 24,
+        freeFreightOver: null,
+        standardFee: 18,
         expressFee: 39,
         abn: 'ABN 47 670 781 254',
         acn: '670 781 254',
-        announcement: 'Free road freight over $500. Order by 2pm for same day dispatch.'
+        announcement: 'Order by 2pm for same day dispatch from Campbellfield.'
       });
       console.log('✅ Initialized default SiteSettings');
     }

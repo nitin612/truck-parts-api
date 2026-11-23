@@ -585,8 +585,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Heavy Duty D-Section Rubber Buffer 280mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Heavy Duty D-Section Rubber Buffer 280mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty D-section extruded rubber bumper block designed for commercial truck rear coaming, loading dock impact protection, and tipper tailgates.",
+    "description": "Heavy-duty D-section extruded rubber bumper block designed for commercial truck rear coaming, loading dock impact protection, and tipper tailgates. Moulded from high-tensile, abrasion-resistant EPDM rubber compound that resists UV degradation, ozone cracking, and weathering under Australian conditions. Features a hollow D-shaped cavity for maximum impact energy absorption and pre-drilled recessed mounting holes that accept heavy fasteners below the contact surface.\n\nKey Specifications:\n• Length: 280mm\n• Profile: Heavy D-section hollow shock-absorbing extrusion\n• Material: High-grade vulcanised industrial rubber\n• Mount Type: Bolt-on recessed fastener channel\n• Application: Rear frame bumper, docking buffer, loading ramp cushion, and tailgate stop.",
     "category": "6ac7c69602c3aa6ca9f0d8a4",
     "categories": [
       "6ac7c69602c3aa6ca9f0d8a4"
@@ -599,9 +599,9 @@
       }
     ],
     "pricing": {
-      "mrp": 21,
-      "sellingPrice": 21,
-      "tradePrice": 19,
+      "mrp": 50.0,
+      "sellingPrice": 50.0,
+      "tradePrice": 46.0,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -736,7 +736,7 @@
     "category": "6ac7c69602c3aa6ca9f0d8a4",
     "categorySlug": "accessories",
     "desc": "Commercial grade FRP (Fiberglass Reinforced Plastic) polypropylene honeycomb side panel engineered specifically for Australian truck and van bodybuilders. Measuring 4300mm long by 2300mm wide at 20mm thickness, this panel provides 9.89m² of seamless surface area. The high-gloss gelcoat exterior delivers superior UV resistance and weather durability against harsh Australian sun, while the non-corrosive thermoplastic honeycomb core delivers significant weight savings over traditional steel or plywood walls without sacrificing torsional rigidity.",
-    "description": "Commercial grade FRP (Fiberglass Reinforced Plastic) polypropylene honeycomb side panel engineered specifically for Australian truck and van bodybuilders. Measuring 4300mm long by 2300mm wide at 20mm thickness, this panel provides 9.89m² of seamless surface area. The high-gloss gelcoat exterior delivers superior UV resistance and weather durability against harsh Australian sun, while the non-corrosive thermoplastic honeycomb core delivers significant weight savings over traditional steel or plywood walls without sacrificing torsional rigidity.",
+    "description": "Heavy-duty commercial FRP honeycomb composite panel designed for dry freight truck and trailer side body wall applications. Manufactured with premium UV-stabilised, high-impact fibreglass reinforced plastic (FRP) skins bonded securely to a high-density polypropylene (PP) honeycomb core. Delivers an exceptional strength-to-weight ratio, structural rigidity, and corrosion resistance, significantly reducing tare weight while maximizing fleet payload capacity. Impervious to moisture, rot, and road chemicals, with an ultra-smooth high-gloss exterior surface ideal for fleet signage and livery application.\n\nKey Specifications:\n• Dimensions: 4300mm (L) x 2300mm (W) x 20mm (T)\n• Skin Material: UV-stabilised commercial grade gelcoat FRP\n• Core Construction: Impact-resistant polypropylene honeycomb\n• Application: Rigid truck bodies, dry freight trailers, curtain-sider bulkheads, and van conversions\n• Sourced and stocked ex Campbellfield VIC for fast dispatch Australia-wide.",
     "fit": "Suits rigid pantechs, dry freight bodies, and delivery trucks up to 4.3m length",
     "imageUrl": "/images/products/ATP-ACC-06.jpg",
     "images": [
@@ -752,16 +752,16 @@
     "name": "FRP Honeycomb Side Panel 4300x2300x20mm",
     "oemPartNumber": "VNFHP432320",
     "pricing": {
-      "mrp": null,
-      "sellingPrice": null,
-      "tradePrice": null,
-      "isPOA": true,
+      "mrp": 2571.4,
+      "sellingPrice": 2571.4,
+      "tradePrice": 2365.69,
+      "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
-    "shortDescription": "Ultra-lightweight high-strength FRP honeycomb composite side wall panel (4300x2300x20mm, 9.89m²). High-gloss UV-stabilised gelcoat face over polypropylene honeycomb core for dry freight pantechs.",
+    "shortDescription": "Heavy-duty commercial FRP honeycomb composite panel designed for dry freight truck and trailer side body wall applications.",
     "slug": "frp-honeycomb-side-panel-4300x2300x20mm-atp-bp-01",
     "specifications": [
       {
@@ -824,7 +824,7 @@
     "category": "6ac7c69602c3aa6ca9f0d8a4",
     "categorySlug": "accessories",
     "desc": "Heavy-duty front bulkhead composite panel for commercial rigid trucks and trailers. Sized at 2400mm width by 2300mm height at 20mm thickness (5.52m²), this structural FRP sandwich panel is designed to withstand front cargo shifting loads and headboard air pressure during high-speed highway haulage. Rot-proof, chemical resistant, and easily bonded to aluminium front corner caps.",
-    "description": "Heavy-duty front bulkhead composite panel for commercial rigid trucks and trailers. Sized at 2400mm width by 2300mm height at 20mm thickness (5.52m²), this structural FRP sandwich panel is designed to withstand front cargo shifting loads and headboard air pressure during high-speed highway haulage. Rot-proof, chemical resistant, and easily bonded to aluminium front corner caps.",
+    "description": "Heavy-duty commercial FRP honeycomb composite panel designed for dry freight truck and trailer front bulkhead wall applications. Manufactured with premium UV-stabilised, high-impact fibreglass reinforced plastic (FRP) skins bonded securely to a high-density polypropylene (PP) honeycomb core. Delivers an exceptional strength-to-weight ratio, structural rigidity, and corrosion resistance, significantly reducing tare weight while maximizing fleet payload capacity. Impervious to moisture, rot, and road chemicals, with an ultra-smooth high-gloss exterior surface ideal for fleet signage and livery application.\n\nKey Specifications:\n• Dimensions: 2400mm (L) x 2300mm (W) x 20mm (T)\n• Skin Material: UV-stabilised commercial grade gelcoat FRP\n• Core Construction: Impact-resistant polypropylene honeycomb\n• Application: Rigid truck bodies, dry freight trailers, curtain-sider bulkheads, and van conversions\n• Sourced and stocked ex Campbellfield VIC for fast dispatch Australia-wide.",
     "fit": "Suits truck front headboards, bulkheads, and van front walls",
     "imageUrl": "/images/products/ATP-ACC-07.jpg",
     "images": [
@@ -840,16 +840,16 @@
     "name": "FRP Honeycomb Front Panel 2400x2300x20mm",
     "oemPartNumber": "VNFHP242320",
     "pricing": {
-      "mrp": null,
-      "sellingPrice": null,
-      "tradePrice": null,
-      "isPOA": true,
+      "mrp": 1435.2,
+      "sellingPrice": 1435.2,
+      "tradePrice": 1320.38,
+      "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
-    "shortDescription": "High-strength aerodynamic FRP honeycomb composite front bulkhead panel (2400x2300x20mm, 5.52m²). Seamless gelcoat face with structural PP honeycomb core for commercial truck bodies.",
+    "shortDescription": "Heavy-duty commercial FRP honeycomb composite panel designed for dry freight truck and trailer front bulkhead wall applications.",
     "slug": "frp-honeycomb-front-panel-2400x2300x20mm-atp-bp-02",
     "specifications": [
       {
@@ -912,7 +912,7 @@
     "category": "6ac7c69602c3aa6ca9f0d8a4",
     "categorySlug": "accessories",
     "desc": "Precision manufactured 2400 x 1200 x 20mm FRP honeycomb panel specifically engineered for commercial vehicle rear barn doors and side access portals. Lightweight construction reduces door hinge fatigue and operator lifting strain while maintaining rigid flat alignment against rubber weather seals.",
-    "description": "Precision manufactured 2400 x 1200 x 20mm FRP honeycomb panel specifically engineered for commercial vehicle rear barn doors and side access portals. Lightweight construction reduces door hinge fatigue and operator lifting strain while maintaining rigid flat alignment against rubber weather seals.",
+    "description": "Heavy-duty commercial FRP honeycomb composite panel designed for dry freight truck and trailer rear cargo door panel applications. Manufactured with premium UV-stabilised, high-impact fibreglass reinforced plastic (FRP) skins bonded securely to a high-density polypropylene (PP) honeycomb core. Delivers an exceptional strength-to-weight ratio, structural rigidity, and corrosion resistance, significantly reducing tare weight while maximizing fleet payload capacity. Impervious to moisture, rot, and road chemicals, with an ultra-smooth high-gloss exterior surface ideal for fleet signage and livery application.\n\nKey Specifications:\n• Dimensions: 2400mm (L) x 1200mm (W) x 20mm (T)\n• Skin Material: UV-stabilised commercial grade gelcoat FRP\n• Core Construction: Impact-resistant polypropylene honeycomb\n• Application: Rigid truck bodies, dry freight trailers, curtain-sider bulkheads, and van conversions\n• Sourced and stocked ex Campbellfield VIC for fast dispatch Australia-wide.",
     "fit": "Suits standard height commercial van rear barn doors and side doors",
     "imageUrl": "/images/products/ATP-ACC-08.jpg",
     "images": [
@@ -928,16 +928,16 @@
     "name": "FRP Honeycomb Door Panel 2400x1200x20mm",
     "oemPartNumber": "VNFHP241220",
     "pricing": {
-      "mrp": null,
-      "sellingPrice": null,
-      "tradePrice": null,
-      "isPOA": true,
+      "mrp": 633.6,
+      "sellingPrice": 633.6,
+      "tradePrice": 582.91,
+      "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
-    "shortDescription": "Precision-cut lightweight FRP honeycomb door panel (2400x1200x20mm, 2.88m²). Ideal for rear barn doors, side access doors, and service body panels.",
+    "shortDescription": "Heavy-duty commercial FRP honeycomb composite panel designed for dry freight truck and trailer rear cargo door panel applications.",
     "slug": "frp-honeycomb-door-panel-2400x1200x20mm-atp-bp-03",
     "specifications": [
       {
@@ -1000,7 +1000,7 @@
     "category": "6ac7c69602c3aa6ca9f0d8a4",
     "categorySlug": "accessories",
     "desc": "Extended height 2800 x 1200 x 20mm composite door panel engineered for high-cube semitrailers and oversized rigid truck rear doors. Features double-sided woven roving gelcoat faces for superior rigidity over large spans without bowing or thermal deformation in Australian desert heat.",
-    "description": "Extended height 2800 x 1200 x 20mm composite door panel engineered for high-cube semitrailers and oversized rigid truck rear doors. Features double-sided woven roving gelcoat faces for superior rigidity over large spans without bowing or thermal deformation in Australian desert heat.",
+    "description": "Heavy-duty commercial FRP honeycomb composite panel designed for dry freight truck and trailer rear cargo door panel applications. Manufactured with premium UV-stabilised, high-impact fibreglass reinforced plastic (FRP) skins bonded securely to a high-density polypropylene (PP) honeycomb core. Delivers an exceptional strength-to-weight ratio, structural rigidity, and corrosion resistance, significantly reducing tare weight while maximizing fleet payload capacity. Impervious to moisture, rot, and road chemicals, with an ultra-smooth high-gloss exterior surface ideal for fleet signage and livery application.\n\nKey Specifications:\n• Dimensions: 2800mm (L) x 1200mm (W) x 20mm (T)\n• Skin Material: UV-stabilised commercial grade gelcoat FRP\n• Core Construction: Impact-resistant polypropylene honeycomb\n• Application: Rigid truck bodies, dry freight trailers, curtain-sider bulkheads, and van conversions\n• Sourced and stocked ex Campbellfield VIC for fast dispatch Australia-wide.",
     "fit": "Suits tall semi-trailers, drop-deck trailers, and high-cube pantechs",
     "imageUrl": "/images/products/ATP-ACC-09.jpg",
     "images": [
@@ -1016,16 +1016,16 @@
     "name": "FRP Honeycomb Door Panel 2800x1200x20mm",
     "oemPartNumber": "VNFHP281220",
     "pricing": {
-      "mrp": null,
-      "sellingPrice": null,
-      "tradePrice": null,
-      "isPOA": true,
+      "mrp": 739.2,
+      "sellingPrice": 739.2,
+      "tradePrice": 680.06,
+      "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
-    "shortDescription": "High-cube commercial FRP honeycomb door panel (2800x1200x20mm, 3.36m²). Built for tall pantechs, semitrailers, and high-cube delivery trucks.",
+    "shortDescription": "Heavy-duty commercial FRP honeycomb composite panel designed for dry freight truck and trailer rear cargo door panel applications.",
     "slug": "frp-honeycomb-door-panel-2800x1200x20mm-atp-bp-04",
     "specifications": [
       {
@@ -1088,7 +1088,7 @@
     "category": "6ac7c69602c3aa6ca9f0d8a4",
     "categorySlug": "accessories",
     "desc": "Maximum-height 3200 x 1200 x 20mm commercial honeycomb door panel. Specially reinforced with multi-axial fiberglass roving to maintain structural integrity across extreme 3.2m door openings on Australian interstate freight vans.",
-    "description": "Maximum-height 3200 x 1200 x 20mm commercial honeycomb door panel. Specially reinforced with multi-axial fiberglass roving to maintain structural integrity across extreme 3.2m door openings on Australian interstate freight vans.",
+    "description": "Heavy-duty commercial FRP honeycomb composite panel designed for dry freight truck and trailer rear cargo door panel applications. Manufactured with premium UV-stabilised, high-impact fibreglass reinforced plastic (FRP) skins bonded securely to a high-density polypropylene (PP) honeycomb core. Delivers an exceptional strength-to-weight ratio, structural rigidity, and corrosion resistance, significantly reducing tare weight while maximizing fleet payload capacity. Impervious to moisture, rot, and road chemicals, with an ultra-smooth high-gloss exterior surface ideal for fleet signage and livery application.\n\nKey Specifications:\n• Dimensions: 3200mm (L) x 1200mm (W) x 20mm (T)\n• Skin Material: UV-stabilised commercial grade gelcoat FRP\n• Core Construction: Impact-resistant polypropylene honeycomb\n• Application: Rigid truck bodies, dry freight trailers, curtain-sider bulkheads, and van conversions\n• Sourced and stocked ex Campbellfield VIC for fast dispatch Australia-wide.",
     "fit": "Suits mega-trailers, interstate linehaul pantechs, and tall freight vans",
     "imageUrl": "/images/products/ATP-ACC-10.jpg",
     "images": [
@@ -1104,16 +1104,16 @@
     "name": "FRP Honeycomb Door Panel 3200x1200x20mm",
     "oemPartNumber": "VNFHP321220",
     "pricing": {
-      "mrp": null,
-      "sellingPrice": null,
-      "tradePrice": null,
-      "isPOA": true,
+      "mrp": 844.8,
+      "sellingPrice": 844.8,
+      "tradePrice": 777.22,
+      "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
-    "shortDescription": "Heavy-duty full-height FRP honeycomb door panel (3200x1200x20mm, 3.84m²). Engineered for maximum height logistics trailers and mezzanine bodies.",
+    "shortDescription": "Heavy-duty commercial FRP honeycomb composite panel designed for dry freight truck and trailer rear cargo door panel applications.",
     "slug": "frp-honeycomb-door-panel-3200x1200x20mm-atp-bp-05",
     "specifications": [
       {
@@ -1176,7 +1176,7 @@
     "category": "6ac7c69602c3aa6ca9f0d8a4",
     "categorySlug": "accessories",
     "desc": "Heavy-duty composite door panel combining a solid structural exterior-grade hardwood plywood core with smooth fiberglass gelcoat protective skins. Designed for severe-duty freight applications where forklift back-up impacts and extreme hardware retention strength are paramount.",
-    "description": "Heavy-duty composite door panel combining a solid structural exterior-grade hardwood plywood core with smooth fiberglass gelcoat protective skins. Designed for severe-duty freight applications where forklift back-up impacts and extreme hardware retention strength are paramount.",
+    "description": "High-impact FRP plywood sandwich composite door panel engineered specifically for heavy commercial vehicle rear barn doors. Combines structural multi-ply hardwood timber core with seamless 1.5mm gelcoat FRP exterior skins, delivering maximum puncture resistance, thermal stability, and load-bearing strength. Designed to withstand heavy forklift loading shocks and harsh Australian road vibration without warping, cracking, or delaminating.\n\nKey Specifications:\n• Dimensions: 2400mm (L) x 1200mm (W) x 20mm (T)\n• Core: High-density structural commercial hardwood plywood\n• Skin: Seamless white gelcoat fibreglass reinforced plastic\n• Hardware Compatibility: Pre-sized for commercial cam locks, strap hinges, and EPDM perimeter seals\n• Dispatch: Available for collection or freight from Campbellfield VIC warehouse.",
     "fit": "Suits heavy-duty distribution trucks, dock-loading vans, and mining service bodies",
     "imageUrl": "/images/products/ATP-ACC-11.jpg",
     "images": [
@@ -1192,16 +1192,16 @@
     "name": "FRP Plywood Door Panel 2400x1200x20mm",
     "oemPartNumber": "VNFPP241220",
     "pricing": {
-      "mrp": null,
-      "sellingPrice": null,
-      "tradePrice": null,
-      "isPOA": true,
+      "mrp": 633.6,
+      "sellingPrice": 633.6,
+      "tradePrice": 582.91,
+      "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
-    "shortDescription": "Heavy-duty structural FRP plywood core door panel (2400x1200x20mm, 2.88m²). Extreme point-impact and hinge screw retention strength.",
+    "shortDescription": "High-impact FRP plywood sandwich composite door panel engineered specifically for heavy commercial vehicle rear barn doors.",
     "slug": "frp-plywood-door-panel-2400x1200x20mm-atp-bp-06",
     "specifications": [
       {
@@ -1264,7 +1264,7 @@
     "category": "6ac7c69602c3aa6ca9f0d8a4",
     "categorySlug": "accessories",
     "desc": "Extended 2800mm structural FRP plywood door panel engineered for heavy distribution trailers. Features continuous hardwood veneer core under high-pressure FRP lamination, preventing delamination and puncture under rough freight handling.",
-    "description": "Extended 2800mm structural FRP plywood door panel engineered for heavy distribution trailers. Features continuous hardwood veneer core under high-pressure FRP lamination, preventing delamination and puncture under rough freight handling.",
+    "description": "High-impact FRP plywood sandwich composite door panel engineered specifically for heavy commercial vehicle rear barn doors. Combines structural multi-ply hardwood timber core with seamless 1.5mm gelcoat FRP exterior skins, delivering maximum puncture resistance, thermal stability, and load-bearing strength. Designed to withstand heavy forklift loading shocks and harsh Australian road vibration without warping, cracking, or delaminating.\n\nKey Specifications:\n• Dimensions: 2800mm (L) x 1200mm (W) x 20mm (T)\n• Core: High-density structural commercial hardwood plywood\n• Skin: Seamless white gelcoat fibreglass reinforced plastic\n• Hardware Compatibility: Pre-sized for commercial cam locks, strap hinges, and EPDM perimeter seals\n• Dispatch: Available for collection or freight from Campbellfield VIC warehouse.",
     "fit": "Suits high-cube trailers and high-impact logistics fleet vehicles",
     "imageUrl": "/images/products/ATP-ACC-12.jpg",
     "images": [
@@ -1280,16 +1280,16 @@
     "name": "FRP Plywood Door Panel 2800x1200x20mm",
     "oemPartNumber": "VNFPP281220",
     "pricing": {
-      "mrp": null,
-      "sellingPrice": null,
-      "tradePrice": null,
-      "isPOA": true,
+      "mrp": 739.2,
+      "sellingPrice": 739.2,
+      "tradePrice": 680.06,
+      "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
-    "shortDescription": "Extended height structural FRP plywood core door panel (2800x1200x20mm, 3.36m²). Built for high-abuse commercial trailer barn doors.",
+    "shortDescription": "High-impact FRP plywood sandwich composite door panel engineered specifically for heavy commercial vehicle rear barn doors.",
     "slug": "frp-plywood-door-panel-2800x1200x20mm-atp-bp-07",
     "specifications": [
       {
@@ -1352,7 +1352,7 @@
     "category": "6ac7c69602c3aa6ca9f0d8a4",
     "categorySlug": "accessories",
     "desc": "Commercial 3200mm high structural FRP plywood composite panel. The rigid wood core prevents flex over the 3.2m height, ensuring positive seal contact with rubber gaskets and preventing water and dust ingress during long highway runs.",
-    "description": "Commercial 3200mm high structural FRP plywood composite panel. The rigid wood core prevents flex over the 3.2m height, ensuring positive seal contact with rubber gaskets and preventing water and dust ingress during long highway runs.",
+    "description": "High-impact FRP plywood sandwich composite door panel engineered specifically for heavy commercial vehicle rear barn doors. Combines structural multi-ply hardwood timber core with seamless 1.5mm gelcoat FRP exterior skins, delivering maximum puncture resistance, thermal stability, and load-bearing strength. Designed to withstand heavy forklift loading shocks and harsh Australian road vibration without warping, cracking, or delaminating.\n\nKey Specifications:\n• Dimensions: 3200mm (L) x 1200mm (W) x 20mm (T)\n• Core: High-density structural commercial hardwood plywood\n• Skin: Seamless white gelcoat fibreglass reinforced plastic\n• Hardware Compatibility: Pre-sized for commercial cam locks, strap hinges, and EPDM perimeter seals\n• Dispatch: Available for collection or freight from Campbellfield VIC warehouse.",
     "fit": "Suits linehaul semi-trailers, B-doubles, and road train pantechs",
     "imageUrl": "/images/products/ATP-ACC-13.jpg",
     "images": [
@@ -1368,16 +1368,16 @@
     "name": "FRP Plywood Door Panel 3200x1200x20mm",
     "oemPartNumber": "VNFPP321220",
     "pricing": {
-      "mrp": null,
-      "sellingPrice": null,
-      "tradePrice": null,
-      "isPOA": true,
+      "mrp": 844.8,
+      "sellingPrice": 844.8,
+      "tradePrice": 777.22,
+      "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
-    "shortDescription": "Maximum height heavy-duty FRP plywood door panel (3200x1200x20mm, 3.84m²). Ultimate impact and fastener holding for linehaul freight.",
+    "shortDescription": "High-impact FRP plywood sandwich composite door panel engineered specifically for heavy commercial vehicle rear barn doors.",
     "slug": "frp-plywood-door-panel-3200x1200x20mm-atp-bp-08",
     "specifications": [
       {
@@ -1616,7 +1616,7 @@
     "category": "6ac7c69602c3aa6ca9f0d8a4",
     "categorySlug": "accessories",
     "desc": "Full-size 4300 x 2300 x 20mm FRP honeycomb panel supplied with untrimmed industrial edges for custom bodybuilder fabrication, window/access hatch cutouts, and specialized vehicle fitouts. High-tensile woven roving skins withstand intense road vibration and dynamic body flexing.",
-    "description": "Full-size 4300 x 2300 x 20mm FRP honeycomb panel supplied with untrimmed industrial edges for custom bodybuilder fabrication, window/access hatch cutouts, and specialized vehicle fitouts. High-tensile woven roving skins withstand intense road vibration and dynamic body flexing.",
+    "description": "Heavy-duty commercial FRP honeycomb composite panel designed for dry freight truck and trailer side body wall applications. Manufactured with premium UV-stabilised, high-impact fibreglass reinforced plastic (FRP) skins bonded securely to a high-density polypropylene (PP) honeycomb core. Delivers an exceptional strength-to-weight ratio, structural rigidity, and corrosion resistance, significantly reducing tare weight while maximizing fleet payload capacity. Impervious to moisture, rot, and road chemicals, with an ultra-smooth high-gloss exterior surface ideal for fleet signage and livery application.\n\nKey Specifications:\n• Dimensions: 4300mm (L) x 2300mm (W) x 20mm (T)\n• Skin Material: UV-stabilised commercial grade gelcoat FRP\n• Core Construction: Impact-resistant polypropylene honeycomb\n• Application: Rigid truck bodies, dry freight trailers, curtain-sider bulkheads, and van conversions\n• Sourced and stocked ex Campbellfield VIC for fast dispatch Australia-wide.",
     "fit": "Suits custom truck body fabricators, camper conversions, and utility bodies",
     "imageUrl": "/images/products/ATP-ACC-16.jpg",
     "images": [
@@ -1632,16 +1632,16 @@
     "name": "FRP Honeycomb Side Panel 4300x2300x20mm (Industrial Raw Edge)",
     "oemPartNumber": "VNFHP432320-RAW",
     "pricing": {
-      "mrp": null,
-      "sellingPrice": null,
-      "tradePrice": null,
-      "isPOA": true,
+      "mrp": 2571.4,
+      "sellingPrice": 2571.4,
+      "tradePrice": 2365.69,
+      "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
     },
     "rating": 4.8,
     "reviewCount": 16,
-    "shortDescription": "Industrial raw-edge FRP polypropylene honeycomb panel (4300x2300x20mm, 9.89m²). Ready for custom workshop profiling, CNC machining, and edge capping.",
+    "shortDescription": "Heavy-duty commercial FRP honeycomb composite panel designed for dry freight truck and trailer side body wall applications.",
     "slug": "frp-honeycomb-side-panel-4300x2300x20mm-industrial-raw-edge--atp-bp-11",
     "specifications": [
       {
@@ -2764,8 +2764,8 @@
     "brandName": "Ganland",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Complete 27mm heavy-duty commercial truck & trailer cam door lock kit with operating lever handle, keepers, and pipe brackets. 200L / 200R sets.",
-    "description": "Complete commercial vehicle rear door lock hardware system engineered for 27mm (1-1/16\") OD locking pipe. Package includes heavy forged steel top and bottom locking cams, matched heavy-duty keeper brackets, reinforced pipe guide brackets with nylon anti-vibration bushings, and an ergonomic operating lever handle with integrated padlock hole and safety latch catch.",
+    "shortDescription": "Heavy-duty commercial door cam locking gear kit engineered to suit 27mm outer diameter pipe for truck dry freight bodies and shipping containers.",
+    "description": "Heavy-duty commercial door cam locking gear kit engineered to suit 27mm outer diameter pipe for truck dry freight bodies and shipping containers. Forged alloy steel top and bottom locking cams with matched cast keeper brackets provide immense compression, drawing door seals weather-tight and preventing racking during transit. Complete assembly includes forged cams, weld/bolt keepers, anti-friction shaft mounting brackets with nylon bushes, and ergonomic padlockable handle with safety travel latch. Zinc-plated for maximum resistance against road salt, grit, and harsh Australian atmospheric corrosion.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -2778,9 +2778,9 @@
       }
     ],
     "pricing": {
-      "mrp": 102,
-      "sellingPrice": 102,
-      "tradePrice": 95,
+      "mrp": 71.0,
+      "sellingPrice": 71.0,
+      "tradePrice": 65.32,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -3190,8 +3190,8 @@
     "brandName": "Ganland",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Steel hinges for trailer doors and body panels.",
-    "description": "Industrial heavy-duty forged carbon steel rear barn door hinge with weld-on mounting lug, engineered for Australian commercial truck bodies and semi-trailers. Equipped with a self-lubricating brass bushing and heavy-duty stainless pivot pin for long-term corrosion resistance and smooth operation.",
+    "shortDescription": "Heavy-duty commercial truck rear door strap hinge (heavy-duty forged structural steel) featuring a heavy weld-on lug.",
+    "description": "Heavy-duty commercial truck rear door strap hinge (heavy-duty forged structural steel) featuring a heavy weld-on lug. Engineered for high-frequency transport use, severe cargo dynamic loads, and full 270-degree door swing against trailer outer side walls. Fitted with a precision-turned pivot pin and self-lubricating wear washers to ensure smooth operation without sag or binding under heavy road vibration.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -3204,9 +3204,9 @@
       }
     ],
     "pricing": {
-      "mrp": 24,
-      "sellingPrice": 24,
-      "tradePrice": 22.5,
+      "mrp": 29.0,
+      "sellingPrice": 29.0,
+      "tradePrice": 26.68,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -3316,8 +3316,8 @@
     "brandName": "Ganland",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Steel hinges for trailer doors and body panels.",
-    "description": "Heavy-duty forged carbon steel rear barn door strap hinge with 3-hole bolt-on mounting lug, engineered for Australian commercial truck and refrigerated trailer bodies. Features an integrated grease nipple (zerk fitting) for on-vehicle lubrication and bright zinc plating for corrosion protection.",
+    "shortDescription": "Heavy-duty commercial truck rear door strap hinge (heavy-duty forged structural steel) featuring a bolt-on mounting lug.",
+    "description": "Heavy-duty commercial truck rear door strap hinge (heavy-duty forged structural steel) featuring a bolt-on mounting lug. Engineered for high-frequency transport use, severe cargo dynamic loads, and full 270-degree door swing against trailer outer side walls. Fitted with a precision-turned pivot pin and self-lubricating wear washers to ensure smooth operation without sag or binding under heavy road vibration.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -3330,9 +3330,9 @@
       }
     ],
     "pricing": {
-      "mrp": 25,
-      "sellingPrice": 25,
-      "tradePrice": 23.4,
+      "mrp": 29.0,
+      "sellingPrice": 29.0,
+      "tradePrice": 26.68,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -4056,8 +4056,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Heavy Duty Slide-Out Step Ladder 2-Step Zinc Plated 640x390mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Heavy Duty Slide-Out Step Ladder 2-Step Zinc Plated 640x390mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty under-chassis slide-out access ladder (2-step (640mm x 390mm)) for commercial trucks, prime movers, and semi-trailers.",
+    "description": "Heavy-duty under-chassis slide-out access ladder (2-step (640mm x 390mm)) for commercial trucks, prime movers, and semi-trailers. Fabricated from heavy-gauge high-strength steel with full hot-dip zinc plating for long-term corrosion resistance. Smooth roller-slide action with automatic lock-in transport retention and gravity drop deployment. Punched traction rungs provide secure non-slip footing complying with Australian commercial vehicle safety standards.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -4070,9 +4070,9 @@
       }
     ],
     "pricing": {
-      "mrp": 147,
-      "sellingPrice": 147,
-      "tradePrice": 137,
+      "mrp": 156.0,
+      "sellingPrice": 156.0,
+      "tradePrice": 143.52,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -4199,8 +4199,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Tipper Tail Gate Lock Bolt 25mm Dia x 113mm Length, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Tipper Tail Gate Lock Bolt 25mm Dia x 113mm Length, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty spring-loaded tailgate lock bolt assembly designed for commercial tippers, dump bodies, and drop-side truck bodies.",
+    "description": "Heavy-duty spring-loaded tailgate lock bolt assembly designed for commercial tippers, dump bodies, and drop-side truck bodies. Features a 25mm diameter solid high-tensile steel locking shoot bolt with 113mm total bolt travel. Equipped with an internal heavy-gauge compression spring and ergonomic operating handle with positive open-detent locking position. Weld-on steel mounting sleeve provides immense shear strength under severe dynamic payload pressures.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -4213,9 +4213,9 @@
       }
     ],
     "pricing": {
-      "mrp": 59,
-      "sellingPrice": 59,
-      "tradePrice": 55,
+      "mrp": 80.0,
+      "sellingPrice": 80.0,
+      "tradePrice": 73.6,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -4347,8 +4347,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Aluminium Tipper Tailgate Grain Lock 25mm Dia x 88mm Length, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Aluminium Tipper Tailgate Grain Lock 25mm Dia x 88mm Length, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Aluminium tipper tailgate grain lock assembly (25mm pin diameter x 88mm effective length) designed for agricultural grain tippers and bulk haulage trailers.",
+    "description": "Aluminium tipper tailgate grain lock assembly (25mm pin diameter x 88mm effective length) designed for agricultural grain tippers and bulk haulage trailers. Engineered with a lightweight corrosion-proof cast alloy body and high-tensile locking pivot pin. Ensures an airtight, grain-proof tailgate seal to eliminate spillage during transit while allowing rapid single-lever manual release at grain hoppers.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -4361,9 +4361,9 @@
       }
     ],
     "pricing": {
-      "mrp": 69,
-      "sellingPrice": 69,
-      "tradePrice": 64,
+      "mrp": 76.0,
+      "sellingPrice": 76.0,
+      "tradePrice": 69.92,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -4786,8 +4786,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "GL-25300 3-Way Tailgate Hinge Side Swing Gate Tipper Kit 30mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "GL-25300 3-Way Tailgate Hinge Side Swing Gate Tipper Kit 30mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Premium GL-25300 heavy-duty 3-way tailgate hinge kit engineered for commercial tipper trucks, side-tippers, and agricultural dump bodies.",
+    "description": "Premium GL-25300 heavy-duty 3-way tailgate hinge kit engineered for commercial tipper trucks, side-tippers, and agricultural dump bodies. Provides full dual-function operation: standard bottom-dump tipping discharge and complete side-swing tailgate opening for bulk pallet and machinery loading. Precision-forged from heavy structural steel with high-capacity 30mm pivot pins, quick-release locking lynch pins, heavy-duty weldable cast hinge sockets, and replaceable bronze wear bushings.\n\nKit Contents & Specifications:\n• Pivot Pin Diameter: 30mm heavy-duty turned alloy steel\n• Operation: 3-way combination (bottom hinge tipper + full horizontal side-swing)\n• Mount Type: Heavy-gauge weld-on chassis and tailgate brackets\n• Features: Quick-release drop pin assembly, grease fittings, and anti-vibration retainers\n• Compatibility: Suitable for rock bodies, gravel tippers, grain trailers, and earthmoving dumpers.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -4800,9 +4800,9 @@
       }
     ],
     "pricing": {
-      "mrp": 126,
-      "sellingPrice": 126,
-      "tradePrice": 117,
+      "mrp": 1360.0,
+      "sellingPrice": 1360.0,
+      "tradePrice": 1251.2,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -4929,8 +4929,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "GL-25300 3-Way Tailgate Hinge Side Swing Gate Tipper Kit 40mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "GL-25300 3-Way Tailgate Hinge Side Swing Gate Tipper Kit 40mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Premium GL-25300 heavy-duty 3-way tailgate hinge kit engineered for commercial tipper trucks, side-tippers, and agricultural dump bodies.",
+    "description": "Premium GL-25300 heavy-duty 3-way tailgate hinge kit engineered for commercial tipper trucks, side-tippers, and agricultural dump bodies. Provides full dual-function operation: standard bottom-dump tipping discharge and complete side-swing tailgate opening for bulk pallet and machinery loading. Precision-forged from heavy structural steel with high-capacity 40mm pivot pins, quick-release locking lynch pins, heavy-duty weldable cast hinge sockets, and replaceable bronze wear bushings.\n\nKit Contents & Specifications:\n• Pivot Pin Diameter: 40mm heavy-duty turned alloy steel\n• Operation: 3-way combination (bottom hinge tipper + full horizontal side-swing)\n• Mount Type: Heavy-gauge weld-on chassis and tailgate brackets\n• Features: Quick-release drop pin assembly, grease fittings, and anti-vibration retainers\n• Compatibility: Suitable for rock bodies, gravel tippers, grain trailers, and earthmoving dumpers.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -4943,9 +4943,9 @@
       }
     ],
     "pricing": {
-      "mrp": 135,
-      "sellingPrice": 135,
-      "tradePrice": 125,
+      "mrp": 1760.0,
+      "sellingPrice": 1760.0,
+      "tradePrice": 1619.2,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -5072,8 +5072,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "GL-25300 3-Way Tailgate Hinge Side Swing Gate Tipper Kit 50mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "GL-25300 3-Way Tailgate Hinge Side Swing Gate Tipper Kit 50mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Premium GL-25300 heavy-duty 3-way tailgate hinge kit engineered for commercial tipper trucks, side-tippers, and agricultural dump bodies.",
+    "description": "Premium GL-25300 heavy-duty 3-way tailgate hinge kit engineered for commercial tipper trucks, side-tippers, and agricultural dump bodies. Provides full dual-function operation: standard bottom-dump tipping discharge and complete side-swing tailgate opening for bulk pallet and machinery loading. Precision-forged from heavy structural steel with high-capacity 50mm pivot pins, quick-release locking lynch pins, heavy-duty weldable cast hinge sockets, and replaceable bronze wear bushings.\n\nKit Contents & Specifications:\n• Pivot Pin Diameter: 50mm heavy-duty turned alloy steel\n• Operation: 3-way combination (bottom hinge tipper + full horizontal side-swing)\n• Mount Type: Heavy-gauge weld-on chassis and tailgate brackets\n• Features: Quick-release drop pin assembly, grease fittings, and anti-vibration retainers\n• Compatibility: Suitable for rock bodies, gravel tippers, grain trailers, and earthmoving dumpers.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -5086,9 +5086,9 @@
       }
     ],
     "pricing": {
-      "mrp": 144,
-      "sellingPrice": 144,
-      "tradePrice": 133,
+      "mrp": 1960.0,
+      "sellingPrice": 1960.0,
+      "tradePrice": 1803.2,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -5215,8 +5215,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Dangerous Goods 15-Flip Multi Hazard Sign 350x350mm Aluminium, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Dangerous Goods 15-Flip Multi Hazard Sign 350x350mm Aluminium, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty 15-flip multi-hazard Dangerous Goods Placard System (350mm x 350mm) manufactured from high-grade 1.2mm marine aluminium.",
+    "description": "Heavy-duty 15-flip multi-hazard Dangerous Goods Placard System (350mm x 350mm) manufactured from high-grade 1.2mm marine aluminium. Provides rapid, tool-free selection of all 15 statutory Australian Dangerous Goods transport hazard classes (including Flammable Liquid, Toxic, Explosive, Corrosive, Organic Peroxide, Flammable Gas, Non-Flammable Gas, and Dangerous When Wet). Stainless steel hinge wires and positive spring detention clips keep placards securely in place at highway speeds, resisting road vibration, washdown spray, and UV fading.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -5229,9 +5229,9 @@
       }
     ],
     "pricing": {
-      "mrp": 125,
-      "sellingPrice": 125,
-      "tradePrice": 116,
+      "mrp": 193.0,
+      "sellingPrice": 193.0,
+      "tradePrice": 177.56,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -5363,8 +5363,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Dangerous Goods 15-Flip Multi Hazard Sign 350x350mm ABS, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Dangerous Goods 15-Flip Multi Hazard Sign 350x350mm ABS, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty 15-flip multi-hazard Dangerous Goods Placard System (350mm x 350mm) manufactured from high-impact UV-stabilised ABS polymer.",
+    "description": "Heavy-duty 15-flip multi-hazard Dangerous Goods Placard System (350mm x 350mm) manufactured from high-impact UV-stabilised ABS polymer. Provides rapid, tool-free selection of all 15 statutory Australian Dangerous Goods transport hazard classes (including Flammable Liquid, Toxic, Explosive, Corrosive, Organic Peroxide, Flammable Gas, Non-Flammable Gas, and Dangerous When Wet). Stainless steel hinge wires and positive spring detention clips keep placards securely in place at highway speeds, resisting road vibration, washdown spray, and UV fading.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -5377,9 +5377,9 @@
       }
     ],
     "pricing": {
-      "mrp": 99,
-      "sellingPrice": 99,
-      "tradePrice": 92,
+      "mrp": 256.0,
+      "sellingPrice": 256.0,
+      "tradePrice": 235.52,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -5645,8 +5645,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Reflective Rear Marker Plate Sticker 300x400mm Left Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Reflective Rear Marker Plate Sticker 300x400mm Left Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Rear Marker Plate Sticker 300x400mm Left Hand) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Rear Marker Plate Sticker 300x400mm Left Hand) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: premium Class 1 / Class 400 diamond grade self-adhesive vinyl\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -5659,9 +5659,9 @@
       }
     ],
     "pricing": {
-      "mrp": 18,
-      "sellingPrice": 18,
-      "tradePrice": 17,
+      "mrp": 37.6,
+      "sellingPrice": 37.6,
+      "tradePrice": 34.59,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -5788,8 +5788,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Reflective Rear Marker Plate Sticker 300x400mm Right Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Reflective Rear Marker Plate Sticker 300x400mm Right Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Rear Marker Plate Sticker 300x400mm Right Hand) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Rear Marker Plate Sticker 300x400mm Right Hand) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: premium Class 1 / Class 400 diamond grade self-adhesive vinyl\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -5802,9 +5802,9 @@
       }
     ],
     "pricing": {
-      "mrp": 18,
-      "sellingPrice": 18,
-      "tradePrice": 17,
+      "mrp": 37.6,
+      "sellingPrice": 37.6,
+      "tradePrice": 34.59,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -5931,8 +5931,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Reflective Rear Marker Plate Sticker 300x300mm Left Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Reflective Rear Marker Plate Sticker 300x300mm Left Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Rear Marker Plate Sticker 300x300mm Left Hand) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Rear Marker Plate Sticker 300x300mm Left Hand) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: premium Class 1 / Class 400 diamond grade self-adhesive vinyl\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -5945,9 +5945,9 @@
       }
     ],
     "pricing": {
-      "mrp": 16,
-      "sellingPrice": 16,
-      "tradePrice": 15,
+      "mrp": 25.8,
+      "sellingPrice": 25.8,
+      "tradePrice": 23.74,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -6074,8 +6074,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Reflective Rear Marker Plate Sticker 300x300mm Right Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Reflective Rear Marker Plate Sticker 300x300mm Right Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Rear Marker Plate Sticker 300x300mm Right Hand) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Rear Marker Plate Sticker 300x300mm Right Hand) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: premium Class 1 / Class 400 diamond grade self-adhesive vinyl\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -6088,9 +6088,9 @@
       }
     ],
     "pricing": {
-      "mrp": 16,
-      "sellingPrice": 16,
-      "tradePrice": 15,
+      "mrp": 25.8,
+      "sellingPrice": 25.8,
+      "tradePrice": 23.74,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -6217,8 +6217,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Reflective Zebra Strip Sticker 400x100mm (41A Left), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Reflective Zebra Strip Sticker 400x100mm (41A Left), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Zebra Strip Sticker 400x100mm (41A Left)) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Zebra Strip Sticker 400x100mm (41A Left)) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: premium Class 1 / Class 400 diamond grade self-adhesive vinyl\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -6231,9 +6231,9 @@
       }
     ],
     "pricing": {
-      "mrp": 13,
-      "sellingPrice": 13,
-      "tradePrice": 13,
+      "mrp": 13.0,
+      "sellingPrice": 13.0,
+      "tradePrice": 11.96,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -6360,8 +6360,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Reflective Zebra Strip Sticker 400x100mm (41B Right), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Reflective Zebra Strip Sticker 400x100mm (41B Right), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Zebra Strip Sticker 400x100mm (41B Right)) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Zebra Strip Sticker 400x100mm (41B Right)) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: premium Class 1 / Class 400 diamond grade self-adhesive vinyl\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -6374,9 +6374,9 @@
       }
     ],
     "pricing": {
-      "mrp": 13,
-      "sellingPrice": 13,
-      "tradePrice": 13,
+      "mrp": 13.0,
+      "sellingPrice": 13.0,
+      "tradePrice": 11.96,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -6503,8 +6503,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Vehicle Zebra Rear Marker Sticker 600x150mm (Left Side), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Vehicle Zebra Rear Marker Sticker 600x150mm (Left Side), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Vehicle Zebra Rear Marker Sticker 600x150mm (Left Side)) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Vehicle Zebra Rear Marker Sticker 600x150mm (Left Side)) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: premium Class 1 / Class 400 diamond grade self-adhesive vinyl\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -6517,9 +6517,9 @@
       }
     ],
     "pricing": {
-      "mrp": 22,
-      "sellingPrice": 22,
-      "tradePrice": 20,
+      "mrp": 36.0,
+      "sellingPrice": 36.0,
+      "tradePrice": 33.12,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -6646,8 +6646,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Vehicle Zebra Rear Marker Sticker 600x150mm (Right Side), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Vehicle Zebra Rear Marker Sticker 600x150mm (Right Side), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Vehicle Zebra Rear Marker Sticker 600x150mm (Right Side)) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Vehicle Zebra Rear Marker Sticker 600x150mm (Right Side)) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: premium Class 1 / Class 400 diamond grade self-adhesive vinyl\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -6660,9 +6660,9 @@
       }
     ],
     "pricing": {
-      "mrp": 22,
-      "sellingPrice": 22,
-      "tradePrice": 20,
+      "mrp": 36.0,
+      "sellingPrice": 36.0,
+      "tradePrice": 33.12,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -6789,8 +6789,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 'Do Not Overtake Turning Vehicle' Sticker 300x100mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 'Do Not Overtake Turning Vehicle' Sticker 300x100mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 'Do Not Overtake Turning Vehicle' Sticker 300x100mm) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 'Do Not Overtake Turning Vehicle' Sticker 300x100mm) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: premium Class 1 / Class 400 diamond grade self-adhesive vinyl\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -6803,9 +6803,9 @@
       }
     ],
     "pricing": {
-      "mrp": 15,
-      "sellingPrice": 15,
-      "tradePrice": 14,
+      "mrp": 13.8,
+      "sellingPrice": 13.8,
+      "tradePrice": 12.7,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -6932,8 +6932,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Aluminium Rear Marker Sign 'ROAD TRAIN' 510x250mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Aluminium Rear Marker Sign 'ROAD TRAIN' 510x250mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Aluminium Rear Marker Sign 'ROAD TRAIN' 510x250mm) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Aluminium Rear Marker Sign 'ROAD TRAIN' 510x250mm) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: premium Class 1 / Class 400 diamond grade self-adhesive vinyl\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -6946,9 +6946,9 @@
       }
     ],
     "pricing": {
-      "mrp": 48,
-      "sellingPrice": 48,
-      "tradePrice": 44,
+      "mrp": 96.0,
+      "sellingPrice": 96.0,
+      "tradePrice": 88.32,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -7209,8 +7209,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Aluminium Rear Marker Sign 'OVERSIZE' 510x250mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Aluminium Rear Marker Sign 'OVERSIZE' 510x250mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Aluminium Rear Marker Sign 'OVERSIZE' 510x250mm) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Aluminium Rear Marker Sign 'OVERSIZE' 510x250mm) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: premium Class 1 / Class 400 diamond grade self-adhesive vinyl\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -7223,9 +7223,9 @@
       }
     ],
     "pricing": {
-      "mrp": 48,
-      "sellingPrice": 48,
-      "tradePrice": 44,
+      "mrp": 96.0,
+      "sellingPrice": 96.0,
+      "tradePrice": 88.32,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -7352,8 +7352,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Aluminium Rear Marker Sign 'LONG VEHICLE' 600x450mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Aluminium Rear Marker Sign 'LONG VEHICLE' 600x450mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Aluminium Rear Marker Sign 'LONG VEHICLE' 600x450mm) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Aluminium Rear Marker Sign 'LONG VEHICLE' 600x450mm) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: premium Class 1 / Class 400 diamond grade self-adhesive vinyl\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -7366,9 +7366,9 @@
       }
     ],
     "pricing": {
-      "mrp": 56,
-      "sellingPrice": 56,
-      "tradePrice": 52,
+      "mrp": 196.0,
+      "sellingPrice": 196.0,
+      "tradePrice": 180.32,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -7629,8 +7629,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Aluminium Rear Marking Plate 300x400mm Left Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Aluminium Rear Marking Plate 300x400mm Left Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Aluminium Rear Marking Plate 300x400mm Left Hand) produced on 1.6mm marine-grade structural aluminium plate.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Aluminium Rear Marking Plate 300x400mm Left Hand) produced on 1.6mm marine-grade structural aluminium plate. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: 1.6mm marine-grade structural aluminium plate\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -7643,9 +7643,9 @@
       }
     ],
     "pricing": {
-      "mrp": 34,
-      "sellingPrice": 34,
-      "tradePrice": 32,
+      "mrp": 51.6,
+      "sellingPrice": 51.6,
+      "tradePrice": 47.47,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -7772,8 +7772,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Aluminium Rear Marker Plate 300x300mm Right Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Aluminium Rear Marker Plate 300x300mm Right Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Aluminium Rear Marker Plate 300x300mm Right Hand) produced on 1.6mm marine-grade structural aluminium plate.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Aluminium Rear Marker Plate 300x300mm Right Hand) produced on 1.6mm marine-grade structural aluminium plate. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: 1.6mm marine-grade structural aluminium plate\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -7786,9 +7786,9 @@
       }
     ],
     "pricing": {
-      "mrp": 31,
-      "sellingPrice": 31,
-      "tradePrice": 29,
+      "mrp": 37.6,
+      "sellingPrice": 37.6,
+      "tradePrice": 34.59,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -7915,8 +7915,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Aluminium 'Do Not Overtake Turning Vehicle' Plate 300x100mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Aluminium 'Do Not Overtake Turning Vehicle' Plate 300x100mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Aluminium 'Do Not Overtake Turning Vehicle' Plate 300x100mm) produced on 1.6mm marine-grade structural aluminium plate.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Aluminium 'Do Not Overtake Turning Vehicle' Plate 300x100mm) produced on 1.6mm marine-grade structural aluminium plate. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: 1.6mm marine-grade structural aluminium plate\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -7929,9 +7929,9 @@
       }
     ],
     "pricing": {
-      "mrp": 29,
-      "sellingPrice": 29,
-      "tradePrice": 27,
+      "mrp": 25.6,
+      "sellingPrice": 25.6,
+      "tradePrice": 23.55,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -8058,8 +8058,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 41A Zebra Rear Marker Aluminium Plate 400x100mm Left, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 41A Zebra Rear Marker Aluminium Plate 400x100mm Left, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 41A Zebra Rear Marker Aluminium Plate 400x100mm (Left Hand)) produced on 1.6mm marine-grade structural aluminium plate.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 41A Zebra Rear Marker Aluminium Plate 400x100mm (Left Hand)) produced on 1.6mm marine-grade structural aluminium plate. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: 1.6mm marine-grade structural aluminium plate\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -8072,9 +8072,9 @@
       }
     ],
     "pricing": {
-      "mrp": 28,
-      "sellingPrice": 28,
-      "tradePrice": 25.7,
+      "mrp": 25.0,
+      "sellingPrice": 25.0,
+      "tradePrice": 23.0,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -8199,8 +8199,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 41B Zebra Rear Marker Aluminium Plate 400x100mm Right, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 41B Zebra Rear Marker Aluminium Plate 400x100mm Right, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 41B Zebra Rear Marker Aluminium Plate 400x100mm (Right Hand)) produced on 1.6mm marine-grade structural aluminium plate.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 41B Zebra Rear Marker Aluminium Plate 400x100mm (Right Hand)) produced on 1.6mm marine-grade structural aluminium plate. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: 1.6mm marine-grade structural aluminium plate\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -8213,9 +8213,9 @@
       }
     ],
     "pricing": {
-      "mrp": 28,
-      "sellingPrice": 28,
-      "tradePrice": 25.7,
+      "mrp": 25.0,
+      "sellingPrice": 25.0,
+      "tradePrice": 23.0,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -8340,8 +8340,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Reflective Sign with Aluminium Plate 615A 600x150mm (Left), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Reflective Sign with Aluminium Plate 615A 600x150mm (Left), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Sign with Aluminium Plate 615A 600x150mm (Left)) produced on 1.6mm marine-grade structural aluminium plate.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Sign with Aluminium Plate 615A 600x150mm (Left)) produced on 1.6mm marine-grade structural aluminium plate. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: 1.6mm marine-grade structural aluminium plate\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -8354,9 +8354,9 @@
       }
     ],
     "pricing": {
-      "mrp": 39,
-      "sellingPrice": 39,
-      "tradePrice": 36,
+      "mrp": 56.0,
+      "sellingPrice": 56.0,
+      "tradePrice": 51.52,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -8483,8 +8483,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "3M Class 1 Reflective Sign with Aluminium Plate 615B 600x150mm (Right), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "3M Class 1 Reflective Sign with Aluminium Plate 615B 600x150mm (Right), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Sign with Aluminium Plate 615B 600x150mm (Right)) produced on 1.6mm marine-grade structural aluminium plate.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (3M Class 1 Reflective Sign with Aluminium Plate 615B 600x150mm (Right)) produced on 1.6mm marine-grade structural aluminium plate. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: 1.6mm marine-grade structural aluminium plate\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -8497,9 +8497,9 @@
       }
     ],
     "pricing": {
-      "mrp": 39,
-      "sellingPrice": 39,
-      "tradePrice": 36,
+      "mrp": 56.0,
+      "sellingPrice": 56.0,
+      "tradePrice": 51.52,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -8626,8 +8626,8 @@
     "brandName": "Ganland",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Telescoping steel cargo shoring bar (2270–2590mm) fitted with heavy-duty ratcheting lever handle and non-marking suction rubber feet.",
-    "description": "Heavy-duty adjustable steel cargo shoring bar featuring an ergonomic quick-release lever handle and spring-loaded plunger end fittings. Designed for secure load restraint in Australian commercial transport, curtainsiders, and refrigerated vans equipped with standard series track.",
+    "shortDescription": "Heavy-duty adjustable steel cargo shoring bar (F-type end fittings) for commercial dry freight trailers and shipping containers.",
+    "description": "Heavy-duty adjustable steel cargo shoring bar (F-type end fittings) for commercial dry freight trailers and shipping containers. Features a high-strength telescoping square steel tube with quick-release spring locking mechanism and ergonomic release handle. Provides positive lateral and longitudinal cargo blocking compliant with the NTC Load Restraint Guide.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -8640,9 +8640,9 @@
       }
     ],
     "pricing": {
-      "mrp": 125,
-      "sellingPrice": 125,
-      "tradePrice": 116.1,
+      "mrp": 136.0,
+      "sellingPrice": 136.0,
+      "tradePrice": 125.12,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -10085,8 +10085,8 @@
     "brandName": "Ganland",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Stainless steel retainer for doors and panels.",
-    "description": "Marine-grade 304 stainless steel commercial door hold-back catch designed for refrigerated transport, food service vehicles, and livestock trailers. Resistant to road salts, washdown chemicals, and corrosion.",
+    "shortDescription": "Heavy-duty 304 stainless steel door retainer catch assembly (40mm x 64mm base) for commercial trucks and refrigerated bodies.",
+    "description": "Heavy-duty 304 stainless steel door retainer catch assembly (40mm x 64mm base) for commercial trucks and refrigerated bodies. Spring-loaded internal ball/socket plunger mechanism positively locks open doors flat against side coaming, preventing door slam in high winds during depot loading.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -10099,9 +10099,9 @@
       }
     ],
     "pricing": {
-      "mrp": 25,
-      "sellingPrice": 25,
-      "tradePrice": 23.4,
+      "mrp": 15.0,
+      "sellingPrice": 15.0,
+      "tradePrice": 13.8,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -10562,8 +10562,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "PVC Door Seal 20mm x 5M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "PVC Door Seal 20mm x 5M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial truck and trailer door perimeter seal profile (20mm) extruded from heavy-duty flexible UV-stabilised virgin PVC.",
+    "description": "Commercial truck and trailer door perimeter seal profile (20mm) extruded from heavy-duty flexible UV-stabilised virgin PVC. Engineered with a resilient sealing lip and rigid retaining channel to create an airtight, dustproof, and watertight perimeter barrier on commercial dry freight vans and refrigerated truck bodies. Remains flexible and tear-resistant across extreme Australian temperature ranges (-30°C to +75°C) without hardening, cracking, or taking a compression set.\n\nKey Specifications:\n• Width/Profile: 20mm\n• Material: High-grade commercial grade flexible UV-stabilised virgin PVC\n• Mounting: Retaining strip slot or rivet-on channel\n• Application: Rear swing barn doors, side access doors, toolbox doors, and trailer bodies.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -10576,9 +10576,9 @@
       }
     ],
     "pricing": {
-      "mrp": 46,
-      "sellingPrice": 46,
-      "tradePrice": 42,
+      "mrp": 56.0,
+      "sellingPrice": 56.0,
+      "tradePrice": 51.52,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -10705,8 +10705,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "PVC Door Seal 25mm x 5M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "PVC Door Seal 25mm x 5M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial truck and trailer door perimeter seal profile (25mm) extruded from heavy-duty flexible UV-stabilised virgin PVC.",
+    "description": "Commercial truck and trailer door perimeter seal profile (25mm) extruded from heavy-duty flexible UV-stabilised virgin PVC. Engineered with a resilient sealing lip and rigid retaining channel to create an airtight, dustproof, and watertight perimeter barrier on commercial dry freight vans and refrigerated truck bodies. Remains flexible and tear-resistant across extreme Australian temperature ranges (-30°C to +75°C) without hardening, cracking, or taking a compression set.\n\nKey Specifications:\n• Width/Profile: 25mm\n• Material: High-grade commercial grade flexible UV-stabilised virgin PVC\n• Mounting: Retaining strip slot or rivet-on channel\n• Application: Rear swing barn doors, side access doors, toolbox doors, and trailer bodies.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -10719,9 +10719,9 @@
       }
     ],
     "pricing": {
-      "mrp": 48,
-      "sellingPrice": 48,
-      "tradePrice": 44,
+      "mrp": 64.0,
+      "sellingPrice": 64.0,
+      "tradePrice": 58.88,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -10848,8 +10848,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "PVC Door Seal 30mm x 4M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "PVC Door Seal 30mm x 4M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial truck and trailer door perimeter seal profile (30mm) extruded from heavy-duty flexible UV-stabilised virgin PVC.",
+    "description": "Commercial truck and trailer door perimeter seal profile (30mm) extruded from heavy-duty flexible UV-stabilised virgin PVC. Engineered with a resilient sealing lip and rigid retaining channel to create an airtight, dustproof, and watertight perimeter barrier on commercial dry freight vans and refrigerated truck bodies. Remains flexible and tear-resistant across extreme Australian temperature ranges (-30°C to +75°C) without hardening, cracking, or taking a compression set.\n\nKey Specifications:\n• Width/Profile: 30mm\n• Material: High-grade commercial grade flexible UV-stabilised virgin PVC\n• Mounting: Retaining strip slot or rivet-on channel\n• Application: Rear swing barn doors, side access doors, toolbox doors, and trailer bodies.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -10862,9 +10862,9 @@
       }
     ],
     "pricing": {
-      "mrp": 46,
-      "sellingPrice": 46,
-      "tradePrice": 42,
+      "mrp": 71.6,
+      "sellingPrice": 71.6,
+      "tradePrice": 65.87,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -10991,8 +10991,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "PVC Door Seal 55mm x 4.2M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "PVC Door Seal 55mm x 4.2M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial truck and trailer door perimeter seal profile (55mm) extruded from heavy-duty flexible UV-stabilised virgin PVC.",
+    "description": "Commercial truck and trailer door perimeter seal profile (55mm) extruded from heavy-duty flexible UV-stabilised virgin PVC. Engineered with a resilient sealing lip and rigid retaining channel to create an airtight, dustproof, and watertight perimeter barrier on commercial dry freight vans and refrigerated truck bodies. Remains flexible and tear-resistant across extreme Australian temperature ranges (-30°C to +75°C) without hardening, cracking, or taking a compression set.\n\nKey Specifications:\n• Width/Profile: 55mm\n• Material: High-grade commercial grade flexible UV-stabilised virgin PVC\n• Mounting: Retaining strip slot or rivet-on channel\n• Application: Rear swing barn doors, side access doors, toolbox doors, and trailer bodies.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -11005,9 +11005,9 @@
       }
     ],
     "pricing": {
-      "mrp": 60,
-      "sellingPrice": 60,
-      "tradePrice": 56,
+      "mrp": 119.6,
+      "sellingPrice": 119.6,
+      "tradePrice": 110.03,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -11134,8 +11134,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "PVC Door Seal 85mm x 5M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "PVC Door Seal 85mm x 5M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial truck and trailer door perimeter seal profile (85mm) extruded from heavy-duty flexible UV-stabilised virgin PVC.",
+    "description": "Commercial truck and trailer door perimeter seal profile (85mm) extruded from heavy-duty flexible UV-stabilised virgin PVC. Engineered with a resilient sealing lip and rigid retaining channel to create an airtight, dustproof, and watertight perimeter barrier on commercial dry freight vans and refrigerated truck bodies. Remains flexible and tear-resistant across extreme Australian temperature ranges (-30°C to +75°C) without hardening, cracking, or taking a compression set.\n\nKey Specifications:\n• Width/Profile: 85mm\n• Material: High-grade commercial grade flexible UV-stabilised virgin PVC\n• Mounting: Retaining strip slot or rivet-on channel\n• Application: Rear swing barn doors, side access doors, toolbox doors, and trailer bodies.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -11148,9 +11148,9 @@
       }
     ],
     "pricing": {
-      "mrp": 70,
-      "sellingPrice": 70,
-      "tradePrice": 65,
+      "mrp": 136.0,
+      "sellingPrice": 136.0,
+      "tradePrice": 125.12,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -11277,8 +11277,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "PVC Door Seal J-Profile 25x30mm x 5M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "PVC Door Seal J-Profile 25x30mm x 5M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial truck and trailer door perimeter seal profile (25x30mm) extruded from heavy-duty flexible UV-stabilised virgin PVC.",
+    "description": "Commercial truck and trailer door perimeter seal profile (25x30mm) extruded from heavy-duty flexible UV-stabilised virgin PVC. Engineered with a resilient sealing lip and rigid retaining channel to create an airtight, dustproof, and watertight perimeter barrier on commercial dry freight vans and refrigerated truck bodies. Remains flexible and tear-resistant across extreme Australian temperature ranges (-30°C to +75°C) without hardening, cracking, or taking a compression set.\n\nKey Specifications:\n• Width/Profile: 25x30mm\n• Material: High-grade commercial grade flexible UV-stabilised virgin PVC\n• Mounting: Retaining strip slot or rivet-on channel\n• Application: Rear swing barn doors, side access doors, toolbox doors, and trailer bodies.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -11291,9 +11291,9 @@
       }
     ],
     "pricing": {
-      "mrp": 50,
-      "sellingPrice": 50,
-      "tradePrice": 47,
+      "mrp": 49.0,
+      "sellingPrice": 49.0,
+      "tradePrice": 45.08,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -11420,8 +11420,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Rubber Door Seal 30x55mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Rubber Door Seal 30x55mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial truck and trailer door perimeter seal profile (30x55mm) extruded from heavy-duty co-extruded EPDM rubber.",
+    "description": "Commercial truck and trailer door perimeter seal profile (30x55mm) extruded from heavy-duty co-extruded EPDM rubber. Engineered with a resilient sealing lip and rigid retaining channel to create an airtight, dustproof, and watertight perimeter barrier on commercial dry freight vans and refrigerated truck bodies. Remains flexible and tear-resistant across extreme Australian temperature ranges (-30°C to +75°C) without hardening, cracking, or taking a compression set.\n\nKey Specifications:\n• Width/Profile: 30x55mm\n• Material: High-grade commercial grade co-extruded EPDM rubber\n• Mounting: Retaining strip slot or rivet-on channel\n• Application: Rear swing barn doors, side access doors, toolbox doors, and trailer bodies.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -11434,9 +11434,9 @@
       }
     ],
     "pricing": {
-      "mrp": 42,
-      "sellingPrice": 42,
-      "tradePrice": 39,
+      "mrp": 71.0,
+      "sellingPrice": 71.0,
+      "tradePrice": 65.32,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -11563,8 +11563,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Door Seal Grey PVC Corner Tab, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Door Seal Grey PVC Corner Tab, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial truck and trailer door perimeter seal profile (standard) extruded from heavy-duty flexible UV-stabilised virgin PVC.",
+    "description": "Commercial truck and trailer door perimeter seal profile (standard) extruded from heavy-duty flexible UV-stabilised virgin PVC. Engineered with a resilient sealing lip and rigid retaining channel to create an airtight, dustproof, and watertight perimeter barrier on commercial dry freight vans and refrigerated truck bodies. Remains flexible and tear-resistant across extreme Australian temperature ranges (-30°C to +75°C) without hardening, cracking, or taking a compression set.\n\nKey Specifications:\n• Width/Profile: standard\n• Material: High-grade commercial grade flexible UV-stabilised virgin PVC\n• Mounting: Retaining strip slot or rivet-on channel\n• Application: Rear swing barn doors, side access doors, toolbox doors, and trailer bodies.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -11577,9 +11577,9 @@
       }
     ],
     "pricing": {
-      "mrp": 3.3,
-      "sellingPrice": 3.3,
-      "tradePrice": 3,
+      "mrp": 0.8,
+      "sellingPrice": 0.8,
+      "tradePrice": 0.74,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -11706,8 +11706,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Door Seal Black Rubber Corner Tab, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Door Seal Black Rubber Corner Tab, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial truck and trailer door perimeter seal profile (standard) extruded from heavy-duty co-extruded EPDM rubber.",
+    "description": "Commercial truck and trailer door perimeter seal profile (standard) extruded from heavy-duty co-extruded EPDM rubber. Engineered with a resilient sealing lip and rigid retaining channel to create an airtight, dustproof, and watertight perimeter barrier on commercial dry freight vans and refrigerated truck bodies. Remains flexible and tear-resistant across extreme Australian temperature ranges (-30°C to +75°C) without hardening, cracking, or taking a compression set.\n\nKey Specifications:\n• Width/Profile: standard\n• Material: High-grade commercial grade co-extruded EPDM rubber\n• Mounting: Retaining strip slot or rivet-on channel\n• Application: Rear swing barn doors, side access doors, toolbox doors, and trailer bodies.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -11720,9 +11720,9 @@
       }
     ],
     "pricing": {
-      "mrp": 3.3,
-      "sellingPrice": 3.3,
-      "tradePrice": 3,
+      "mrp": 0.8,
+      "sellingPrice": 0.8,
+      "tradePrice": 0.74,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -11849,8 +11849,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Side Door Steel Hinge 85x206mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Side Door Steel Hinge 85x206mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty side door steel strap hinge (85mm x 206mm) designed for commercial truck side access doors, service body compartments, and utility trailers.",
+    "description": "Heavy-duty side door steel strap hinge (85mm x 206mm) designed for commercial truck side access doors, service body compartments, and utility trailers. Heavy stamped steel construction with protective zinc plating and pre-punched countersunk mounting holes for flush-fit fasteners. Provides seamless door clearance and rigid alignment.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -11863,9 +11863,9 @@
       }
     ],
     "pricing": {
-      "mrp": 21,
-      "sellingPrice": 21,
-      "tradePrice": 19,
+      "mrp": 17.6,
+      "sellingPrice": 17.6,
+      "tradePrice": 16.19,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -11987,8 +11987,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Heavy-duty 260mm grade 304 polished stainless steel rear door hinge with bolt-on lug for commercial refrigerated and dry freight van bodies.",
-    "description": "Rear Door Stainless Steel Hinge 260mm with Bolt Lug, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty commercial truck rear door strap hinge (304-grade polished stainless steel) featuring a bolt-on mounting lug.",
+    "description": "Heavy-duty commercial truck rear door strap hinge (304-grade polished stainless steel) featuring a bolt-on mounting lug. Engineered for high-frequency transport use, severe cargo dynamic loads, and full 270-degree door swing against trailer outer side walls. Fitted with a precision-turned pivot pin and self-lubricating wear washers to ensure smooth operation without sag or binding under heavy road vibration.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -12001,9 +12001,9 @@
       }
     ],
     "pricing": {
-      "mrp": 43,
-      "sellingPrice": 43,
-      "tradePrice": 40,
+      "mrp": 92.0,
+      "sellingPrice": 92.0,
+      "tradePrice": 84.64,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -12130,8 +12130,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Heavy Duty Door Cam Lock Kit Suits 34mm Pipe, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Heavy Duty Door Cam Lock Kit Suits 34mm Pipe, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty commercial door cam locking gear kit engineered to suit 34mm outer diameter pipe for truck dry freight bodies and shipping containers.",
+    "description": "Heavy-duty commercial door cam locking gear kit engineered to suit 34mm outer diameter pipe for truck dry freight bodies and shipping containers. Forged alloy steel top and bottom locking cams with matched cast keeper brackets provide immense compression, drawing door seals weather-tight and preventing racking during transit. Complete assembly includes forged cams, weld/bolt keepers, anti-friction shaft mounting brackets with nylon bushes, and ergonomic padlockable handle with safety travel latch. Zinc-plated for maximum resistance against road salt, grit, and harsh Australian atmospheric corrosion.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -12144,9 +12144,9 @@
       }
     ],
     "pricing": {
-      "mrp": 78,
-      "sellingPrice": 78,
-      "tradePrice": 72,
+      "mrp": 130.0,
+      "sellingPrice": 130.0,
+      "tradePrice": 119.6,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -12273,8 +12273,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Door Cam Lock Kit Suits 22mm Pipe with 10mm Handle, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Door Cam Lock Kit Suits 22mm Pipe with 10mm Handle, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty commercial door cam locking gear kit engineered to suit 22mm outer diameter pipe for truck dry freight bodies and shipping containers.",
+    "description": "Heavy-duty commercial door cam locking gear kit engineered to suit 22mm outer diameter pipe for truck dry freight bodies and shipping containers. Forged alloy steel top and bottom locking cams with matched cast keeper brackets provide immense compression, drawing door seals weather-tight and preventing racking during transit. Complete assembly includes forged cams, weld/bolt keepers, anti-friction shaft mounting brackets with nylon bushes, and ergonomic padlockable handle with safety travel latch. Zinc-plated for maximum resistance against road salt, grit, and harsh Australian atmospheric corrosion.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -12287,9 +12287,9 @@
       }
     ],
     "pricing": {
-      "mrp": 63,
-      "sellingPrice": 63,
-      "tradePrice": 59,
+      "mrp": 59.0,
+      "sellingPrice": 59.0,
+      "tradePrice": 54.28,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -12416,8 +12416,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Curtain Tensioner HT Left Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Curtain Tensioner HT Left Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty curtainsider gear curtain tensioner Left Hand (HT-01) for commercial tautliner truck and trailer bodies.",
+    "description": "Heavy-duty curtainsider gear curtain tensioner Left Hand (HT-01) for commercial tautliner truck and trailer bodies. Precision-machined internal ratchet and pinion gearing provides immense curtain tension with minimal operator effort, keeping curtains taut at highway speeds to reduce fuel drag and water ingress. Zinc-plated for maximum outdoor weather protection.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -12430,9 +12430,9 @@
       }
     ],
     "pricing": {
-      "mrp": 101,
-      "sellingPrice": 101,
-      "tradePrice": 94,
+      "mrp": 268.0,
+      "sellingPrice": 268.0,
+      "tradePrice": 246.56,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -12559,8 +12559,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Curtain Tensioner HT Right Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Curtain Tensioner HT Right Hand, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty curtainsider gear curtain tensioner Right Hand (HT-02) for commercial tautliner truck and trailer bodies.",
+    "description": "Heavy-duty curtainsider gear curtain tensioner Right Hand (HT-02) for commercial tautliner truck and trailer bodies. Precision-machined internal ratchet and pinion gearing provides immense curtain tension with minimal operator effort, keeping curtains taut at highway speeds to reduce fuel drag and water ingress. Zinc-plated for maximum outdoor weather protection.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -12573,9 +12573,9 @@
       }
     ],
     "pricing": {
-      "mrp": 101,
-      "sellingPrice": 101,
-      "tradePrice": 94,
+      "mrp": 180.0,
+      "sellingPrice": 180.0,
+      "tradePrice": 165.6,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -12702,8 +12702,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Cargo O-Track 85mm Zinc Plated 3.0M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Cargo O-Track 85mm Zinc Plated 3.0M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty commercial cargo restraint track (Cargo O-Track 85mm Zinc Plated 3.0M) roll-formed from heavy-gauge high-tensile steel with durable zinc plating.",
+    "description": "Heavy-duty commercial cargo restraint track (Cargo O-Track 85mm Zinc Plated 3.0M) roll-formed from heavy-gauge high-tensile steel with durable zinc plating. Features precision-punched slots accepting all standard Australian transport load bars, shoring beams, and strap captive end fittings. Mounts horizontally along interior trailer and truck walls for compliant load restraint.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -12716,9 +12716,9 @@
       }
     ],
     "pricing": {
-      "mrp": 56,
-      "sellingPrice": 56,
-      "tradePrice": 52,
+      "mrp": 76.0,
+      "sellingPrice": 76.0,
+      "tradePrice": 69.92,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -12845,8 +12845,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Cargo E-Track Zinc Plated 132mm 3.0M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Cargo E-Track Zinc Plated 132mm 3.0M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty commercial cargo restraint track (Cargo E-Track Zinc Plated 132mm 3.0M) roll-formed from heavy-gauge high-tensile steel with durable zinc plating.",
+    "description": "Heavy-duty commercial cargo restraint track (Cargo E-Track Zinc Plated 132mm 3.0M) roll-formed from heavy-gauge high-tensile steel with durable zinc plating. Features precision-punched slots accepting all standard Australian transport load bars, shoring beams, and strap captive end fittings. Mounts horizontally along interior trailer and truck walls for compliant load restraint.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -12859,9 +12859,9 @@
       }
     ],
     "pricing": {
-      "mrp": 63,
-      "sellingPrice": 63,
-      "tradePrice": 59,
+      "mrp": 116.0,
+      "sellingPrice": 116.0,
+      "tradePrice": 106.72,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -12988,8 +12988,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Cargo E-Track Heavy Duty Zinc Plated 3.0M x 132mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Cargo E-Track Heavy Duty Zinc Plated 3.0M x 132mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty commercial cargo restraint track (Cargo E-Track Heavy Duty Zinc Plated 3.0M x 132mm) roll-formed from heavy-gauge high-tensile steel with durable zinc plating.",
+    "description": "Heavy-duty commercial cargo restraint track (Cargo E-Track Heavy Duty Zinc Plated 3.0M x 132mm) roll-formed from heavy-gauge high-tensile steel with durable zinc plating. Features precision-punched slots accepting all standard Australian transport load bars, shoring beams, and strap captive end fittings. Mounts horizontally along interior trailer and truck walls for compliant load restraint.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -13002,9 +13002,9 @@
       }
     ],
     "pricing": {
-      "mrp": 63,
-      "sellingPrice": 63,
-      "tradePrice": 59,
+      "mrp": 116.0,
+      "sellingPrice": 116.0,
+      "tradePrice": 106.72,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -13417,8 +13417,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Universal Truck Door Retainer Zinc Plated 545mm Arm 432mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Universal Truck Door Retainer Zinc Plated 545mm Arm 432mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Universal commercial truck door retainer (545mm body (432mm arm)) manufactured from heavy-duty zinc-plated steel.",
+    "description": "Universal commercial truck door retainer (545mm body (432mm arm)) manufactured from heavy-duty zinc-plated steel. Folds flat during transit and extends to securely lock rear swing barn doors open against truck body side coamings during loading. Features an integrated nylon locking socket and spring latch that resists heavy wind gusts and loading dock vibration.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -13431,9 +13431,9 @@
       }
     ],
     "pricing": {
-      "mrp": 36,
-      "sellingPrice": 36,
-      "tradePrice": 34,
+      "mrp": 116.0,
+      "sellingPrice": 116.0,
+      "tradePrice": 106.72,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -13560,8 +13560,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Universal Truck Door Retainer Zinc Plated 502mm Arm 274mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Universal Truck Door Retainer Zinc Plated 502mm Arm 274mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Universal commercial truck door retainer (502mm body (274mm arm)) manufactured from heavy-duty zinc-plated steel.",
+    "description": "Universal commercial truck door retainer (502mm body (274mm arm)) manufactured from heavy-duty zinc-plated steel. Folds flat during transit and extends to securely lock rear swing barn doors open against truck body side coamings during loading. Features an integrated nylon locking socket and spring latch that resists heavy wind gusts and loading dock vibration.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -13574,9 +13574,9 @@
       }
     ],
     "pricing": {
-      "mrp": 34,
-      "sellingPrice": 34,
-      "tradePrice": 32,
+      "mrp": 98.0,
+      "sellingPrice": 98.0,
+      "tradePrice": 90.16,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -13703,8 +13703,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Universal Truck Door Retainer Aluminium Body 490mm Arm 280mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Universal Truck Door Retainer Aluminium Body 490mm Arm 280mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Universal commercial truck door retainer (490mm body (280mm arm)) manufactured from lightweight marine-grade aluminium.",
+    "description": "Universal commercial truck door retainer (490mm body (280mm arm)) manufactured from lightweight marine-grade aluminium. Folds flat during transit and extends to securely lock rear swing barn doors open against truck body side coamings during loading. Features an integrated nylon locking socket and spring latch that resists heavy wind gusts and loading dock vibration.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -13717,9 +13717,9 @@
       }
     ],
     "pricing": {
-      "mrp": 39,
-      "sellingPrice": 39,
-      "tradePrice": 36,
+      "mrp": 191.2,
+      "sellingPrice": 191.2,
+      "tradePrice": 175.9,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -13846,8 +13846,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Stainless Steel Recessed Paddle Lock Kit 152x320mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Stainless Steel Recessed Paddle Lock Kit 152x320mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty 304 polished stainless steel recessed paddle lock kit (152mm x 320mm dish) designed for 16mm commercial door locking gear rods.",
+    "description": "Heavy-duty 304 polished stainless steel recessed paddle lock kit (152mm x 320mm dish) designed for 16mm commercial door locking gear rods. Flush-mount recessed pan fits neatly into trailer door panels, eliminating protrusions and reducing aerodynamic drag. Features an integrated key-locking cylinder, internal linkage points for vertical shoot bolts, and heavy weather-sealed neoprene mounting gasket.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -13860,9 +13860,9 @@
       }
     ],
     "pricing": {
-      "mrp": 50,
-      "sellingPrice": 50,
-      "tradePrice": 47,
+      "mrp": 430.0,
+      "sellingPrice": 430.0,
+      "tradePrice": 395.6,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -13984,8 +13984,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Paddle Lock Kit Left Hand 105x25mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Paddle Lock Kit Left Hand 105x25mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Compact commercial paddle lock assembly Left Hand (105mm x 25mm) for truck side doors, toolbox lids, and utility canopy compartments.",
+    "description": "Compact commercial paddle lock assembly Left Hand (105mm x 25mm) for truck side doors, toolbox lids, and utility canopy compartments. Heavy-gauge steel construction with durable zinc plating, smooth single-finger paddle lift, and key-locking security.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -13998,9 +13998,9 @@
       }
     ],
     "pricing": {
-      "mrp": 28,
-      "sellingPrice": 28,
-      "tradePrice": 26,
+      "mrp": 14.0,
+      "sellingPrice": 14.0,
+      "tradePrice": 12.88,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -14127,8 +14127,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Flush Mount Paddle Lock Heavy Duty Black Powder Coated, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Flush Mount Paddle Lock Heavy Duty Black Powder Coated, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty flush-mount paddle lock finished in durable satin black powder coat.",
+    "description": "Heavy-duty flush-mount paddle lock finished in durable satin black powder coat. Engineered for commercial service bodies, ute canopies, and trailer toolboxes. Supplied with a sealed lock cylinder, dual reversible keys, and a water-resistant rubber mounting perimeter seal.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -14141,9 +14141,9 @@
       }
     ],
     "pricing": {
-      "mrp": 24,
-      "sellingPrice": 24,
-      "tradePrice": 23,
+      "mrp": 90.0,
+      "sellingPrice": 90.0,
+      "tradePrice": 82.8,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -14413,8 +14413,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Stainless Steel T-Handle Paddle Lock, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Stainless Steel T-Handle Paddle Lock, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty 304 stainless steel folding T-handle paddle lock for underbody truck toolboxes, generator enclosures, and service bodies.",
+    "description": "Heavy-duty 304 stainless steel folding T-handle paddle lock for underbody truck toolboxes, generator enclosures, and service bodies. Features a 360-degree compression latching mechanism that pulls door seals tight against dust and moisture ingress, with key lock and padlockable loop.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -14427,9 +14427,9 @@
       }
     ],
     "pricing": {
-      "mrp": 34,
-      "sellingPrice": 34,
-      "tradePrice": 32,
+      "mrp": 52.0,
+      "sellingPrice": 52.0,
+      "tradePrice": 47.84,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -14556,8 +14556,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Radius Guard Mounting Bracket Semi Trailer, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Radius Guard Mounting Bracket Semi Trailer, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty commercial truck and trailer component: Radius Guard Mounting Bracket Semi Trailer.",
+    "description": "Heavy-duty commercial truck and trailer component: Radius Guard Mounting Bracket Semi Trailer. Engineered to fleet-grade specifications for Australian transport conditions, delivering maximum reliability, long service life, and compliance with heavy vehicle standards. Stocked and dispatched daily from our Campbellfield, Victoria trade warehouse.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -14570,9 +14570,9 @@
       }
     ],
     "pricing": {
-      "mrp": 42,
-      "sellingPrice": 42,
-      "tradePrice": 39,
+      "mrp": 140.0,
+      "sellingPrice": 140.0,
+      "tradePrice": 128.8,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -14699,8 +14699,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Sliding Post Base Locking Assembly for Curtain Siders, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Sliding Post Base Locking Assembly for Curtain Siders, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty sliding post base locking assembly for commercial curtainsider truck and trailer bodies.",
+    "description": "Heavy-duty sliding post base locking assembly for commercial curtainsider truck and trailer bodies. Precision-engineered cam locking mechanism locks sliding side pillars firmly into transport bottom coaming rails, providing rigid side wall support and rapid unlock for side loading.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -14713,9 +14713,9 @@
       }
     ],
     "pricing": {
-      "mrp": 144,
-      "sellingPrice": 144,
-      "tradePrice": 133,
+      "mrp": 272.0,
+      "sellingPrice": 272.0,
+      "tradePrice": 250.24,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -14851,8 +14851,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Steel Gate 1220x1500mm ( VNGS). Heavy-duty galvanized tubular steel hanging gate for curtain side commercial trucks and trailers.",
-    "description": "Steel Gate 1220x1500mm ( VNGS). Heavy-duty galvanized tubular steel hanging load restraint gate for curtain side semi-trailers and rigid trucks. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty steel curtainsider truck side gate (1220mm height x 1500mm width) fabricated from high-tensile rectangular hollow section (RHS) steel.",
+    "description": "Heavy-duty steel curtainsider truck side gate (1220mm height x 1500mm width) fabricated from high-tensile rectangular hollow section (RHS) steel. Provides secure, rigid load containment for curtain-sided transport bodies. Features drop-in lower gate pins engineered to seat firmly into standard 100mm (4-inch) chassis gate pockets, with heavy-duty top latching brackets.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -14865,9 +14865,9 @@
       }
     ],
     "pricing": {
-      "mrp": 170,
-      "sellingPrice": 170,
-      "tradePrice": 158,
+      "mrp": 370.0,
+      "sellingPrice": 370.0,
+      "tradePrice": 340.4,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -14999,8 +14999,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Weld-On Gate Pocket 4-Inch for Truck Bodies, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Weld-On Gate Pocket 4-Inch for Truck Bodies, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Weld-on steel gate pocket (4-inch / 100mm) for commercial truck and trailer side coamings.",
+    "description": "Weld-on steel gate pocket (4-inch / 100mm) for commercial truck and trailer side coamings. Heavy-gauge structural steel pressing with flared entry lips for rapid, jam-free drop-in insertion of curtainsider and dropside body gates.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -15013,9 +15013,9 @@
       }
     ],
     "pricing": {
-      "mrp": 15,
-      "sellingPrice": 15,
-      "tradePrice": 14,
+      "mrp": 11.0,
+      "sellingPrice": 11.0,
+      "tradePrice": 10.12,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -15142,8 +15142,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Heavy Duty Tipper Hinge with Gudgeon (With Hole), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Heavy Duty Tipper Hinge with Gudgeon (With Hole), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty drop-forged steel tipper hinge and gudgeon pin assembly (cross-drilled locking pin hole) for commercial tipper tailgates, farm dropsides, and earthmoving dump bodies.",
+    "description": "Heavy-duty drop-forged steel tipper hinge and gudgeon pin assembly (cross-drilled locking pin hole) for commercial tipper tailgates, farm dropsides, and earthmoving dump bodies. Constructed from weldable high-tensile carbon steel, delivering enormous vertical load and impact resistance under severe dumping payloads.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -15156,9 +15156,9 @@
       }
     ],
     "pricing": {
-      "mrp": 38,
-      "sellingPrice": 38,
-      "tradePrice": 35,
+      "mrp": 33.7,
+      "sellingPrice": 33.7,
+      "tradePrice": 31.0,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -15285,8 +15285,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Heavy Duty Tipper Hinge with Gudgeon (Without Hole), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Heavy Duty Tipper Hinge with Gudgeon (Without Hole), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty drop-forged steel tipper hinge and gudgeon pin assembly (solid gudgeon pin) for commercial tipper tailgates, farm dropsides, and earthmoving dump bodies.",
+    "description": "Heavy-duty drop-forged steel tipper hinge and gudgeon pin assembly (solid gudgeon pin) for commercial tipper tailgates, farm dropsides, and earthmoving dump bodies. Constructed from weldable high-tensile carbon steel, delivering enormous vertical load and impact resistance under severe dumping payloads.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -15299,9 +15299,9 @@
       }
     ],
     "pricing": {
-      "mrp": 36,
-      "sellingPrice": 36,
-      "tradePrice": 34,
+      "mrp": 33.7,
+      "sellingPrice": 33.7,
+      "tradePrice": 31.0,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -15428,8 +15428,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Heavy Duty Over Centre Latch Fastener F05-17C-01, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Heavy Duty Over Centre Latch Fastener F05-17C-01, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty adjustable over-centre draw fastener (model F05-17C-01) with secondary padlockable safety catch.",
+    "description": "Heavy-duty adjustable over-centre draw fastener (model F05-17C-01) with secondary padlockable safety catch. Forged steel handle and threaded U-bolt loop provide high tension clamping force for tailgates, tipper bodies, and machinery access panels. Zinc plated.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -15442,9 +15442,9 @@
       }
     ],
     "pricing": {
-      "mrp": 28,
-      "sellingPrice": 28,
-      "tradePrice": 26,
+      "mrp": 15.92,
+      "sellingPrice": 15.92,
+      "tradePrice": 14.65,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -15571,8 +15571,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Locking Latch Spring Loaded, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Locking Latch Spring Loaded, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty spring-loaded locking latch assembly with positive lock-back detent.",
+    "description": "Heavy-duty spring-loaded locking latch assembly with positive lock-back detent. Manufactured from high-strength zinc-plated steel with internal stainless steel compression spring for reliable service body and dropside gate retention.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -15585,9 +15585,9 @@
       }
     ],
     "pricing": {
-      "mrp": 24,
-      "sellingPrice": 24,
-      "tradePrice": 23,
+      "mrp": 37.3,
+      "sellingPrice": 37.3,
+      "tradePrice": 34.32,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -15714,8 +15714,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Anti Luce Clip 12mm Bolt-On Heavy Duty, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Anti Luce Clip 12mm Bolt-On Heavy Duty, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty 12mm bolt-on anti-luce fastener (drop-catch) for ute trays, trailer dropsides, and equipment access panels.",
+    "description": "Heavy-duty 12mm bolt-on anti-luce fastener (drop-catch) for ute trays, trailer dropsides, and equipment access panels. High-tensile zinc-plated steel construction with captive swivel catch that flips 90 degrees to lock tailgate pins securely under rough road conditions.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -15728,9 +15728,9 @@
       }
     ],
     "pricing": {
-      "mrp": 12,
-      "sellingPrice": 12,
-      "tradePrice": 11,
+      "mrp": 11.0,
+      "sellingPrice": 11.0,
+      "tradePrice": 10.12,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -15857,8 +15857,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Heavy Duty Spring Latch 12mm Pin 160mm Length, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Heavy Duty Spring Latch 12mm Pin 160mm Length, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty 12mm pin spring bolt latch (160mm total body length) for truck dropside gates, ramp latches, and livestock crates.",
+    "description": "Heavy-duty 12mm pin spring bolt latch (160mm total body length) for truck dropside gates, ramp latches, and livestock crates. Features a heavy-gauge 12mm solid steel slide bolt, heavy compression spring, and ergonomic grip handle with hold-open retention slot.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -15871,9 +15871,9 @@
       }
     ],
     "pricing": {
-      "mrp": 16,
-      "sellingPrice": 16,
-      "tradePrice": 15,
+      "mrp": 16.8,
+      "sellingPrice": 16.8,
+      "tradePrice": 15.46,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -16000,8 +16000,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Recessed Tie Down Lashing Ring 2000kg (2T), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Recessed Tie Down Lashing Ring 2000kg (2T), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Recessed tie-down lashing ring rated to 2,000kg (2.0 Tonne) lashing capacity.",
+    "description": "Recessed tie-down lashing ring rated to 2,000kg (2.0 Tonne) lashing capacity. Forged steel D-ring housed within a recessed pressed-steel floor pan that sits flush with timber or steel trailer floors, eliminating cargo snagging during forklift loading.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -16014,9 +16014,9 @@
       }
     ],
     "pricing": {
-      "mrp": 14,
-      "sellingPrice": 14,
-      "tradePrice": 13,
+      "mrp": 11.96,
+      "sellingPrice": 11.96,
+      "tradePrice": 11.0,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -16143,8 +16143,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Side Guard Lateral Protection System 3500mm (Pair), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Side Guard Lateral Protection System 3500mm (Pair), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Complete Lateral Protection System (LPS) 3500mm rail kit for commercial trucks and rigid vehicles.",
+    "description": "Complete Lateral Protection System (LPS) 3500mm rail kit for commercial trucks and rigid vehicles. Fully engineered to meet Australian Design Rules and national heavy vehicle safety requirements. Constructed from high-tensile extruded aluminium rail profiles and heavy steel chassis drop brackets, preventing vulnerable road users and cyclists from falling beneath vehicle wheels in urban freight environments.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -16157,9 +16157,9 @@
       }
     ],
     "pricing": {
-      "mrp": 296,
-      "sellingPrice": 296,
-      "tradePrice": 275,
+      "mrp": 1100.0,
+      "sellingPrice": 1100.0,
+      "tradePrice": 1012.0,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -16286,8 +16286,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Side Guard Lateral Protection System 6500mm (Pair), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Side Guard Lateral Protection System 6500mm (Pair), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty Lateral Protection System (LPS) 6500mm rail kit for semi-trailers, B-double lead trailers, and long-wheelbase rigid trucks.",
+    "description": "Heavy-duty Lateral Protection System (LPS) 6500mm rail kit for semi-trailers, B-double lead trailers, and long-wheelbase rigid trucks. Delivers full chassis-length pedestrian and cyclist under-run protection compliant with modern ADR heavy vehicle safety guidelines. Includes extruded aluminium side rails, adjustable chassis mounting posts, and rounded impact-absorbing end caps.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -16300,9 +16300,9 @@
       }
     ],
     "pricing": {
-      "mrp": 504,
-      "sellingPrice": 504,
-      "tradePrice": 468,
+      "mrp": 1400.0,
+      "sellingPrice": 1400.0,
+      "tradePrice": 1288.0,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -16429,8 +16429,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Adjustable Side Guard Side Rail Bracket 735mm Length, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Adjustable Side Guard Side Rail Bracket 735mm Length, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Adjustable side guard chassis drop bracket (735mm overall length) fabricated from high-strength zinc-plated structural steel.",
+    "description": "Adjustable side guard chassis drop bracket (735mm overall length) fabricated from high-strength zinc-plated structural steel. Multi-hole chassis mounting flange permits custom height, rake, and offset adjustment to accommodate underbody toolboxes, air tanks, and battery boxes.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -16443,9 +16443,9 @@
       }
     ],
     "pricing": {
-      "mrp": 65,
-      "sellingPrice": 65,
-      "tradePrice": 60,
+      "mrp": 120.0,
+      "sellingPrice": 120.0,
+      "tradePrice": 110.4,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -16584,8 +16584,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Heavy-duty 6.5M extruded aluminium lateral underrun protection rail profile tube. Engineered for ADR 84/00 and UN ECE R73 side guard compliance on commercial trucks and semi-trailers. Ex Campbellfield VIC stock.",
-    "description": "The Aurex 6.5-Metre Aluminium Side Guard Lateral Protection Rail Profile Tube is engineered specifically for commercial vehicle bodybuilders, fleet operators, and trailer retrofits across Australia. Constructed from structural 6061-T6 architectural-grade extruded aluminium alloy, this profile delivers exceptional torsional strength while remaining lightweight to maximize legal payload capacity.\n\nDesigned to satisfy Australian Design Rule (ADR) 84/00 and UN ECE R73 lateral protection requirements, this continuous underrun barrier prevents vulnerable road users, vehicles, and debris from being drawn beneath semi-trailer and truck chassis. Features an aerodynamic ribbed double-rail front face that cuts air turbulence for improved fleet fuel economy, integrated rear T-slot mounting tracks for seamless bolt-on bracket attachment, and smooth radiused edges that eliminate pinch points. Can be easily cut to length to suit custom chassis wheelbases and mates perfectly with Aurex protective end caps (ATP-TP-84) and 90° corner joints (ATP-TP-85).",
+    "shortDescription": "Heavy-duty aluminium side guard lateral protection rail profile tube (6.0M / 6.5M).",
+    "description": "Heavy-duty aluminium side guard lateral protection rail profile tube (6.0M / 6.5M). Extruded from structural 6061-T6 transport-grade alloy with ribbed impact faces and rounded edge radii for maximum rigidity and clean aerodynamic styling.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -16595,9 +16595,9 @@
       "/images/products/ATP-TP-83-bar.jpg"
     ],
     "pricing": {
-      "mrp": 82,
-      "sellingPrice": 82,
-      "tradePrice": 77,
+      "mrp": 460.0,
+      "sellingPrice": 460.0,
+      "tradePrice": 423.2,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -16745,8 +16745,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Protective heavy-duty push-in end cover cap for 100x30mm aluminium side guard profile tubes. Eliminates exposed sharp edges and prevents moisture ingress. ADR 84/00 compliant. Ex Campbellfield VIC stock.",
-    "description": "The Aurex Aluminium Side Guard Rail End Cover Cap is precision-engineered to seal the exposed cut ends of 100x30mm commercial side guard lateral protection profile tubes. Specifically designed to comply with Australian Design Rule ADR 84/00 and NHVR safety regulations, this cover cap encloses sharp extrusion cut edges, protecting pedestrians, workshop personnel, and equipment from potential snag hazards and lacerations.\n\nManufactured from heavy-duty cast aluminium alloy, this plug-in end cover features deep internal alignment ribs that friction-fit securely inside the rail cavity, reinforced by a pre-drilled fastener locating point to prevent vibration loosening during highway transit. In addition to vehicle safety compliance, it seals the internal extrusion chambers against moisture, road salt, mud, and dust buildup, preventing internal oxidation and prolonging trailer lifespan.",
+    "shortDescription": "Commercial heavy vehicle side guard component: Aluminium Side Guard Rail End Cover Cap (Suits 100x30mm Tube).",
+    "description": "Commercial heavy vehicle side guard component: Aluminium Side Guard Rail End Cover Cap (Suits 100x30mm Tube). Precision-moulded from impact-resistant polymer/alloy to cap exposed side guard rail profiles, eliminating sharp edges and ensuring full commercial vehicle roadworthy compliance.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -16756,9 +16756,9 @@
       "/images/products/ATP-TP-84-back.jpg"
     ],
     "pricing": {
-      "mrp": 13,
-      "sellingPrice": 13,
-      "tradePrice": 12,
+      "mrp": 8.0,
+      "sellingPrice": 8.0,
+      "tradePrice": 7.36,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -16895,8 +16895,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Heavy-duty 90-degree curved corner joint connector for commercial side guard underrun rail systems. High-strength structural cast aluminium with ADR 84/00 safety radius. Ex Campbellfield VIC stock.",
-    "description": "The Aurex Aluminium Side Guard 90° Corner Joint Connector provides a continuous, high-integrity 90-degree transition between frontal and lateral underrun barrier rails on commercial trucks, prime movers, and trailers. Under Australian Design Rule ADR 84/00 and UN ECE R73 regulations, lateral protection devices must maintain a smooth, radiused corner contour to prevent vehicle snagging and maximize impact deflection.\n\nCrafted from structural die-cast aluminium alloy, this corner connector features dual precision-profiled insert spigots that slide directly into adjacent 100x30mm side guard tubes (ATP-TP-83). The external corner is engineered with a smooth aerodynamic radius that eliminates abrupt angles and sharp transitions. Ideal for both forward cab-to-body transitions and rear trailer overhang returns, it delivers unmatched rigidity, structural alignment, and corrosion resistance for demanding long-haul Australian transport operations.",
+    "shortDescription": "Commercial heavy vehicle side guard component: Aluminium Side Guard 90 Degree Corner Joint Connector.",
+    "description": "Commercial heavy vehicle side guard component: Aluminium Side Guard 90 Degree Corner Joint Connector. Precision-moulded from impact-resistant polymer/alloy to cap exposed side guard rail profiles, eliminating sharp edges and ensuring full commercial vehicle roadworthy compliance.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -16906,9 +16906,9 @@
       "/images/products/ATP-TP-85-back.jpg"
     ],
     "pricing": {
-      "mrp": 24,
-      "sellingPrice": 24,
-      "tradePrice": 23,
+      "mrp": 96.0,
+      "sellingPrice": 96.0,
+      "tradePrice": 88.32,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -17038,8 +17038,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Aluminium Guardrail Corner Cover Cap, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Aluminium Guardrail Corner Cover Cap, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial heavy vehicle side guard component: Aluminium Guardrail Corner Cover Cap.",
+    "description": "Commercial heavy vehicle side guard component: Aluminium Guardrail Corner Cover Cap. Precision-moulded from impact-resistant polymer/alloy to cap exposed side guard rail profiles, eliminating sharp edges and ensuring full commercial vehicle roadworthy compliance.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -17052,9 +17052,9 @@
       }
     ],
     "pricing": {
-      "mrp": 15,
-      "sellingPrice": 15,
-      "tradePrice": 14,
+      "mrp": 8.0,
+      "sellingPrice": 8.0,
+      "tradePrice": 7.36,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -17181,8 +17181,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Aluminium Roof Coil 0.8mm x 2515mm Wide (Per Kg), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Aluminium Roof Coil 0.8mm x 2515mm Wide (Per Kg), engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial heavy vehicle structural aluminium extrusion: Aluminium Roof Coil 0.8mm x 2515mm Wide (Per Kg).",
+    "description": "Commercial heavy vehicle structural aluminium extrusion: Aluminium Roof Coil 0.8mm x 2515mm Wide (Per Kg). Extruded from high-strength structural 6061/6082-T6 transport alloy for semi-trailers, dry freight vans, and rigid truck bodies. Engineered for exceptional torsional rigidity, clean weldability, and low tare weight. Sourced and stocked ex Campbellfield VIC.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -17195,9 +17195,9 @@
       }
     ],
     "pricing": {
-      "mrp": 42,
-      "sellingPrice": 42,
-      "tradePrice": 39,
+      "mrp": 7.5,
+      "sellingPrice": 7.5,
+      "tradePrice": 6.9,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -17324,8 +17324,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Aluminium Top Rail Body Profile 01 - 5.0 Metres, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Aluminium Top Rail Body Profile 01 - 5.0 Metres, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial heavy vehicle structural aluminium extrusion: Aluminium Top Rail Body Profile 01 - 5.0 Metres.",
+    "description": "Commercial heavy vehicle structural aluminium extrusion: Aluminium Top Rail Body Profile 01 - 5.0 Metres. Extruded from high-strength structural 6061/6082-T6 transport alloy for semi-trailers, dry freight vans, and rigid truck bodies. Engineered for exceptional torsional rigidity, clean weldability, and low tare weight. Sourced and stocked ex Campbellfield VIC.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -17338,9 +17338,9 @@
       }
     ],
     "pricing": {
-      "mrp": 116,
-      "sellingPrice": 116,
-      "tradePrice": 108,
+      "mrp": 690.0,
+      "sellingPrice": 690.0,
+      "tradePrice": 634.8,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -17467,8 +17467,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Aluminium Intermediate Body Profile 02 - 4.3 Metres, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Aluminium Intermediate Body Profile 02 - 4.3 Metres, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial heavy vehicle structural aluminium extrusion: Aluminium Intermediate Body Profile 02 - 4.3 Metres.",
+    "description": "Commercial heavy vehicle structural aluminium extrusion: Aluminium Intermediate Body Profile 02 - 4.3 Metres. Extruded from high-strength structural 6061/6082-T6 transport alloy for semi-trailers, dry freight vans, and rigid truck bodies. Engineered for exceptional torsional rigidity, clean weldability, and low tare weight. Sourced and stocked ex Campbellfield VIC.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -17481,9 +17481,9 @@
       }
     ],
     "pricing": {
-      "mrp": 107,
-      "sellingPrice": 107,
-      "tradePrice": 99,
+      "mrp": 780.0,
+      "sellingPrice": 780.0,
+      "tradePrice": 717.6,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -17610,8 +17610,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Aluminium Transport Bottom Rail Side Coaming 4.3M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Aluminium Transport Bottom Rail Side Coaming 4.3M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Official 3M Class 1 reflective rear vehicle marking sign (Aluminium Transport Bottom Rail Side Coaming 4.3M) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl.",
+    "description": "Official 3M Class 1 reflective rear vehicle marking sign (Aluminium Transport Bottom Rail Side Coaming 4.3M) produced on premium Class 1 / Class 400 diamond grade self-adhesive vinyl. Fully certified and compliant with Australian Standard AS 4001.1, VSB 12, and NHVR heavy vehicle safety regulations. Utilises micro-prismatic optical technology for ultra-wide angle night-time retroreflectivity in low-light and severe Australian weather conditions. Highly resistant to pressure washing, diesel fumes, UV degradation, and mechanical abrasion on commercial truck and trailer fleets.\n\nKey Specifications:\n• Certification: AS 4001.1 & VSB 12 Compliant\n• Substrate: premium Class 1 / Class 400 diamond grade self-adhesive vinyl\n• Adhesive/Mounting: Pre-drilled for rivets/bolts or high-tack acrylic pressure-sensitive adhesive\n• Application: Transport trailers, prime movers, rigid trucks, and mobile road machinery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -17624,9 +17624,9 @@
       }
     ],
     "pricing": {
-      "mrp": 126,
-      "sellingPrice": 126,
-      "tradePrice": 117,
+      "mrp": 790.0,
+      "sellingPrice": 790.0,
+      "tradePrice": 726.8,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -17753,8 +17753,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Aluminium Roof Bow Support Top Hat Profile 5.0M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Aluminium Roof Bow Support Top Hat Profile 5.0M, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial heavy vehicle structural aluminium extrusion: Aluminium Roof Bow Support Top Hat Profile 5.0M.",
+    "description": "Commercial heavy vehicle structural aluminium extrusion: Aluminium Roof Bow Support Top Hat Profile 5.0M. Extruded from high-strength structural 6061/6082-T6 transport alloy for semi-trailers, dry freight vans, and rigid truck bodies. Engineered for exceptional torsional rigidity, clean weldability, and low tare weight. Sourced and stocked ex Campbellfield VIC.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -17767,9 +17767,9 @@
       }
     ],
     "pricing": {
-      "mrp": 99,
-      "sellingPrice": 99,
-      "tradePrice": 92,
+      "mrp": 52.0,
+      "sellingPrice": 52.0,
+      "tradePrice": 47.84,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -18323,8 +18323,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Heavy Duty Alloy Grain Door 400mm Wide, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Heavy Duty Alloy Grain Door 400mm Wide, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty 400mm wide cast alloy grain inspection door assembly for tipper tailgates and agricultural grain bulkers.",
+    "description": "Heavy-duty 400mm wide cast alloy grain inspection door assembly for tipper tailgates and agricultural grain bulkers. Manufactured from high-strength structural cast aluminium alloy to minimise weight without sacrificing rigidity. Features a smooth dual-track sliding gate with ergonomic cam lock handle, allowing precise, metered grain flow during auger discharge and silo delivery.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -18337,9 +18337,9 @@
       }
     ],
     "pricing": {
-      "mrp": 432,
-      "sellingPrice": 432,
-      "tradePrice": 401,
+      "mrp": 796.0,
+      "sellingPrice": 796.0,
+      "tradePrice": 732.32,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -18471,8 +18471,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "7-Step Tipper Truck Ladder Aluminium, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "7-Step Tipper Truck Ladder Aluminium, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Commercial 7-step tipper truck access ladder manufactured from heavy-gauge structural aluminium alloy.",
+    "description": "Commercial 7-step tipper truck access ladder manufactured from heavy-gauge structural aluminium alloy. Features integrated extrusion construction that provides maximum climbing rigidity while remaining substantially lighter than steel equivalents. Deep serrated anti-slip treads provide positive boot grip in wet, muddy, and oily quarry or grain-loading environments. Mounts securely to tipper front bulkheads and body sides with corrosion-proof hardware.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -18485,9 +18485,9 @@
       }
     ],
     "pricing": {
-      "mrp": 257,
-      "sellingPrice": 257,
-      "tradePrice": 239,
+      "mrp": 776.0,
+      "sellingPrice": 776.0,
+      "tradePrice": 713.92,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -18614,8 +18614,8 @@
     "brandName": "Vanguard",
     "condition": "NEW",
     "placementPosition": "UNIVERSAL",
-    "shortDescription": "Heavy Duty Slide-Out Step Ladder 3-Step Zinc Plated 745x345mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
-    "description": "Heavy Duty Slide-Out Step Ladder 3-Step Zinc Plated 745x345mm, engineered for Australian commercial truck and trailer bodies. Ex Campbellfield stock.",
+    "shortDescription": "Heavy-duty under-chassis slide-out access ladder (3-step (745mm x 345mm)) for commercial trucks, prime movers, and semi-trailers.",
+    "description": "Heavy-duty under-chassis slide-out access ladder (3-step (745mm x 345mm)) for commercial trucks, prime movers, and semi-trailers. Fabricated from heavy-gauge high-strength steel with full hot-dip zinc plating for long-term corrosion resistance. Smooth roller-slide action with automatic lock-in transport retention and gravity drop deployment. Punched traction rungs provide secure non-slip footing complying with Australian commercial vehicle safety standards.",
     "category": "6ac7c69502c3aa6ca9f0d8a3",
     "categories": [
       "6ac7c69502c3aa6ca9f0d8a3"
@@ -18628,9 +18628,9 @@
       }
     ],
     "pricing": {
-      "mrp": 189,
-      "sellingPrice": 189,
-      "tradePrice": 176,
+      "mrp": 110.0,
+      "sellingPrice": 110.0,
+      "tradePrice": 101.2,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
