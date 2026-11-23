@@ -364,16 +364,16 @@ const verifySession = async (request, reply) => {
           });
 
           try {
-    await Promise.race([
-      Promise.allSettled([
-        sendOrderConfirmedEmail(order),
-        sendAdminNewOrderEmail(order, { event: 'PAYMENT_RECEIVED' })
-      ]),
-      new Promise((resolve) => setTimeout(resolve, 4000))
-    ]);
-  } catch (err) {
-    console.error('[Payment Confirmation Email Error]:', err);
-  }
+            await Promise.race([
+              Promise.allSettled([
+                sendOrderConfirmedEmail(order),
+                sendAdminNewOrderEmail(order, { event: 'PAYMENT_RECEIVED' })
+              ]),
+              new Promise((resolve) => setTimeout(resolve, 8000))
+            ]);
+          } catch (err) {
+            console.error('[Payment Confirmation Email Error]:', err);
+          }
         }
 
         // Clear user's cart in backend

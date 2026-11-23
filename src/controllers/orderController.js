@@ -458,7 +458,7 @@ const createOrder = async (request, reply) => {
   try {
     await Promise.race([
       Promise.allSettled(emailTasks),
-      new Promise((resolve) => setTimeout(resolve, 4000))
+      new Promise((resolve) => setTimeout(resolve, 8000))
     ]);
   } catch (err) {
     console.error('[Order Email Error]:', err);
@@ -510,11 +510,15 @@ const getOrderByNumber = async (request, reply) => {
 
   // Object-Level Authorization (BOLA/IDOR protection)
   const isStaff = request.user && ['SUPER_ADMIN', 'ADMIN', 'SALES_REP', 'WAREHOUSE_MANAGER'].includes(request.user.role);
+  let isFullyAuthorized = Boolean(isStaff);
+
   if (!isStaff) {
     const isOwner = request.user && order.user && order.user.toString() === request.user._id.toString();
     const guestEmailParam = (request.query?.email || '').trim().toLowerCase();
     const guestPhoneParam = (request.query?.phone || '').trim().replace(/[\s\-\(\)]/g, '');
     const orderPhone = (order.shippingAddress?.phone || '').trim().replace(/[\s\-\(\)]/g, '');
+    const sessionIdParam = (request.query?.sessionId || request.query?.session_id || '').trim();
+    const matchesSession = Boolean(sessionIdParam && order.payment?.stripeSessionId && order.payment.stripeSessionId === sessionIdParam);
 
     const matchesEmail = guestEmailParam && (
       (order.guestEmail && order.guestEmail.toLowerCase() === guestEmailParam) ||
@@ -522,16 +526,29 @@ const getOrderByNumber = async (request, reply) => {
     );
     const matchesPhone = guestPhoneParam && orderPhone && orderPhone === guestPhoneParam;
 
-    if (!isOwner && !matchesEmail && !matchesPhone) {
+    if (isOwner || matchesEmail || matchesPhone || matchesSession) {
+      isFullyAuthorized = true;
+    } else {
       if (order.user) {
         throw new CustomError('Access denied: You must be logged in as the order owner to view order details.', 403, 'FORBIDDEN');
       }
-      throw new CustomError('Verification required: Please provide the contact email used at checkout to access full order details.', 403, 'VERIFICATION_REQUIRED');
+      // For guest orders where email query param was omitted, allow safe view rather than fatal crash
+      isFullyAuthorized = false;
     }
   }
 
   const history = await OrderStatusHistory.find({ order: order._id }).sort({ createdAt: 1 });
   const normalized = normalizeOrder(order);
+
+  // If not fully authorized on guest order, mask contact PII
+  if (!isFullyAuthorized && order.isGuest) {
+    if (normalized.address) {
+      normalized.address.fullName = normalized.address.fullName ? normalized.address.fullName[0] + '***' : 'Guest';
+      normalized.address.phone = normalized.address.phone ? '***' + normalized.address.phone.slice(-4) : '';
+      normalized.address.email = normalized.address.email ? normalized.address.email.replace(/(.).*@/, '$1***@') : '';
+    }
+    normalized.email = normalized.email ? normalized.email.replace(/(.).*@/, '$1***@') : '';
+  }
 
   reply.send({
     success: true,

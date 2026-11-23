@@ -16,6 +16,7 @@ const createTransporter = () => {
 
   const port = parseInt(process.env.SMTP_PORT || '587', 10);
   const secure = process.env.SMTP_SECURE === 'true' || port === 465;
+  const isGmail = host === 'smtp.gmail.com' || host.includes('gmail');
 
   return nodemailer.createTransport({
     host,
@@ -25,11 +26,11 @@ const createTransporter = () => {
       user,
       pass
     },
-    connectionTimeout: 5000,
-    greetingTimeout: 5000,
-    socketTimeout: 8000,
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
     tls: {
-      rejectUnauthorized: process.env.NODE_ENV === 'production'
+      rejectUnauthorized: process.env.NODE_ENV === 'production' && !isGmail
     }
   });
 };
@@ -45,8 +46,8 @@ const sendEmail = async ({ to, subject, html, text }) => {
 
   const transporter = createTransporter();
   const user = (process.env.SMTP_USER || '').trim();
-  const from = process.env.SMTP_FROM || `"Aurex Truck Parts" <${user || 'info@aurextruckparts.com.au'}>`;
-  const replyTo = process.env.STORE_SUPPORT_EMAIL || 'info@aurextruckparts.com.au';
+  let from = process.env.SMTP_FROM?.trim() || `"Aurex Truck Parts" <${user || 'info@aurextruckparts.com.au'}>`;
+  const replyTo = process.env.STORE_SUPPORT_EMAIL?.trim() || 'info@aurextruckparts.com.au';
 
   if (!transporter) {
     console.log(`[Email Skipped - SMTP Not Configured in .env] To: ${to} | Subject: "${subject}"`);
@@ -66,14 +67,33 @@ const sendEmail = async ({ to, subject, html, text }) => {
     return { success: true, messageId: info.messageId };
   } catch (err) {
     console.error(`[Email Failed] To: ${to} | Error: ${err.message}`);
+    // If Gmail rejected custom From address (e.g. 553 / 550 / sender address rejected), retry with direct user address
+    if (user && err.message && (err.message.includes('553') || err.message.includes('550') || /sender.*rejected/i.test(err.message))) {
+      try {
+        console.log(`[Email Retrying with direct auth sender] From: "Aurex Truck Parts" <${user}>`);
+        const fallbackInfo = await transporter.sendMail({
+          from: `"Aurex Truck Parts" <${user}>`,
+          replyTo,
+          to,
+          subject,
+          text: text || '',
+          html
+        });
+        console.log(`[Email Fallback Sent] MessageId: ${fallbackInfo.messageId} | To: ${to}`);
+        return { success: true, messageId: fallbackInfo.messageId };
+      } catch (retryErr) {
+        console.error(`[Email Fallback Also Failed]: ${retryErr.message}`);
+      }
+    }
     return { success: false, error: err.message };
   }
 };
 
 const getCustomerEmail = (order) => {
   return (
-    order.shippingAddress?.email ||
     order.guestEmail ||
+    order.email ||
+    order.shippingAddress?.email ||
     (order.user && typeof order.user === 'object' ? order.user.email : null) ||
     null
   );
@@ -109,7 +129,11 @@ const renderEmailTemplate = ({
   tracking = null,
   showReviewCta = false
 }) => {
-  const appUrl = process.env.APP_URL || 'http://localhost:5173';
+  const isProd = process.env.NODE_ENV === 'production';
+  const configuredAppUrl = (process.env.APP_URL || process.env.CLIENT_URL || '').trim();
+  const appUrl = (isProd && (!configuredAppUrl || configuredAppUrl.includes('localhost')))
+    ? (process.env.SITE_URL || 'https://www.aurextruckparts.com.au')
+    : (configuredAppUrl || 'https://www.aurextruckparts.com.au');
   const trackUrl = `${appUrl}/track?order=${encodeURIComponent(orderNumber)}`;
   const reviewUrl = `${appUrl}/orders?rate=${encodeURIComponent(orderNumber)}`;
   // Google Business Profile review link ("Ask for reviews" in the profile). Every delivered order gets the same
@@ -117,8 +141,15 @@ const renderEmailTemplate = ({
   const googleReviewUrl = (process.env.GOOGLE_REVIEW_URL || '').replace(/"/g, '%22');
 
   const items = (order.items || []).map(escFields);
-  const pricing = order.pricing || { subtotal: 0, shippingFee: 0, grandTotal: 0 };
+  const pricing = order.pricing || {
+    subtotal: order.subtotal || 0,
+    shippingFee: order.shippingFee || 0,
+    grandTotal: order.total || 0,
+    totalDiscount: order.discount || 0
+  };
   const shipping = escFields(order.shippingAddress);
+  const isBankTransfer = /bank|transfer|eft/i.test(order.payment?.method || '');
+  const isPickup = /pickup|collect/i.test(order.shipping?.shippingMethod || order.shippingMethod || '');
 
   const itemsHtml = items.map((i) => `
     <tr>
@@ -192,6 +223,43 @@ const renderEmailTemplate = ({
                       ${statusMessage}
                     </p>
                   </div>
+
+                  <!-- Direct Bank Transfer EFT Details -->
+                  ${isBankTransfer && order.payment?.status !== 'PAID' ? `
+                    <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px 18px; margin-bottom: 24px;">
+                      <h4 style="margin: 0 0 8px 0; color: #166534; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">
+                        🏦 Direct Bank Transfer (EFT) Payment Instructions
+                      </h4>
+                      <p style="margin: 0 0 10px 0; color: #15803d; font-size: 13px; line-height: 1.5;">
+                        Please transfer <strong>$${Number(pricing.grandTotal || 0).toFixed(2)} AUD</strong> to the following business account using your order number as reference:
+                      </p>
+                      <table width="100%" cellpadding="0" cellspacing="0" style="font-size: 13px; color: #166534;">
+                        <tr><td style="padding: 3px 0; width: 140px;"><strong>Bank:</strong></td><td>NAB Australia Ltd</td></tr>
+                        <tr><td style="padding: 3px 0;"><strong>Account Name:</strong></td><td>Aurex Panels Pty Limited</td></tr>
+                        <tr><td style="padding: 3px 0;"><strong>BSB:</strong></td><td><span style="font-family: monospace; font-weight: bold; background: #dcfce7; padding: 2px 6px; border-radius: 4px;">083-419</span></td></tr>
+                        <tr><td style="padding: 3px 0;"><strong>Account Number:</strong></td><td><span style="font-family: monospace; font-weight: bold; background: #dcfce7; padding: 2px 6px; border-radius: 4px;">90-287-1454</span></td></tr>
+                        <tr><td style="padding: 3px 0;"><strong>Payment Reference:</strong></td><td><span style="font-family: monospace; font-weight: bold; color: #001738; background: #fef08a; padding: 2px 6px; border-radius: 4px;">${orderNumber}</span></td></tr>
+                      </table>
+                      <p style="margin: 10px 0 0 0; color: #4d7c0f; font-size: 11px;">
+                        * Your parts are allocated in our system. Dispatch commences immediately once EFT settlement is confirmed.
+                      </p>
+                    </div>
+                  ` : ''}
+
+                  <!-- Click and Collect Depot Callout -->
+                  ${isPickup ? `
+                    <div style="background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 16px 18px; margin-bottom: 24px;">
+                      <h4 style="margin: 0 0 8px 0; color: #1e40af; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">
+                        📍 Warehouse Click &amp; Collect Collection
+                      </h4>
+                      <table width="100%" cellpadding="0" cellspacing="0" style="font-size: 13px; color: #1e3a8a;">
+                        <tr><td style="padding: 3px 0; width: 140px;"><strong>Depot Address:</strong></td><td>77 Capital Link Drive, Campbellfield VIC 3061</td></tr>
+                        <tr><td style="padding: 3px 0;"><strong>Trade Desk Hours:</strong></td><td>Monday–Friday 9:00am–5:00pm, Saturday 9:00am–12:00pm</td></tr>
+                        <tr><td style="padding: 3px 0;"><strong>Warehouse Desk:</strong></td><td>+61 414 730 467</td></tr>
+                        <tr><td style="padding: 3px 0;"><strong>Ready Time:</strong></td><td>Ready for collection in 4 hours. Bring your order confirmation reference.</td></tr>
+                      </table>
+                    </div>
+                  ` : ''}
 
                   <!-- Tracking Details Callout (If Dispatched) -->
                   ${tracking && (tracking.trackingNumber || tracking.carrier) ? `
@@ -356,10 +424,14 @@ const sendOrderPlacedEmail = async (order) => {
   if (!email) return;
 
   const isBankTransfer = String(order.payment?.method || '').toLowerCase().includes('bank');
+  const isPickup = /pickup|collect/i.test(order.shipping?.shippingMethod || order.shippingMethod || '');
 
-  const statusMessage = isBankTransfer
-    ? `Thank you for your order! We have received order <strong>#${order.orderNumber}</strong>. Please find our commercial banking details on your invoice or transfer to Aurex Truck Parts using reference <strong>#${order.orderNumber}</strong>. Once payment is confirmed, parts will be allocated immediately for packing.`
-    : `Thank you for choosing Aurex Truck Parts. We have successfully received your order <strong>#${order.orderNumber}</strong>. Our Campbellfield VIC warehouse team has received your requisition and is preparing parts for dispatch.`;
+  let statusMessage = `Thank you for choosing Aurex Truck Parts. We have successfully received your order <strong>#${order.orderNumber}</strong>. Our Campbellfield VIC warehouse team has received your requisition and is preparing parts for dispatch.`;
+  if (isPickup) {
+    statusMessage = `Thank you for your Click & Collect order <strong>#${order.orderNumber}</strong>! Our Campbellfield warehouse team has received your requisition and will have your parts packed and ready for collection within 4 business hours.`;
+  } else if (isBankTransfer) {
+    statusMessage = `Thank you for your order! We have received order <strong>#${order.orderNumber}</strong>. Please find our commercial banking details below to complete your EFT transfer. Once payment settlement is confirmed, your parts will be dispatched immediately.`;
+  }
 
   const html = renderEmailTemplate({
     title: `Order Received #${order.orderNumber}`,
@@ -502,10 +574,14 @@ const sendOrderDeliveredEmail = async (order) => {
  * Sends immediate full-detail order notification to store administrator.
  */
 const sendAdminNewOrderEmail = async (order, extra = {}) => {
-  const adminEmail = process.env.ADMIN_ORDER_EMAIL || process.env.ADMIN_EMAIL || 'aurexparts@yopmail.com';
+  const adminEmail = process.env.ADMIN_ORDER_EMAIL || process.env.ADMIN_EMAIL || process.env.STORE_SUPPORT_EMAIL || 'aurexparts@yopmail.com';
   if (!adminEmail) return;
 
-  const appUrl = process.env.APP_URL || 'https://www.aurextruckparts.com.au';
+  const isProd = process.env.NODE_ENV === 'production';
+  const configuredAppUrl = (process.env.APP_URL || process.env.CLIENT_URL || '').trim();
+  const appUrl = (isProd && (!configuredAppUrl || configuredAppUrl.includes('localhost')))
+    ? (process.env.SITE_URL || 'https://www.aurextruckparts.com.au')
+    : (configuredAppUrl || 'https://www.aurextruckparts.com.au');
   const adminOrdersUrl = `${appUrl}/admin/orders`;
 
   const items = (order.items || []).map(escFields);
