@@ -217,9 +217,7 @@
     "specs": {
       "Size": "1200 x 450 x 400 mm",
       "Material": "Steel",
-      "Lock": "Lockable lid",
-      "Australian Standard": "AS/NZS ISO 9001 Commercial Transport Standard Approved",
-      "Certification": "AS/NZS ISO 9001 Heavy Commercial Transport Standard Approved"
+      "Lock": "Lockable lid"
     },
     "categorySlug": "accessories",
     "rating": 4.8,
