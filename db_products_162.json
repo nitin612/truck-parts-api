@@ -599,9 +599,9 @@
       }
     ],
     "pricing": {
-      "mrp": 50.0,
-      "sellingPrice": 50.0,
-      "tradePrice": 46.0,
+      "mrp": 50,
+      "sellingPrice": 50,
+      "tradePrice": 46,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -2778,8 +2778,8 @@
       }
     ],
     "pricing": {
-      "mrp": 71.0,
-      "sellingPrice": 71.0,
+      "mrp": 71,
+      "sellingPrice": 71,
       "tradePrice": 65.32,
       "isPOA": false,
       "discountType": "NONE",
@@ -2824,10 +2824,6 @@
       {
         "label": "Use",
         "value": "Pantech rear doors"
-      },
-      {
-        "label": "Australian Standard",
-        "value": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
       },
       {
         "label": "Certification",
@@ -2885,7 +2881,6 @@
       "Bar": "27 mm steel",
       "Set": "200L plus 200R",
       "Use": "Pantech rear doors",
-      "Australian Standard": "AS/NZS ISO 9001 Commercial Transport Standard Approved",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Transport Standard",
       "Pipe Compatibility": "Standard 27mm OD (1-1/16\") Lock Rod Tube",
       "Configuration": "Complete Set with Lever Handle (200L Left-Hand / 200R Right-Hand Available)",
@@ -2985,10 +2980,6 @@
         "value": "Replacement bars"
       },
       {
-        "label": "Australian Standard",
-        "value": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
-      },
-      {
         "label": "Certification",
         "value": "AS/NZS ISO 9001 Approved Commercial Transport Standard"
       },
@@ -3032,7 +3023,6 @@
       "Bar": "27 mm steel",
       "Latch": "Not included",
       "Use": "Replacement bars",
-      "Australian Standard": "AS/NZS ISO 9001 Commercial Transport Standard Approved",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Transport Standard",
       "Pipe Compatibility": "Standard 27mm OD (1-1/16\") Lock Rod Tube",
       "Configuration": "Cam & Keeper Sub-Assembly (Less Handle / Latch)",
@@ -3204,8 +3194,8 @@
       }
     ],
     "pricing": {
-      "mrp": 29.0,
-      "sellingPrice": 29.0,
+      "mrp": 29,
+      "sellingPrice": 29,
       "tradePrice": 26.68,
       "isPOA": false,
       "discountType": "NONE",
@@ -3330,8 +3320,8 @@
       }
     ],
     "pricing": {
-      "mrp": 29.0,
-      "sellingPrice": 29.0,
+      "mrp": 29,
+      "sellingPrice": 29,
       "tradePrice": 26.68,
       "isPOA": false,
       "discountType": "NONE",
@@ -4070,8 +4060,8 @@
       }
     ],
     "pricing": {
-      "mrp": 156.0,
-      "sellingPrice": 156.0,
+      "mrp": 156,
+      "sellingPrice": 156,
       "tradePrice": 143.52,
       "isPOA": false,
       "discountType": "NONE",
@@ -4213,8 +4203,8 @@
       }
     ],
     "pricing": {
-      "mrp": 80.0,
-      "sellingPrice": 80.0,
+      "mrp": 80,
+      "sellingPrice": 80,
       "tradePrice": 73.6,
       "isPOA": false,
       "discountType": "NONE",
@@ -4361,8 +4351,8 @@
       }
     ],
     "pricing": {
-      "mrp": 76.0,
-      "sellingPrice": 76.0,
+      "mrp": 76,
+      "sellingPrice": 76,
       "tradePrice": 69.92,
       "isPOA": false,
       "discountType": "NONE",
@@ -4800,8 +4790,8 @@
       }
     ],
     "pricing": {
-      "mrp": 1360.0,
-      "sellingPrice": 1360.0,
+      "mrp": 1360,
+      "sellingPrice": 1360,
       "tradePrice": 1251.2,
       "isPOA": false,
       "discountType": "NONE",
@@ -4943,8 +4933,8 @@
       }
     ],
     "pricing": {
-      "mrp": 1760.0,
-      "sellingPrice": 1760.0,
+      "mrp": 1760,
+      "sellingPrice": 1760,
       "tradePrice": 1619.2,
       "isPOA": false,
       "discountType": "NONE",
@@ -5086,8 +5076,8 @@
       }
     ],
     "pricing": {
-      "mrp": 1960.0,
-      "sellingPrice": 1960.0,
+      "mrp": 1960,
+      "sellingPrice": 1960,
       "tradePrice": 1803.2,
       "isPOA": false,
       "discountType": "NONE",
@@ -5229,8 +5219,8 @@
       }
     ],
     "pricing": {
-      "mrp": 193.0,
-      "sellingPrice": 193.0,
+      "mrp": 193,
+      "sellingPrice": 193,
       "tradePrice": 177.56,
       "isPOA": false,
       "discountType": "NONE",
@@ -5377,8 +5367,8 @@
       }
     ],
     "pricing": {
-      "mrp": 256.0,
-      "sellingPrice": 256.0,
+      "mrp": 256,
+      "sellingPrice": 256,
       "tradePrice": 235.52,
       "isPOA": false,
       "discountType": "NONE",
@@ -5573,10 +5563,6 @@
         "value": "Electrostatically Applied UV-Resistant Black Powder Coat"
       },
       {
-        "label": "Australian Standard",
-        "value": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
-      },
-      {
         "label": "Certification",
         "value": "AS/NZS ISO 9001 Approved Commercial Transport Standard"
       },
@@ -5612,7 +5598,6 @@
       "Width": "1995 mm",
       "Height": "1600 mm",
       "Finish": "Electrostatically Applied UV-Resistant Black Powder Coat",
-      "Australian Standard": "AS/NZS ISO 9001 Commercial Transport Standard Approved",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Transport Standard",
       "Tube Specification": "32mm OD x 2.5mm Wall Structural Steel Tubing"
     },
@@ -6231,8 +6216,8 @@
       }
     ],
     "pricing": {
-      "mrp": 13.0,
-      "sellingPrice": 13.0,
+      "mrp": 13,
+      "sellingPrice": 13,
       "tradePrice": 11.96,
       "isPOA": false,
       "discountType": "NONE",
@@ -6374,8 +6359,8 @@
       }
     ],
     "pricing": {
-      "mrp": 13.0,
-      "sellingPrice": 13.0,
+      "mrp": 13,
+      "sellingPrice": 13,
       "tradePrice": 11.96,
       "isPOA": false,
       "discountType": "NONE",
@@ -6517,8 +6502,8 @@
       }
     ],
     "pricing": {
-      "mrp": 36.0,
-      "sellingPrice": 36.0,
+      "mrp": 36,
+      "sellingPrice": 36,
       "tradePrice": 33.12,
       "isPOA": false,
       "discountType": "NONE",
@@ -6660,8 +6645,8 @@
       }
     ],
     "pricing": {
-      "mrp": 36.0,
-      "sellingPrice": 36.0,
+      "mrp": 36,
+      "sellingPrice": 36,
       "tradePrice": 33.12,
       "isPOA": false,
       "discountType": "NONE",
@@ -6946,8 +6931,8 @@
       }
     ],
     "pricing": {
-      "mrp": 96.0,
-      "sellingPrice": 96.0,
+      "mrp": 96,
+      "sellingPrice": 96,
       "tradePrice": 88.32,
       "isPOA": false,
       "discountType": "NONE",
@@ -7137,10 +7122,6 @@
         "value": "Electrostatically Applied UV-Resistant Black Powder Coat"
       },
       {
-        "label": "Australian Standard",
-        "value": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
-      },
-      {
         "label": "Certification",
         "value": "AS/NZS ISO 9001 Approved Commercial Transport Standard"
       },
@@ -7176,7 +7157,6 @@
       "Width": "2045 mm",
       "Height": "1600 mm",
       "Finish": "Electrostatically Applied UV-Resistant Black Powder Coat",
-      "Australian Standard": "AS/NZS ISO 9001 Commercial Transport Standard Approved",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Transport Standard",
       "Tube Specification": "32mm OD x 2.5mm Wall Structural Steel Tubing"
     },
@@ -7223,8 +7203,8 @@
       }
     ],
     "pricing": {
-      "mrp": 96.0,
-      "sellingPrice": 96.0,
+      "mrp": 96,
+      "sellingPrice": 96,
       "tradePrice": 88.32,
       "isPOA": false,
       "discountType": "NONE",
@@ -7366,8 +7346,8 @@
       }
     ],
     "pricing": {
-      "mrp": 196.0,
-      "sellingPrice": 196.0,
+      "mrp": 196,
+      "sellingPrice": 196,
       "tradePrice": 180.32,
       "isPOA": false,
       "discountType": "NONE",
@@ -7557,10 +7537,6 @@
         "value": "Electrostatically Applied UV-Resistant Black Powder Coat"
       },
       {
-        "label": "Australian Standard",
-        "value": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
-      },
-      {
         "label": "Certification",
         "value": "AS/NZS ISO 9001 Approved Commercial Transport Standard"
       },
@@ -7596,7 +7572,6 @@
       "Width": "1250 mm",
       "Height": "1600 mm",
       "Finish": "Electrostatically Applied UV-Resistant Black Powder Coat",
-      "Australian Standard": "AS/NZS ISO 9001 Commercial Transport Standard Approved",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Transport Standard",
       "Tube Specification": "32mm OD x 2.5mm Wall Structural Steel Tubing"
     },
@@ -8072,9 +8047,9 @@
       }
     ],
     "pricing": {
-      "mrp": 25.0,
-      "sellingPrice": 25.0,
-      "tradePrice": 23.0,
+      "mrp": 25,
+      "sellingPrice": 25,
+      "tradePrice": 23,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -8213,9 +8188,9 @@
       }
     ],
     "pricing": {
-      "mrp": 25.0,
-      "sellingPrice": 25.0,
-      "tradePrice": 23.0,
+      "mrp": 25,
+      "sellingPrice": 25,
+      "tradePrice": 23,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -8354,8 +8329,8 @@
       }
     ],
     "pricing": {
-      "mrp": 56.0,
-      "sellingPrice": 56.0,
+      "mrp": 56,
+      "sellingPrice": 56,
       "tradePrice": 51.52,
       "isPOA": false,
       "discountType": "NONE",
@@ -8497,8 +8472,8 @@
       }
     ],
     "pricing": {
-      "mrp": 56.0,
-      "sellingPrice": 56.0,
+      "mrp": 56,
+      "sellingPrice": 56,
       "tradePrice": 51.52,
       "isPOA": false,
       "discountType": "NONE",
@@ -8640,8 +8615,8 @@
       }
     ],
     "pricing": {
-      "mrp": 136.0,
-      "sellingPrice": 136.0,
+      "mrp": 136,
+      "sellingPrice": 136,
       "tradePrice": 125.12,
       "isPOA": false,
       "discountType": "NONE",
@@ -8686,10 +8661,6 @@
       {
         "label": "Type",
         "value": "Cargo bar"
-      },
-      {
-        "label": "Australian Standard",
-        "value": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
       },
       {
         "label": "Certification",
@@ -8960,10 +8931,6 @@
         "value": "End fitting"
       },
       {
-        "label": "Australian Standard",
-        "value": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
-      },
-      {
         "label": "Certification",
         "value": "AS/NZS ISO 9001 Approved Commercial Transport Standard; AS/NZS 4380 Compliance"
       },
@@ -9022,7 +8989,6 @@
     "specs": {
       "Use": "Curtains",
       "Type": "End fitting",
-      "Australian Standard": "AS/NZS ISO 9001 Commercial Transport Standard Approved",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Transport Standard; AS/NZS 4380 Compliance",
       "Track System": "Standard F-Track (Series F logistics track slots)",
       "Pin Diameter": "19mm (3/4\") Spring-Loaded Plunger Pin",
@@ -9119,10 +9085,6 @@
         "value": "End fitting"
       },
       {
-        "label": "Australian Standard",
-        "value": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
-      },
-      {
         "label": "Certification",
         "value": "AS/NZS ISO 9001 Approved Commercial Transport Standard; AS/NZS 4380 & DOT Compliance"
       },
@@ -9181,7 +9143,6 @@
     "specs": {
       "Use": "Curtains",
       "Type": "End fitting",
-      "Australian Standard": "AS/NZS ISO 9001 Commercial Transport Standard Approved",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Transport Standard; AS/NZS 4380 & DOT Compliance",
       "Track System": "Universal E-Track & Q-Track (Series E & Series A)",
       "Strap Width": "50mm (2\") Industrial Heavy-Duty Polyester Webbing",
@@ -9426,7 +9387,6 @@
     "specs": {
       "Material": "304 stainless",
       "Type": "Paddle latch",
-      "Australian Standard": "AS/NZS ISO 9001 Commercial Transport Standard Approved",
       "Certification": "AS/NZS ISO 9001 Heavy Commercial Transport Standard Approved"
     },
     "categorySlug": "trailer-parts",
@@ -9513,10 +9473,6 @@
       {
         "label": "Keys",
         "value": "Included"
-      },
-      {
-        "label": "Australian Standard",
-        "value": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
       },
       {
         "label": "Certification",
@@ -9682,7 +9638,6 @@
     "specs": {
       "Material": "Stainless",
       "Use": "Doors",
-      "Australian Standard": "AS/NZS ISO 9001 Commercial Transport Standard Approved",
       "Certification": "AS/NZS ISO 9001 Heavy Commercial Transport Standard Approved"
     },
     "categorySlug": "trailer-parts",
@@ -9771,10 +9726,6 @@
         "value": "Cold-Drawn Heavy-Wall Steel Tubing (Ø25mm OD)"
       },
       {
-        "label": "Australian Standard",
-        "value": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
-      },
-      {
         "label": "Certification",
         "value": "AS/NZS ISO 9001 Approved Commercial Transport Standard"
       },
@@ -9813,7 +9764,6 @@
     "specs": {
       "Length": "330 mm",
       "Material": "Cold-Drawn Heavy-Wall Steel Tubing (Ø25mm OD)",
-      "Australian Standard": "AS/NZS ISO 9001 Commercial Transport Standard Approved",
       "Certification": "AS/NZS ISO 9001 Approved Commercial Transport Standard",
       "Height / Standoff": "50 mm",
       "Mounting": "Direct Weld-On / Bolt-Through (Without Mounting Base Flanges)"
@@ -10099,8 +10049,8 @@
       }
     ],
     "pricing": {
-      "mrp": 15.0,
-      "sellingPrice": 15.0,
+      "mrp": 15,
+      "sellingPrice": 15,
       "tradePrice": 13.8,
       "isPOA": false,
       "discountType": "NONE",
@@ -10531,7 +10481,6 @@
     "specs": {
       "Use": "Trailers",
       "Type": "Roller",
-      "Australian Standard": "AS/NZS ISO 9001 Commercial Transport Standard Approved",
       "Certification": "AS/NZS ISO 9001 Heavy Commercial Transport Standard Approved"
     },
     "categorySlug": "trailer-parts",
@@ -10576,8 +10525,8 @@
       }
     ],
     "pricing": {
-      "mrp": 56.0,
-      "sellingPrice": 56.0,
+      "mrp": 56,
+      "sellingPrice": 56,
       "tradePrice": 51.52,
       "isPOA": false,
       "discountType": "NONE",
@@ -10719,8 +10668,8 @@
       }
     ],
     "pricing": {
-      "mrp": 64.0,
-      "sellingPrice": 64.0,
+      "mrp": 64,
+      "sellingPrice": 64,
       "tradePrice": 58.88,
       "isPOA": false,
       "discountType": "NONE",
@@ -11148,8 +11097,8 @@
       }
     ],
     "pricing": {
-      "mrp": 136.0,
-      "sellingPrice": 136.0,
+      "mrp": 136,
+      "sellingPrice": 136,
       "tradePrice": 125.12,
       "isPOA": false,
       "discountType": "NONE",
@@ -11291,8 +11240,8 @@
       }
     ],
     "pricing": {
-      "mrp": 49.0,
-      "sellingPrice": 49.0,
+      "mrp": 49,
+      "sellingPrice": 49,
       "tradePrice": 45.08,
       "isPOA": false,
       "discountType": "NONE",
@@ -11434,8 +11383,8 @@
       }
     ],
     "pricing": {
-      "mrp": 71.0,
-      "sellingPrice": 71.0,
+      "mrp": 71,
+      "sellingPrice": 71,
       "tradePrice": 65.32,
       "isPOA": false,
       "discountType": "NONE",
@@ -12001,8 +11950,8 @@
       }
     ],
     "pricing": {
-      "mrp": 92.0,
-      "sellingPrice": 92.0,
+      "mrp": 92,
+      "sellingPrice": 92,
       "tradePrice": 84.64,
       "isPOA": false,
       "discountType": "NONE",
@@ -12144,8 +12093,8 @@
       }
     ],
     "pricing": {
-      "mrp": 130.0,
-      "sellingPrice": 130.0,
+      "mrp": 130,
+      "sellingPrice": 130,
       "tradePrice": 119.6,
       "isPOA": false,
       "discountType": "NONE",
@@ -12287,8 +12236,8 @@
       }
     ],
     "pricing": {
-      "mrp": 59.0,
-      "sellingPrice": 59.0,
+      "mrp": 59,
+      "sellingPrice": 59,
       "tradePrice": 54.28,
       "isPOA": false,
       "discountType": "NONE",
@@ -12430,8 +12379,8 @@
       }
     ],
     "pricing": {
-      "mrp": 268.0,
-      "sellingPrice": 268.0,
+      "mrp": 268,
+      "sellingPrice": 268,
       "tradePrice": 246.56,
       "isPOA": false,
       "discountType": "NONE",
@@ -12573,8 +12522,8 @@
       }
     ],
     "pricing": {
-      "mrp": 180.0,
-      "sellingPrice": 180.0,
+      "mrp": 180,
+      "sellingPrice": 180,
       "tradePrice": 165.6,
       "isPOA": false,
       "discountType": "NONE",
@@ -12716,8 +12665,8 @@
       }
     ],
     "pricing": {
-      "mrp": 76.0,
-      "sellingPrice": 76.0,
+      "mrp": 76,
+      "sellingPrice": 76,
       "tradePrice": 69.92,
       "isPOA": false,
       "discountType": "NONE",
@@ -12859,8 +12808,8 @@
       }
     ],
     "pricing": {
-      "mrp": 116.0,
-      "sellingPrice": 116.0,
+      "mrp": 116,
+      "sellingPrice": 116,
       "tradePrice": 106.72,
       "isPOA": false,
       "discountType": "NONE",
@@ -13002,8 +12951,8 @@
       }
     ],
     "pricing": {
-      "mrp": 116.0,
-      "sellingPrice": 116.0,
+      "mrp": 116,
+      "sellingPrice": 116,
       "tradePrice": 106.72,
       "isPOA": false,
       "discountType": "NONE",
@@ -13431,8 +13380,8 @@
       }
     ],
     "pricing": {
-      "mrp": 116.0,
-      "sellingPrice": 116.0,
+      "mrp": 116,
+      "sellingPrice": 116,
       "tradePrice": 106.72,
       "isPOA": false,
       "discountType": "NONE",
@@ -13574,8 +13523,8 @@
       }
     ],
     "pricing": {
-      "mrp": 98.0,
-      "sellingPrice": 98.0,
+      "mrp": 98,
+      "sellingPrice": 98,
       "tradePrice": 90.16,
       "isPOA": false,
       "discountType": "NONE",
@@ -13860,8 +13809,8 @@
       }
     ],
     "pricing": {
-      "mrp": 430.0,
-      "sellingPrice": 430.0,
+      "mrp": 430,
+      "sellingPrice": 430,
       "tradePrice": 395.6,
       "isPOA": false,
       "discountType": "NONE",
@@ -13998,8 +13947,8 @@
       }
     ],
     "pricing": {
-      "mrp": 14.0,
-      "sellingPrice": 14.0,
+      "mrp": 14,
+      "sellingPrice": 14,
       "tradePrice": 12.88,
       "isPOA": false,
       "discountType": "NONE",
@@ -14141,8 +14090,8 @@
       }
     ],
     "pricing": {
-      "mrp": 90.0,
-      "sellingPrice": 90.0,
+      "mrp": 90,
+      "sellingPrice": 90,
       "tradePrice": 82.8,
       "isPOA": false,
       "discountType": "NONE",
@@ -14427,8 +14376,8 @@
       }
     ],
     "pricing": {
-      "mrp": 52.0,
-      "sellingPrice": 52.0,
+      "mrp": 52,
+      "sellingPrice": 52,
       "tradePrice": 47.84,
       "isPOA": false,
       "discountType": "NONE",
@@ -14570,8 +14519,8 @@
       }
     ],
     "pricing": {
-      "mrp": 140.0,
-      "sellingPrice": 140.0,
+      "mrp": 140,
+      "sellingPrice": 140,
       "tradePrice": 128.8,
       "isPOA": false,
       "discountType": "NONE",
@@ -14713,8 +14662,8 @@
       }
     ],
     "pricing": {
-      "mrp": 272.0,
-      "sellingPrice": 272.0,
+      "mrp": 272,
+      "sellingPrice": 272,
       "tradePrice": 250.24,
       "isPOA": false,
       "discountType": "NONE",
@@ -14865,8 +14814,8 @@
       }
     ],
     "pricing": {
-      "mrp": 370.0,
-      "sellingPrice": 370.0,
+      "mrp": 370,
+      "sellingPrice": 370,
       "tradePrice": 340.4,
       "isPOA": false,
       "discountType": "NONE",
@@ -15013,8 +14962,8 @@
       }
     ],
     "pricing": {
-      "mrp": 11.0,
-      "sellingPrice": 11.0,
+      "mrp": 11,
+      "sellingPrice": 11,
       "tradePrice": 10.12,
       "isPOA": false,
       "discountType": "NONE",
@@ -15158,7 +15107,7 @@
     "pricing": {
       "mrp": 33.7,
       "sellingPrice": 33.7,
-      "tradePrice": 31.0,
+      "tradePrice": 31,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -15301,7 +15250,7 @@
     "pricing": {
       "mrp": 33.7,
       "sellingPrice": 33.7,
-      "tradePrice": 31.0,
+      "tradePrice": 31,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -15728,8 +15677,8 @@
       }
     ],
     "pricing": {
-      "mrp": 11.0,
-      "sellingPrice": 11.0,
+      "mrp": 11,
+      "sellingPrice": 11,
       "tradePrice": 10.12,
       "isPOA": false,
       "discountType": "NONE",
@@ -16016,7 +15965,7 @@
     "pricing": {
       "mrp": 11.96,
       "sellingPrice": 11.96,
-      "tradePrice": 11.0,
+      "tradePrice": 11,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -16157,9 +16106,9 @@
       }
     ],
     "pricing": {
-      "mrp": 1100.0,
-      "sellingPrice": 1100.0,
-      "tradePrice": 1012.0,
+      "mrp": 1100,
+      "sellingPrice": 1100,
+      "tradePrice": 1012,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -16300,9 +16249,9 @@
       }
     ],
     "pricing": {
-      "mrp": 1400.0,
-      "sellingPrice": 1400.0,
-      "tradePrice": 1288.0,
+      "mrp": 1400,
+      "sellingPrice": 1400,
+      "tradePrice": 1288,
       "isPOA": false,
       "discountType": "NONE",
       "discountValue": 0
@@ -16443,8 +16392,8 @@
       }
     ],
     "pricing": {
-      "mrp": 120.0,
-      "sellingPrice": 120.0,
+      "mrp": 120,
+      "sellingPrice": 120,
       "tradePrice": 110.4,
       "isPOA": false,
       "discountType": "NONE",
@@ -16595,8 +16544,8 @@
       "/images/products/ATP-TP-83-bar.jpg"
     ],
     "pricing": {
-      "mrp": 460.0,
-      "sellingPrice": 460.0,
+      "mrp": 460,
+      "sellingPrice": 460,
       "tradePrice": 423.2,
       "isPOA": false,
       "discountType": "NONE",
@@ -16756,8 +16705,8 @@
       "/images/products/ATP-TP-84-back.jpg"
     ],
     "pricing": {
-      "mrp": 8.0,
-      "sellingPrice": 8.0,
+      "mrp": 8,
+      "sellingPrice": 8,
       "tradePrice": 7.36,
       "isPOA": false,
       "discountType": "NONE",
@@ -16906,8 +16855,8 @@
       "/images/products/ATP-TP-85-back.jpg"
     ],
     "pricing": {
-      "mrp": 96.0,
-      "sellingPrice": 96.0,
+      "mrp": 96,
+      "sellingPrice": 96,
       "tradePrice": 88.32,
       "isPOA": false,
       "discountType": "NONE",
@@ -17052,8 +17001,8 @@
       }
     ],
     "pricing": {
-      "mrp": 8.0,
-      "sellingPrice": 8.0,
+      "mrp": 8,
+      "sellingPrice": 8,
       "tradePrice": 7.36,
       "isPOA": false,
       "discountType": "NONE",
@@ -17338,8 +17287,8 @@
       }
     ],
     "pricing": {
-      "mrp": 690.0,
-      "sellingPrice": 690.0,
+      "mrp": 690,
+      "sellingPrice": 690,
       "tradePrice": 634.8,
       "isPOA": false,
       "discountType": "NONE",
@@ -17481,8 +17430,8 @@
       }
     ],
     "pricing": {
-      "mrp": 780.0,
-      "sellingPrice": 780.0,
+      "mrp": 780,
+      "sellingPrice": 780,
       "tradePrice": 717.6,
       "isPOA": false,
       "discountType": "NONE",
@@ -17624,8 +17573,8 @@
       }
     ],
     "pricing": {
-      "mrp": 790.0,
-      "sellingPrice": 790.0,
+      "mrp": 790,
+      "sellingPrice": 790,
       "tradePrice": 726.8,
       "isPOA": false,
       "discountType": "NONE",
@@ -17767,8 +17716,8 @@
       }
     ],
     "pricing": {
-      "mrp": 52.0,
-      "sellingPrice": 52.0,
+      "mrp": 52,
+      "sellingPrice": 52,
       "tradePrice": 47.84,
       "isPOA": false,
       "discountType": "NONE",
@@ -17968,14 +17917,6 @@
       {
         "label": "Technical Specification",
         "value": "Front top corner casting for commercial van bodies, matches PTB rail profiles"
-      },
-      {
-        "label": "Certification",
-        "value": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
-      },
-      {
-        "label": "Australian Standard",
-        "value": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
       }
     ],
     "shippingInfo": {
@@ -18006,9 +17947,7 @@
       "Profile": "PTB standard radius (Radius 100mm)",
       "Construction": "Includes structural cast aluminium corner base and aerodynamic outer trim cover",
       "Material": "High-density die-cast aluminium alloy and marine plate",
-      "Finish": "Natural satin mill finish",
-      "Australian Standard": "AS/NZS ISO 9001 Commercial Transport Standard Approved",
-      "Certification": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
+      "Finish": "Natural satin mill finish"
     },
     "categorySlug": "trailer-parts",
     "rating": 4.9,
@@ -18337,8 +18276,8 @@
       }
     ],
     "pricing": {
-      "mrp": 796.0,
-      "sellingPrice": 796.0,
+      "mrp": 796,
+      "sellingPrice": 796,
       "tradePrice": 732.32,
       "isPOA": false,
       "discountType": "NONE",
@@ -18399,14 +18338,6 @@
       {
         "label": "Technical Specification",
         "value": "Gravity discharge grain hatch chute for bulk haulage tipper tailgates"
-      },
-      {
-        "label": "Certification",
-        "value": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
-      },
-      {
-        "label": "Australian Standard",
-        "value": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
       }
     ],
     "shippingInfo": {
@@ -18439,9 +18370,7 @@
       "Mounting": "Bolt-on flange",
       "Dimensions": "400mm Wide x 350mm Height",
       "Product Parameter": "Width: 400mm | Height: 350mm | Frame: 480 x 420mm | Cast marine aluminium alloy | Cam lock handle with neoprene seal",
-      "Technical Specification": "Gravity discharge grain hatch chute for bulk haulage tipper tailgates",
-      "Certification": "AS/NZS ISO 9001 Commercial Transport Standard Approved",
-      "Australian Standard": "AS/NZS ISO 9001 Commercial Transport Standard Approved"
+      "Technical Specification": "Gravity discharge grain hatch chute for bulk haulage tipper tailgates"
     },
     "categorySlug": "trailer-parts",
     "rating": 4.6,
@@ -18485,8 +18414,8 @@
       }
     ],
     "pricing": {
-      "mrp": 776.0,
-      "sellingPrice": 776.0,
+      "mrp": 776,
+      "sellingPrice": 776,
       "tradePrice": 713.92,
       "isPOA": false,
       "discountType": "NONE",
@@ -18628,8 +18557,8 @@
       }
     ],
     "pricing": {
-      "mrp": 110.0,
-      "sellingPrice": 110.0,
+      "mrp": 110,
+      "sellingPrice": 110,
       "tradePrice": 101.2,
       "isPOA": false,
       "discountType": "NONE",
