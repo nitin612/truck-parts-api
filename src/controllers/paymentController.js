@@ -8,7 +8,7 @@ const Cart = require('../models/Cart');
 const InventoryTransaction = require('../models/InventoryTransaction');
 const CustomError = require('../utils/CustomError');
 const socketService = require('../services/socketService');
-const { sendOrderConfirmedEmail } = require('../services/notificationService');
+const { sendOrderConfirmedEmail, sendAdminNewOrderEmail } = require('../services/notificationService');
 const { resolveAppUrl } = require('../utils/origin');
 const { getAccessSecret } = require('../utils/token');
 const { normalizeOrder } = require('./orderController');
@@ -164,7 +164,17 @@ const adminMarkOrderPaid = async (request, reply) => {
     paidAmount: order.payment.paidAmount
   });
 
-  sendOrderConfirmedEmail(order).catch((err) => console.error('[Order Confirmation Email Error]:', err));
+  try {
+    await Promise.race([
+      Promise.allSettled([
+        sendOrderConfirmedEmail(order),
+        sendAdminNewOrderEmail(order, { event: 'PAYMENT_RECEIVED' })
+      ]),
+      new Promise((resolve) => setTimeout(resolve, 4000))
+    ]);
+  } catch (err) {
+    console.error('[Payment Confirmation Email Error]:', err);
+  }
 
   reply.send({
     success: true,
@@ -353,7 +363,17 @@ const verifySession = async (request, reply) => {
             transactionId: order.payment.transactionId
           });
 
-          sendOrderConfirmedEmail(order).catch((err) => console.error('[Order Confirmation Email Error]:', err));
+          try {
+    await Promise.race([
+      Promise.allSettled([
+        sendOrderConfirmedEmail(order),
+        sendAdminNewOrderEmail(order, { event: 'PAYMENT_RECEIVED' })
+      ]),
+      new Promise((resolve) => setTimeout(resolve, 4000))
+    ]);
+  } catch (err) {
+    console.error('[Payment Confirmation Email Error]:', err);
+  }
         }
 
         // Clear user's cart in backend
@@ -553,7 +573,17 @@ const handlePaymentSuccess = async (session) => {
     transactionId: order.payment.transactionId
   });
 
-  sendOrderConfirmedEmail(order).catch((err) => console.error('[Order Confirmation Email Error]:', err));
+  try {
+    await Promise.race([
+      Promise.allSettled([
+        sendOrderConfirmedEmail(order),
+        sendAdminNewOrderEmail(order, { event: 'PAYMENT_RECEIVED' })
+      ]),
+      new Promise((resolve) => setTimeout(resolve, 4000))
+    ]);
+  } catch (err) {
+    console.error('[Payment Confirmation Email Error]:', err);
+  }
 
   // Clear user's cart in backend
   if (order.user) {

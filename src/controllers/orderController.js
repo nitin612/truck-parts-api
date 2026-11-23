@@ -17,6 +17,7 @@ const {
   sendOrderPackedEmail,
   sendOrderDispatchedEmail,
   sendOrderDeliveredEmail,
+  sendAdminNewOrderEmail,
   notifyOrderStatusUpdate
 } = require('../services/notificationService');
 
@@ -443,10 +444,24 @@ const createOrder = async (request, reply) => {
     createdAt: order.createdAt
   });
 
+  // 11. Transactional Emails: Dispatch both Customer notification and Admin order alert
+  const emailTasks = [];
   if (order.orderStatus === 'Confirmed' || order.payment?.status === 'PAID') {
-    sendOrderConfirmedEmail(order).catch((err) => console.error('[Order Email Error]:', err));
+    emailTasks.push(sendOrderConfirmedEmail(order));
   } else {
-    sendOrderPlacedEmail(order).catch((err) => console.error('[Order Email Error]:', err));
+    emailTasks.push(sendOrderPlacedEmail(order));
+  }
+  emailTasks.push(sendAdminNewOrderEmail(order));
+
+  // Await email dispatch with a safety guard so Vercel serverless functions do not terminate early
+  // while ensuring response time never stalls if SMTP network lags
+  try {
+    await Promise.race([
+      Promise.allSettled(emailTasks),
+      new Promise((resolve) => setTimeout(resolve, 4000))
+    ]);
+  } catch (err) {
+    console.error('[Order Email Error]:', err);
   }
 
   const normalized = normalizeOrder(order);

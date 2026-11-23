@@ -25,6 +25,9 @@ const createTransporter = () => {
       user,
       pass
     },
+    connectionTimeout: 5000,
+    greetingTimeout: 5000,
+    socketTimeout: 8000,
     tls: {
       rejectUnauthorized: process.env.NODE_ENV === 'production'
     }
@@ -495,6 +498,237 @@ const sendOrderDeliveredEmail = async (order) => {
 };
 
 /**
+ * 6. ADMIN NEW ORDER NOTIFICATION
+ * Sends immediate full-detail order notification to store administrator.
+ */
+const sendAdminNewOrderEmail = async (order, extra = {}) => {
+  const adminEmail = process.env.ADMIN_ORDER_EMAIL || process.env.ADMIN_EMAIL || 'aurexparts@yopmail.com';
+  if (!adminEmail) return;
+
+  const appUrl = process.env.APP_URL || 'https://www.aurextruckparts.com.au';
+  const adminOrdersUrl = `${appUrl}/admin/orders`;
+
+  const items = (order.items || []).map(escFields);
+  const pricing = order.pricing || { subtotal: 0, shippingFee: 0, grandTotal: 0 };
+  const shipping = escFields(order.shippingAddress);
+  const customerEmail = esc(getCustomerEmail(order) || 'Not provided');
+  const customerName = esc(getCustomerName(order));
+  const isPaid = order.payment?.status === 'PAID' || extra.event === 'PAYMENT_RECEIVED';
+
+  const itemsHtml = items.map((i) => `
+    <tr>
+      <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; vertical-align: top;">
+        <strong style="color: #111827; font-size: 13px;">${i.name}</strong>
+        <div style="color: #6b7280; font-size: 12px; margin-top: 2px;">SKU: <span style="font-family: monospace; font-weight: bold; color: #001738;">${i.sku}</span></div>
+      </td>
+      <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; text-align: center; color: #111827; font-size: 13px; font-weight: bold; vertical-align: top;">
+        ${i.quantity}
+      </td>
+      <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; text-align: right; color: #374151; font-size: 13px; vertical-align: top;">
+        $${Number(i.unitPrice || 0).toFixed(2)}
+      </td>
+      <td style="padding: 10px; border-bottom: 1px solid #e5e7eb; text-align: right; color: #111827; font-weight: bold; font-size: 13px; vertical-align: top;">
+        $${Number(i.total || (i.unitPrice * i.quantity) || 0).toFixed(2)}
+      </td>
+    </tr>
+  `).join('');
+
+  const subject = isPaid
+    ? `💰 [PAID ORDER] #${order.orderNumber} - $${Number(pricing.grandTotal || 0).toFixed(2)} AUD - ${customerName}`
+    : `🚨 [NEW ORDER] #${order.orderNumber} - $${Number(pricing.grandTotal || 0).toFixed(2)} AUD - ${customerName}`;
+
+  const html = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>${subject}</title>
+    </head>
+    <body style="margin: 0; padding: 0; background-color: #f3f4f6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1f2937; line-height: 1.5;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f3f4f6; padding: 24px 12px;">
+        <tr>
+          <td align="center">
+            <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 620px; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08); border: 1px solid #e5e7eb;">
+              
+              <!-- Header Bar -->
+              <tr>
+                <td style="background-color: #001738; padding: 22px 26px; border-bottom: 3px solid #f59e0b; text-align: left;">
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td>
+                        <h1 style="margin: 0; color: #ffffff; font-size: 18px; font-weight: 900; letter-spacing: -0.5px;">
+                          AUREX <span style="color: #f59e0b;">TRUCK PARTS</span>
+                        </h1>
+                        <p style="margin: 3px 0 0 0; color: #94a3b8; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
+                          STORE ADMIN NOTIFICATION • CAMPBELLFIELD DEPOT
+                        </p>
+                      </td>
+                      <td align="right" style="vertical-align: middle;">
+                        <span style="background-color: ${isPaid ? '#059669' : '#d97706'}; color: #ffffff; padding: 6px 12px; border-radius: 9999px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block;">
+                          ${isPaid ? 'Payment Confirmed' : 'New Order Placed'}
+                        </span>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <!-- Content -->
+              <tr>
+                <td style="padding: 26px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                    <h2 style="margin: 0; color: #111827; font-size: 20px; font-weight: 800;">
+                      Order #${order.orderNumber}
+                    </h2>
+                  </div>
+
+                  <!-- Quick Action Button -->
+                  <div style="background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 14px 18px; margin-bottom: 22px;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td>
+                          <p style="margin: 0; font-size: 13px; color: #1e40af; font-weight: 600;">
+                            A new order has been received and requires fulfillment processing.
+                          </p>
+                        </td>
+                        <td align="right" style="padding-left: 12px; white-space: nowrap;">
+                          <a href="${adminOrdersUrl}" style="background-color: #1e3a8a; color: #ffffff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 800; display: inline-block;">
+                            Manage Order →
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+
+                  <!-- Order & Customer Snapshot -->
+                  <div style="background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 14px 18px; margin-bottom: 22px;">
+                    <h3 style="margin: 0 0 10px 0; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #4b5563;">
+                      📋 Customer & Delivery Information
+                    </h3>
+                    <table width="100%" cellpadding="0" cellspacing="0" style="font-size: 13px; color: #1f2937; line-height: 1.6;">
+                      <tr>
+                        <td style="width: 35%; color: #6b7280; padding: 2px 0;">Customer Name:</td>
+                        <td style="padding: 2px 0;"><strong>${customerName}</strong></td>
+                      </tr>
+                      ${shipping.companyName ? `
+                      <tr>
+                        <td style="color: #6b7280; padding: 2px 0;">Company / Fleet:</td>
+                        <td style="padding: 2px 0;"><strong>${shipping.companyName}</strong></td>
+                      </tr>` : ''}
+                      <tr>
+                        <td style="color: #6b7280; padding: 2px 0;">Email:</td>
+                        <td style="padding: 2px 0;"><a href="mailto:${customerEmail}" style="color: #1e3a8a; text-decoration: none; font-weight: 600;">${customerEmail}</a></td>
+                      </tr>
+                      <tr>
+                        <td style="color: #6b7280; padding: 2px 0;">Phone:</td>
+                        <td style="padding: 2px 0;"><a href="tel:${shipping.phone || ''}" style="color: #1e3a8a; text-decoration: none; font-weight: 600;">${shipping.phone || 'N/A'}</a></td>
+                      </tr>
+                      <tr>
+                        <td style="color: #6b7280; padding: 2px 0; vertical-align: top;">Delivery Address:</td>
+                        <td style="padding: 2px 0;">
+                          ${shipping.addressLine1 || ''} ${shipping.addressLine2 || ''}<br />
+                          ${shipping.suburbOrCity || ''} ${shipping.state || ''} ${shipping.postalCode || ''} (${shipping.country || 'Australia'})
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="color: #6b7280; padding: 2px 0;">Fulfillment:</td>
+                        <td style="padding: 2px 0;"><strong>${order.shipping?.shippingMethod || 'Standard Road Freight'}</strong></td>
+                      </tr>
+                      <tr>
+                        <td style="color: #6b7280; padding: 2px 0;">Payment:</td>
+                        <td style="padding: 2px 0;">
+                          <strong>${order.payment?.method || 'N/A'}</strong> — 
+                          <span style="font-weight: bold; color: ${isPaid ? '#059669' : '#d97706'};">${order.payment?.status || 'PENDING'}</span>
+                        </td>
+                      </tr>
+                      ${(shipping.deliveryInstructions || order.customerNotes) ? `
+                      <tr>
+                        <td style="color: #6b7280; padding: 4px 0; vertical-align: top;">Site Notes:</td>
+                        <td style="padding: 4px 0; color: #b45309; font-weight: 600;">${shipping.deliveryInstructions || order.customerNotes} ${shipping.hasForkliftOnSite ? '(Forklift available)' : ''}</td>
+                      </tr>` : ''}
+                    </table>
+                  </div>
+
+                  <!-- Parts List -->
+                  <h3 style="margin: 0 0 10px 0; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #4b5563;">
+                    📦 Ordered Line Items (${items.length})
+                  </h3>
+                  <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin-bottom: 20px;">
+                    <thead>
+                      <tr style="background-color: #f3f4f6;">
+                        <th align="left" style="padding: 8px 10px; font-size: 11px; font-weight: 800; color: #4b5563; text-transform: uppercase; border-bottom: 2px solid #e5e7eb;">Part Details</th>
+                        <th align="center" style="padding: 8px 10px; font-size: 11px; font-weight: 800; color: #4b5563; text-transform: uppercase; border-bottom: 2px solid #e5e7eb;">Qty</th>
+                        <th align="right" style="padding: 8px 10px; font-size: 11px; font-weight: 800; color: #4b5563; text-transform: uppercase; border-bottom: 2px solid #e5e7eb;">Unit</th>
+                        <th align="right" style="padding: 8px 10px; font-size: 11px; font-weight: 800; color: #4b5563; text-transform: uppercase; border-bottom: 2px solid #e5e7eb;">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${itemsHtml}
+                    </tbody>
+                  </table>
+
+                  <!-- Totals Summary -->
+                  <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
+                    <tr>
+                      <td width="50%"></td>
+                      <td width="50%">
+                        <table width="100%" cellpadding="0" cellspacing="0" style="font-size: 13px;">
+                          <tr>
+                            <td style="color: #6b7280; padding: 3px 0;">Subtotal:</td>
+                            <td align="right" style="color: #111827; padding: 3px 0; font-weight: 600;">$${Number(pricing.subtotal || 0).toFixed(2)}</td>
+                          </tr>
+                          <tr>
+                            <td style="color: #6b7280; padding: 3px 0;">Freight:</td>
+                            <td align="right" style="color: #111827; padding: 3px 0; font-weight: 600;">$${Number(pricing.shippingFee || 0).toFixed(2)}</td>
+                          </tr>
+                          ${pricing.couponDiscountAmount > 0 ? `
+                          <tr>
+                            <td style="color: #059669; padding: 3px 0;">Discount:</td>
+                            <td align="right" style="color: #059669; padding: 3px 0; font-weight: 600;">-$${Number(pricing.couponDiscountAmount).toFixed(2)}</td>
+                          </tr>` : ''}
+                          <tr>
+                            <td colspan="2" style="border-top: 1px solid #e5e7eb; padding-top: 6px; margin-top: 4px;"></td>
+                          </tr>
+                          <tr>
+                            <td style="font-size: 15px; font-weight: 800; color: #001738;">Grand Total:</td>
+                            <td align="right" style="font-size: 16px; font-weight: 900; color: #001738;">$${Number(pricing.grandTotal || 0).toFixed(2)} AUD</td>
+                          </tr>
+                          <tr>
+                            <td colspan="2" align="right" style="font-size: 11px; color: #9ca3af;">
+                              (Includes $${Number(pricing.tax || (pricing.grandTotal / 11)).toFixed(2)} GST)
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+
+                </td>
+              </tr>
+
+              <!-- Footer -->
+              <tr>
+                <td style="background-color: #f9fafb; padding: 16px 26px; border-top: 1px solid #e5e7eb; font-size: 11px; color: #6b7280; text-align: center;">
+                  Aurex Truck Parts Internal Notification Engine • Campbellfield VIC 3061
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </body>
+    </html>
+  `;
+
+  return sendEmail({
+    to: adminEmail,
+    subject,
+    html
+  });
+};
+
+/**
  * Universal Order Status Notification Dispatcher
  * Calls the appropriate email function based on canonical status string.
  */
@@ -570,6 +804,7 @@ module.exports = {
   sendOrderPackedEmail,
   sendOrderDispatchedEmail,
   sendOrderDeliveredEmail,
+  sendAdminNewOrderEmail,
   notifyOrderStatusUpdate,
   sendQuoteResponseEmail,
   // Backward compatibility alias:
