@@ -53,6 +53,15 @@ const getGoogleMerchantFeed = async (request, reply) => {
         `      <g:condition>${CONDITION[doc.condition] || 'new'}</g:condition>`,
         '      <g:identifier_exists>no</g:identifier_exists>',
         type ? `      <g:product_type>${escapeXml(type)}</g:product_type>` : null,
+        '      <g:shipping>',
+        '        <g:country>AU</g:country>',
+        '        <g:service>Standard Road Freight</g:service>',
+        '        <g:price>18.00 AUD</g:price>',
+        '      </g:shipping>',
+        '      <g:min_handling_time>0</g:min_handling_time>',
+        '      <g:max_handling_time>1</g:max_handling_time>',
+        '      <g:min_transit_time>1</g:min_transit_time>',
+        '      <g:max_transit_time>3</g:max_transit_time>',
         '    </item>',
       ].filter(Boolean).join('\n');
     });
